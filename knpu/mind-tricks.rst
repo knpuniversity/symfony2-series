@@ -166,11 +166,24 @@ User object, and the session:
 
 .. code-block:: html+jinja
 
-    {{ app.session.get('some_session_key') }}
-    {{ app.request.host }}
+    {# src/Yoda/EventBundle/Resources/views/Event/index.html.twig #}
+    {# ... #}
+
+    {% block body %}
+        {{ app.session.get('some_session_key') }}
+        {{ app.request.host }}
+
+        {# ... #}
+    {% endblock %}
 
 Actually, it's an object called `GlobalVariables`_, which you can check out
 yourself. So when you need one of these things, remember that app variable!
+
+.. tip::
+
+    You can remove this code after trying it out - it's just an example of
+    how you can access the request and session data - it doesn't add anything
+    real to our project.
 
 The block Twig Function
 -----------------------
