@@ -32,11 +32,11 @@ Back at the command line, tell Composer to create a new project with the
 
 .. code-block:: bash
 
-    php composer.phar create-project symfony/framework-standard-edition starwarsevent 2.2.1
+    php composer.phar create-project symfony/framework-standard-edition starwarsevent 2.2.9
 
 .. note::
 
-    Use the latest stable release, like 2.2.1. The version is included in
+    Use the latest stable release, like 2.2.9. The version is included in
     the text you copied.
 
 This tells Composer to download the ``symfony/framework-standard-edition`` library
@@ -230,7 +230,7 @@ from the standard distribution.
 
 .. note::
 
-    If you downloaded a specific version of Symfony (e.g. ``2.2.1``), the
+    If you downloaded a specific version of Symfony (e.g. ``2.2.9``), the
     ``.git`` directory will already be gone.
 
 Next, initialize a new git repository with the ``git init`` command. Before
