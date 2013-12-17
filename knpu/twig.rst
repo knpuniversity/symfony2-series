@@ -112,11 +112,11 @@ subdirectory.
 
 .. sidebar:: Template name and path examples
 
-    * ``EventController:Default:index.html.twig``
+    * ``EventBundle:Default:index.html.twig``
 
         src/Yoda/EventBundle/Resources/views/Default/index.html.twig
 
-    * ``EventController::index.html.twig``
+    * ``EventBundle::index.html.twig``
 
         src/Yoda/EventBundle/Resources/views/index.html.twig
         
