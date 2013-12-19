@@ -65,7 +65,7 @@ and pass it the name of the library:
 
 .. code-block:: bash
 
-    php composer.phar update doctrine-fixtures-bundle
+    php composer.phar update doctrine/doctrine-fixtures-bundle
 
 This will download the ``DoctrineFixturesBundle`` and its dependent ``doctrine-data-fixtures``
 library into your project.
