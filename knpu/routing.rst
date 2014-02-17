@@ -197,6 +197,8 @@ of the arguments and refresh::
 
 Symfony matches the routing wildcards to action arguments by name, not order.
 
+Remove the ``var_dump`` code so our page works again.
+
 There are a bunch of other *really* cool things you can do with routes, and
 we'll show them off along the way.
 
