@@ -1,0 +1,29 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "installation-create-project",
+            "name": "Installation: create-project",
+            "description": null
+        },
+        {
+            "id": "installation-umask",
+            "name": "Installation: umask",
+            "description": null
+        },
+        {
+            "id": "installation-playing-with-cookie-lifetime-config",
+            "name": "Installation: playing with cookie_lifetime config",
+            "description": null
+        },
+        {
+            "id": "installation-removing-demo-code",
+            "name": "Installation: Removing demo code",
+            "description": null
+        }
+    ]
+}
