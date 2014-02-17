@@ -1,0 +1,16 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Default/index.html.twig b/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
+index 0a6d537..01abf85 100644
+--- a/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
+@@ -1,5 +1,10 @@
++{% extends '::base.html.twig' %}
++
++{% block body %}
+ {# Hello comments! #}
+ 
+ {% for i in 1..count %}
+     Hello <strong>{{ name|upper }}</strong> # {{ i }}!<br/>
+ {% endfor %}
++
++{% endblock %}
+\ No newline at end of file
