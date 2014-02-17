@@ -1,0 +1,15 @@
+diff --git a/src/Yoda/EventBundle/Controller/DefaultController.php b/src/Yoda/EventBundle/Controller/DefaultController.php
+index 280a8e2..b99aa97 100644
+--- a/src/Yoda/EventBundle/Controller/DefaultController.php
++++ b/src/Yoda/EventBundle/Controller/DefaultController.php
+@@ -8,9 +8,7 @@ class DefaultController extends Controller
+ {
+     public function indexAction($count, $firstName)
+     {
+-        $templating = $this->container->get('templating');
+-
+-        return $templating->renderResponse(
++        return $this->render(
+             'EventBundle:Default:index.html.twig',
+             array('name' => $firstName)
+         );
