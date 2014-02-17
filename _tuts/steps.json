@@ -74,6 +74,76 @@
             "id": "routing-removing-debug",
             "name": "Routing: Removing debug",
             "description": null
+        },
+        {
+            "id": "controller-returning-direct-response",
+            "name": "Controller: Returning direct Response",
+            "description": null
+        },
+        {
+            "id": "controller-return-a-json-response",
+            "name": "Controller: Return a JSON response",
+            "description": null
+        },
+        {
+            "id": "controller-set-content-type",
+            "name": "Controller: Set content-type",
+            "description": null
+        },
+        {
+            "id": "controller-render-template-with-templating-service",
+            "name": "Controller: Render template with templating service",
+            "description": null
+        },
+        {
+            "id": "controller-tweak-template",
+            "name": "Controller: Tweak template",
+            "description": null
+        },
+        {
+            "id": "controller-finishing-template-rendering-with-response",
+            "name": "Controller: Finishing template rendering with response",
+            "description": null
+        },
+        {
+            "id": "controller-use-renderresponse",
+            "name": "Controller: Use renderResponse",
+            "description": null
+        },
+        {
+            "id": "controller-rendering-with-render",
+            "name": "Controller: Rendering with render",
+            "description": null
+        },
+        {
+            "id": "twig-looping-over-a-variable",
+            "name": "Twig: Looping over a variable",
+            "description": null
+        },
+        {
+            "id": "twig-adding-a-comment",
+            "name": "Twig: Adding a comment",
+            "description": null
+        },
+        {
+            "id": "twig-using-the-upper-filter",
+            "name": "Twig: Using the upper filter",
+            "description": null
+        },
+        {
+            "id": "twig-add-extends",
+            "name": "Twig: Add extends",
+            "description": null
+        },
+        {
+            "id": "twig-override-title",
+            "name": "Twig: Override title",
+            "description": null
+        },
+        {
+            "id": "twig-alternate-block-syntax",
+            "name": "Twig: Alternate block syntax",
+            "description": null
         }
     ]
 }
