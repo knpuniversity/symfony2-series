@@ -79,11 +79,29 @@ Setup Checks!
 Next, we need to make sure that our computer is ready to run Symfony. Our
 project came with a little PHP script that checks our computer and tells
 us if anything is missing or misconfigured. The script is called ``config.php``
-and it lives in the ``web/`` directory. In my case, since we downloaded the
-project into my Apache web root, I can go to "localhost" and find my way
-to the ``config.php`` script.
+and it lives in the ``web/`` directory. If you downloaded the project into
+your Apache document root, then you can go to "localhost" and find your way
+to the ``config.php`` script:
 
   http://localhost/starwarsevents/web/config.php
+
+Alternatively, if you have PHP 5.4 or higher, you can use the built-in PHP
+web server. Honestly, it's a lot easier to setup. From the root of our project,
+run:
+
+.. code-block:: text
+
+    $ php app/console server:run
+
+The web server uses ``web/`` as its document root, so we can just go to
+``http://localhost:8000/config.php``. If you get an error, then you don't
+have PHP 5.4 and you'll need to configure Apache:
+
+.. code-block:: text
+
+    There are no commands defined in the "server" namespace.
+
+We'll talk more about proper web server setups later.
 
 If you see any scary "Major Problems", you'll need to fix those. But feel
 free to ignore any "Minor Problems" for now.
@@ -97,8 +115,11 @@ problem every time you start a new project. It's easy to fix, but if you don't
 do it right, it can give you a major headache.
 
 The easiest way to fix permissions is to put the ``umask`` function at the
-top of 3 separate files. So, pop open your project in your favorite editor,
+top of 2 files. So, pop open your project in your favorite editor,
 we like PhpStorm.
+
+The ``umask`` line is already there, so just comment it out - first in the
+``app/console`` and next in ``web/app_dev.php``::
 
 Start with the ``app/console`` file, next the ``web/app.php`` file, and then
 the ``app_dev.php`` file::
@@ -113,7 +134,7 @@ Once you're done, set the permissions on the two cache and logs directories:
 
 .. code-block:: bash
 
-    chmod -R 777 app/cache app/logs
+    chmod -R 777 app/cache/* app/logs/*
 
 You shouldn't have any more issues, but if you do, just set the permissions again.
 
@@ -124,11 +145,20 @@ your permissions.
 Now we're ready to start using Symfony. Check out our first real Symfony
 page, by hitting the ``app_dev.php`` file in your browser:
 
-  http://localhost/starwarsevents/web/app_dev.php
+  http://localhost:8000/app_dev.php
 
 If everything worked, you'll see a pretty welcome page. The project we downloaded
 came with a few demo pages. This is one of them, and you can look inside
 the ``src/Acme/DemoBundle`` directory to see the code behind it.
+
+.. tip::
+
+    If you're using Apache with the same setup as we've done, then the URL
+    will be:
+
+    .. code-block:: text
+
+        http://localhost/starwarsevents/web/app_dev.php
 
 To see all the demo pages, click the "Run The Demo" green button.
 
@@ -211,13 +241,8 @@ doesn't look for it when it's loading::
         $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
     }
 
-Finally, get rid of the demo routes in the ``routing_dev.yml`` file to fully
-disconnect the demo bundle:
-
-.. tip::
-
-  Remove the first 3 entries from ``app/config/routing_dev.yml``, which include
-  ``_welcome``, ``_demo_secured``, and ``_demo``.
+Finally, get rid of the ``_acme_demo`` route import in the ``routing_dev.yml``
+file to fully disconnect the demo bundle:
 
 Now, when we refresh, we'll see Symfony's error page, telling us that the
 page can't be found. The demo page that was here before is gone, meaning
@@ -230,17 +255,13 @@ This is a perfect time to setup our project with git and make our first commit.
 If you don't use git, the same basic principles could be used to store a project
 in Subversion or any other version control system.
 
-First, delete the existing ``.git`` directory so that we don't inherit the history
-from the standard distribution.
+First, delete the ``.git`` directory. Like us, you may not have this directory.
+Just make sure it's gone so that we don't inherit the history from the standard
+distribution.
 
 .. code-block:: bash
 
     rm -rf .git
-
-.. note::
-
-    If you downloaded a specific version of Symfony (e.g. ``2.2.9``), the
-    ``.git`` directory will already be gone.
 
 Next, initialize a new git repository with the ``git init`` command. Before
 we make our initial commit, there are few files that we should tell git to
@@ -259,28 +280,20 @@ to commit it.
 The ``cache`` and ``logs`` directories are the same way - they're generated,
 so we can ignore them.
 
+The ``app/config/parameters.yml`` file holds all server-specific config, like
+your database username and password. By ignoring it, each developer can keep
+their own version of the file.
+
+To make life easier, we *will* commit an example version of the file called
+``parameters.yml.dist`` so that a new developer knows exactly what their
+``parameters.yml`` needs to look like.
+
 We also want to ignore the ``vendor/`` directory. We can do this because Composer
 populates this directory for us. When a new developer pulls down our code,
 she can run ``php composer.phar install`` to download everything needed into
 this directory. This saves us from needing to commit a lot of third-party
 code. If it's not in this file already, also ignore the ``bin/`` directory
 as this is also populated automatically by Composer.
-
-Finally, add one new entry to ignore the ``app/config/parameters.yml`` file.
-
-.. code-block:: text
-
-    # .gitignore
-    # ...
-    app/config/parameters.yml
-
-This file holds all server-specific config, like your database username and
-password. By ignoring it, each developer can keep their own version of the
-file.
-
-To make life easier, I usually create and commit an example version of the
-file, so that a new developer knows exactly what their ``parameters.yml``
-needs to look like.
 
 Now that we've ignored the right files, let's add everything to git and make
 our first commit. If any friends or co-workers are nearby, now's a great time
