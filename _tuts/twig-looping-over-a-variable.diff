@@ -1,0 +1,24 @@
+diff --git a/src/Yoda/EventBundle/Controller/DefaultController.php b/src/Yoda/EventBundle/Controller/DefaultController.php
+index b99aa97..6107ea3 100644
+--- a/src/Yoda/EventBundle/Controller/DefaultController.php
++++ b/src/Yoda/EventBundle/Controller/DefaultController.php
+@@ -10,7 +10,7 @@ class DefaultController extends Controller
+     {
+         return $this->render(
+             'EventBundle:Default:index.html.twig',
+-            array('name' => $firstName)
++            array('name' => $firstName, 'count' => $count)
+         );
+     }
+ }
+\ No newline at end of file
+diff --git a/src/Yoda/EventBundle/Resources/views/Default/index.html.twig b/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
+index a2db84d..7ab45bb 100644
+--- a/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
+@@ -1 +1,4 @@
+-Hello <strong>{{ name }}</strong>
++
++{% for i in 1..count %}
++    Hello <strong>{{ name }}</strong> # {{ i }}!<br/>
++{% endfor %}
