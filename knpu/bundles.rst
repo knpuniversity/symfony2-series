@@ -61,3 +61,11 @@ few other things. Second, it activated the bundle by adding a line to the
 ``AppKernel`` class. Third, it added a line to the ``routing.yml`` file, which
 imports another routing file that's inside the bundle. We'll talk about
 routing next.
+
+The PHPStorm Symfony Plugin
+---------------------------
+
+But first, if you *are* using PHPStorm, I'd highly recommend downloading
+and installing the Symfony plugin. Once it's installed, just make sure it's
+enabled for this project. This will give you a ton of Symfony-specific help
+while we're developing.
