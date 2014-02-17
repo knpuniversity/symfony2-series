@@ -105,6 +105,9 @@ really *cool* things about the way Symfony works.
 
 .. _symfony-ep1-what-is-a-service:
 
+Symfony Services
+~~~~~~~~~~~~~~~~
+
 Symfony is basically a wrapper around a bunch of objects that do helpful
 things. These objects are called "services", which is a fancy name for an
 object that performs a task. This is important: when you hear service, you

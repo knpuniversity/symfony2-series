@@ -73,8 +73,8 @@ we start bringing in more outside libraries.
 As Composer finishes, it'll ask you a few configuraton questions. Just hit
 enter through all of these. We'll tweak our configuration later.
 
-Setup Checks!
--------------
+Setup Checks and Web Server Config
+----------------------------------
 
 Next, we need to make sure that our computer is ready to run Symfony. Our
 project came with a little PHP script that checks our computer and tells

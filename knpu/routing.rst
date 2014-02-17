@@ -19,6 +19,9 @@ there's a route somewhere that defines this URL pattern. Since I mentioned
 earlier that all routes live in the ``app/config/routing.yml`` file, the route
 *should* be in that file.
 
+Route Importing
+---------------
+
 But it's *not*. Instead of the route we're looking for, there's an ``event``
 entry that was added when the bundle was generated:
 
@@ -67,6 +70,9 @@ your browser to see the moved page (and then change the ``pattern`` back
 to ``/hello/{name}``):
 
   http://localhost:8000/app_dev.php/there-is-another/skywalker
+
+path versus pattern: no difference
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you have a ``path`` key instead of ``pattern``, awesome! Both ``path``
 and ``pattern`` do the exact same thing, and actually, ``path`` is the newer
