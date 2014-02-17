@@ -43,7 +43,7 @@ in action! First, let's pass the count variable into our template::
         );
     }
 
-Next, use TWIG's ``for`` tag to print the name a certain number of times:
+Next, use Twig's ``for`` tag to print the name a certain number of times:
 
 .. code-block:: html+jinja
 
@@ -85,13 +85,15 @@ bare-bones, but has a basic HTML structure.
 
 To use this layout, we "extend" it. First, add the ``extends`` tag to the top
 of the ``index.html.twig`` template. Now, wrap the rest of the template inside
-a ``block`` ``body`` tag:
+a ``{% block body %}`` tag:
 
 .. code-block:: html+jinja
 
     {% extends '::base.html.twig' %}
 
-    {# ... the rest of the template ... #}
+    {% block body % }
+        {# ... the rest of the template ... #}
+    {% endblock %}
 
 When we refresh and view source, you'll see that the HTML from the ``base.html.twig``
 layout file is being used and that the content from our template is rendered
@@ -154,20 +156,25 @@ the ``body`` block of ``base.html.twig``.
 You'll also notice a ``title`` block, but this time it has content in it.
 This is another feature of blocks - a block can have default content. As you
 would expect, the title of our page is "Welcome!" To replace this title add
-a ``title`` block to ``html.index.twig``. Or, for simple blocks like this,
-you can also use a shorter syntax:
+a ``title`` block to ``html.index.twig``:
 
 .. code-block:: html+jinja
 
     {# src/Yoda/EventBundle/Resources/views/Default/index.html.twig #}
-    {# ... #}
+    {% extends '::base.html.twig' %}
 
-    {% block title 'Some Twiggy Goodness' %}    
+    {% block title %}Some Twiggy Goodness{% endblock %}
 
-    {# ... #}
+    {% block body %}
+        {# ... #}
+    {% endblock %}
+
+Or, for simple blocks like this, you can also use a shorter syntax:
+
+    {% block title 'Some Twiggy Goodness' %}
 
 We'll use blocks all the time in our project to make really flexible layouts.
-we'll keep playing with blocks to show off more of their tricks.
+We'll keep playing with blocks to show off more of their tricks.
 
 Web Debug Toolbar
 -----------------
