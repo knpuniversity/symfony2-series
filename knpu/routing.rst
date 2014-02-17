@@ -1,14 +1,14 @@
 Routing
 =======
 
-Alright - Time for some routing! Every page needs a URL. In Symfony, all 
+Alright - time for some routing! Every page needs a URL. In Symfony, all
 the URLs of your application are configured in a single place: the ``routing.yml``
 file inside the ``app/config`` directory. Whenever you need to create a page,
 you'll start by creating a route.
 
 Head back to your browser and put ``/hello/skywalker`` after ``app_dev.php``:
 
-  http://localhost/starwarsevents/web/app_dev.php/hello/skywalker
+  http://localhost:8000/app_dev.php/hello/skywalker
 
 This is a really simple page that was generated automatically in the new
 bundle. You can change the last part of the URL to anything you want and
@@ -66,13 +66,16 @@ part of the pattern is like a wildcard. It means that any URL that looks like
 your browser to see the moved page (and then change the ``pattern`` back
 to ``/hello/{name}``):
 
-  http://localhost/starwarsevents/web/app_dev.php/there-is-another/skywalker
+  http://localhost:8000/app_dev.php/there-is-another/skywalker
 
-.. versionadded:: 2.2
-    In Symfony 2.2, use ``path`` instead of ``pattern``. Both work and do the exact
-    same thing, but ``pattern`` will be removed in Symfony 3.0.
+If you have a ``path`` key instead of ``pattern``, awesome! Both ``path``
+and ``pattern`` do the exact same thing, and actually, ``path`` is the newer
+and preferred name. I'll change my routing to use ``path``:
 
-    See :doc:`/screencast/new-symfony-2.2/symfony3` for more details.
+    # src/Yoda/EventBundle/Resources/config/routing.yml
+    event_homepage:
+        path:  /hello/{name}
+        defaults: { _controller: EventBundle:Default:index }
 
 The defaults ``_controller`` key is the second thing you'll see on every route.
 It tells Symfony which controller to execute when the route is matched. A
@@ -114,31 +117,57 @@ Open up the controller class and find the ``indexAction`` method::
 Routing Parameters and Controller Arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The first thing to notice is the ``name`` variable that's passed as an argument
+The first thing to notice is the ``$name`` variable that's passed as an argument
 to the method. This is really cool because the value of this argument comes
-from the ``name`` wildcard back in our route. In other words, when I go to
+from the ``{name}`` wildcard back in our route. In other words, when I go to
 ``/hello/edgar``, the name variable is ``edgar``. When I go to ``/hello/skywalker``,
 it's skywalker. If we change ``name`` in the route to something else (e.g.
-``firstName``), we'll see an error. The name of the argument needs to match
-up with the name used in the route (e.g. ``/hello/{firstName}``). The route
-still has the same URL, but we've given the routing wildcard a different name
-internally.
-
-You can also add more wildcards to your route. For example, let's add a ``count``
-wildcard after ``name``:
+``firstName``), we'll see an error:
 
 .. code-block:: yaml
 
     # src/Yoda/EventBundle/Resources/config/routing.yml
     event_homepage:
-        pattern:  /hello/{firstName}/{count}
+        path:  /hello/{firstName}
+        defaults: { _controller: EventBundle:Default:index }
+
+.. code-block:: text
+
+    Controller "Yoda\EventBundle\Controller\DefaultController::indexAction()"
+    requires that you provide a value for the "$name" argument (because there
+    is no default value or because there is a non optional argument after
+    this one).
+
+The name of the argument needs to match up with the name used in the route
+(e.g. ``/hello/{firstName}``). The route still has the same URL, but we've
+given the routing wildcard a different name internally::
+
+    // src/Yoda/EventBundle/Controller/DefaultController.php
+    // ...
+
+    public function indexAction($firstName)
+    {
+        return $this->render(
+            'EventBundle:Default:index.html.twig',
+            array('name' => $firstName)
+        );
+    }
+
+You can also add more wildcards to your route. For example, let's add a ``count``
+wildcard after name:
+
+.. code-block:: yaml
+
+    # src/Yoda/EventBundle/Resources/config/routing.yml
+    event_homepage:
+        path:  /hello/{firstName}/{count}
         defaults: { _controller: EventBundle:Default:index }
 
 If you refresh, you'll get a "No route found" error. That's because you need
-to put *something* for the `count` wildcard to match the route. Add ``/5``
+to put *something* for the ``count`` wildcard to match the route. Add ``/5``
 to the end of the URL to see the page:
 
-  http://localhost/starwarsevents/web/app_dev.php/hello/skywalker/5
+  http://localhost:8000/app_dev.php/hello/skywalker/5
 
 Now that we have a ``count`` wildcard in the route, we can add a ``$count``
 argument to the action::
@@ -146,9 +175,9 @@ argument to the action::
     // src/Yoda/EventBundle/Controller/DefaultController.php
 
     // ...
-    public function indexAction($name, $count)
+    public function indexAction($firstName, $count)
     {
-        var_dump($name, $count);die;
+        var_dump($firstName, $count);die;
         // ...
     }
 
