@@ -1,10 +1,10 @@
 Downloading & Configuration
 ===========================
 
-Start your project by going to symfony.com and clicking "Download Now". There
-are 2 ways to get Symfony: either by downloading a zip file or by using "Composer"
-to download it for us. Either way the end result is the same, but we'll
-choose the Composer option because we'll be using this tool quite a bit anyways.
+Start your project by going to symfony.com and clicking "Download Now". If
+the site looks different when you try this, just find the download page, the
+steps will be the same. We'll use an awesome tool called Composer to get
+the project started.
 
 Downloading Composer
 --------------------
@@ -12,6 +12,10 @@ Downloading Composer
 To get Composer, go to - you guessed it - GetComposer.org. Depending on whether
 you have ``curl`` installed, copy one of the two install lines and execute
 it in your terminal.
+
+If you have Apache installed, run this from inside your web server's document
+root. If you don't, but have PHP 5.4 installed - you can run this command
+from anywhere. We'll use PHP's built-in web server to run the site.
 
 .. code-block:: bash
 
@@ -28,19 +32,16 @@ Downloading the Standard Distribution
 -------------------------------------
 
 Back at the command line, tell Composer to create a new project with the
-`create-project` command:
+`create-project` command. Change the last part to say ``@stable`` - this
+is the version number of Symfony you want and this makes sure you get the
+latest and greatest:
 
 .. code-block:: bash
 
-    php composer.phar create-project symfony/framework-standard-edition starwarsevent 2.2.9
-
-.. note::
-
-    Use the latest stable release, like 2.2.9. The version is included in
-    the text you copied.
+    php composer.phar create-project symfony/framework-standard-edition starwarsevent @stable
 
 This tells Composer to download the ``symfony/framework-standard-edition`` library
-into the ``starwarsevents`` directory at whatever version you specified.
+into the ``starwarsevents`` directory.
 
 What we're downloading isn't actually Symfony. It's a fully-functional, pre-started
 project that's built with Symfony. This is the actual place we'll be
@@ -64,8 +65,16 @@ As Composer continues to work, you can actually see more and more directories
 being added to that ``vendor/`` directory. We'll use Composer more later when
 we start bringing in more outside libraries.
 
-Configuration Checks!
----------------------
+.. tip::
+
+    Not familiar with Composer? Get spun up by going through the free
+    `The Wonderful World of Composer`_ tutorial.
+
+As Composer finishes, it'll ask you a few configuraton questions. Just hit
+enter through all of these. We'll tweak our configuration later.
+
+Setup Checks!
+-------------
 
 Next, we need to make sure that our computer is ready to run Symfony. Our
 project came with a little PHP script that checks our computer and tells
@@ -280,3 +289,4 @@ fives, a pint, or a chubacca cry.
 
 .. _Packagist.org: https://packagist.org/
 .. _`installation chapter`: http://symfony.com/doc/current/book/installation.html#configuration-and-setup
+.. _`The Wonderful World of Composer`: http://knpuniversity.com/screencast/composer
