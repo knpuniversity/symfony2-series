@@ -138,6 +138,9 @@ This format looks a lot like the ``_controller`` string used in routes.
 But seriously, do not forget these are not the same thing: one points to a
 controller class & method. The other points to a template file::
 
+    // src/Yoda/EventBundle/Controller/DefaultController.php
+    // ...
+
     public function indexAction($count, $firstName)
     {
         $templating = $this->container->get('templating');
@@ -153,6 +156,8 @@ controller class & method. The other points to a template file::
 Now, let's look at the template file:
 
 .. code-block:: html+jinja
+
+    {# src/Yoda/EventBundle/Resources/views/index.html.twig #}
 
     Hello {{ name }}
 
