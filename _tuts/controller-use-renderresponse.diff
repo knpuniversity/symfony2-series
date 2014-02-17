@@ -1,0 +1,27 @@
+diff --git a/src/Yoda/EventBundle/Controller/DefaultController.php b/src/Yoda/EventBundle/Controller/DefaultController.php
+index dadaf7e..280a8e2 100644
+--- a/src/Yoda/EventBundle/Controller/DefaultController.php
++++ b/src/Yoda/EventBundle/Controller/DefaultController.php
+@@ -3,7 +3,6 @@
+ namespace Yoda\EventBundle\Controller;
+ 
+ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+-use Symfony\Component\HttpFoundation\Response;
+ 
+ class DefaultController extends Controller
+ {
+@@ -11,11 +10,9 @@ class DefaultController extends Controller
+     {
+         $templating = $this->container->get('templating');
+ 
+-        $content = $templating->render(
++        return $templating->renderResponse(
+             'EventBundle:Default:index.html.twig',
+             array('name' => $firstName)
+         );
+-
+-        return new Response($content);
+     }
+-}
++}
+\ No newline at end of file
