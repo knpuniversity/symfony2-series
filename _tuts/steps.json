@@ -24,6 +24,56 @@
             "id": "installation-removing-demo-code",
             "name": "Installation: Removing demo code",
             "description": null
+        },
+        {
+            "id": "bundles-generate-bundle",
+            "name": "Bundles: generate:bundle",
+            "description": null
+        },
+        {
+            "id": "routing-change-routing-pattern-temporarily",
+            "name": "Routing: Change routing pattern temporarily",
+            "description": null
+        },
+        {
+            "id": "routing-change-pattern-back",
+            "name": "Routing: Change pattern back",
+            "description": null
+        },
+        {
+            "id": "routing-pattern-to-path",
+            "name": "Routing: Pattern to path",
+            "description": null
+        },
+        {
+            "id": "routing-change-name-firstname-routing",
+            "name": "Routing: Change name->firstName routing",
+            "description": null
+        },
+        {
+            "id": "routing-update-controller-name-firstname",
+            "name": "Routing: Update controller name->firstName",
+            "description": null
+        },
+        {
+            "id": "routing-add-count-wildcard",
+            "name": "Routing: Add count wildcard",
+            "description": null
+        },
+        {
+            "id": "routing-add-count-argument-name",
+            "name": "Routing: Add $count argument name",
+            "description": null
+        },
+        {
+            "id": "routing-switch-argument-order",
+            "name": "Routing: Switch argument order",
+            "description": null
+        },
+        {
+            "id": "routing-removing-debug",
+            "name": "Routing: Removing debug",
+            "description": null
         }
     ]
 }
