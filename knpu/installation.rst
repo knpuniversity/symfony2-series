@@ -35,13 +35,13 @@ Open up your terminal and start typing wildly:
 Hmm, ok, that didn't work. So let's try pasting the command instead. If you
 have PHP 5.4 installed, run this anywhere: we'll use PHP's built-in web server.
 If you don't, get with it! PHP 5.3 is ancient. But anyways, make sure you
-have Apache setup and ru nthe command at the server's document root:
+have Apache setup and run the command at the server's document root:
 
 .. code-block:: bash
 
     curl -s https://getcomposer.org/installer | php
 
-This downloads and an executable PHP file called ``composer.phar``. If Composer
+This downloads an executable PHP file called ``composer.phar``. If Composer
 complains with any warnings or errors, follow its recommendations to make
 sure your system doesn't panic when we use it.
 
@@ -49,9 +49,9 @@ Downloading the Standard Distribution
 -------------------------------------
 
 Go back to the Symfony.com download page and copy the ``create-project``
-Composer command. Change the last part to say ``@stable``. This is the version
-number and ``@stable`` is a neat way of making sure we get the latest and
-greatest.
+Composer command. Change the target directory to say statwarsevents and 
+the last part to say ``@stable``. This is the version number and ``@stable`` 
+is a neat way of making sure we get the latest and greatest.
 
 .. code-block:: bash
 
@@ -73,7 +73,7 @@ relatively small number of files and directories:
     ls -l
 
 Second, our project depends on a bunch of 3rd-party libraries and Composer
-is downloading these into the ``vendor/`` directory of the project. If you
+is downloading these into the ``vendor/`` directory. If you
 run ``ls vendor/``, you'll see that more and more things are popping up here.
 
 When that finishes, our terminal will become self-aware and start asking
@@ -136,7 +136,7 @@ it fixed.
 
 Basically, we need the cache and logs directories to be writable by our terminal
 user *and* our web server's user, like ``www-data``. And if a cache file
-is created by one user, that files needs to be modifiable by the other user.
+is created by one user, that file needs to be modifiable by the other user.
 It's an epic battle of 2 UNIX users needing to mess with the same set of
 files.
 
@@ -147,7 +147,7 @@ files.
     no-no for shared hosting #sadpanda
 
 Of course, you're awesome and are using the PHP built-in web server. For us,
-out terminal user *is* our PHP web server user, so we don't have any issues.
+our terminal user *is* our PHP web server user, so we don't have any issues.
 
 If you're using Apache or *are* having issues, check out the sidebar on this
 page with some tips.
@@ -210,8 +210,8 @@ by clicking the "Run The Demo" button.
 Directory Structure
 -------------------
 
-Without writing any coding, we already have a working project. Yea, I know,
-it's kinda lame and boring now, but id *does* have the normal directory
+Without writing any code, we already have a working project. Yea, I know,
+it's kinda lame and boring now, but it *does* have the normal directory
 structure.
 
 app
@@ -251,7 +251,7 @@ and console script (``app/console``) live. More on those soon!
 bin
 ~~~
 
-After ``app/``, we have ``bin/``. You know what? Just foget you ever saw
+After ``app/``, we have ``bin/``. You know what? Just forget you ever saw
 this directory. It has some executable files that Composer added, but nothing
 we'll ever need at this point.
 
