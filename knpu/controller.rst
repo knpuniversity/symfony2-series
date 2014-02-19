@@ -85,7 +85,7 @@ Wait. There *is* one problem. By using my browser's developer tools, I can
 see that the app is telling my browser that the response has a ``text/html``
 content type.
 
-That's ok - we can fix it easil. Just set the ``Content-Type`` header on
+That's ok - we can fix it easily. Just set the ``Content-Type`` header on
 the ``Response`` object to ``application/json``::
 
     public function indexAction($count, $firstName)
