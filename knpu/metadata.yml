@@ -44,11 +44,11 @@ chapters:
         is_free:    false
         length:     2:26
     routing:
-        title:      Routing
+        title:      Routing: The URLs of the World
         is_free:    false
         length:     5:22
     controller:
-        title:      Controllers
+        title:      Controllers: Get to Work
         is_free:    false
         length:     7:27
     twig:
