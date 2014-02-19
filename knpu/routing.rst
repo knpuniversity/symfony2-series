@@ -105,7 +105,7 @@ To be with the new, I'll change my routing to use ``path``:
 
 The defaults ``_controller`` key is the second critical piece of every route.
 It tells Symfony which controller to execute when the route is matched. But
-a controller is just a fancy word for a PHP function. SoYyou write this controller
+a controller is just a fancy word for a PHP function. So you write this controller
 function and Symfony executes it when the route is matched.
 
 The _controller Syntax
@@ -239,7 +239,7 @@ arguments by matching their names.
 
 Remove the ``var_dump`` code so our page works again.
 
-Routing is full tricks and we'll discover them along the way.
+Routing is full of lots of cool tricks and we'll discover them along the way.
 
 Debugging Routes
 ----------------
@@ -252,6 +252,6 @@ you with that with the ``router:debug`` command:
     $ php app/console router:debug
 
 This shows a full list of every route in your app. Right now, that means
-the one we've been playing with plus a few others internal Symfony debugging
+the one we've been playing with plus a few other internal Symfony debugging
 routes. Remember this command: it's your Swiss army knife for finding your
 way through a project.
