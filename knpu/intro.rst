@@ -19,11 +19,11 @@ like Drupal, Laravel
 **Symfony is also a "framework"**
 
 And because we don't have time to worry about putting a bunch of libraries
-together, we have the Symfony framework. This is a "suggestion" of how all
+together, we have the Symfony framework. This is a "suggestion" of how
 everything can work together in a consistent system. We'll be using the Symfony
 framework in this course.
 
-Silex is another framework built in Symfony and its goal is to be tiny &
+Silex is another framework built on Symfony and its goal is to be tiny &
 really easy to use.
 
 I know what you're wondering: should I use the Symfony framework or this
@@ -34,12 +34,12 @@ done with this course, you'll be a certifiable Silex expert.
 
 Yep, Symfony tries to be as boring as possible by following widely-used standards.
 This makes it effortless to include and use other libraries in your project.
-Want to use a component of Zend Framework? We can do that with just little
+Want to use a component of Zend Framework? We can do that with just a little
 bit of configuration.
 
 **Symfony is one of the top 3 most watched PHP projects on GitHub**
 
-So there's a lot of us out there working with it.
+Clearly, you won't be lonely! There's a lot of us out there working with it.
 
 Build Something
 ---------------
@@ -60,7 +60,7 @@ In this course, we've got some big goals:
    and templating;
 #. Get comfortable with a few extra tools, like Doctrine for dealing with
    the database and code generation tools;
-#. Learn enough best practices and tips to impress your friends at a part.
+#. And the real reason you are here, to learn enough best practices and tips to impress your friends at a party.
 
 Ready? Let's go!
 
