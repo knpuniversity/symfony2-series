@@ -71,7 +71,11 @@ This points ``events.l`` right back at our local computer. And this file
 is always at the same location... except for windows.
 
 We have a VirtualHost and the hosts entry, so let's go to ``http://events.l/app_dev.php``.
-The error is fine, because we don't have a homepage yet. Add the path to
+You *may* get a permissions error, and if you do, just ``chmod 777`` your cache
+and logs directories for now. But longer-term, go back to the installation
+chapter for details on how to fix this.
+
+The 404 error is fine, because we don't have a homepage yet. Add the path to
 the page we've been working on after ``app_dev.php`` to see it:
 
     http://events.l/app_dev.php/hello/skywalker/5
