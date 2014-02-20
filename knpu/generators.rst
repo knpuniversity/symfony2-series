@@ -11,9 +11,9 @@ obvious reasons, but will also help us track our progress:
 
 .. code-block:: bash
 
-    git status
-    git add src/ app/
-    git commit
+    $ git status
+    $ git add src/ app/
+    $ git commit
 
 Generating a CRUD
 -----------------
@@ -26,7 +26,7 @@ command:
 
 .. code-block:: bash
 
-    php app/console generate:doctrine:crud
+    $ php app/console generate:doctrine:crud
 
 Like before, the generator is interactive. Start by entering the "shortcut"
 name for our Event entity: ``EventBundle:Event``. Answer "yes" to the "write"
@@ -58,7 +58,7 @@ command, we can see the new routes:
 
 .. code-block:: bash
 
-    php app/console router:debug
+    $ php app/console router:debug
 
 .. code-block:: text
 
@@ -230,7 +230,7 @@ a console task called ``assets:install`` that solves this problem:
 
 .. code-block:: bash
 
-    php app/console assets:install --help
+    $ php app/console assets:install --help
 
 As the help message says, this command copies the ``Resources/public`` directory
 from each bundle and puts it in a ``web/bundles`` directory so that its assets
@@ -239,7 +239,7 @@ option, which creates a symbolic link instead of copying:
 
 .. code-block:: bash
 
-    php app/console assets:install --symlink
+    $ php app/console assets:install --symlink
 
 After running the command, you'll see that each bundle's ``Resources/public``
 directory shows up in ``web/bundles`` and has a similar name. This includes

@@ -30,7 +30,7 @@ Open up your terminal and start typing wildly:
 
 .. code-block:: bash
 
-    sdfSFFOOLOOBOO
+    $ sdfSFFOOLOOBOO
 
 Hmm, ok, that didn't work. So let's try pasting the command instead. If you
 have PHP 5.4 installed, run this anywhere: we'll use PHP's built-in web server.
@@ -39,7 +39,7 @@ have Apache setup and run the command at the server's document root:
 
 .. code-block:: bash
 
-    curl -s https://getcomposer.org/installer | php
+    $ curl -s https://getcomposer.org/installer | php
 
 This downloads an executable PHP file called ``composer.phar``. If Composer
 complains with any warnings or errors, follow its recommendations to make
@@ -55,7 +55,7 @@ is a neat way of making sure we get the latest and greatest.
 
 .. code-block:: bash
 
-    php composer.phar create-project symfony/framework-standard-edition starwarsevent @stable
+    $ php composer.phar create-project symfony/framework-standard-edition starwarsevent @stable
 
 This tells Composer to download the ``symfony/framework-standard-edition``
 package into the ``starwarsevents`` directory. That's all you need to know
@@ -69,8 +69,8 @@ relatively small number of files and directories:
 
 .. code-block:: bash
 
-    cd starwarsevent
-    ls -l
+    $ cd starwarsevent
+    $ ls -l
 
 Second, our project depends on a bunch of 3rd-party libraries and Composer
 is downloading these into the ``vendor/`` directory. If you
@@ -176,7 +176,7 @@ page with some tips.
 
     .. code-block:: bash
 
-        chmod -R 777 app/cache/* app/logs/*
+        $ chmod -R 777 app/cache/* app/logs/*
 
     You shouldn't have any more issues, but if you do, just set the permissions
     again.
@@ -297,7 +297,7 @@ First, take your wrecking ball to the ``src/Acme`` directory:
 
 .. code-block:: bash
 
-    rm -rf src/Acme
+    $ rm -rf src/Acme
 
 Next, take out the reference to the bundle in your ``AppKernel`` so Symfony
 doesn't look for it when it's loading::

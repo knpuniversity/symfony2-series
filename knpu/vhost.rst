@@ -74,7 +74,7 @@ file to see the error:
 
 .. code-block:: bash
 
-    tail app/logs/prod.log
+    $ tail app/logs/prod.log
 
 But in most cases, the white screen of death just means that you need to
 clear your cache. This is because the ``prod`` environment is optimized for
@@ -86,7 +86,7 @@ debug mode off, which may make a difference in the way some cache is generated:
 
 .. code-block:: bash
 
-    php app/console cache:clear --env=prod --no-debug
+    $ php app/console cache:clear --env=prod --no-debug
 
 .. tip::
 

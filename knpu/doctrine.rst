@@ -29,7 +29,7 @@ can even make this for us with the ``doctrine:generate:entity`` command:
 
 .. code-block:: bash
 
-    php app/console doctrine:generate:entity
+    $ php app/console doctrine:generate:entity
 
 Like other commands, this one is self-aware and will start asking you questions.
 In step 1, enter ``EventBundle:Event``. This is another top-secret shortcut
@@ -136,7 +136,7 @@ We're ready to insert data, but first I want to show you a debugging trick.
 First, copy the ``web/app_dev.php`` file to the root of the project and
 rename it to ``play.php``:
 
-.. code-block:: text
+.. code-block:: bash
 
     $ cp web/app_dev.php play.php
 
@@ -214,7 +214,7 @@ Execute the play script from the command line.
 
 .. code-block:: bash
 
-    php play.php
+    $ php play.php
 
 When I run it, the template is rendered and printed out. How cool is that?
 This is perfect for whenever we need to quickly test out some code.

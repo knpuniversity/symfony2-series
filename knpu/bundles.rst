@@ -20,7 +20,7 @@ Run it to see all of the tricks it knows:
 
 .. code-block:: bash
 
-    php app/console
+    $ php app/console
 
 Woh! All those green words are different console commands, including a lot
 things that help you work with the database and debug. I like tools as much
@@ -33,7 +33,7 @@ For now run the ``generate:bundle`` command:
 
 .. code-block:: bash
 
-    php app/console generate:bundle
+    $ php app/console generate:bundle
 
 For the bundle namespace, type ``Yoda/EventBundle``. A bundle namespace always
 has two parts: a vendor name and a name describing the bundle. In honor of

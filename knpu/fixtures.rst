@@ -55,7 +55,7 @@ our project:
 
 .. code-block:: bash
 
-    cp ../composer.phar .
+    $ cp ../composer.phar .
 
 Remember that you can download ``composer.phar`` at any time by going to
 `GetComposer.org`_ and following the directions.
@@ -65,7 +65,7 @@ and pass it the name of the library:
 
 .. code-block:: bash
 
-    php composer.phar update doctrine/doctrine-fixtures-bundle
+    $ php composer.phar update doctrine/doctrine-fixtures-bundle
 
 This will download the ``DoctrineFixturesBundle`` and its dependent ``doctrine-data-fixtures``
 library into your project.
@@ -124,8 +124,7 @@ a new ``doctrine:fixtures:load`` task that the bundle provides:
 
 .. code-block:: bash
 
-    php app/console doctrine:fixtures:load --help
-
+    $ php app/console doctrine:fixtures:load --help
 
 If you see the help information, you're ready to go! If you run the command now,
 it'll complain - because we haven't written any fixtures yet!
@@ -194,7 +193,7 @@ put the class in ``DataFixtures\ORM``, it finds our fixture and runs it:
 
 .. code-block:: bash
 
-    php app/console doctrine:fixtures:load
+    $ php app/console doctrine:fixtures:load
 
 When we look at the site, we've got some fresh data to play with. Re-run the
 command whenever you want: it deletes the existing data and inserts the fixtures
