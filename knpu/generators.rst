@@ -110,7 +110,7 @@ Checking out the Generated Code
 Phew! Enough with routing, let's see this all in action. Head to the ``/event``
 page in your browser.
 
-    http://events.local/app.php/event
+    http://events.l/app.php/event
 
 You'll see a really ugly, but totally functional section where you can add,
 view, update and delete events. Easy, right!
