@@ -150,7 +150,7 @@ top of the ``index.html.twig`` template. Now, wrap everthing else in a
     {% endblock %}
 
 Refresh and check out the source. The HTML from ``base.html.twig`` is being
-used the content from our template is rendered in the middle of it.
+used and the content from our template is rendered in the middle of it.
 
 Twig Blocks
 -----------
