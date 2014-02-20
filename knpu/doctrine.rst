@@ -18,7 +18,7 @@ inserts a row into a table and puts the data on ``name`` and ``location``
 columns. And when we query for the event, it puts the column data back onto
 the properties of an Event object.
 
-The big confusing mind-switch is to top thinking about tables and start thinking
+The big confusing mind-switch is to stop thinking about tables and start thinking
 about PHP classes.
 
 Creating the Event Entity Class
