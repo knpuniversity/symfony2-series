@@ -114,22 +114,21 @@ And voila! There's our event.
 Making nullable Fields
 ----------------------
 
-In the play script, let's leave the ``details`` field blank and try to
-insert another record::
+Let's get crazy and leave the ``details`` field blank::
 
     // play.php
     // ...
     $event->setTime(new \DateTime('tomorrow noon'));
     //$event->setDetails('Ha! Darth HATES surprises!!!!');
 
-And now, this one blows up! Scrolling up, the error says that the ``details``
-column can't be null.
+When we run the script, another explosion! Scrolling up, the error straight
+from MySQL saying that the ``details`` column can't be null.
 
   SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'details' cannot be null
 
-By default, Doctrine assumes that all of your fields should be set to ``NOT NULL``
-in the database. To fix this, let's add ``nullable`` to the field in the ``Event``
-entity::
+So Doctrine assumes by default that all of your columns should be set to ``NOT NULL``
+when creating the table. To change this, add a ``nullable`` option to the ``details``
+property inside the entity::
 
     // src/Yoda/EventBundle/Entity/Event.php
 
@@ -140,38 +139,45 @@ entity::
 
     // ...
 
---> Add note here about finding annotations reference?
+.. tip::
 
-Now that we've fixed that in code, the database structure needs to be altered
-to reflect the change. A really easy way to do this is with the ``doctrine:schema:update``
-command.
+    Doctrine has a killer page that shows all of the annotations and their
+    options. See `Reference`_.
+
+But before this does anything, the actual column in the database needs to
+be modified to reflect the change. Hey, console to the rescue! Run the
+``doctrine:schema:update`` command:
 
 .. code-block:: bash
 
     $ php app/console doctrine:schema:update
 
-This command is *awesome* - it looks at all of your entity mapping information,
-compares it against the current state of your database, and figures out exactly
-what queries need to be run to update your database structure. Without any
-options, the command doesn't actually do anything. Pass ``--dump-sql``
-to see the queries it wants to run and ``--force`` to actually run them:
+This is pretty sweet: it looks at your annotations mapping config, compares
+it against the current state of the database, and figures out exactly what
+queries we need to be run update the database structure.
+
+But the command didn't do anything yet. Pass ``--dump-sql`` to see the queries
+it wants to run and ``--force`` to actually run them:
 
 .. code-block:: bash
 
     $ php app/console doctrine:schema:update --force
 
-Now, when we run the play script, the new event is saved without a problem.
+Run the play script again. Alright, no errors means that the new event is
+saved without a problem.
 
 Querying for Objects
 --------------------
 
-Quickly, let's see how we can get objects back out of the database. Head
-to the ``DefaultController`` class that we've been playing with. First, let's
-get the entity manager by getting the ``doctrine`` service out of the container
-and calling ``getManager``. If you're extending the base controller class
-like we are, you can also use ``$this->getDoctrine()`` to get the Doctrine
-service. This doesn't save you many keystrokes, but will give you autocompletion
-in some editors::
+Putting stuff into the database is nice, but let's learn how to get stuff
+out. Open up the ``DefaultController`` class we've been playing with. First,
+we need to get the all-important entity manager. That's old news for us.
+Like before, just get the ``doctrine`` service from the container and call
+``getManager`` on it.
+
+This works, but since we're extending the base controller, we can use its
+``getDoctrine()`` to get the ``doctrine`` service. That'll save us a few
+keystrokes::
 
     // src/Yoda/EventBundle/Controller/DefaultController.php
     // ...
@@ -182,18 +188,34 @@ in some editors::
         // $em = $this->container->get('doctrine')->getManager();
         $em = $this->getDoctrine()->getManager();
 
-        return $templating->renderResponse(
-            'EventBundle:Default:index.html.twig',
-            array('name' => $firstName)
-        );
+        // ...
     }
 
-To grab an ``Event`` object from the database, we'll first ask the entity
-manager for a "repository". A repository is an object whose job is to help
-you fetch one specific class of objects. In this case, the repository object
-helps us return ``Event`` objects. Once we have it, we can use its `findOneBy`
-method to get an ``Event`` object by name. The repository has a few other useful
-methods, like `findAll`, `findBy`, and `find`::
+To query for something, we always first get an entity's repository object::
+
+    public function indexAction($count, $firstName)
+    {
+        // these 2 lines are equivalent
+        // $em = $this->container->get('doctrine')->getManager();
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('EventBundle:Event');
+
+        // ...
+    }
+
+A repository has just one job: to help query for one type of object, like
+Event objects. The ``EventBundle:Event`` string is the same top-secret shortcut
+syntax we used when we generated the entity - it's like the entity's nickname.
+
+.. tip::
+
+    If you like typing, you can use the full class name anywhere the entity
+    "alias" is used:
+
+        $em->getRepository('Yoa\EventBundle\Entity\Event');
+
+Use the repository's ``findOneBy`` method to get an ``Event`` object by name.
+There are other shortcut methods too, like ``findAll``, ``findBy``, and ``find``::
 
     // src/Yoda/EventBundle/Controller/DefaultController.php
     // ...
@@ -219,13 +241,18 @@ methods, like `findAll`, `findBy`, and `find`::
         );
     }
 
-In another screencast we'll learn how to add our own methods with custom 
-queries to the repository.
+.. tip::
 
-To render some of the event's data, pass it as a variable into the template.
-Now, we can use Twig's render syntax to print out the name and location properties.
-Internally, Twig is smart enough to call ``getName`` and ``getLocation`` to get
-the data:
+    In `Episode 2`_, we'll add more methods to the repository and write some
+    custom queries.
+
+Rendering Entities in Twig
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ok - let's pass the Event object into the template as a variable. We can
+use Twig's render syntax to print out the name and location properties. Internally,
+Twig is smart enough to call ``getName`` and ``getLocation``, since the properties
+are private:
 
 .. code-block:: html+jinja
 
@@ -237,24 +264,31 @@ the data:
         
     {% endblock %}
 
-When we refresh, we'll see the event information. But checkout out the web
-debug toolbar: you'll see that the query count jumped from zero to one. Click
-the icon to see the queries, including the one executed when we used the
-repository. Use this to make sure your pages aren't getting too heavy with
-queries.
+Refresh the page! I can see our event data, so all the magic Doctrine querying
+must be working. Actually, check out out the web debug toolbar. The cute
+box icon jumped from zero to one, which is the number of queries used for
+the page. When we click the little boxes, we can even see what those queries
+are and even run ``EXPLAIN`` on them.
 
-Good work young jedi! Now that you know the basics of Doctrine, you're getting
-pretty dangerous. We still need to talk about creating custom queries, storing
-those in your own repository classes, and cool things like lifecycle callbacks
-which let you "hook" into Doctrine before and after entities are saved, updated,
-and removed from the database. Some of this is a little more advanced, so
-we will see it in future screencasts.
+Good work young jedi! Seriously, you know the basics of Doctrine, and that's
+not easy. In the next 2 episodes, we'll create custom queries and use cool
+things like events that let you "hook" into Doctrine as entities are inserted,
+updated or removed from the database.
 
-And remember, `Doctrine has its own documentation`_. If you read it, be aware
-that there are a few differences when working with Symfony. The most important
-involve annotations. In Symfony, all annotations must start with ``@ORM\``,
-and you need the ORM ``use`` statement at the top of your class. So, when
-translating code from the Doctrine documentation, be sure to add the ORM
-prefix and the ``use`` statement.
+Oh, and don't forget `Doctrine has its own documentation`_, though the most
+helpful pages are the `Annotations Reference`_ and `Doctrine Mapping Types`_
+reference pages. And by the way, when you see annotations in the Doctrine
+docs, prefix them with ``@ORM\`` before putting them in Symfony. That's
+because of this ``use`` statement above our entity::
+
+    // src/Yoda/EventBundle/Entity/Event.php
+    use Doctrine\ORM\Mapping as ORM;
+    // ..
+
+If that's in your class and you have ``@ORM\`` at the start of all of your
+Doctrine annotations, you're killing it.
 
 .. _`Doctrine has its own documentation`: http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/index.html
+.. _`Annotations Reference`: http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/annotations-reference.html
+.. _`Episode 2`: http://knpuniversity.com/screencast/symfony2-ep2/repository#doctrine-s-querybuilder
+.. _`Doctrine Mapping Types`: http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/basic-mapping.html#doctrine-mapping-types
