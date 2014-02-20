@@ -1,56 +1,60 @@
 Inserting and Querying Data
----------------------------
+===========================
 
-Let's use the play script to work with Doctrine and our new ``Event`` entity
-class. First, import the ``Event`` class's namespace::
+We can use the play script to create and save our first ``Event`` object.
+Start by importing the ``Event`` class's namespace::
 
     // ...
     // all our setup is done!!!!!!
     use Yoda\EventBundle\Entity\Event;
 
-Now, let's create a new instance and set some data on each property. This is
-just a normal PHP object, it doesn't have any jedi magic and doesn't know
-anything about a database::
+Let's flex our mad PHP skills and put some data on each property. Remember,
+this is just a normal PHP object, it doesn't have any jedi magic and doesn't
+know anything about a database::
 
     use Yoda\EventBundle\Entity\Event;
+
     $event = new Event();
     $event->setName('Darth\'s surprise birthday party');
     $event->setLocation('Deathstar');
     $event->setTime(new \DateTime('tomorrow noon'));
     $event->setDetails('Ha! Darth HATES surprises!!!!');
 
-To actually persist the ``Event`` object to the database, we'll use a special
-object called the "entity manager". The entity manager is the most important
-object in Doctrine: it's in charge of saving objects as well as fetching them
-back out. To get the entity manager, we'll grab a service from the container
-called ``doctrine`` and call ``getManager`` on it::
+Let's save this wild event! To do that, we use a special object called the
+"entity manager". It's basically the most important object in Doctrine and
+is in charge of saving objects and fetching them back out. To get the entity
+manager, first grab a service from the container called ``doctrine`` and
+call ``getManager`` on it::
 
     $em = $container->get('doctrine')->getManager();
 
-Using the entity manager, we'll save the ``Event`` object by calling ``persist``
-and then ``flush``. Why two steps? The first tells Doctrine to "manage" the
-object. No queries are made, but Doctrine is now "watching" your object for
-changes. When we call ``flush``, Doctrine actually executes the INSERT query.
-Separating this into two steps means you could create a bunch of event objects
-and insert them all at once. We'll see this when we add fixtures later::
+Saving is a two-step process: ``persist()`` and then ``flush()``::
 
     $em = $container->get('doctrine')->getManager();
     $em->persist($event);
     $em->flush();
 
+Two steps! Yea, and for an awesome reason. The first tells Doctrine "hey,
+you should know about this object". But no queries are made yet. When we
+call ``flush()``, Doctrine actually executes the INSERT query.
+
+The awesome is that if you need to save a bunch of objects at once, you can
+persist each of them and call flush once. Doctrine will then pack these operations
+into as few queries as possible.
+
 Now, when we execute our play script, it blows up!
 
   PDOException: SQLSTATE[42000] [1049] Unknown database 'symfony'
 
-Scroll up to see the error message: "Unknown database symfony". Of course!
-We skipped one important step: setting up the database config.
+Scroll up to see the error message: "Unknown database symfony". Duh! We skipped
+one important step: setting up the database config.
 
 Configuring the Database
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
-By default, database config is stored in the ``app/config/parameters.yml``
-file. Let's change the database name to "yoda_event". For my local box, the
-database user and password are fine:
+Database config is usually stored in ``app/config/parameters.yml``. Change
+the database name to "yoda_event". For my super-secure computer, the database
+user ``root`` with no password is perfect:
 
 .. code-block:: yaml
 
@@ -64,37 +68,48 @@ database user and password are fine:
         database_password: null
         # ...
 
-I usually have Symfony create the new database for me by running the
-``doctrine:database:create`` command:
+We can haz Database
+~~~~~~~~~~~~~~~~~~~
+
+Now, I know you're super-smart and capable, but let's be lazy again and use
+the console to create the database for us with the ``doctrine:database:create``
+command:
 
 .. code-block:: bash
 
-    php app/console doctrine:database:create
+    $ php app/console doctrine:database:create
 
-You can also drop the database and re-create it. This is really handy when
-developing, but also a solid reason why your production database user probably
-shouldn't have the ability to drop your database.
+There's also a command to drop the database. That's great, until you realize
+that you just ran it on production... and everyone is running around with
+their hair on fire. Yea, so that's a healthy reminder to not give your production
+db user access to drop the database.
 
-Ok, we have a database, but no tables. To add the tables, run the ``doctrine:schema:create``
-command. This finds all of your entities, reads their mapping information,
-and creates all the tables you need:
+A Table for Events, Please
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We have a database, but no tables. Any ideas who might help us with this?
+Oh yeah, our friend console! Run the ``doctrine:schema:create`` command.
+This finds all your entities, reads their annotation mapping config, and
+creates all the tables:
 
 .. code-block:: bash
 
-    php app/console doctrine:schema:create
+    $ php app/console doctrine:schema:create
 
-Let's try our play script again:
+Time to try out the play script again:
 
 .. code-block:: bash
 
-    php play.php
+    $ php play.php
 
-No errors! To see if it worked, we can use the `doctrine:query:sql` command
-to run a raw query against the database. And voila! The event saved perfectly:
+What? No errors! Did it work? Use the `doctrine:query:sql` command to run
+a raw query against the database:
 
-..code-block:: bash
+.. code-block:: bash
 
-    php app/console doctrine:query:sql "SELECT * FROM yoda_event"
+    $ php app/console doctrine:query:sql "SELECT * FROM yoda_event"
+
+And voila! There's our event.
 
 Making nullable Fields
 ----------------------
@@ -133,7 +148,7 @@ command.
 
 .. code-block:: bash
 
-    php app/console doctrine:schema:update
+    $ php app/console doctrine:schema:update
 
 This command is *awesome* - it looks at all of your entity mapping information,
 compares it against the current state of your database, and figures out exactly
@@ -143,7 +158,7 @@ to see the queries it wants to run and ``--force`` to actually run them:
 
 .. code-block:: bash
 
-    php app/console doctrine:schema:update --force
+    $ php app/console doctrine:schema:update --force
 
 Now, when we run the play script, the new event is saved without a problem.
 
