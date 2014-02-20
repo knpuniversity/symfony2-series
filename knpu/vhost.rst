@@ -117,6 +117,11 @@ a ``--env=prod`` option.
 
 The means we're clearing the cache for the ``prod`` environment.
 
+.. tip::
+
+    If you haven't properly `fixed your permissions <ep1-install-permissions>` yet, you'll need to
+    ``sudo chmod -R 777 app/cache`` after this command.
+
 Refresh the page to see your functional page in the ``prod`` environment:
 
     http://events.l/app.php/hello/skywalker/5
