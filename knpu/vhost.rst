@@ -60,7 +60,7 @@ Now, restart Apache. Yep, this command *also* varies across systems:
 
         sudo service apache2 restart
 
-Finally, we need to add a a hosts entry to ``/etc/hosts``:
+Finally, we need to add a hosts entry to ``/etc/hosts``:
 
     # /etc/hosts
     # ...
