@@ -208,7 +208,7 @@ And to be even lazier, there's a shorter syntax for simple blocks like this:
 
     {% block title 'Some Twiggy Goodness' %}
 
-The default ones in ``base.html.twig`` are just suggestions, feel free to
+The blocks ones in ``base.html.twig`` are just suggestions, feel free to
 change their names or add some more to have an even more flexible layout.
 
 .. tip::
