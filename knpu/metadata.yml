@@ -1,30 +1,32 @@
 title:  Starting in Symfony2: Episode 1 (2.2)
 price:  12
-length: 1:09:51
+length: 0:00:00
 summary: |
     Get your first Symfony2 project off on the right foot, with the right
     tools, best practices and tips. If you're serious about getting into
-    Symfony2, this video is for you!
+    Symfony2, this course is for you!
 
-    Own the original first episode? Login and get this upgrade for $4!
+    Own the 2.0 episode 1? Login and get this upgrade for $4!
 
-    In this screencast, we'll start building a real events application from
-    the ground-up, touching and discussing on most of the fundamental parts
+    In this screencast, we start building a real events application from
+    the ground-up, touching on and discussing the most fundamental parts
     of the application. Specifically, we'll cover:
 
     * Installation, Git and Setup
     * Composer
     * Routing
     * Controllers
+    * Introduction to the service container
     * Twig
     * Doctrine
     * Server setup
     * Code generation
     * Fixtures & external libraries
     * And other tips and tricks
+
 illustration: sf2-ep1.png
 priority: 130
-versionNumber: 2.2
+versionNumber: 2.4
 originalVersion: 22
 isActiveVersion: 1
 tags:
@@ -34,48 +36,48 @@ chapters:
     intro:
         title:      Welcome to Symfony!
         is_free:    true
-        length:     1:57
+        length:     0:00
     installation:
         title:      "Downloading & Configuration"
         is_free:    true
-        length:     9:25
+        length:     0:00
     bundles:
         title:      Bundles of Joy!
         is_free:    false
-        length:     2:26
+        length:     0:00
     routing:
         title:      Routing: The URLs of the World
         is_free:    false
-        length:     5:22
+        length:     0:00
     controller:
         title:      Controllers: Get to Work
         is_free:    false
-        length:     7:27
+        length:     0:00
     twig:
         title:      Twig
         is_free:    false
-        length:     5:49
+        length:     0:00
     doctrine:
         title:      Databases and Doctrine
         is_free:    false
-        length:     11:07
+        length:     0:00
     doctrine2:
         title:      Inserting and Querying Data
         is_free:    false
-        length:     11:07
+        length:     0:00
     vhost:
         title:      Virtual Host Setup Extravaganza
         is_free:    false
-        length:     3:21
+        length:     0:00
     generators:
         title:      Code Generation FTW!
         is_free:    false
-        length:     9:33
+        length:     0:00
     fixtures:
         title:      Fixtures and External Libraries
         is_free:    false
-        length:     8:24
+        length:     0:00
     "mind-tricks":
         title:      Mind Tricks
         is_free:    false
-        length:     5:01
+        length:     0:00
