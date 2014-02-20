@@ -99,10 +99,10 @@ We can use the ``upper`` filter to capitalize the name variable:
 
 If you're used to piping things together in a UNIX terminal, this works the
 same way. Back on the `Documentation page`_, you'll find a big list of filters,
-You can even using filters on top of filters.
+You can even use filters on top of filters.
 
 Twig also has functions and a cool thing called tests, which lets you write
-things like ``{% if i is odd }``. But that's all just extra fun stuff.
+things like ``{% if i is odd %}``. But that's all just extra fun stuff.
 
 .. note::
 
