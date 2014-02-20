@@ -152,6 +152,8 @@ our terminal user *is* our PHP web server user, so we don't have any issues.
 If you're using Apache or *are* having issues, check out the sidebar on this
 page with some tips.
 
+.. _ep1-install-permissions:
+
 .. sidebar:: Fixing Permissions Issues
 
     The easiest permissions fix is to add a little ``umask`` function to
