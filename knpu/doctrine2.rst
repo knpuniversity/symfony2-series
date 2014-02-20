@@ -154,7 +154,7 @@ be modified to reflect the change. Hey, console to the rescue! Run the
 
 This is pretty sweet: it looks at your annotations mapping config, compares
 it against the current state of the database, and figures out exactly what
-queries we need to be run update the database structure.
+queries we need to run to update the database structure.
 
 But the command didn't do anything yet. Pass ``--dump-sql`` to see the queries
 it wants to run and ``--force`` to actually run them:
