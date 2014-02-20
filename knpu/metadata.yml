@@ -59,6 +59,10 @@ chapters:
         title:      Databases and Doctrine
         is_free:    false
         length:     11:07
+    doctrine2:
+        title:      Inserting and Querying Data
+        is_free:    false
+        length:     11:07
     vhost:
         title:      Virtual Host Setup Extravaganza
         is_free:    false
