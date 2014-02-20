@@ -121,12 +121,14 @@ Refresh the page to see your functional page in the ``prod`` environment:
 
     http://events.l/app.php/hello/skywalker/5
 
-Boy, having that ``app.php`` in the URL is ugly, so let's get rid of it:
+Awesome! But I thought we had put ``app.php`` in the URL. Where did it go?
+Our project came with a ``web/.htaccess`` file that have 2 pieces of goodness
+in it.
 
-    http://events.l/hello/skywalker/5
+First, it has a rewrite rule that sends all requests through ``app.php``, which
+means we don't need to have it in our URL.
 
-This works because Symfony comes with a ``web/.htaccess`` file that says
-to process all URLs through the ``app.php`` file:
+.. code-block:: apache
 
     # web/.htaccess
     # ...
@@ -139,8 +141,23 @@ to process all URLs through the ``app.php`` file:
     # Rewrite all other queries to the front controller.
     RewriteRule .? %{ENV:BASE}/app.php [L]
 
-The ``prod`` environment is only after you deploy. So get back to the ``dev``
-environment so we can see our errors.
+Awesome, the ``app.php`` was ugly anyways.
+
+Second, even if you *do* put ``app.php`` in the URL, it notices that you don't
+need this and redirects to remove it:
+
+.. code-block:: apache
+
+    # web/.htaccess
+    # ...
+
+    # Redirect to URI without front controller to prevent duplicate content
+    # (with and without `/app.php`).
+    RewriteCond %{ENV:REDIRECT_STATUS} ^$
+    RewriteRule ^app\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
+
+The ``prod`` environment is only useful after you deploy. So let's get back to the ``dev``
+environment so we can see errors.
 
 .. _`page`: http://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
 .. _`Configuring a Web Server`: http://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
