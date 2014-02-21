@@ -1,28 +1,31 @@
-Controllers
-===========
+Controllers: Get to work!
+=========================
 
-Now that we've gone through routing, let's talk about the second step of
-creating a page: the controller. The controller is the PHP function where
-*your* code goes. It's where we do whatever work we need to in order to build
-the page, whether that be a full HTML page, a JSON string, or a redirect.
-A controller might query the database, send an email, process a form submission,
-or anything else.
+3 steps. That's all that's behind rendering a page:
 
-In our example, the controller is the ``indexAction`` method, which is also
-sometimes called an "action". As a word of warning, some people will use
-the word "controller" both to refer to a controller class, like ``DefaultController``,
-as well as the action inside that class. When I say controller, I'll be
-talking about the actual method that Symfony executes.
+#. The URL is compared against the routes until one matches;
+#. Symfony reads the ``_controller`` key and executes that function;
+#. We build the page inside the function.
+
+The controller is all about us, it's where we shine. Whether the page is
+HTML, JSON or a redirect, we make that happen in this function. We might
+also  query the database, send an email or process a form submission here.
+
+.. tip::
+
+    Some people use the word "controller" to both refer to a the class (like
+    ``DefaultController``) *or* the action inside that class.
 
 Returning a Response
 --------------------
 
-It's time for you to see just how simple a controller can be. A controller
-has just one rule: it must return a Symfony Response object. To create a
-new Response, first add its namespace at the top of the controller
-class. The namespace is kinda long, but if you have an editor like PHPStorm,
-it can help out. If you're new to PHP 5.3 namespaces, check out our
-`free screencast on the topic`_::
+Controller functions are dead-simple, and there's just one big rule: it must
+return a Symfony :symfonyclass:`Symfony\\Component\\HttpFoundation\\Response`
+object.
+
+To create a new Response, add its namespace to top of the controller class.
+I know, the namespace is horribly long, so this is where having a smart IDE
+like PHPStorm will make you smile::
 
     // src/Yoda/EventBundle/Controller/DefaultController.php
     namespace Yoda\EventBundle\Controller;
@@ -35,25 +38,31 @@ it can help out. If you're new to PHP 5.3 namespaces, check out our
         // ...
     }
 
-Now, let's create a new Response object, give it some text, and return
-it::
+.. tip::
+
+    If you're new to PHP 5.3 namespaces, check out our
+    `free screencast on the topic`_.
+
+Now create the new Response object and quote Admiral Ackbar::
 
     public function indexAction($count, $firstName)
     {
         return new Response('It\'s a traaaaaaaap!');
     }
 
-When the page renders, it's got our text and nothing else. The beauty is
-that no matter how many tools you use, the goal of your controller is always
-the same: generate your content, put it into a Response, and return it.
+Now, our page has the text and nothing else.
+
+Again, controllers are simple. No matter how complex things seem, the goal
+is always the same: generate your content, put it into a Response, and return
+it.
 
 Returning a JSON Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Next, Instead of returning text, let's return a JSON string with the 
-``firstName`` and ``count`` values. All we need to do is create an array,
-turn it into a string with ``json_encode``, and then pass it to a new Response
-object. When you refresh, you'll see the JSON string::
+How would we return a JSON response? Let's create an array that includes
+the ``$firstName`` and ``$count`` variables and turn it into a string with
+``json_encode``. Now, it's exactly the same as before: pass that to a ``Response``
+object and return it.
 
     public function indexAction($count, $firstName)
     {
@@ -66,14 +75,18 @@ object. When you refresh, you'll see the JSON string::
         return new Response(json_encode($arr));
     }
 
+Now our browser displays the JSON string.
+
 .. tip::
 
     There is also a `JsonResponse`_ object that makes this even easier.
 
-But there *is* one slight problem. By using my browser's developer tools, I
-can see that our application is returning JSON, but telling my browser that
-it's HTML code. To fix this, all we need to do is set the ``Content-Type``
-header on the Response object to ``application/json``::
+Wait. There *is* one problem. By using my browser's developer tools, I can
+see that the app is telling my browser that the response has a ``text/html``
+content type.
+
+That's ok - we can fix it easily. Just set the ``Content-Type`` header on
+the ``Response`` object to ``application/json``::
 
     public function indexAction($count, $firstName)
     {
@@ -85,47 +98,64 @@ header on the Response object to ``application/json``::
         return $response;
     }
 
-When I refresh, the page comes back with the right content type.
+Now when I refresh, the response has the right ``content-type`` header.
 
-The point is that no matter what you need to do, you have full control over
-the response that your controller returns.
+I know I'm repeating myself, but this is important I promise! Every controller
+returns a Response object and you have full control over each part of it.
 
 Rendering a Template
 --------------------
 
-Now, I realize that life isn't always as simple as "hello Luke" and
-simple JSON strings. In the real world, we're usually returning rich HTML
-pages. We could try putting the HTML right in the controller, but that would
-be a Trap! Fortunately, Symfony offers you an optional tool that renders
-template files, which are the perfect place for all your beautiful ``div``
-and ``span`` tags.
+Time to celebrate: you've just learned the core of Symfony. Seriously, by
+understanding the routing-controller-Response flow, we could do anything.
 
-Stick with me through this next section, because I'm about to show you some
-really *cool* things about the way Symfony works.
+But as much as I love printing Admiral Ackbar quotes, life isn't always
+this simple. Unless we're making an API, we usually build HTML pages. We
+could put the HTML right in the controller, but that would be a Trap!
+
+Instead, Symfony offers you an optional tool that renders template files.
+
+Before that, we should take on another buzzword: services. These are even
+trendier than bundles!
 
 .. _symfony-ep1-what-is-a-service:
 
 Symfony Services
 ~~~~~~~~~~~~~~~~
 
-Symfony is basically a wrapper around a bunch of objects that do helpful
-things. These objects are called "services", which is a fancy name for an
-object that performs a task. This is important: when you hear service, you
-should think "PHP object".
+Symfony is basically a wrapper around a big bag of objects that do helpful
+things. These objects are called "services": a techy name for an object that
+performs a task. Seriously: when you hear service, just think "PHP object".
 
-Symfony has a ton of services, including one that delivers emails, another
-that queries the database, and even one that translates text. Symfony puts
-all of the services into a "container" object, and if you have access to
-the container, you can get out any service and start using it. The "service
-container", as its called, is the most fundamental part of Symfony. Everything
-that you think "Symfony" does, is actually done by some service that lives
-in the container. This all gets really cool later when you learn how to add
-tweak, and even replace services. But we'll get to that.
+Symfony has a ton of these services - one sends emails, another queries the
+database and others translate text and tie your shoelaces. Symfony puts the
+services into a big bag, called the "mystical service container". Ok, I added
+the word mystical: it's just a PHP object and if you have access to it, you
+can fetch any service and start using it.
 
-Back in our controller, this is great news because the container object is
-available via ``$this->container`` if you extend Symfony's base controller.
-In fact, we can use it to get out a really cool service called ``templating``
-which as the name might hint, is able to render templates::
+And here's the dirty secret: everything that you think "Symfony" does, is
+actually done by some service that lives in the container. You can even tweak
+or replace core services, like the router. That's really powerful.
+
+In any controller, this is great news because, surprise, we have access
+to the mystical container via ``$this->container``::
+
+    public function indexAction($count, $firstName)
+    {
+        // not doing anything yet...
+        $this->container;
+
+        // ...
+    }
+
+.. note::
+
+    This only works because we're in a controller *and* because we're exending
+    the base :symfonyclass:`Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller`
+    class.
+
+One of the services in the container is called ``templating``. I'll show
+you how I knew that in a bit::
 
     public function indexAction($count, $firstName)
     {
@@ -134,12 +164,9 @@ which as the name might hint, is able to render templates::
         // ...
     }
 
-To do that, call render and pass it a template name. The template name is
-a shortcut that points to a specific file in our application. The name always
-has three parts: the **bundle name**, a **directory name**, and the **template's filename**.
-This format looks a lot like the ``_controller`` string used in routes. 
-But seriously, do not forget these are not the same thing: one points to a
-controller class & method. The other points to a template file::
+This templating object has a ``render`` method on it. The first argument
+is the name of the template file to use and the second argument holds the
+variables we want to pass to the template::
 
     // src/Yoda/EventBundle/Controller/DefaultController.php
     // ...
@@ -156,7 +183,24 @@ controller class & method. The other points to a template file::
         // ...
     }
 
-Now, let's look at the template file:
+The template name looks funny because it's another top secret syntax with
+three parts:
+
+* the **bundle name**
+* a **directory name**
+* and the **template's filename**.
+
+.. code-block:: text
+
+    EventBundle:Default:index.html.twig
+
+    src/Yoa/EventBundle/Resources/views/Default/index.html.twig
+
+This looks like the ``_controller`` syntax we saw in routes, but don't mix
+them up. Seriously, one points to a controller class & method. This one points
+to a template file.
+
+Open up the template.
 
 .. code-block:: html+jinja
 
@@ -164,18 +208,15 @@ Now, let's look at the template file:
 
     Hello {{ name }}
 
-If it looks weird, that's ok. The template is written in Twig instead of
-PHP. Stick around for the next chapter  to hear more on Twig. For now, let's
-at least get fancy by adding a strong tag.
+Welcome to Twig! A curly-little templating language that you're going to
+fall in love with. Right now, just get fancy by adding a strong tag:
 
 .. code-block:: html+jinja
 
     Hello <strong>{{ name }}</strong>
 
-Back in the controller, the ``render`` method returns a string. We'll take
-that string, pass it to a new ``Response``, and return it. When we refresh
-the page, we'll see our rendered template. We still don't have a fancy layout,
-but we'll get there::
+Back in the controller, the ``render`` method returns a string. So just like
+before, we need to put that into a new ``Response`` object and return it::
 
     public function indexAction($count, $firstName)
     {
@@ -189,15 +230,16 @@ but we'll get there::
         return new Response($content);
     }
 
-Controller Shortcut Methods
----------------------------
+Refresh. There's our rendered template. We still don't have a fancy layout,
+just relax - I can only go so fast!
 
-Since rendering a template and returning its contents is such a common thing
-to do, there are a few shortcuts for us. First, the templating service
-has a ``renderResponse`` method. Instead of returning a string result, it returns
-a new ``Response`` filled with the content from the template. This means
-we can remove the ``new Response`` line as well as the ``use`` statement we added
-earlier::
+Make this Shorter
+-----------------
+
+Since rendering a template is pretty darn common, we can use some shortcuts.
+First, the ``templating`` service has a ``renderResponse`` method. Instead
+of returning a string, it puts it into a new ``Response`` object for us.
+Now we can remove the ``new Response`` line and its ``use`` statement::
 
     // src/Yoda/EventBundle/Controller/DefaultController.php
     namespace Yoda\EventBundle\Controller;
@@ -217,16 +259,18 @@ earlier::
         }
     }
 
-This is better, but we can and want to do even less work. By default, our
-controller class extends Symfony's own base controller. You don't *have* to
-extend it, but the base class gives you lots of shortcuts. 
+And even Shorter
+~~~~~~~~~~~~~~~~
 
-Open up the base class, I'm using a "go to file" shortcut in my editor to
-search for the controller.
+Better. Now let's do less. Our controller class extends Symfony's own base
+controller. That's optional, but it gives us shortcuts.
 
-One of those shortcuts is a ``render`` method. The ``render`` method does
-exactly the same thing we're doing: it grabs the ``templating`` service and
-calls ``renderResponse`` on it::
+`Open up the base class`_, I'm using a "go to file" shortcut in my editor to
+search for the ``Controller.php`` file.
+
+One of its shortcut is the ``render`` method. Wait, this does exactly what
+we're already doing! It grabs the ``templating`` service and calls ``renderResponse``
+on it::
 
     // vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php
     // ...
@@ -240,9 +284,7 @@ calls ``renderResponse`` on it::
         );
     }   
 
-This means that from our controller, we can kick back and just call the ``render``
-method on Symfony's own controller class and return the result. This is the
-most common way to render a template from inside a controller::
+Let's just kick back, call this method and return the result::
 
     public function indexAction($count, $firstName)
     {
@@ -252,32 +294,27 @@ most common way to render a template from inside a controller::
         );
     }
 
-We took the long route initially only because I wanted you to understand
-what was really going on behind the scenes.
+I'm sorry I made you go the long route, but now you know about the container
+and how services are working behind the scenes. And as you use more shortcut
+methods in Symfony's base controller, I'd be so proud if you looked to see
+what each method *actually* does.
 
-Ideally this example shows you both the power and simplicity of a controller.
-The controller is where *your* code goes - you can do anything you need to
-as long as you return a ``Response``. With the service container available
-via ``$this->container``, you've got access to every service in your app. If
-you're curious about what services are available, check out the ``container:debug``
-console command. It lists every single service available, as well as what
-type of object it returns:
+Controllers are easy: put some code here and return a ``Response`` object.
+And since we have the container object, you've got access to every service
+in your app.
 
-.. code-block:: bash
+Oh right, I haven't told you what services there are! For this, go back to
+our friend console and run the ``container:debug`` command:
 
-    php app/console container:debug
+.. code-block:: text
 
-As you develop, you'll start using more of the shortcuts methods in Symfony's
-base controller. It would be brilliant if you would look to see what each
-of these methods *actually* does. 
+    $ php app/console container:debug
 
-.. tip::
+It lists every single service available, as well as what type of object it
+returns. Color you dangerous.
 
-    Symfony base Controller is located at:
-    ``vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php``.
-
-Congrats! You've already covered some pretty important and advanced topics.
-Now it's time to explore the world of TWIG!
+Ok, onto the curly world of Twig!
 
 .. _`free screencast on the topic`: http://knpuniversity.com/screencast/php-namespaces-in-120-seconds
 .. _`JsonResponse`: http://symfony.com/doc/current/components/http_foundation/introduction.html#creating-a-json-response
+.. _`Open up the base class`: https://github.com/symfony/symfony/blob/master/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php

@@ -1,29 +1,27 @@
-Routing
-=======
+Routing: The URLs of the World
+==============================
 
-Alright - time for some routing! Every page needs a URL. In Symfony, all
-the URLs of your application are configured in a single place: the ``routing.yml``
-file inside the ``app/config`` directory. Whenever you need to create a page,
-you'll start by creating a route.
+Let's face it, every page needs a URL. When you need a new page, we always
+start by creating a route: a chunk of config that gives that page a URL.
+In Symfony, all routes are configured in just one file: ``app/config/routing.yml``.
 
 Head back to your browser and put ``/hello/skywalker`` after ``app_dev.php``:
 
   http://localhost:8000/app_dev.php/hello/skywalker
 
-This is a really simple page that was generated automatically in the new
+The code behind this impressive page was generated automatically in the new
 bundle. You can change the last part of the URL to anything you want and
-the page updates.
+it greets you politely.
 
-Let's see how this works. The fact that this page exists means that
-there's a route somewhere that defines this URL pattern. Since I mentioned
-earlier that all routes live in the ``app/config/routing.yml`` file, the route
-*should* be in that file.
+The fact that this page works means that there's a route somewhere that
+defines this URL pattern. I already said that all routes live in ``routing.yml``,
+so it *should* be there.
 
 Route Importing
 ---------------
 
-But it's *not*. Instead of the route we're looking for, there's an ``event``
-entry that was added when the bundle was generated:
+Surprise! It's not here. But there *is* an ``event`` entry that was added when
+we generated the bundle:
 
 .. code-block:: yaml
 
@@ -32,27 +30,29 @@ entry that was added when the bundle was generated:
         resource: "@EventBundle/Resources/config/routing.yml"
         prefix:   /
 
-This works a bit like a PHP include: just specify another routing file via
-the ``resource`` key and Symfony will pull it in. So, even though Symfony
-only really loads this one routing file, you can pull in routes from anywhere.
-With a little extra work, you could even do cool stuff like loading routes
-from a custom database table.
+The ``resource`` key works like a PHP include: point it at another routing
+file Symfony will pull it in. So, even though Symfony only reads this one
+routing file, we can pull in routes from anywhere.
+
+.. note::
+
+    With a little extra work, you could even do cool stuff like loading routes
+    from a custom database table.
 
 .. tip::
 
     The ``event`` key has no significance when importing other routing files.
 
-Let's check out the resource string, which looks a little magical. This
-*should* be the full path to another routing file. In this case, the file we're
-importing lives inside the ``EventBundle``. Instead of hardcoding its path,
-Symfony let's use a special ``@EventBundle`` syntax. Since the ``EventBundle``
-lives at ``src/Yoda/EventBundle``, that's where we'll find the imported routing
-file.
+So what's up with the ``@EventBundle`` magic? The ``resource`` should just
+point to the path of another file, relative to this one. But if the file
+lives in a bundle directory, we can use ``@`` and then the nickname we gave
+that bundle. Since ``EventBundle`` lives at ``src/Yoda/EventBundle``, that's
+where we'll find the imported file.
 
 Basic Routing
 -------------
 
-As expected, the file holds the route that makes the ``/hello/skywalker``
+Ah hah! We found the missing route, which makes the ``/hello/skywalker``
 page work:
 
 .. code-block:: yaml
@@ -62,45 +62,78 @@ page work:
         pattern:  /hello/{name}
         defaults: { _controller: EventBundle:Default:index }
 
-The ``pattern`` is the URL for the route. The curly braces around the ``name``
-part of the pattern is like a wildcard. It means that any URL that looks like
-``/hello/*`` is going to match this route. If we change ``hello`` to
-``there-is-another``, then the URL to the page changes. Change the URL in
-your browser to see the moved page (and then change the ``pattern`` back
-to ``/hello/{name}``):
+The ``pattern`` is the URL and the ``{name}`` of the pattern acts like a
+wildcard. It means that any URL that looks like ``/hello/*`` will match this
+route. If we change ``hello`` to ``there-is-another``, the URL to the page
+changes:
+
+.. code-block:: yaml
+
+    # src/Yoda/EventBundle/Resources/config/routing.yml
+    event_homepage:
+        # you can change the URL (but change it back after trying this!)
+        pattern:  /there-is-another/{name}
+        defaults: { _controller: EventBundle:Default:index }
+
+Update the URL in your browser to see the moved page (and then be cool and
+change the ``pattern`` back to ``/hello/{name}``):
 
   http://localhost:8000/app_dev.php/there-is-another/skywalker
 
 path versus pattern: no difference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you have a ``path`` key instead of ``pattern``, awesome! Both ``path``
-and ``pattern`` do the exact same thing, and actually, ``path`` is the newer
-and preferred name. I'll change my routing to use ``path``:
+Ok, so when you generate your bundle, your rought might have ``path`` instead
+of ``pattern``. Scandal!
+
+Here's the story. Once upon a time, the Symfony elders renamed ``pattern``
+to ``path``, just because it's more semantically correct. And hey, it's
+shorter anyways. But ``pattern`` still works and will until Symfony 3.0.
+Sorry, that's about as scandalous as things get around Symfony.
+
+To be with the new, I'll change my routing to use ``path``:
 
     # src/Yoda/EventBundle/Resources/config/routing.yml
     event_homepage:
         path:  /hello/{name}
         defaults: { _controller: EventBundle:Default:index }
 
-The defaults ``_controller`` key is the second thing you'll see on every route.
-It tells Symfony which controller to execute when the route is matched. A
-controller is a fancy word for a PHP function. You write the controller and
-Symfony executes it when the route is matched. In Symfony, a controller is
-usually a public method on a PHP class, instead of a flat PHP function.
+.. note::
+
+    But why was it generated as ``pattern``? When we recorded this, the bundle
+    that does the generation magic hadn't released their fix for this change.
+
+The defaults ``_controller`` key is the second critical piece of every route.
+It tells Symfony which controller to execute when the route is matched. But
+a controller is just a fancy word for a PHP function. So you write this controller
+function and Symfony executes it when the route is matched.
 
 The _controller Syntax
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The ``_controller`` string uses a funny, but simple syntax. It has three different
-parts: the bundle name, the controller class name, and the method name. Internally,
-this maps to a controller class and a method. Notice that Symfony adds the
-word ``Controller`` to the end of the class, and ``Action`` to the end of
-the method name. The method name will commonly be called an "action".
+I know, the ``EventBundle:Default:index`` controller doesn't look like any
+function name you've ever met.
 
-_controller: **EventBundle**:**Default**:**index**
+In reality, it's a top-secret syntax with three different parts:
 
-src/Yoda/**EventBundle**/Controller/**Default**Controller::**index** Action()
+* the bundle name
+* the controller class name
+* and the method name.
+
+Symfony maps this to a controller class and method:
+
+.. code-block:: text
+
+    _controller: **EventBundle**:**Default**:**index**
+
+    src/Yoda/**EventBundle**/Controller/**Default**Controller::**index** Action()
+
+Stop! Let's stare at this for a few seconds, because we're going to see it
+a lot.
+
+Notice that Symfony adds the word ``Controller`` to the end of the class,
+and ``Action`` to the end of the method name. You'll probably hear the method
+name referred to as an "action".
 
 Open up the controller class and find the ``indexAction`` method::
 
@@ -123,12 +156,13 @@ Open up the controller class and find the ``indexAction`` method::
 Routing Parameters and Controller Arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The first thing to notice is the ``$name`` variable that's passed as an argument
-to the method. This is really cool because the value of this argument comes
-from the ``{name}`` wildcard back in our route. In other words, when I go to
-``/hello/edgar``, the name variable is ``edgar``. When I go to ``/hello/skywalker``,
-it's skywalker. If we change ``name`` in the route to something else (e.g.
-``firstName``), we'll see an error:
+First, check out the ``$name`` variable that's passed as an argument to the
+method. This is sweet because the value of this argument comes from the ``{name}``
+wildcard in our route. So if I go to ``/hello/edgar``, the name variable
+is ``edgar``. When I go to ``/hello/skywalker``, it's skywalker.
+
+And if we change ``{name}`` in the route to something else like ``{firstName}``,
+we'll see an error:
 
 .. code-block:: yaml
 
@@ -144,9 +178,9 @@ it's skywalker. If we change ``name`` in the route to something else (e.g.
     is no default value or because there is a non optional argument after
     this one).
 
-The name of the argument needs to match up with the name used in the route
-(e.g. ``/hello/{firstName}``). The route still has the same URL, but we've
-given the routing wildcard a different name internally::
+Ah hah! So the name of the argument needs to match the name used in the route.
+Now, the route still has the same URL, we've just given the routing wildcard
+a different name internally::
 
     // src/Yoda/EventBundle/Controller/DefaultController.php
     // ...
@@ -159,8 +193,7 @@ given the routing wildcard a different name internally::
         );
     }
 
-You can also add more wildcards to your route. For example, let's add a ``count``
-wildcard after name:
+Let's get crazy by putting a second wildcard in the route path:
 
 .. code-block:: yaml
 
@@ -169,14 +202,14 @@ wildcard after name:
         path:  /hello/{firstName}/{count}
         defaults: { _controller: EventBundle:Default:index }
 
-If you refresh, you'll get a "No route found" error. That's because you need
-to put *something* for the ``count`` wildcard to match the route. Add ``/5``
-to the end of the URL to see the page:
+When we refresh, we get a "No route found" error. We need to put *something*
+for the ``count`` wildcard, other wise it won't match our route. Add ``/5``
+to the end to see the page:
 
   http://localhost:8000/app_dev.php/hello/skywalker/5
 
-Now that we have a ``count`` wildcard in the route, we can add a ``$count``
-argument to the action::
+Now that we have a ``count`` wildcard in the route, we can of course add
+a ``$count`` argument to the action::
 
     // src/Yoda/EventBundle/Controller/DefaultController.php
 
@@ -187,7 +220,7 @@ argument to the action::
         // ...
     }
 
-To prove everything's working, let's dump the two arguments. One neat thing
+To prove everything's working, let's dump both arguments. One neat thing
 is that the order of the arguments doesn't matter. To prove it, swap the order
 of the arguments and refresh::
 
@@ -201,23 +234,24 @@ of the arguments and refresh::
         // ...
     }
 
-Symfony matches the routing wildcards to action arguments by name, not order.
+We've seen this twice now: Symfony matches the routing wildcards to method
+arguments by matching their names.
 
 Remove the ``var_dump`` code so our page works again.
 
-There are a bunch of other *really* cool things you can do with routes, and
-we'll show them off along the way.
+Routing is full of lots of cool tricks and we'll discover them along the way.
 
 Debugging Routes
 ----------------
 
-Before we talk about controllers, let's check out a really handy tool for
-visualizing all the routes in your app. From the command line, run your console
-script and execute the ``router:debug`` command:
+Wondering what other URLs your app might have? Our friend console can help
+you with that with the ``router:debug`` command:
 
-.. code-block:: bash
+.. code-block:: text
 
-    php app/console router:debug
+    $ php app/console router:debug
 
-You'll see a list of every route in your app, including the one we just created
-and some others that are internal to Symfony and help debugging.
+This shows a full list of every route in your app. Right now, that means
+the one we've been playing with plus a few other internal Symfony debugging
+routes. Remember this command: it's your Swiss army knife for finding your
+way through a project.
