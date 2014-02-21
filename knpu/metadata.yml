@@ -80,9 +80,17 @@ chapters:
     links-dates:
         title:      Friendly Links and Dates in Twig
         is_free:    false
+        length:     0:00;
+    composer:
+        title:      Adding Outside Bundles with Composer
+        is_free:    false
         length:     0:00
     fixtures:
-        title:      Fixtures and External Libraries
+        title:      Fixtures: For some dumb data
+        is_free:    false
+        length:     0:00
+    autoloading:
+        title:      Autoloading: Where did require/include go?
         is_free:    false
         length:     0:00
     "mind-tricks":
