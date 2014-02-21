@@ -1,0 +1,29 @@
+diff --git a/play.php b/play.php
+index 004546e..d9228c7 100644
+--- a/play.php
++++ b/play.php
+@@ -21,12 +21,14 @@ $container->set('request', $request);
+ 
+ // all our setup is done!!!!!!
+ 
+-$templating = $container->get('templating');
+-
+-echo $templating->render(
+-    'EventBundle:Default:index.html.twig',
+-    array(
+-        'name' => 'Yoda',
+-        'count' => 5,
+-    )
+-);
+\ No newline at end of file
++use Yoda\EventBundle\Entity\Event;
++
++$event = new Event();
++$event->setName('Darth\'s surprise birthday party');
++$event->setLocation('Deathstar');
++$event->setTime(new \DateTime('tomorrow noon'));
++$event->setDetails('Ha! Darth HATES surprises!!!!');
++
++$em = $container->get('doctrine')->getManager();
++$em->persist($event);
++$em->flush();
