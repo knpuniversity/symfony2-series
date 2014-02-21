@@ -1,8 +1,8 @@
 Fixtures: For some dumb data
 ============================
 
-Step 2 is to activate the new ``DoctrineFixturesBundle`` in your AppKernel
-class::
+We have the bundle! Plug it in! Open up the ``AppKernel`` class and add it
+there::
 
     // app/AppKernel.php
     // ...
@@ -12,37 +12,34 @@ class::
         new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
     );
 
-To see if the fixtures bundle is working, try getting help information on
-a new ``doctrine:fixtures:load`` task that the bundle provides:
+To see if it's working, try getting help information on a new ``doctrine:fixtures:load``
+console task that comes from the bundle:
 
 .. code-block:: bash
 
     $ php app/console doctrine:fixtures:load --help
 
-If you see the help information, you're ready to go! If you run the command now,
-it'll complain - because we haven't written any fixtures yet!
+We see the help information, so we're ready to write some fixtures.
 
 Writing Fixtures
 ----------------
 
-A fixture is just a PHP class that puts data into the database.
+A fixture is just a PHP class that puts some stuff into the database.
 
-To create a fixture, create a new file in the ``DataFixtures\ORM``
-directory of any of your bundles. We'll call our class ``LoadEvents.php``
+Create a new file in the ``DataFixtures\ORM`` directory your bundle. Let's
+call it ``LoadEvents.php``, though the name doesn't matter.
 
     Create a src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php file.
 
-The easiest way to give life to the file is to copy and paste
-`the example from the docs`_. Change the namespace on the class to match
-our project. Notice that the namespace always follows the directory structure
-of the file. Also, import the ``Event`` class namespace::
+To breathe life into this, copy and paste `the example from the docs`_. Change
+the namespace above the class to match our project. Notice that the namespace
+always follows the directory structure of the file.:
 
     // src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php
     namespace Yoda\EventBundle\DataFixtures\ORM;
 
     use Doctrine\Common\DataFixtures\FixtureInterface;
     use Doctrine\Common\Persistence\ObjectManager;
-    use Yoda\EventBundle\Entity\Event;
 
     class LoadEvents implements FixtureInterface
     {
@@ -52,7 +49,11 @@ of the file. Also, import the ``Event`` class namespace::
         }
     }
 
-To create the events, we just use normal Doctrine code, which I'll paste in::
+Now we just use normal Doctrine code to create and save events. This is the
+``play.php`` file all over again::
+
+    use Yoda\EventBundle\Entity\Event;
+    // ...
 
     public function load(ObjectManager $manager)
     {
@@ -74,23 +75,25 @@ To create the events, we just use normal Doctrine code, which I'll paste in::
         $manager->flush();
     }
 
-Notice that I'm only calling ``flush`` once on the entity manager. Doctrine
-prepares all of its work, then sends the queries all at once. This is cool
-because it's super fast.
+Notice that we only need to call ``flush`` once. Doctrine prepares all of
+its work and then sends the queries as efficiently as possible all at once.
 
 Loading the Fixtures
 ~~~~~~~~~~~~~~~~~~~~
 
-To load in the fixtures, run the ``doctrine:fixtures:load`` command. Since we
-put the class in ``DataFixtures\ORM``, it finds our fixture and runs it:
+Ok, let's load some fixtures. Go back to the console and try the new ``doctrine:fixtures:load``
+command:
 
 .. code-block:: bash
 
     $ php app/console doctrine:fixtures:load
 
-When we look at the site, we've got some fresh data to play with. Re-run the
-command whenever you want: it deletes the existing data and inserts the fixtures
-in a fresh state. If you want to add to the existing data, just pass the
-``--append`` option.
+When we look at the site, we've got fresh dummy data to play with. Re-run
+the command whenever you want to start over: it deletes everything and
+inserts the fixtures in a fresh state.
+
+.. tip::
+
+    If you'd rather add to the existing data, just pass the ``--append`` option.
 
 .. _`the example from the docs`: http://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html#writing-simple-fixtures
