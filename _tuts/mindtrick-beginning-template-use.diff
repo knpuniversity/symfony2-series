@@ -1,0 +1,33 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 7e2dac0..60d7f4e 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+ 
+ use Yoda\EventBundle\Entity\Event;
+ use Yoda\EventBundle\Form\EventType;
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+ 
+ /**
+  * Event controller.
+@@ -17,7 +18,7 @@ class EventController extends Controller
+ 
+     /**
+      * Lists all Event entities.
+-     *
++     * @Template("EventBundle:Event:index.html.twig")
+      */
+     public function indexAction()
+     {
+@@ -25,9 +26,9 @@ class EventController extends Controller
+ 
+         $entities = $em->getRepository('EventBundle:Event')->findAll();
+ 
+-        return $this->render('EventBundle:Event:index.html.twig', array(
++        return array(
+             'entities' => $entities,
+-        ));
++        );
+     }
+     /**
+      * Creates a new Event entity.
