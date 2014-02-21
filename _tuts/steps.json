@@ -211,13 +211,13 @@
             "description": null
         },
         {
-            "id": "assets-copying-in-public-files",
-            "name": "Generators: Copying in public files",
+            "id": "generators-removing-the-route-prefix",
+            "name": "Generators: Removing the route prefix",
             "description": null
         },
         {
-            "id": "generators-removing-the-route-prefix",
-            "name": "Generators: Removing the route prefix",
+            "id": "assets-copying-in-public-files",
+            "name": "Generators: Copying in public files",
             "description": null
         }
     ]
