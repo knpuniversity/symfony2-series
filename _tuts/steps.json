@@ -189,6 +189,31 @@
             "id": "doctrine-query-for-an-event-and-render-it",
             "name": "Doctrine: Query for an event and render it",
             "description": null
+        },
+        {
+            "id": "generators-running-the-crud-generator",
+            "name": "Generators: Running the crud generator",
+            "description": null
+        },
+        {
+            "id": "generators-copying-in-stub-templates",
+            "name": "Generators: Copying in stub templates",
+            "description": null
+        },
+        {
+            "id": "generators-creating-the-middle-layout-file",
+            "name": "Generators: Creating the middle layout file",
+            "description": null
+        },
+        {
+            "id": "generators-tweaking-the-title-block",
+            "name": "Generators: Tweaking the title block",
+            "description": null
+        },
+        {
+            "id": "generators-copying-in-public-files",
+            "name": "Generators: Copying in public files",
+            "description": null
         }
     ]
 }
