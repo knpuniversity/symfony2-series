@@ -144,6 +144,51 @@
             "id": "twig-alternate-block-syntax",
             "name": "Twig: Alternate block syntax",
             "description": null
+        },
+        {
+            "id": "doctrine-generate-entity",
+            "name": "Doctrine: generate entity",
+            "description": null
+        },
+        {
+            "id": "doctrine-change-table-name",
+            "name": "Doctrine: change table name",
+            "description": null
+        },
+        {
+            "id": "doctrine-copy-to-play-file",
+            "name": "Doctrine: Copy to play file",
+            "description": null
+        },
+        {
+            "id": "doctrine-finish-play-file-setup",
+            "name": "Doctrine: Finish play file setup",
+            "description": null
+        },
+        {
+            "id": "doctrine-play-file-rendering-template",
+            "name": "Doctrine: Play file rendering template",
+            "description": null
+        },
+        {
+            "id": "doctrine-play-file-insert-event",
+            "name": "Doctrine: Play file insert event",
+            "description": null
+        },
+        {
+            "id": "doctrine-play-file-no-details",
+            "name": "Doctrine: Play file, no details",
+            "description": null
+        },
+        {
+            "id": "doctrine-get-the-entity-manager-in-the-controller",
+            "name": "Doctrine: Get the entity manager in the controller",
+            "description": null
+        },
+        {
+            "id": "doctrine-query-for-an-event-and-render-it",
+            "name": "Doctrine: Query for an event and render it",
+            "description": null
         }
     ]
 }
