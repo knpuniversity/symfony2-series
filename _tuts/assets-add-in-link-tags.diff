@@ -1,0 +1,15 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/layout.html.twig b/src/Yoda/EventBundle/Resources/views/layout.html.twig
+index aaabbe3..9b339fd 100644
+--- a/src/Yoda/EventBundle/Resources/views/layout.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/layout.html.twig
+@@ -3,5 +3,7 @@
+ {% block title 'Events' %}
+ 
+ {% block stylesheets %}
+-    <link rel="stylesheet" href="???" />
+-{% endblock %}
+\ No newline at end of file
++    <link rel="stylesheet" href="{{ asset('bundles/event/css/event.css') }}" />
++    <link rel="stylesheet" href="{{ asset('bundles/event/css/events.css') }}" />
++    <link rel="stylesheet" href="{{ asset('bundles/event/css/main.css') }}" />
++{% endblock %}
