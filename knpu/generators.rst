@@ -1,60 +1,63 @@
 Code Generation FTW!
 ====================
 
-Now for why code generation is awesome. We saw some earlier when we let Doctrine
-generate the entity class and annotations for us. Now, we'll use generators
-to give us code for an entire section! In the next few minutes, we'll see
-our application come to life, and with relatively little effort.
+I feel like making someone else do some work for awehilse, so let's look
+at Symfony's code generation tools.
 
-To get this rolling, let's commit our changes to git. This is a good idea for
-obvious reasons, but will also help us track our progress:
+The first thing we need our app to do is let users created, view update and
+delete events. In other words, we need a CRUD for the Event entity.
 
-.. code-block:: bash
+So how might we use Doctrine to generate a CRUD?
 
-    $ git status
-    $ git add src/ app/
-    $ git commit
-
-Generating a CRUD
------------------
-
-The first goal of our application is to let users create, display, update
-and delete events. We'll need a fairly generic set of routes, controllers
-and templates for each of these pages. Instead of writing those ourselves,
-we'll let Symfony generate them for us with the ``generate:doctrine:crud``
-command:
+Want to use Doctrine to generate a CRUD? Yea, there's a console command for
+that ``doctrine:generate:crud``:
 
 .. code-block:: bash
 
-    $ php app/console generate:doctrine:crud
+    $ php app/console doctrine:generate:crud
 
-Like before, the generator is interactive. Start by entering the "shortcut"
-name for our Event entity: ``EventBundle:Event``. Answer "yes" to the "write"
-actions, ``yml`` for the configuration format, and use the default ``/event``
-for the route prefix. But when it asks you to confirm automatic update of
-the routing, choose no.
+This inquisitive command first wants to know which entity we need a CRUD for.
+Answer with that shortcut entity "alias" name we've been seeing: ``EventBundle:Event``.
+
+Say "yes" to the "write" actions, ``yml`` for the configuration format, and
+use the default ``/event`` route prefix. Then finish up.
 
 Routing Imports and Organization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It should finish by printing a little bit of code that you need to copy into
-the ``routing.yml`` file of the ``EventBundle``. The generator *should* be able
-to do this for us, but at the recording of this screencast, a bug prevents this
-from happening in some cases.
+Ah crap! Red errors! It's ok, copy the code into the ``routing.yml`` of our
+``EventBundle``.
 
 .. code-block:: yaml
 
     # src/Yoda/EventBundle/Resources/config/routing.yml
     # ...
-    
+
     # copied in from the commands output
     EventBundle_event:
         resource: "@EventBundle/Resources/config/routing/event.yml"
         prefix:   /event
 
-As the code indicates, one of the things the generator did was to create a
-new ``event.yml`` routing file in our bundle. By running the ``router:debug``
-command, we can see the new routes:
+The generation tasks tried to put this in there for us, but we already had
+something in this file so it panicked. All better now.
+
+We now know this is a routing import, which loads a brand new ``event.yml``
+file:
+
+.. code-block:: yaml
+
+    # src/Yoda/EventBundle/Resources/config/routing/event.yml
+    event:
+        pattern:  /
+        defaults: { _controller: "EventBundle:Event:index" }
+
+    event_show:
+        pattern:  /{id}/show
+        defaults: { _controller: "EventBundle:Event:show" }
+
+    # ... more routes
+
+Let's run the ``router:debug`` command to make sure these are being loaded:
 
 .. code-block:: bash
 
@@ -70,38 +73,48 @@ command, we can see the new routes:
     event_update        POST    /event/{id}/update
     event_delete        POST    /event/{id}/delete
 
-Check out our apps main routing file, and notice that we are still only importing
-one from the Event Bundle. Inside *that* file, you can organize your routes
-based on their controller. For example the new ``event.yml`` file holds all
-the routes for the new event controller. Later, we might decide to add more
-routing files and import them.
+Check out the main ``app/config/routing.yml`` file - it's still only importing
+the *one* file from the EventBundle:
 
-Notice that when you're importing another routing file, the key you use has
-absolutely no meaning. I can change ``EventBundle_event`` to anything it has
-no effect,  as long as its unique. But the key for a route becomes its internal
-"name", and *is* important. Also, notice that I can refer to the ``default.yml``
-routing file just by using its relative path. This is equal to using the
-``@EventBundle`` syntax.
+.. code-block:: yaml
+
+    # app/config/routing.yml
+    event:
+        resource: "@EventBundle/Resources/config/routing.yml"
+        prefix:   /
+
+But once we're in that file, we're of course free to organize routes into
+even more files and import those. That's what's happening with ``event.yml``:
+it holds all the routes for the new ``EventController``. Don't go crazy,
+but when you have a lot of routes, splitting them into multiple files is
+a good way to keep things sane.
+
+Oh, and when we import another file, the key - like ``EventBundle_event`` -
+is completely meaningless - make it whatever you want. **But**, the key for
+an actual route *is* important: it becomes its internal "name". We'll use
+it later when we generate links.
 
 Checking out the Generated Code
 -------------------------------
 
-Phew! Enough with routing, let's see this all in action. Head to the ``/event``
-page in your browser. I know we got Apache setup in the last chapter, but
-I'm going to continue using the built-in PHP web server:
+Enough with routing! Head to the ``/event`` page to see this in action. I
+know we got Apache setup in the last chapter, but I'm going to continue using
+the built-in PHP web server and access the site at ``localhost:8000``:
 
     http://localhost:8000/app_dev.php/event
 
-You'll see a really ugly, but totally functional section where you can add,
-view, update and delete events. Easy, right!
+Woh, that's ugly. Hmm, but it *does* work - we can add, view, update and
+delete events. Easy!
 
-Let's peek at some of the code. The controller is a great source for how
-common tasks should be accomplished, like form processing, deleting entities,
-redirecting, and causing a 404 page to be thrown. For example, the ``showAction``
-uses the ``id`` from its route to look for an event object. If one isn't found,
-it sends the user to a 404 page by throwing a special type of exception.
-If an event is found, it's passed to the template and rendered. Take some
-time to look through the other parts of the controller yourself::
+Let's peek at some of the code. The generated controller is like a cheatsheet
+for how to do common things, like form processing, deleting entities, redirecting
+and showing a 404 page.
+
+For example, ``showAction`` uses the ``id`` from its route to query for an
+Event object. If one isn't found, it sends the user to a 404 page by calling
+``createNotFoundException`` and throwing the result. This helper function
+is just a shortcut to create a very specific type of Exception object that
+causes a 404 page::
 
     // src/Yoda/EventBundle/Controller/Event.php
     // ...
@@ -123,47 +136,57 @@ time to look through the other parts of the controller yourself::
         ));
     }
 
+If we do find an Event, it's passed to the template and rendered. Take a
+few minutes to look through the other parts of the controller. I mean it!
+
 Making the Generated Code Less Ugly
 -----------------------------------
 
-Time to make this section look less ugly. I'll copy in some template files
-that I've already customized:
+I know this all works, but the ugly is killing me. I created custom version
+of each of the CRUD template files while you were looking through the controller.
+Copy these from the ``resources`` directory over the generated templates:
 
-    {# src/Yoda/EventBundle/Resources/views/Event/index.html.twig #}
-    
-    {% extends 'EventBundle::layout.html.twig' %}
-    {# ... #}
+.. code-block:: bash
 
-.. tip::
-
-    You can find these templates in the ``resources/Events`` directory of
-    the code download.
+    $ cp resources/Event/* src/Yoda/EventBundle/Resources/views/Event/
 
 The 3-template Inheritance System
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Not surprisingly, each new template extends a base template. What might surprise
-you is that this isn't the ``::base.html.twig`` layout that we extended earlier.
-Instead, it's a template that will live right inside the ``EventBundle``.
-Let's create this template. Since the middle part of the template name is
-missing, we know that the new template should live directly in the ``Resources/views``
+If you think that the new template files probably extend a layout file, gold
+star! But I can't make it that easy. Instead of extending the ``::base.html.twig``
+file we're familiar with, each extends ``EventBundle::layout.html.twig``:
+
+.. code-block:: html+jinja
+
+    {# src/Yoda/EventBundle/Resources/views/Event/index.html.twig #}
+    {% extends 'EventBundle::layout.html.twig' %}
+
+    ...
+
+Let's create this template. The middle piece of the 3-part template syntax
+is missing, which tells us that this wil live directly in the ``Resources/views``
 directory of our bundle, and not in a sub-directory:
 
-    Create the file at src/Yoda/EventBundle/Resources/views/layout.html.twig
+    {# src/Yoda/EventBundle/Resources/views/layout.html.twig #}
 
-Inside the new template, simply extend the ``::base.html.twig``. This creates
-a template hierarchy - ``index.html.twig`` extends ``layout.html.twig``,
-which extends ``base.html.twig``:
+    create this file... but nothing here yet...
+
+Inside the new template, simply extend ``::base.html.twig``:
 
 .. code-block:: jinja
 
     {# src/Yoda/EventBundle/Resources/views/layout.html.twig #}
     {% extends '::base.html.twig' %}
 
-In fact, all of our new templates extend ``layout.html.twig``. This means
-that if we need to override a base layout block for *all* of our event pages,
-we can do that here. Let's try it. Create and set the title block to "Events".
-This becomes the default page title for every event page:
+Now we have a template hierarchy - ``index.html.twig`` extends ``layout.html.twig``,
+which extends ``base.html.twig``.
+
+This is awesome because *all* the new templates extend ``layout.html.twig``.
+So if we want to override a block for *all* of our event pages, we can do
+that right here.
+
+Let's try it: set the title block to "Events":
 
 .. code-block:: jinja
 
@@ -172,10 +195,38 @@ This becomes the default page title for every event page:
     
     {% block title 'Events' %}
 
-Of course, we can still override the title block in any child template, which
-is what makes template inheritance awesome.
+Now we have a better default page title for every event page. Of course,
+we can still override the title block in any child template. Template inheritance,
+you're awesome.
+
+This 3-level inheritance is definitely not required, keep things simple if
+you can. But if you have many slightly different sections on your site, it
+might be perfect.
 
 Route Prefix
 ------------
 
-TODO - remove the /event route prefix
+Look back at the ``routing.yml`` file in our bundle. You're smart, so you
+probably already saw the ``prefix`` key and guessed that this prefixes all
+the imported route URLs with ``/event``:
+
+    {# src/Yoda/EventBundle/Resources/config/routing.yml #}
+    {# ... #}
+
+    EventBundle_event:
+        resource: "@EventBundle/Resources/config/routing/event.yml"
+        prefix:   /event
+
+This is a nice little feature. Now kill it!
+
+    {# src/Yoda/EventBundle/Resources/config/routing.yml #}
+    {# ... #}
+
+    EventBundle_event:
+        resource: "@EventBundle/Resources/config/routing/event.yml"
+        prefix:   /
+
+With this gone, will show up on the homepage. Remove the ``/event`` from
+the URL in your browser to see it:
+
+    http://localhost:8000/app_dev.php
