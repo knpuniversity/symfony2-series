@@ -212,7 +212,12 @@
         },
         {
             "id": "assets-copying-in-public-files",
-            "name": "Assets: Copying in public files",
+            "name": "Generators: Copying in public files",
+            "description": null
+        },
+        {
+            "id": "generators-removing-the-route-prefix",
+            "name": "Generators: Removing the route prefix",
             "description": null
         }
     ]
