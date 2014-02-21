@@ -12,6 +12,7 @@ User object, and the session:
     {# ... #}
 
     {% block body %}
+        {# some examples - remove these after you try them #}
         {{ app.session.get('some_session_key') }}
         {{ app.request.host }}
 
