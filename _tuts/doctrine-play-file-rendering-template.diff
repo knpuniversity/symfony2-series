@@ -1,0 +1,19 @@
+diff --git a/play.php b/play.php
+index 2a7459f..004546e 100644
+--- a/play.php
++++ b/play.php
+@@ -20,3 +20,13 @@ $container->enterScope('request');
+ $container->set('request', $request);
+ 
+ // all our setup is done!!!!!!
++
++$templating = $container->get('templating');
++
++echo $templating->render(
++    'EventBundle:Default:index.html.twig',
++    array(
++        'name' => 'Yoda',
++        'count' => 5,
++    )
++);
+\ No newline at end of file
