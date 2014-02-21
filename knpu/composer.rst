@@ -1,34 +1,53 @@
 Adding Outside Bundles with Composer
 ====================================
 
-With a working event area, our project is coming along nicely! But the site
-looks a little empty and lonely. Let's fix that by adding some interesting
-events.
+We got rid ofthe ugly, but the site looks a little empty. We'll improve things
+by loading fixtures, which are dummy data we put into the database.
 
-Instead of adding them by hand, we'll create "fixture data", which is
-test data that we can load into our database over and over. This means we'll
-always have a set of data to work with while developing.
+When we started the project, we downloaded the Symfony Standard edition:
+our pre-started project that came with Symfony and other tools like Doctrine.
+Unfortunately, it didn't come with any tools for handling fixtures.
 
-Back when we started the project, we downloaded the Symfony Standard edition,
-which is a pre-started project that comes with Symfony and some other tools, like
-Doctrine. One thing it didn't come with is a library to handle data fixtures.
-But no problem! We can add the library ourselves. Whenever you bring
-in a new library, you'll always start with the same two steps.
+But we're smart enough: let's just add a fixtures library ourselves. And
+by using Composer, doing this won't suck!
 
-First, we need to download the library. To install the fixtures bundle, I'll
-use `KnpBundles.com`_ to find it and then click to read its documentation.
+Head over to `KnpBundles.com`_ and search for "fixtures". Click on ``DoctrineFixturesBundle``,
+yea, the one with the high quality score. Now click again to read `its documentation`_.
 
 Installing a Bundle via Composer
 --------------------------------
 
-Remember the Composer library from earlier? Composer is a PHP dependency management
-library, which helps to download different PHP libraries into your project
-and to make sure that their versions are all compatible with each other.
+Composer is a PHP dependency management library. It downloads different libraries
+into our project and makes sure that their versions are all compatible with
+each other.
 
-Composer works by reading the ``composer.json`` file from inside your project.
-It downloads all of the libraries under the ``require`` key, as well as any
-libraries that they may depend on. To get the ``DoctrineFixturesBundle``, copy
-the line from the documentation to the end of your ``require`` key:
+It works by reading the ``composer.json`` file inside your project. It downloads
+all of the libraries under the ``require`` key, *and* any libraries that
+*they* may depend on. To get the ``DoctrineFixturesBundle``, copy the line
+from the documentation and paste it at the end of your ``require`` key:
+
+.. code-block:: json
+
+    {
+        "require": {
+            " ... ",
+            "doctrine/doctrine-fixtures-bundle": "dev-master"
+        }
+    }
+
+Each library has two parts: its name and the version you want. The name comes
+from a site called `Packagist.org`_. You can find almost any PHP library
+here and the versions available.
+
+Finding the right Version
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+But using ``dev-master`` stinks. This tells Composer to grab the latest commit
+to the master branch, whatever craziness that may be.
+
+Go back to the `library's page on Packagist`_: anything without the ``dev``
+at the end is a stable version. For me, the latest is ``2.2.0``. Let's use
+that, but add a ``~`` to the front of it:
 
 .. code-block:: json
 
@@ -39,71 +58,77 @@ the line from the documentation to the end of your ``require`` key:
         }
     }
 
-Each entry has two parts: the name of the library you want and its version.
-The name comes from a central repository called Packagist. You can use it
-to search for any libraries and find out what versions are available.
+With the tilde, this really means ``2.2.*``. Composer explains the different
+version formats really well on their site (`Package Versions`_).
 
-For the version, we're using ``dev-master``, which means the "latest and greatest". 
-This isn't typically a good idea, since you might receive non-stable features.
-But sometimes, like in this case, the last tagged version of the library we
-need isn't compatible with our project. If you're ever in doubt, you can
-try to install an older version of a library. Composer will throw an error
-if it's not compatible.
+Installing with Composer
+------------------------
 
-To use composer, copy in the ``composer.phar`` file we downloaded earlier into
-our project:
+Ok, let's download this library! We'll need the ``composer.phar`` file from
+earlier - just move it into the project:
 
 .. code-block:: bash
 
     $ cp ../composer.phar .
 
-Remember that you can download ``composer.phar`` at any time by going to
-`GetComposer.org`_ and following the directions.
+And remember, this is just a normal file, so you can download as many of
+these as you want at `GetComposer.org`_.
 
-With the new line in our ``composer.json`` file, run ``php composer.phar update``
-and pass it the name of the library:
+Now, run ``php composer.phar update`` and pass it the name of the library:
 
 .. code-block:: bash
 
     $ php composer.phar update doctrine/doctrine-fixtures-bundle
 
-This will download the ``DoctrineFixturesBundle`` and its dependent ``doctrine-data-fixtures``
-library into your project.
+This may work for a little while as Composer things really hard about dependencies.
+Eventually, it'll download ``DoctrineFixturesBundle`` *and* its dependent
+``doctrine-data-fixtures`` library into the ``vendor/`` directory.
 
 Composer update, install and composer.lock
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------
 
-But let's back up and learn just a little bit more about Composer. As we
-already know, Composer reads information from your ``composer.json`` file.
-But if you look at the root of your project, there's also a ``composer.lock``
-file. What's that?
+While we wait, let's look at a small mystery. We know that Composer reads
+information from ``composer.json``. So what's the purpose of the ``composer.lock``
+file that's at the root of our project and how did it get there?
 
-In fact, Composer has 2 different commands for updating vendor libraries,
-and each should be used in different situations. First, ``composer.phar update``
-says "read the composer.json file and update everything to the latest version
-specified". For example, suppose today we're using Symfony 2.1.0, but our
-``composer.json`` file specifies simply 2.1.* - meaning, the last 2.1.x version.
-If Symfony 2.1.1 were released and we ran ``composer.phar update``, it would
-upgrade us to Symfony 2.1.1.
+Composer actually has 2 different commands for downloading vendor stuff.
 
-But this could be a huge headache! Imagine you have 5 developers on a project.
-When someone clones the project or updates vendors for a new library you added, 
-they might get surprised with a new version of some other library!
+composer update
+~~~~~~~~~~~~~~~
 
-To handle this problem, each time you run ``composer.phar update``, it writes
-a ``composer.lock`` file, which records the exact versions of all of your
-vendors. Now, if any developer runs ``composer.phar install``, the ``composer.json``
-file is ignored, and vendors are downloaded based on the exact directions
-in the lock file.
+The first is update. It says "read the composer.json file and update everything
+to the latest versions specified in there". So if today we have Symfony
+2.4.1 but 2.5.0 gets released, a Composer update would upgrade us to the
+new version. That's because our Symfony version constraint of ``~2.4`` allows
+for anything greater than 2.4, but less than 3.0.
 
-What this ultimately means is that you should use a simple workflow. Unless
-you're adding a new library or intentionally upgrading something, always use
-``composer.phar install``. When you do need to add a new library or upgrade
-something,  you can be even more precise by calling ``composer.phar update``
-and passing it the name of the library you're updating. By doing this, Composer
-will only update *that* library, instead of all of them.
+Hold up. That could be a big issue. What happens if you deploy right as Symfony
+2.5.0 comes out? Will your production server get that version, even though
+you were testing on 2.4.1? That woudl be *lame*.
 
-Great - step 1 was to download the library by adding it to composer and updating.
+Because Composer is *not* lame, each time the ``composer.phar update`` command
+is run, it writes a ``composer.lock`` file. This records the exact versions
+of all of your vendors at that moment.
+
+composer install
+~~~~~~~~~~~~~~~~
+
+And that's where the second command - install - comes in. It *ignores* the
+``composer.json`` file and reads entirely from the ``composer.lock`` file,
+assuming one exists. So as long as you run ``install`` on your deploy, you'll
+get the exact versions you expected.
+
+So unless you're adding a new library or intentionally upgrading something,
+always use ``composer.phar install``.
+
+And when you *do* need to add or update something, you can be more precise
+by calling ``composer.phar update`` and passing it the name of the library
+you're updating like we did. With this, Composer will only update *that*
+library, instead of everything.
 
 .. _`KnpBundles.com`: http://knpbundles.com/
 .. _`GetComposer.org`: http://getcomposer.org/
+.. _`its documentation`: http://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html
+.. _`Package Versions`: https://getcomposer.org/doc/01-basic-usage.md#package-versions
+.. _`Packagist.org`: https://packagist.org/
+.. _`library's page on Packagist`: https://packagist.org/packages/doctrine/doctrine-fixtures-bundle
