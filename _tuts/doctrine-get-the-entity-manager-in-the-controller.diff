@@ -1,0 +1,15 @@
+diff --git a/src/Yoda/EventBundle/Controller/DefaultController.php b/src/Yoda/EventBundle/Controller/DefaultController.php
+index 6107ea3..2916ec3 100644
+--- a/src/Yoda/EventBundle/Controller/DefaultController.php
++++ b/src/Yoda/EventBundle/Controller/DefaultController.php
+@@ -8,6 +8,10 @@ class DefaultController extends Controller
+ {
+     public function indexAction($count, $firstName)
+     {
++        // these 2 lines are equivalent
++        // $em = $this->container->get('doctrine')->getManager();
++        $em = $this->getDoctrine()->getManager();
++
+         return $this->render(
+             'EventBundle:Default:index.html.twig',
+             array('name' => $firstName, 'count' => $count)
