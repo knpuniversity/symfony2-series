@@ -1,0 +1,31 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index 1ff3bd7..c08c399 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -36,7 +36,7 @@ twig:
+ assetic:
+     debug:          "%kernel.debug%"
+     use_controller: false
+-    bundles:        [ ]
++    bundles:    [EventBundle]
+     #java: /usr/bin/java
+     filters:
+         cssrewrite: ~
+diff --git a/src/Yoda/EventBundle/Resources/views/layout.html.twig b/src/Yoda/EventBundle/Resources/views/layout.html.twig
+index 9b339fd..e6e4138 100644
+--- a/src/Yoda/EventBundle/Resources/views/layout.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/layout.html.twig
+@@ -3,7 +3,10 @@
+ {% block title 'Events' %}
+ 
+ {% block stylesheets %}
+-    <link rel="stylesheet" href="{{ asset('bundles/event/css/event.css') }}" />
+-    <link rel="stylesheet" href="{{ asset('bundles/event/css/events.css') }}" />
+-    <link rel="stylesheet" href="{{ asset('bundles/event/css/main.css') }}" />
++    {% stylesheets
++        'bundles/event/css/*'
++        filter='cssrewrite'
++    %}
++        <link rel="stylesheet" href="{{ asset_url }}" />
++    {% endstylesheets %}
+ {% endblock %}
