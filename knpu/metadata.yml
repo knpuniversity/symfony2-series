@@ -93,7 +93,11 @@ chapters:
         title:      Autoloading: Where did require/include go?
         is_free:    false
         length:     0:00
+    controller-shortcuts:
+        title:      Do Less Work in the Controller
+        is_free:    false
+        length:     0:00
     "mind-tricks":
-        title:      Mind Tricks
+        title:      Twig Mind Tricks
         is_free:    false
         length:     0:00
