@@ -1,0 +1,12 @@
+diff --git a/src/Yoda/EventBundle/Resources/config/routing.yml b/src/Yoda/EventBundle/Resources/config/routing.yml
+index c5ad164..facc516 100644
+--- a/src/Yoda/EventBundle/Resources/config/routing.yml
++++ b/src/Yoda/EventBundle/Resources/config/routing.yml
+@@ -4,4 +4,4 @@ event_homepage:
+ 
+ EventBundle_event:
+     resource: "@EventBundle/Resources/config/routing/event.yml"
+-    prefix:   /event
+\ No newline at end of file
++    prefix:   /
+\ No newline at end of file
