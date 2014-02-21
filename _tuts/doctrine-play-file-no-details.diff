@@ -1,0 +1,26 @@
+diff --git a/play.php b/play.php
+index d9228c7..f7fd5b9 100644
+--- a/play.php
++++ b/play.php
+@@ -27,7 +27,7 @@ $event = new Event();
+ $event->setName('Darth\'s surprise birthday party');
+ $event->setLocation('Deathstar');
+ $event->setTime(new \DateTime('tomorrow noon'));
+-$event->setDetails('Ha! Darth HATES surprises!!!!');
++//$event->setDetails('Ha! Darth HATES surprises!!!!');
+ 
+ $em = $container->get('doctrine')->getManager();
+ $em->persist($event);
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index ff79630..a6426b6 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -45,7 +45,7 @@ class Event
+     /**
+      * @var string
+      *
+-     * @ORM\Column(name="details", type="text")
++     * @ORM\Column(name="details", type="text", nullable=true)
+      */
+     private $details;
+ 
