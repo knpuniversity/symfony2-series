@@ -1,0 +1,8 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/layout.html.twig b/src/Yoda/EventBundle/Resources/views/layout.html.twig
+index ad95847..6f61501 100644
+--- a/src/Yoda/EventBundle/Resources/views/layout.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/layout.html.twig
+@@ -1 +1,3 @@
+ {% extends '::base.html.twig' %}
++
++{% block title 'Events' %}
