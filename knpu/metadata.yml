@@ -73,6 +73,14 @@ chapters:
         title:      Code Generation FTW!
         is_free:    false
         length:     0:00
+    assets:
+        title:      Less Ugly with CSS and JavaScript
+        is_free:    false
+        length:     0:00
+    links-dates:
+        title:      Friendly Links and Dates in Twig
+        is_free:    false
+        length:     0:00
     fixtures:
         title:      Fixtures and External Libraries
         is_free:    false
