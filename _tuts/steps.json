@@ -219,6 +219,86 @@
             "id": "assets-copying-in-public-files",
             "name": "Assets: Copying in public files",
             "description": null
+        },
+        {
+            "id": "assets-add-symlink-composer-extra",
+            "name": "Assets: Add symlink composer extra",
+            "description": null
+        },
+        {
+            "id": "assets-add-in-link-tags",
+            "name": "Assets: Add in link tags",
+            "description": null
+        },
+        {
+            "id": "assets-change-to-use-assetic",
+            "name": "Assets: Change to use assetic",
+            "description": null
+        },
+        {
+            "id": "composer-adding-composer-json-entry",
+            "name": "Composer: Adding composer.json entry",
+            "description": null
+        },
+        {
+            "id": "fixtures-enabling-the-bundle",
+            "name": "Fixtures: Enabling the bundle",
+            "description": null
+        },
+        {
+            "id": "fixtures-create-new-fixtures-file",
+            "name": "Fixtures: Create new fixtures file",
+            "description": null
+        },
+        {
+            "id": "fixtures-adding-the-data",
+            "name": "Fixtures: Adding the data",
+            "description": null
+        },
+        {
+            "id": "mindtrick-beginning-template-use",
+            "name": "MindTrick: Beginning @Template use",
+            "description": null
+        },
+        {
+            "id": "mindtrick-short-template-notation",
+            "name": "MindTrick: Short @Template notation",
+            "description": null
+        },
+        {
+            "id": "mindtrick-annotation-routing",
+            "name": "MindTrick: Annotation routing",
+            "description": null
+        },
+        {
+            "id": "mindtrick-removing-extra-route",
+            "name": "MindTrick: Removing extra route",
+            "description": null
+        },
+        {
+            "id": "mindtrick-give-annotation-route-a-name",
+            "name": "MindTrick: Give annotation route a name",
+            "description": null
+        },
+        {
+            "id": "mindtrick-twig-global-variable",
+            "name": "MindTrick: Twig global variable",
+            "description": null
+        },
+        {
+            "id": "mindtrick-removing-the-app-variable",
+            "name": "MindTrick: Removing the app variable",
+            "description": null
+        },
+        {
+            "id": "mindtrick-flexing-the-block-function",
+            "name": "MindTrick: Flexing the block function",
+            "description": null
+        },
+        {
+            "id": "mindtrick-twig-whitespace-control",
+            "name": "MindTrick: Twig whitespace control",
+            "description": null
         }
     ]
 }
