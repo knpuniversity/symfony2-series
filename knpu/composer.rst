@@ -1,7 +1,7 @@
 Adding Outside Bundles with Composer
 ====================================
 
-We got rid ofthe ugly, but the site looks a little empty. We'll improve things
+We got rid of the ugly, but the site looks a little empty. We'll improve things
 by loading fixtures, which are dummy data we put into the database.
 
 When we started the project, we downloaded the Symfony Standard edition:
@@ -104,7 +104,7 @@ for anything greater than 2.4, but less than 3.0.
 
 Hold up. That could be a big issue. What happens if you deploy right as Symfony
 2.5.0 comes out? Will your production server get that version, even though
-you were testing on 2.4.1? That woudl be *lame*.
+you were testing on 2.4.1? That would be *lame*.
 
 Because Composer is *not* lame, each time the ``composer.phar update`` command
 is run, it writes a ``composer.lock`` file. This records the exact versions
