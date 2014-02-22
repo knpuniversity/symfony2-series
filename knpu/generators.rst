@@ -1,13 +1,11 @@
 Code Generation FTW!
 ====================
 
-I feel like making someone else do some work for awehilse, so let's look
+I feel like making someone else do some work for awhile, so let's look
 at Symfony's code generation tools.
 
-The first thing we need our app to do is let users created, view update and
+The first thing we need our app to do is let users create, view, update and
 delete events. In other words, we need a CRUD for the Event entity.
-
-So how might we use Doctrine to generate a CRUD?
 
 Want to use Doctrine to generate a CRUD? Yea, there's a console command for
 that ``doctrine:generate:crud``:
@@ -142,7 +140,7 @@ few minutes to look through the other parts of the controller. I mean it!
 Making the Generated Code Less Ugly
 -----------------------------------
 
-I know this all works, but the ugly is killing me. I created custom version
+I know this all works, but the ugly is killing me. I created a custom version
 of each of the CRUD template files while you were looking through the controller.
 Copy these from the ``resources`` directory over the generated templates:
 
