@@ -181,6 +181,12 @@ Inside the new template, simply extend ``::base.html.twig``:
 Now we have a template hierarchy - ``index.html.twig`` extends ``layout.html.twig``,
 which extends ``base.html.twig``.
 
+.. tip::
+
+    If you try the new templates out, and your browser shows the old ones, try clearing
+    out your cache (``php app/console cache:clear``) - this could be a rare time when
+    Symfony doesn't rebuild the cache correctly.
+
 This is awesome because *all* the new templates extend ``layout.html.twig``.
 So if we want to override a block for *all* of our event pages, we can do
 that right here.
