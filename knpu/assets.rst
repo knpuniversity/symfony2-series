@@ -6,7 +6,9 @@ after the last chapter. We could put these in the ``web/`` directory - it
 is publicly accessible afterall.
 
 But there's a trick I want to show you, so let's copy them to a new ``Resources/public``
-directory in ``EventBundle``:
+directory in ``EventBundle``. Get these files by downloading the code for this screencast
+and looking in the ``resources`` directory. I already downloaded and put copied that
+directory into my project for simplicity:
 
 .. code-block:: bash
 
