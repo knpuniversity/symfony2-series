@@ -26,7 +26,7 @@ Writing Fixtures
 
 A fixture is just a PHP class that puts some stuff into the database.
 
-Create a new file in the ``DataFixtures\ORM`` directory your bundle. Let's
+Create a new file in the ``DataFixtures\ORM`` directory of your bundle. Let's
 call it ``LoadEvents.php``, though the name doesn't matter.
 
     Create a src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php file.
