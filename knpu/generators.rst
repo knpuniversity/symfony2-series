@@ -164,7 +164,7 @@ file we're familiar with, each extends ``EventBundle::layout.html.twig``:
     ...
 
 Let's create this template. The middle piece of the 3-part template syntax
-is missing, which tells us that this wil live directly in the ``Resources/views``
+is missing, which tells us that this will live directly in the ``Resources/views``
 directory of our bundle, and not in a sub-directory:
 
     {# src/Yoda/EventBundle/Resources/views/layout.html.twig #}
@@ -225,7 +225,7 @@ This is a nice little feature. Now kill it!
         resource: "@EventBundle/Resources/config/routing/event.yml"
         prefix:   /
 
-With this gone, will show up on the homepage. Remove the ``/event`` from
+With this gone, the events will show up on the homepage. Remove the ``/event`` from
 the URL in your browser to see it:
 
     http://localhost:8000/app_dev.php
