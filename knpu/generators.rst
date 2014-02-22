@@ -142,7 +142,8 @@ Making the Generated Code Less Ugly
 
 I know this all works, but the ugly is killing me. I created a custom version
 of each of the CRUD template files while you were looking through the controller.
-Copy these from the ``resources`` directory over the generated templates:
+You can find these in the ``resources`` directory of the code download for this
+screencast. I already moved that directory from the code download into my project.
 
 .. code-block:: bash
 
