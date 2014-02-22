@@ -47,7 +47,7 @@ Library Directory Paths
 -----------------------
 
 Right now, it almost looks like the autoloader assumes that everything must
-live in the ``src/`` directory. So are vendor classes - like Symfony - loaded?
+live in the ``src/`` directory. So how are vendor classes - like Symfony - loaded?
 
 That's the second part. When we fetch a library with Composer, it configures
 its autoloader to look for the new classes in the directory it just downloaded.
