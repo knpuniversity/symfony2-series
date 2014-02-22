@@ -112,7 +112,7 @@ Importing Routes from a Controller
 
 Hmm, routing right above the controller? Interesting!
 
-But like all routing - we have to be import it before it works. Open up the
+But like all routing - we have to import it before it works. Open up the
 ``routing.yml`` file in the bundle, copy the ``event.yml`` import line and
 change the key so its unique. To import annotation routes, just point the
 resource at the ``Controller`` directory and add a type option:
