@@ -21,8 +21,8 @@ so my virtual hosts live in the ``/opt`` directory.
 
 .. tip::
 
-    In Ubuntu, it lives in ``/etc/apache2/sites-available`` and each lives
-    in its own file and needs to be activated. See `HTTPD Configuration`_.
+    In Ubuntu, it lives in ``/etc/apache2/sites-available`` and each has
+    its own file that needs to be activated. See `HTTPD Configuration`_.
 
 The configuration we need is simple:
 

@@ -212,7 +212,7 @@ syntax we used when we generated the entity - it's like the entity's nickname.
     If you like typing, you can use the full class name anywhere the entity
     "alias" is used:
 
-        $em->getRepository('Yoa\EventBundle\Entity\Event');
+        $em->getRepository('Yoda\EventBundle\Entity\Event');
 
 Use the repository's ``findOneBy`` method to get an ``Event`` object by name.
 There are other shortcut methods too, like ``findAll``, ``findBy``, and ``find``::

@@ -126,18 +126,6 @@ files:
         {% endstylesheets %}
     {% endblock %}
 
-We also need to add our bundle to ``config.yml`` to activate our bundle with
-Assetic:
-
-.. code-block:: yaml
-
-    # app/config/config.yml
-    # ...
-    
-    assetic:
-        # ...
-        bundles:    [EventBundle]
-
 When we refresh, everything still looks the same. BUT, we've laid the foundation
 for being able to do things like use SASS and combining everything into 1
 file for speed. We talk about Assetic more in `Episode 4`_.
