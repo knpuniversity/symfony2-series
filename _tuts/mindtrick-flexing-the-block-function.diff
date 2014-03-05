@@ -1,8 +1,8 @@
 diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
-index bafd28d..adc6526 100644
+index 433bbba..d87c952 100644
 --- a/app/Resources/views/base.html.twig
 +++ b/app/Resources/views/base.html.twig
-@@ -2,7 +2,13 @@
+@@ -2,7 +2,14 @@
  <html>
      <head>
          <meta charset="UTF-8" />
@@ -14,6 +14,7 @@ index bafd28d..adc6526 100644
 +                Events from a Galaxy, far far away
 +            {% endif %}
 +        </title>
-         {% block stylesheets %}{% endblock %}
-         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-     </head>
++
+         {% block stylesheets %}
+             {% stylesheets
+                 'bundles/event/css/event.css'
