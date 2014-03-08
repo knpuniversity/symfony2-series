@@ -56,48 +56,48 @@ chapters:
     twig:
         title:      Twig
         is_free:    false
-        length:     0:00
+        length:     6:27
     doctrine:
         title:      Databases and Doctrine
         is_free:    false
-        length:     0:00
+        length:     5:08
     doctrine2:
         title:      Inserting and Querying Data
         is_free:    false
-        length:     0:00
+        length:     6:57
     vhost:
         title:      Virtual Host Setup Extravaganza
         is_free:    false
-        length:     0:00
+        length:     4:17
     generators:
         title:      Code Generation FTW!
         is_free:    false
-        length:     0:00
+        length:     5:25
     assets:
         title:      Less Ugly with CSS and JavaScript
         is_free:    false
-        length:     0:00
+        length:     3:47
     links-dates:
         title:      Friendly Links and Dates in Twig
         is_free:    false
-        length:     0:00;
+        length:     1:25;
     composer:
         title:      Adding Outside Bundles with Composer
         is_free:    false
-        length:     0:00
+        length:     4:36
     fixtures:
         title:      Fixtures: For some dumb data
         is_free:    false
-        length:     0:00
+        length:     1:54
     autoloading:
         title:      Autoloading: Where did require/include go?
         is_free:    false
-        length:     0:00
+        length:     2:20
     controller-shortcuts:
         title:      Do Less Work in the Controller
         is_free:    false
-        length:     0:00
+        length:     4:23
     "mind-tricks":
         title:      Twig Mind Tricks
         is_free:    false
-        length:     0:00
+        length:     1:55
