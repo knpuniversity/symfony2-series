@@ -1,6 +1,6 @@
 title:  Starting in Symfony2: Episode 1 (2.4+)
 price:  12
-length: 0:00:00
+length: 1:18:03
 summary: |
     Get your first Symfony2 project off on the right foot, with the right
     tools, best practices and tips. If you're serious about getting into
@@ -36,23 +36,23 @@ chapters:
     intro:
         title:      Welcome to Symfony!
         is_free:    true
-        length:     0:00
+        length:     2:51
     installation:
         title:      "Downloading & Configuration"
         is_free:    true
-        length:     0:00
+        length:     10:02
     bundles:
         title:      Bundles of Joy!
         is_free:    false
-        length:     0:00
+        length:     3:19
     routing:
         title:      Routing: The URLs of the World
         is_free:    false
-        length:     0:00
+        length:     5:44
     controller:
         title:      Controllers: Get to Work
         is_free:    false
-        length:     0:00
+        length:     7:34
     twig:
         title:      Twig
         is_free:    false
