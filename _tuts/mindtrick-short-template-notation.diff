@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 60d7f4e..45aeafd 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -18,7 +18,7 @@ class EventController extends Controller
+ 
+     /**
+      * Lists all Event entities.
+-     * @Template("EventBundle:Event:index.html.twig")
++     * @Template()
+      */
+     public function indexAction()
+     {

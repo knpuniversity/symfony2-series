@@ -1,0 +1,14 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+index 1e19461..9ae4a41 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+@@ -2,9 +2,6 @@
+ 
+ {% block body %}
+ 
+-    {{ app.session.get('some_session_key') }}
+-    {{ app.request.host }}
+-
+     <section class="events">
+         <header id="menu">
+             <a class="button" href="{{ path('event_new') }}">Create new event</a>

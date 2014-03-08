@@ -1,0 +1,304 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "installation-create-project",
+            "name": "Installation: create-project",
+            "description": null
+        },
+        {
+            "id": "installation-umask",
+            "name": "Installation: umask",
+            "description": null
+        },
+        {
+            "id": "installation-playing-with-cookie-lifetime-config",
+            "name": "Installation: playing with cookie_lifetime config",
+            "description": null
+        },
+        {
+            "id": "installation-removing-demo-code",
+            "name": "Installation: Removing demo code",
+            "description": null
+        },
+        {
+            "id": "bundles-generate-bundle",
+            "name": "Bundles: generate:bundle",
+            "description": null
+        },
+        {
+            "id": "routing-change-routing-pattern-temporarily",
+            "name": "Routing: Change routing pattern temporarily",
+            "description": null
+        },
+        {
+            "id": "routing-change-pattern-back",
+            "name": "Routing: Change pattern back",
+            "description": null
+        },
+        {
+            "id": "routing-pattern-to-path",
+            "name": "Routing: Pattern to path",
+            "description": null
+        },
+        {
+            "id": "routing-change-name-firstname-routing",
+            "name": "Routing: Change name->firstName routing",
+            "description": null
+        },
+        {
+            "id": "routing-update-controller-name-firstname",
+            "name": "Routing: Update controller name->firstName",
+            "description": null
+        },
+        {
+            "id": "routing-add-count-wildcard",
+            "name": "Routing: Add count wildcard",
+            "description": null
+        },
+        {
+            "id": "routing-add-count-argument-name",
+            "name": "Routing: Add $count argument name",
+            "description": null
+        },
+        {
+            "id": "routing-switch-argument-order",
+            "name": "Routing: Switch argument order",
+            "description": null
+        },
+        {
+            "id": "routing-removing-debug",
+            "name": "Routing: Removing debug",
+            "description": null
+        },
+        {
+            "id": "controller-returning-direct-response",
+            "name": "Controller: Returning direct Response",
+            "description": null
+        },
+        {
+            "id": "controller-return-a-json-response",
+            "name": "Controller: Return a JSON response",
+            "description": null
+        },
+        {
+            "id": "controller-set-content-type",
+            "name": "Controller: Set content-type",
+            "description": null
+        },
+        {
+            "id": "controller-render-template-with-templating-service",
+            "name": "Controller: Render template with templating service",
+            "description": null
+        },
+        {
+            "id": "controller-tweak-template",
+            "name": "Controller: Tweak template",
+            "description": null
+        },
+        {
+            "id": "controller-finishing-template-rendering-with-response",
+            "name": "Controller: Finishing template rendering with response",
+            "description": null
+        },
+        {
+            "id": "controller-use-renderresponse",
+            "name": "Controller: Use renderResponse",
+            "description": null
+        },
+        {
+            "id": "controller-rendering-with-render",
+            "name": "Controller: Rendering with render",
+            "description": null
+        },
+        {
+            "id": "twig-looping-over-a-variable",
+            "name": "Twig: Looping over a variable",
+            "description": null
+        },
+        {
+            "id": "twig-adding-a-comment",
+            "name": "Twig: Adding a comment",
+            "description": null
+        },
+        {
+            "id": "twig-using-the-upper-filter",
+            "name": "Twig: Using the upper filter",
+            "description": null
+        },
+        {
+            "id": "twig-add-extends",
+            "name": "Twig: Add extends",
+            "description": null
+        },
+        {
+            "id": "twig-override-title",
+            "name": "Twig: Override title",
+            "description": null
+        },
+        {
+            "id": "twig-alternate-block-syntax",
+            "name": "Twig: Alternate block syntax",
+            "description": null
+        },
+        {
+            "id": "doctrine-generate-entity",
+            "name": "Doctrine: generate entity",
+            "description": null
+        },
+        {
+            "id": "doctrine-change-table-name",
+            "name": "Doctrine: change table name",
+            "description": null
+        },
+        {
+            "id": "doctrine-copy-to-play-file",
+            "name": "Doctrine: Copy to play file",
+            "description": null
+        },
+        {
+            "id": "doctrine-finish-play-file-setup",
+            "name": "Doctrine: Finish play file setup",
+            "description": null
+        },
+        {
+            "id": "doctrine-play-file-rendering-template",
+            "name": "Doctrine: Play file rendering template",
+            "description": null
+        },
+        {
+            "id": "doctrine-play-file-insert-event",
+            "name": "Doctrine: Play file insert event",
+            "description": null
+        },
+        {
+            "id": "doctrine-play-file-no-details",
+            "name": "Doctrine: Play file, no details",
+            "description": null
+        },
+        {
+            "id": "doctrine-get-the-entity-manager-in-the-controller",
+            "name": "Doctrine: Get the entity manager in the controller",
+            "description": null
+        },
+        {
+            "id": "doctrine-query-for-an-event-and-render-it",
+            "name": "Doctrine: Query for an event and render it",
+            "description": null
+        },
+        {
+            "id": "generators-running-the-crud-generator",
+            "name": "Generators: Running the crud generator",
+            "description": null
+        },
+        {
+            "id": "generators-copying-in-stub-templates",
+            "name": "Generators: Copying in stub templates",
+            "description": null
+        },
+        {
+            "id": "generators-creating-the-middle-layout-file",
+            "name": "Generators: Creating the middle layout file",
+            "description": null
+        },
+        {
+            "id": "generators-tweaking-the-title-block",
+            "name": "Generators: Tweaking the title block",
+            "description": null
+        },
+        {
+            "id": "generators-removing-the-route-prefix",
+            "name": "Generators: Removing the route prefix",
+            "description": null
+        },
+        {
+            "id": "assets-copying-in-public-files",
+            "name": "Assets: Copying in public files",
+            "description": null
+        },
+        {
+            "id": "assets-add-symlink-composer-extra",
+            "name": "Assets: Add symlink composer extra",
+            "description": null
+        },
+        {
+            "id": "assets-add-in-link-tags",
+            "name": "Assets: Add in link tags",
+            "description": null
+        },
+        {
+            "id": "assets-change-to-use-assetic",
+            "name": "Assets: Change to use assetic",
+            "description": null
+        },
+        {
+            "id": "composer-adding-composer-json-entry",
+            "name": "Composer: Adding composer.json entry",
+            "description": null
+        },
+        {
+            "id": "fixtures-enabling-the-bundle",
+            "name": "Fixtures: Enabling the bundle",
+            "description": null
+        },
+        {
+            "id": "fixtures-create-new-fixtures-file",
+            "name": "Fixtures: Create new fixtures file",
+            "description": null
+        },
+        {
+            "id": "fixtures-adding-the-data",
+            "name": "Fixtures: Adding the data",
+            "description": null
+        },
+        {
+            "id": "mindtrick-beginning-template-use",
+            "name": "MindTrick: Beginning @Template use",
+            "description": null
+        },
+        {
+            "id": "mindtrick-short-template-notation",
+            "name": "MindTrick: Short @Template notation",
+            "description": null
+        },
+        {
+            "id": "mindtrick-annotation-routing",
+            "name": "MindTrick: Annotation routing",
+            "description": null
+        },
+        {
+            "id": "mindtrick-removing-extra-route",
+            "name": "MindTrick: Removing extra route",
+            "description": null
+        },
+        {
+            "id": "mindtrick-give-annotation-route-a-name",
+            "name": "MindTrick: Give annotation route a name",
+            "description": null
+        },
+        {
+            "id": "mindtrick-twig-global-variable",
+            "name": "MindTrick: Twig global variable",
+            "description": null
+        },
+        {
+            "id": "mindtrick-removing-the-app-variable",
+            "name": "MindTrick: Removing the app variable",
+            "description": null
+        },
+        {
+            "id": "mindtrick-flexing-the-block-function",
+            "name": "MindTrick: Flexing the block function",
+            "description": null
+        },
+        {
+            "id": "mindtrick-twig-whitespace-control",
+            "name": "MindTrick: Twig whitespace control",
+            "description": null
+        }
+    ]
+}

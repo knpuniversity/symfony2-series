@@ -1,0 +1,11 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Default/index.html.twig b/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
+index 81d76cd..0a6d537 100644
+--- a/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
+@@ -1,5 +1,5 @@
+ {# Hello comments! #}
+ 
+ {% for i in 1..count %}
+-    Hello <strong>{{ name }}</strong> # {{ i }}!<br/>
++    Hello <strong>{{ name|upper }}</strong> # {{ i }}!<br/>
+ {% endfor %}

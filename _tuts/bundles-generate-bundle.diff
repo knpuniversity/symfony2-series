@@ -1,0 +1,179 @@
+diff --git a/app/AppKernel.php b/app/AppKernel.php
+index c35b166..b4a296e 100644
+--- a/app/AppKernel.php
++++ b/app/AppKernel.php
+@@ -16,6 +16,7 @@ class AppKernel extends Kernel
+             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
++            new Yoda\EventBundle\EventBundle(),
+         );
+ 
+         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+diff --git a/app/config/routing.yml b/app/config/routing.yml
+index e69de29..0bdc2fd 100644
+--- a/app/config/routing.yml
++++ b/app/config/routing.yml
+@@ -0,0 +1,4 @@
++event:
++    resource: "@EventBundle/Resources/config/routing.yml"
++    prefix:   /
++
+diff --git a/src/Yoda/EventBundle/Controller/DefaultController.php b/src/Yoda/EventBundle/Controller/DefaultController.php
+new file mode 100644
+index 0000000..a6390fa
+--- /dev/null
++++ b/src/Yoda/EventBundle/Controller/DefaultController.php
+@@ -0,0 +1,16 @@
++<?php
++
++namespace Yoda\EventBundle\Controller;
++
++use Symfony\Bundle\FrameworkBundle\Controller\Controller;
++
++class DefaultController extends Controller
++{
++    public function indexAction($name)
++    {
++        return $this->render(
++            'EventBundle:Default:index.html.twig',
++            array('name' => $name)
++        );
++    }
++}
+diff --git a/src/Yoda/EventBundle/DependencyInjection/Configuration.php b/src/Yoda/EventBundle/DependencyInjection/Configuration.php
+new file mode 100644
+index 0000000..a3c4889
+--- /dev/null
++++ b/src/Yoda/EventBundle/DependencyInjection/Configuration.php
+@@ -0,0 +1,29 @@
++<?php
++
++namespace Yoda\EventBundle\DependencyInjection;
++
++use Symfony\Component\Config\Definition\Builder\TreeBuilder;
++use Symfony\Component\Config\Definition\ConfigurationInterface;
++
++/**
++ * This is the class that validates and merges configuration from your app/config files
++ *
++ * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class}
++ */
++class Configuration implements ConfigurationInterface
++{
++    /**
++     * {@inheritDoc}
++     */
++    public function getConfigTreeBuilder()
++    {
++        $treeBuilder = new TreeBuilder();
++        $rootNode = $treeBuilder->root('event');
++
++        // Here you should define the parameters that are allowed to
++        // configure your bundle. See the documentation linked above for
++        // more information on that topic.
++
++        return $treeBuilder;
++    }
++}
+diff --git a/src/Yoda/EventBundle/DependencyInjection/EventExtension.php b/src/Yoda/EventBundle/DependencyInjection/EventExtension.php
+new file mode 100644
+index 0000000..3fb41a3
+--- /dev/null
++++ b/src/Yoda/EventBundle/DependencyInjection/EventExtension.php
+@@ -0,0 +1,28 @@
++<?php
++
++namespace Yoda\EventBundle\DependencyInjection;
++
++use Symfony\Component\DependencyInjection\ContainerBuilder;
++use Symfony\Component\Config\FileLocator;
++use Symfony\Component\HttpKernel\DependencyInjection\Extension;
++use Symfony\Component\DependencyInjection\Loader;
++
++/**
++ * This is the class that loads and manages your bundle configuration
++ *
++ * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
++ */
++class EventExtension extends Extension
++{
++    /**
++     * {@inheritDoc}
++     */
++    public function load(array $configs, ContainerBuilder $container)
++    {
++        $configuration = new Configuration();
++        $config = $this->processConfiguration($configuration, $configs);
++
++        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
++        $loader->load('services.yml');
++    }
++}
+diff --git a/src/Yoda/EventBundle/EventBundle.php b/src/Yoda/EventBundle/EventBundle.php
+new file mode 100644
+index 0000000..eef515f
+--- /dev/null
++++ b/src/Yoda/EventBundle/EventBundle.php
+@@ -0,0 +1,9 @@
++<?php
++
++namespace Yoda\EventBundle;
++
++use Symfony\Component\HttpKernel\Bundle\Bundle;
++
++class EventBundle extends Bundle
++{
++}
+diff --git a/src/Yoda/EventBundle/Resources/config/routing.yml b/src/Yoda/EventBundle/Resources/config/routing.yml
+new file mode 100644
+index 0000000..302bab5
+--- /dev/null
++++ b/src/Yoda/EventBundle/Resources/config/routing.yml
+@@ -0,0 +1,3 @@
++event_homepage:
++    pattern:  /hello/{name}
++    defaults: { _controller: EventBundle:Default:index }
+diff --git a/src/Yoda/EventBundle/Resources/config/services.yml b/src/Yoda/EventBundle/Resources/config/services.yml
+new file mode 100644
+index 0000000..3fccacc
+--- /dev/null
++++ b/src/Yoda/EventBundle/Resources/config/services.yml
+@@ -0,0 +1,7 @@
++parameters:
++#    event.example.class: Yoda\EventBundle\Example
++
++services:
++#    event.example:
++#        class: %event.example.class%
++#        arguments: [@service_id, "plain_value", %parameter%]
+diff --git a/src/Yoda/EventBundle/Resources/views/Default/index.html.twig b/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
+new file mode 100644
+index 0000000..4ce626e
+--- /dev/null
++++ b/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
+@@ -0,0 +1 @@
++Hello {{ name }}!
+diff --git a/src/Yoda/EventBundle/Tests/Controller/DefaultControllerTest.php b/src/Yoda/EventBundle/Tests/Controller/DefaultControllerTest.php
+new file mode 100644
+index 0000000..f17b836
+--- /dev/null
++++ b/src/Yoda/EventBundle/Tests/Controller/DefaultControllerTest.php
+@@ -0,0 +1,17 @@
++<?php
++
++namespace Yoda\EventBundle\Tests\Controller;
++
++use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
++
++class DefaultControllerTest extends WebTestCase
++{
++    public function testIndex()
++    {
++        $client = static::createClient();
++
++        $crawler = $client->request('GET', '/hello/Fabien');
++
++        $this->assertTrue($crawler->filter('html:contains("Hello Fabien")')->count() > 0);
++    }
++}

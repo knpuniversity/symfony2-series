@@ -1,0 +1,1257 @@
+diff --git a/app/AppKernel.php b/app/AppKernel.php
+index c5c9eb6..c35b166 100644
+--- a/app/AppKernel.php
++++ b/app/AppKernel.php
+@@ -19,7 +19,6 @@ class AppKernel extends Kernel
+         );
+ 
+         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+-            $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
+             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
+             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+diff --git a/app/config/routing_dev.yml b/app/config/routing_dev.yml
+index c45f361..ff93a02 100644
+--- a/app/config/routing_dev.yml
++++ b/app/config/routing_dev.yml
+@@ -12,7 +12,3 @@ _configurator:
+ 
+ _main:
+     resource: routing.yml
+-
+-# AcmeDemoBundle routes (to be removed)
+-_acme_demo:
+-    resource: "@AcmeDemoBundle/Resources/config/routing.yml"
+diff --git a/src/Acme/DemoBundle/AcmeDemoBundle.php b/src/Acme/DemoBundle/AcmeDemoBundle.php
+deleted file mode 100644
+index 269fc1e..0000000
+--- a/src/Acme/DemoBundle/AcmeDemoBundle.php
++++ /dev/null
+@@ -1,9 +0,0 @@
+-<?php
+-
+-namespace Acme\DemoBundle;
+-
+-use Symfony\Component\HttpKernel\Bundle\Bundle;
+-
+-class AcmeDemoBundle extends Bundle
+-{
+-}
+diff --git a/src/Acme/DemoBundle/Command/HelloWorldCommand.php b/src/Acme/DemoBundle/Command/HelloWorldCommand.php
+deleted file mode 100644
+index 998cbcd..0000000
+--- a/src/Acme/DemoBundle/Command/HelloWorldCommand.php
++++ /dev/null
+@@ -1,48 +0,0 @@
+-<?php
+-
+-namespace Acme\DemoBundle\Command;
+-
+-use Symfony\Component\Console\Command\Command;
+-use Symfony\Component\Console\Input\InputArgument;
+-use Symfony\Component\Console\Input\InputInterface;
+-use Symfony\Component\Console\Output\OutputInterface;
+-
+-/**
+- * Hello World command for demo purposes.
+- *
+- * You could also extend from Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand
+- * to get access to the container via $this->getContainer().
+- *
+- * @author Tobias Schultze <http://tobion.de>
+- */
+-class HelloWorldCommand extends Command
+-{
+-    /**
+-     * {@inheritdoc}
+-     */
+-    protected function configure()
+-    {
+-        $this
+-            ->setName('acme:hello')
+-            ->setDescription('Hello World example command')
+-            ->addArgument('who', InputArgument::OPTIONAL, 'Who to greet.', 'World')
+-            ->setHelp(<<<EOF
+-The <info>%command.name%</info> command greets somebody or everybody:
+-
+-<info>php %command.full_name%</info>
+-
+-The optional argument specifies who to greet:
+-
+-<info>php %command.full_name%</info> Fabien
+-EOF
+-            );
+-    }
+-
+-    /**
+-     * {@inheritdoc}
+-     */
+-    protected function execute(InputInterface $input, OutputInterface $output)
+-    {
+-        $output->writeln(sprintf('Hello <comment>%s</comment>!', $input->getArgument('who')));
+-    }
+-}
+diff --git a/src/Acme/DemoBundle/Controller/DemoController.php b/src/Acme/DemoBundle/Controller/DemoController.php
+deleted file mode 100644
+index a99de89..0000000
+--- a/src/Acme/DemoBundle/Controller/DemoController.php
++++ /dev/null
+@@ -1,56 +0,0 @@
+-<?php
+-
+-namespace Acme\DemoBundle\Controller;
+-
+-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+-use Symfony\Component\HttpFoundation\RedirectResponse;
+-use Symfony\Component\HttpFoundation\Request;
+-use Acme\DemoBundle\Form\ContactType;
+-
+-// these import the "@Route" and "@Template" annotations
+-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+-
+-class DemoController extends Controller
+-{
+-    /**
+-     * @Route("/", name="_demo")
+-     * @Template()
+-     */
+-    public function indexAction()
+-    {
+-        return array();
+-    }
+-
+-    /**
+-     * @Route("/hello/{name}", name="_demo_hello")
+-     * @Template()
+-     */
+-    public function helloAction($name)
+-    {
+-        return array('name' => $name);
+-    }
+-
+-    /**
+-     * @Route("/contact", name="_demo_contact")
+-     * @Template()
+-     */
+-    public function contactAction(Request $request)
+-    {
+-        $form = $this->createForm(new ContactType());
+-        $form->handleRequest($request);
+-
+-        if ($form->isValid()) {
+-            $mailer = $this->get('mailer');
+-
+-            // .. setup a message and send it
+-            // http://symfony.com/doc/current/cookbook/email.html
+-
+-            $request->getSession()->getFlashBag()->set('notice', 'Message sent!');
+-
+-            return new RedirectResponse($this->generateUrl('_demo'));
+-        }
+-
+-        return array('form' => $form->createView());
+-    }
+-}
+diff --git a/src/Acme/DemoBundle/Controller/SecuredController.php b/src/Acme/DemoBundle/Controller/SecuredController.php
+deleted file mode 100644
+index 004fe95..0000000
+--- a/src/Acme/DemoBundle/Controller/SecuredController.php
++++ /dev/null
+@@ -1,70 +0,0 @@
+-<?php
+-
+-namespace Acme\DemoBundle\Controller;
+-
+-use Symfony\Component\HttpFoundation\Request;
+-use Symfony\Component\Security\Core\SecurityContext;
+-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+-
+-/**
+- * @Route("/demo/secured")
+- */
+-class SecuredController extends Controller
+-{
+-    /**
+-     * @Route("/login", name="_demo_login")
+-     * @Template()
+-     */
+-    public function loginAction(Request $request)
+-    {
+-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+-            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+-        } else {
+-            $error = $request->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
+-        }
+-
+-        return array(
+-            'last_username' => $request->getSession()->get(SecurityContext::LAST_USERNAME),
+-            'error'         => $error,
+-        );
+-    }
+-
+-    /**
+-     * @Route("/login_check", name="_security_check")
+-     */
+-    public function securityCheckAction()
+-    {
+-        // The security layer will intercept this request
+-    }
+-
+-    /**
+-     * @Route("/logout", name="_demo_logout")
+-     */
+-    public function logoutAction()
+-    {
+-        // The security layer will intercept this request
+-    }
+-
+-    /**
+-     * @Route("/hello", defaults={"name"="World"}),
+-     * @Route("/hello/{name}", name="_demo_secured_hello")
+-     * @Template()
+-     */
+-    public function helloAction($name)
+-    {
+-        return array('name' => $name);
+-    }
+-
+-    /**
+-     * @Route("/hello/admin/{name}", name="_demo_secured_hello_admin")
+-     * @Security("is_granted('ROLE_ADMIN')")
+-     * @Template()
+-     */
+-    public function helloadminAction($name)
+-    {
+-        return array('name' => $name);
+-    }
+-}
+diff --git a/src/Acme/DemoBundle/Controller/WelcomeController.php b/src/Acme/DemoBundle/Controller/WelcomeController.php
+deleted file mode 100644
+index acceedf..0000000
+--- a/src/Acme/DemoBundle/Controller/WelcomeController.php
++++ /dev/null
+@@ -1,18 +0,0 @@
+-<?php
+-
+-namespace Acme\DemoBundle\Controller;
+-
+-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+-
+-class WelcomeController extends Controller
+-{
+-    public function indexAction()
+-    {
+-        /*
+-         * The action's view can be rendered using render() method
+-         * or @Template annotation as demonstrated in DemoController.
+-         *
+-         */
+-        return $this->render('AcmeDemoBundle:Welcome:index.html.twig');
+-    }
+-}
+diff --git a/src/Acme/DemoBundle/DependencyInjection/AcmeDemoExtension.php b/src/Acme/DemoBundle/DependencyInjection/AcmeDemoExtension.php
+deleted file mode 100644
+index 6dfcc82..0000000
+--- a/src/Acme/DemoBundle/DependencyInjection/AcmeDemoExtension.php
++++ /dev/null
+@@ -1,22 +0,0 @@
+-<?php
+-
+-namespace Acme\DemoBundle\DependencyInjection;
+-
+-use Symfony\Component\DependencyInjection\ContainerBuilder;
+-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+-use Symfony\Component\Config\FileLocator;
+-
+-class AcmeDemoExtension extends Extension
+-{
+-    public function load(array $configs, ContainerBuilder $container)
+-    {
+-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+-        $loader->load('services.xml');
+-    }
+-
+-    public function getAlias()
+-    {
+-        return 'acme_demo';
+-    }
+-}
+diff --git a/src/Acme/DemoBundle/EventListener/ControllerListener.php b/src/Acme/DemoBundle/EventListener/ControllerListener.php
+deleted file mode 100644
+index aa117d7..0000000
+--- a/src/Acme/DemoBundle/EventListener/ControllerListener.php
++++ /dev/null
+@@ -1,24 +0,0 @@
+-<?php
+-
+-namespace Acme\DemoBundle\EventListener;
+-
+-use Symfony\Component\HttpKernel\HttpKernelInterface;
+-use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+-use Acme\DemoBundle\Twig\Extension\DemoExtension;
+-
+-class ControllerListener
+-{
+-    protected $extension;
+-
+-    public function __construct(DemoExtension $extension)
+-    {
+-        $this->extension = $extension;
+-    }
+-
+-    public function onKernelController(FilterControllerEvent $event)
+-    {
+-        if (HttpKernelInterface::MASTER_REQUEST === $event->getRequestType()) {
+-            $this->extension->setController($event->getController());
+-        }
+-    }
+-}
+diff --git a/src/Acme/DemoBundle/Form/ContactType.php b/src/Acme/DemoBundle/Form/ContactType.php
+deleted file mode 100644
+index 2c76cdb..0000000
+--- a/src/Acme/DemoBundle/Form/ContactType.php
++++ /dev/null
+@@ -1,20 +0,0 @@
+-<?php
+-
+-namespace Acme\DemoBundle\Form;
+-
+-use Symfony\Component\Form\AbstractType;
+-use Symfony\Component\Form\FormBuilderInterface;
+-
+-class ContactType extends AbstractType
+-{
+-    public function buildForm(FormBuilderInterface $builder, array $options)
+-    {
+-        $builder->add('email', 'email');
+-        $builder->add('message', 'textarea');
+-    }
+-
+-    public function getName()
+-    {
+-        return 'contact';
+-    }
+-}
+diff --git a/src/Acme/DemoBundle/Resources/config/routing.yml b/src/Acme/DemoBundle/Resources/config/routing.yml
+deleted file mode 100644
+index 3402ca1..0000000
+--- a/src/Acme/DemoBundle/Resources/config/routing.yml
++++ /dev/null
+@@ -1,12 +0,0 @@
+-_welcome:
+-    pattern:  /
+-    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+-
+-_demo_secured:
+-    resource: "@AcmeDemoBundle/Controller/SecuredController.php"
+-    type:     annotation
+-
+-_demo:
+-    resource: "@AcmeDemoBundle/Controller/DemoController.php"
+-    type:     annotation
+-    prefix:   /demo
+\ No newline at end of file
+diff --git a/src/Acme/DemoBundle/Resources/config/services.xml b/src/Acme/DemoBundle/Resources/config/services.xml
+deleted file mode 100644
+index d6274ce..0000000
+--- a/src/Acme/DemoBundle/Resources/config/services.xml
++++ /dev/null
+@@ -1,18 +0,0 @@
+-<?xml version="1.0" ?>
+-
+-<container xmlns="http://symfony.com/schema/dic/services"
+-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+-
+-    <services>
+-        <service id="twig.extension.acme.demo" class="Acme\DemoBundle\Twig\Extension\DemoExtension" public="false">
+-            <tag name="twig.extension" />
+-            <argument type="service" id="twig.loader" />
+-        </service>
+-
+-        <service id="acme.demo.listener" class="Acme\DemoBundle\EventListener\ControllerListener">
+-            <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController" />
+-            <argument type="service" id="twig.extension.acme.demo" />
+-        </service>
+-    </services>
+-</container>
+diff --git a/src/Acme/DemoBundle/Resources/public/css/demo.css b/src/Acme/DemoBundle/Resources/public/css/demo.css
+deleted file mode 100644
+index 4dd2f16..0000000
+--- a/src/Acme/DemoBundle/Resources/public/css/demo.css
++++ /dev/null
+@@ -1,101 +0,0 @@
+-body {
+-    font-size: 14px;
+-    font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+-}
+-h1.title {
+-    font-size: 45px;
+-    padding-bottom: 30px;
+-}
+-.sf-reset h2 {
+-    font-weight:   bold;
+-    color:         #FFFFFF;
+-    /* Font is duplicated of body (sans-serif) */
+-    font-family:      "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+-
+-    margin-bottom:    10px;
+-    background-color: #aacd4e;
+-    padding:          2px 4px;
+-    display:          inline-block;
+-    text-transform:   uppercase;
+-
+-}
+-p {
+-    line-height:    20px;
+-    padding-bottom: 20px;
+-}
+-ul#demo-list a {
+-    background: url(../images/blue-arrow.png) no-repeat right 6px;
+-    padding-right: 10px;
+-    margin-right:  30px;
+-}
+-#symfony-header {
+-    position: relative;
+-    padding: 30px 30px 20px 30px;
+-}
+-.sf-reset .symfony-blocks-welcome {
+-    overflow: hidden;
+-}
+-.sf-reset .symfony-blocks-welcome > div {
+-    background-color: whitesmoke;
+-    float:            left;
+-    width:            240px;
+-    margin-right:     14px;
+-    text-align:       center;
+-    padding:          26px 20px;
+-}
+-.sf-reset .symfony-blocks-welcome > div.block-demo {
+-    margin-right: 0;
+-}
+-.sf-reset .symfony-blocks-welcome .illustration {
+-    padding-bottom: 20px;
+-}
+-.sf-reset .symfony-blocks-help {
+-    overflow: hidden;
+-}
+-.sf-reset .symfony-blocks-help {
+-    margin-top: 30px;
+-    padding:    18px;
+-    border:     1px solid #E6E6E6;
+-}
+-.sf-reset .symfony-blocks-help > div {
+-    width:        254px;
+-    float:        left;
+-}
+-.flash-message {
+-    padding: 10px;
+-    margin: 5px;
+-    margin-top: 15px;
+-    background-color: #ffe;
+-}
+-.sf-reset .error {
+-    color: red;
+-}
+-#login label, #contact_form label {
+-    display: block;
+-    float: left;
+-    width: 90px;
+-}
+-.sf-reset ul#menu {
+-    float: right;
+-    margin-bottom: 20px;
+-    padding-left: 0;
+-}
+-.sf-reset #menu li {
+-    padding-left: 0;
+-    margin-right: 10px;
+-    display: inline;
+-}
+-.sf-reset a,
+-.sf-reset li a {
+-    color: #08C;
+-    text-decoration: none;
+-}
+-.sf-reset a:hover,
+-.sf-reset li a:hover {
+-    color: #08C;
+-    text-decoration: underline;
+-}
+-.sf-reset .symfony-content pre {
+-    white-space: pre;
+-    font-family: monospace;
+-}
+diff --git a/src/Acme/DemoBundle/Resources/public/images/blue-arrow.png b/src/Acme/DemoBundle/Resources/public/images/blue-arrow.png
+deleted file mode 100644
+index fa82d4b4fff6414062efb2a02049cfeb9e8e7cb1..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 181
+zcmeAS@N?(olHy`uVBq!ia0vp^tU%1c!3HD^Kbl$tDajJoh?3y^w370~qErUQl>DSr
+z1<%~X^wgl##FWaylc_d9Md6+<jv*Ddk`fpi`-~Uzcr<WoC~zz}-B@DjGeK~bkV>I=
+zhqi>4PnzMOuO)K~*(RkoSoCn7)R^#~T4CSujwM;<0=t>E&QEnQ(&y3G(9U?$#xX^m
+ckwt=G)hqGzY<Z(AKr0wLUHx3vIVCg!0FnzgGynhq
+
+diff --git a/src/Acme/DemoBundle/Resources/public/images/field-background.gif b/src/Acme/DemoBundle/Resources/public/images/field-background.gif
+deleted file mode 100644
+index 7c0efc1087c3cedd2a95deaef7322d4770170ff3..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 63
+zcmZ?wbhEHbWMp7vSj52a_3PL7@8AFZ`}fzcU$0)hVt@g~pDbXe4u}M)WngCUU{vO0
+Gum%7TE)u5z
+
+diff --git a/src/Acme/DemoBundle/Resources/public/images/logo.gif b/src/Acme/DemoBundle/Resources/public/images/logo.gif
+deleted file mode 100644
+index 703cf45fc78e6d31d4a9af460252b536b1c9854e..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 1698
+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
+
+diff --git a/src/Acme/DemoBundle/Resources/public/images/search.png b/src/Acme/DemoBundle/Resources/public/images/search.png
+deleted file mode 100644
+index 3c88b6a4234ef5bb048bcecdc210c603c629339d..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 737
+zcmV<70v`Q|P)<h;3K|Lk000e1NJLTq000mG000mO1^@s6AM^iV0000PbVXQnQ*UN;
+zcVTj606}DLVr3vnZDD6+Qe|Oed2z{QJOBU!gGod|RCwBqQ@v{<Q4rq`jqAtVYA%aH
+zB*&4&LoY;Zj_4sA*jT7VAXNyY38Y97NFxLh1i{X9K|-34DsBD*tHWqc!Nx{c@03$<
+z{nogey?M(nsF&g%{CN9j=ly2pH}h~o5HPf2v6w2AN?C@(;o4|4(kT=Qo}#GU>gsCw
+z?(Xh4xV&O-EF1{%v$Hc}p-`|-CX<!7oD2p-<LKxpv%kMTS^h_wOeQ*+On&8gUWp8Q
+zdwVm#-_P4@w%1;-hjSc<kH=$eu~?)J4i0MIA}kZ^Hk-}&=nxDBho`5f^_`uahQs0L
+z`g}gVQmIg-Qi&W42HIAu)pa_Z{doeSUax;ZA1;@R_j<i$_+$aU02PuX+4J-Bnog$^
+zqp~c!4x3_upx^I{saq_TE^G}z2QUN-031!ze>OKadE^5EYyTmDC?Y##GKKABNo`~s
+zLF(c`qtW1~>;;02jSb|4JwHFws4L4|dU$xyR;yJpOS9ShvMeIucDqsPSgls04i67^
+zudlCF^5t+iY`DL_|1z7+aDpH(kH^D-eYOw*djIL-;^K2ImlLBXmCC7Ft?t1k1=OrV
+zbAs&K+uPHdo134KPSg28(u0uZL?W^N`1ttdAju2Ftl!?=rk4qjs%Q?Fd_K=)G8uKb
+zTo#2g8jZr%)|L>D$5ow9N4&r=Od}GBJXx*QsZ4-L%BlhHkl28gxh{~|Y<4Xa3hBGu
+zu2>GdkJj<=@lzlWc##P(sRN|cXSr3Vr388oK=SeO^3nk1iX?iyzH@SN@`IQwQIH~z
+zr6EEXNki4N+wE*L8s+4vY`5DqkeV=*!G8c{N&(F2bov`SHs96N)ps~Ee+3u-E3-EG
+T<vO7600000NkvXXu0mjf5?Wl1
+
+diff --git a/src/Acme/DemoBundle/Resources/public/images/welcome-configure.gif b/src/Acme/DemoBundle/Resources/public/images/welcome-configure.gif
+deleted file mode 100644
+index 931179a7cb9827b662968f36f0732dceaae9cc8e..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 3530
+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
+EJ3feF)c^nh
+
+diff --git a/src/Acme/DemoBundle/Resources/public/images/welcome-demo.gif b/src/Acme/DemoBundle/Resources/public/images/welcome-demo.gif
+deleted file mode 100644
+index 0623de54c9501be250cd0907bd09f6b452c53fe6..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 4053
+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
+H0RaFzT>Bsn
+
+diff --git a/src/Acme/DemoBundle/Resources/public/images/welcome-quick-tour.gif b/src/Acme/DemoBundle/Resources/public/images/welcome-quick-tour.gif
+deleted file mode 100644
+index b9018b11dd21302f850984fe9b49e49828101a00..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 4770
+zcmWmDhd<Ph<G}Ivz27&vb8joNdLOdY+a4)L;_Qp2R5Yb^Mw%bpSy>;>NTP8@B}G;x
+z4R2>=<fM?OBl?KOAu`JSzQ5<=^)I|!-CS&JgDQc8z;7uqK0aRiw6>zW(%XH@m8@)s
+z4Nms98+Y&8^W(?QN7av!)r@<^C3<W09XC3E|MvZM(Vc5Kxqe%=`FQ$X&%NR5>|Xky
+z?BmBztj!(+10QUx?Ck9v*4x;3babR7r;Lt{T3Og;q-Tzde9pa==k4LUiRrS@o_QeX
+z(ADf~H?H66dDA1fncvjdtj*B*Hzl>Lt^MYWTiI8x_V)Ji)6&yY`H`p3HaE905bgf{
+z_wU}m+qvEU<;$0Ib8|_F$s&<xo8OMqf73W8!@EV@&Q7l9&Yq9v#Rly=@V4h|a>Bnw
+zg}1+a`BGN;upqza;`x74lK)+!qlaPj!G}XG$0zO$2yA=RrlYmyY~;C!u*lZdSNVd1
+z=g(gp3qIlL=JTxfxtojU$>X7i4+dwXXE-~$&d<*`HZ<~h(MN+rPDey?FY$`+-g9zr
+zPEAd#t$oJ!@qO~RW^r+`y}cuh6Vcw*{_@4k#>S@dhZPsjUBv3@pFewEQ}guho#M?-
+ztk<2d`TTTYeZ%Y5UFrOc)|S@FimDgSUtIc!*C1?kuy<U&5~;3wbmI7_rl#hSd-v-x
+zp}wv`-OIYpj?Th@!h-w)fgt~B&C{AEPvhe*yR$t1xp>LP%g4*Z$HU#z!_6b%a-yy6
+zdKYI`N2b#T`;8{X>#QuS%}{eMcecB$*IHxLWs@7a*35(DZDO>}be*}8fr+7kv6mZr
+zor$TwuA#fDx3S?`BSRBIePaVXBLh7{Gt|NywKO-iv@o->G`F@ev$is~S#P`1+S1O}
+z+J0zgXl7>S>(_~?sj11yNr^-<JUsmO@85}uiQ(aqmX_96ui7#*vZkk}#s6=3aB!%r
+zOVr){X7Iz{`}YIy-t~SN`;wJ;<;V9Qqn}4Vefl&s^zqlsuikgP4Z;RPeIp|S<H?E1
+z2lq?+`uaY6`0(F<<Nba8Bf}%pQ`4d@k*9~(uy}ZAaA<P!+vm@pzkmNe@O}VYYie(|
+zVQg&7*vMq92|6X2ij9d24~v+do|&1RIdSZir<<3<Mn|bsIy*bdSis`|KnfTG|MUM(
+zFv(ItO3`GM3+iLYiiQEL<@v%Omv8#GdgtWWWR-Bw(AJ8=mNdlSWu{q4(W^{-zmkAg
+zm22Gb&?EVvds;=Ec{aAoNK@6_u3O9)nU(HJ#p`*=tL~|4OIEUjYzy80m8s8qcYkM9
+z$WYs(`#VZq@N<s5=yptg*DbF-9_72ZPdH;bN!w|v+%tYxE&AJ^JpA+`=?`U<XH9v6
+z$@)K~!R3UZKx_80`$rEJl1fp;Q#*#wXnyDtC==f>YpcJ$nU|4`+_KmhNV@(0-geqj
+z^@%r!r9)f<>|`q5{S>>(`_F2XeXW^BJ6;}n90Ins+v<59d^$Tu$NSra7Tm%9Y5%Sy
+zUELMgRys4@bAQLagKfX+=bU4A`P6MZuLhc82%w#VF(%e9KXNr0pK+)Ghu^BsVQguO
+zfnD^6W0kfC563C`Yw=A{6ar1bDI|!1&+hL=g*!Ph76A`NMw0J~v_7X;^ag+a*XB#k
+z0X0xQTu4P?5fR1mW#CBqDndh&qNml@(M)z*Lo*y=FL5zj$q;v}O2$uvRC|l57^>MH
+zk&qtJDsagS49IL{((M;W84-~Y@wBtv5<0;8BZ(oO^DLms4MY_AX!1PK*cI&J88?Hi
+zVuP<mS=&Rt7TLbNcaODAb>!<^L6m!%ZUR3)+WPJBl8F-8bo0%Kp0gC^jMsh}GFe*l
+zrDU?KCfAX)^#Sn$j20^$`&QAad;eQyhgF`jIj9^HEprb0MK^DCLLQU|1H|8-h~tfZ
+z)Qn~yE30v)#)2!>0r#D1OpZU>Zfa1LldzIACQEay4}hEN0FrSzW{aP?8Qx+X)P_+>
+zDfH`#0`8bY68U=Ba{@uT!&a4L-lVz^KgiN@Oo39+ri-y|4C5!?D%(A5R9@pPQ27Ma
+zWqn~7Z8_GDtowRFGA%MbW-0=;Joyt2C!Tvk%?L$ddUqlRp`kyJ9=4oD#P`|0J!itG
+zK_`y$<29BMelziie(z}<Np=q3A92B?o~e8tiRMV(N&zb+cHctW+E|s7^TV5Uta5<Z
+z2E;{<nez9hg}Ua+g)xo!-#!S6v16F;G^3be+ZTRvsLgzO!dt&O%NC6tmqOdVRrj4-
+z`d;&2+0u_EP;w)sV;m9LKWYiL{z`h$v$*@Cu{Mp^OfEd<>e;&g?`;2(hkxe=&-{Eb
+zH%e9_n_u))FwyV75dFu$)54hoNm|xP|NQDZCH*_qPQFAuo>SkT-B#Y)9fd+`s5(m1
+zeoc#>)g(POPASfvh3*%FD+M^vt2lbij|$4FYNl7zbk8+^rjr6#LgQjQ(~ToM>tC-(
+zTNCoB_r$SZO+?Oz*<3kgF=hKV$z>+B0G3|1arXZ8lTPP2Dx7R}PK`J~{j3ebs8f@n
+ze|nNR*+cQkm6Qmb3G&|7dZ3xrY?eEf66{&1-Zfthu!d7M+6eO=+aS2(!>MOG3RnGZ
+zZP~aum3AQ@mKhsV8Yp6rE(G9KCi>xb+DxbOQ;Kx-++Ml+n`P`%O;E@dL~9^xGF)~a
+z3<gDUzPZy`#h$kfcf4xberFm6^W$Z<3KDo2?g|b*6kN^Z?OmL{ic#;Nm)$z{gXSP4
+zPkQEy@HYT{GPU?lrC-d>5dWFn{s+1m<?NK04F`yOTJP9AOvLkQJ`?oMHZmtTUY!;d
+zYC?`nOIG*gF+$+MH>g^h>V7FvVSeToKpS_s%}lAG=@Ojz(R4#J$C&IWfM@T*@eJ5D
+z@UR+q&4rn+*7>+G{N^lGZLd;BG???NNZ;!y?pq+co>~B$v)Q?Ft9uU!GZ8u1@s0js
+znpe?V>-sR4NqjolK@6ylsTu?mw?yBuo4x0Kn>$L@CPrmp@-gxdl_h$+DTPON7RQIz
+z0PiZTENT8rEm{bQbNoRmQ5r9HN-(7dsyaHBX1X|LbSJ-DoP8K&851sW#MOBVS363K
+zfRQf%X4m`h2;7PySnrzU7=ZgOGvIDzBK7QCmEi9;P^JoysSZ+O3IG+nBDrgOy?{h6
+zJ?^Lh@uUyLco-HrMCao~C%Jd?Iw{~r=HQ6>@0tTSUg%9m&H?f;WSX#BIn`s&#Cb<#
+z5XMox193d#;Ti{W*;a3U@^tR+=i??1mF&@+z(EGkkg!|Zo&Rxh;7qEe4Gu@u=dTr5
+zmyY};n+@WqN1rpG5>|P%N{5(eo<k#zN5|-S29Y-TA!g&EH(8iC`E-O_>12cQO_dEA
+zT6ozqRz=c|j*%75=9|#e&}3-K7BW|G9h|}?-;fU=?QAH!z-qj3)%vmx3sPqQ*-U+Y
+zlJ5G2SM1cvth=6LhMR25z%4lQWvt^88Eo_Uuz$&E6KQ+SLPxN7Rc>F$7prHxq@8@2
+zr4@)koy&#fqrLmN@(P#7hI=$uV2wsZuW=`hMNxuxb%Dx>U^nb2(X1w#Sr9bt`C~yh
+z61#QB+QdOyE}xLL(*?g$AzEFBs}==jJc3Of4h1ag`sM^tm*jbd5(fR0gz1_zTw*NX
+zsoASG>Nan^qoBUj|Drxdw%OD)R^r%Oc;S&(EQ7wHTpZL6@Te|lb<HjFDJ#dZCk?b8
+ziuM9p<W3^dep=2|KN_%T<>@`}`g#7t(nsUq*y_+q5|Ncel1*<`R0@qZ3()et>RuyM
+zN!9Zi<r2|ire=A?&quH}=-g4$yg8q8QNkpw-5Jz$YFtib{Pd{4v@3Cakv!SB10a)X
+z3Y2dnSk@^IRhM8$VL32Pi^bi+q}wTFi;m~fNjR697_DU{q>ummmHkOsQ_MA@P)Fn}
+zt<Sq=bmOm{{W}@B?^WC<UNpJbS%wK;?$yZPZm;?Kos;%#@IUY0wIBBU@X%=0s7BAM
+z1_Hm!?7|@=pLrpa;VkVZlIQ2>`@d~UivTV<#hc0;*|j{Kb1FL?A5GLL7HfjLfJ%Gg
+zb1@=;ezDJsi9|E7^ARsI3T~xE3A^8D;3;JtFMgc)*=9p-l)wJ=yMxxnwzVH_A_g{B
+zr>}PX2|v05=<(%!DS*qqY1Sd~=$*MIU4QrQ-GQ($P%2Zql!gbYWct>T<zEVy=blN8
+z5W_kdHbCZ`MU0Bjsi`aI>*XWivKA7+Q6v}5AWFob78}3(g!`01J6OL@Dk1b$%ez<y
+z66T1Bf@4q+j@HA2!a<uJ-&Fv9RX@)a*){$PoN@)gLX)t~J0i!(i5OvStEB-zUBx%U
+zhXV5NVwNKSp~$zYn|xjz11g`8GD$gGc1xLLoU%L5oLXFH_n^mabL2s{6$)N_VnBb~
+z-ubwIe#$5ko5dlH^TB|f?C5+jus?neE2@pF7KZE!lElez?Ngci-+Y!wgYl^t9EPf8
+z27yjzAsQ1O!-GO>R6igIm!$Rk1_XY+zv)b|N;u0^j*s`Nv1_j)ZaaX-1TmChz;d%6
+z3Ef75fTL_6LrkYM_?D#0-Olknh{B3|iy84AgLinLFBJf&rXna2A<bD3{SaCYKW+<-
+zaQM)6Yg8kYDZ>uLyKupMY$#i_wHr}g5?NJsgPr7UEi?4Xe2a^jAUiJhJ_!6Hpmu$x
+z3W0!8N8m}2#%5H5%T(85s<yDnML`s0KK^GYG<#Nk4Hp8Zh|h5zprg#)behX$KnSD=
+zSy50vmB>$5f10jtu(M>CC@)CwKvcg8(wkxHK`h<yUi!y$TGlK$h`^_@bn5#p!a(Xu
+zX*hxL&d!HVe#3!Qa4r+JkWWKau`Jc~67ZCm-YkapK%`}WyjO7_38HOwv$oGTq=(`r
+z=jh6SRnc7!Kc?AY)@e-~zK)+A^7Mbn#hS|1VZ`WR;(0b`Af|`$vq^#MJ}f)xX?Cvy
+zaQ^f50WAACKMFquRIS<VD^PF12oY?k9#xeU@1mYYSCr=@pCf_t_`wPwPu_n|V$Kj}
+zWgm}BJVbcOghKt~>H>4`s1ZOORS$q*W~dY<wBvFU4B#u6ET(o{XmEWG7l<>Z2Vt`7
+z#Pl7QtT}9*iC%wWdt)P@_ow?%0D3*BH}7=0?8k*0Vzrykq=6t~oIX@3Ybb_LZc-J4
+zwg$N=q1>88;AoNU^#wW^zIjxX2j=5zB)0%{0VpH5B_cYF)9W!jR4bq^-g@+l9tGg~
+zxCCem9vp!FsDY2m^EC(ZS1sm0W>Z#*X-Vd)3^s0?L>8$nFs{u%EK*X7q&=Od>xuIt
+z<HPg|Xm1gkr3CNSKv!N-<YZUm><>I9+h44rQi(QUaa0CMTLqc5YpX;AsqAWjo@d_n
+zuf6>|CSQsG*ro&El<cEI*+o}ZvvIN@m^RfS{|lrBa~WZFcO#M*S_r&>10oy{$|ooY
+zmEOc_ttc<t5aOd<MJfwClvG=sBK1F{i@^1QyO)?zX~3a*#$oGgnd@yWxB9D`sepZ9
+z*#f(gBL9**=SzxnOG^ApZVO_P0Pqq}JjyP)R=GKVLrN?s9W%_b4W*&e_c8ScLc0fz
+z{txbRZsC}K8I~s%km^FRAGhGD&{EW_wD){ze{ShOZRy}ZY2^a_i$uFa5aY=$eR?pw
+zQF0*4CdRK&RxBy2lF&Y}Wq<iUoIC$;KKJ2b?Zc&{D3Avp6~=;`hra{EU0|R&A*GE4
+zCtzf`rE*xKLScP{((Z~COXUTeLLPARw*giD0_D#FJq<gmv%7LCoN@?*Kml}ta|e&3
+z9WsMlG7iif*p(nn#IZA~?4DI!l@K-o6bg1$u7YO3C%d;o^GxU<?1aY?dxek>$V+%n
+zUq7kyi9=ztN&Ir+1+hFPg8qTY%3Q)F5jfn7!&^XF&Q1)x&Q1ZDCnCF=!W4<l@<84;
+zc+)jLVQ-uKigFT#OF%`s9T+u`UDH>7DCENNH4#o+7}EL=wuI@Ghl?2N@x75it~Rwx
+zOb!!;;W5ZTLMmD!l`oRaP{>>ae$sXF0&xFjJB19(8}JD`F+3Xyo{v0L_&(2$c`8dn
+z#}M#=>`Afi$q<aB$T?}rg{s=+XGF9N4tSbFnJs_TpZCHTIm%d~HzD|pOCa=7<0&nj
+zrU_H*na~6*b46hj_4mtcC&DIf-jETjDB0wRvO*;%EnwWVAQaHVm|JD9v57|npdFV#
+z`vGp^L*O4w?J8w6n_vh7d!Av(Lqqc`>ouu{H~7$D1muaq1#W$=7G(l3yanS9W7H%u
+Pcp^k-X1orE1J?f^bf!^p
+
+diff --git a/src/Acme/DemoBundle/Resources/views/Demo/contact.html.twig b/src/Acme/DemoBundle/Resources/views/Demo/contact.html.twig
+deleted file mode 100644
+index e5b7523..0000000
+--- a/src/Acme/DemoBundle/Resources/views/Demo/contact.html.twig
++++ /dev/null
+@@ -1,15 +0,0 @@
+-{% extends "AcmeDemoBundle::layout.html.twig" %}
+-
+-{% block title "Symfony - Contact form" %}
+-
+-{% block content %}
+-    <form action="{{ path('_demo_contact') }}" method="POST" id="contact_form">
+-        {{ form_errors(form) }}
+-
+-        {{ form_row(form.email) }}
+-        {{ form_row(form.message) }}
+-
+-        {{ form_rest(form) }}
+-        <input type="submit" value="Send" class="symfony-button-grey" />
+-    </form>
+-{% endblock %}
+diff --git a/src/Acme/DemoBundle/Resources/views/Demo/hello.html.twig b/src/Acme/DemoBundle/Resources/views/Demo/hello.html.twig
+deleted file mode 100644
+index 3997ff6..0000000
+--- a/src/Acme/DemoBundle/Resources/views/Demo/hello.html.twig
++++ /dev/null
+@@ -1,9 +0,0 @@
+-{% extends "AcmeDemoBundle::layout.html.twig" %}
+-
+-{% block title "Hello " ~ name %}
+-
+-{% block content %}
+-    <h1>Hello {{ name }}!</h1>
+-{% endblock %}
+-
+-{% set code = code(_self) %}
+diff --git a/src/Acme/DemoBundle/Resources/views/Demo/index.html.twig b/src/Acme/DemoBundle/Resources/views/Demo/index.html.twig
+deleted file mode 100644
+index 454a320..0000000
+--- a/src/Acme/DemoBundle/Resources/views/Demo/index.html.twig
++++ /dev/null
+@@ -1,14 +0,0 @@
+-{% extends "AcmeDemoBundle::layout.html.twig" %}
+-
+-{% block title "Symfony - Demos" %}
+-
+-{% block content_header '' %}
+-
+-{% block content %}
+-    <h1 class="title">Available demos</h1>
+-    <ul id="demo-list">
+-        <li><a href="{{ path('_demo_hello', {'name': 'World'}) }}">Hello World</a></li>
+-        <li><a href="{{ path('_demo_secured_hello', {'name': 'World'}) }}">Access the secured area</a> <a href="{{ path('_demo_login') }}">Go to the login page</a></li>
+-        {# <li><a href="{{ path('_demo_contact') }}">Send a Message</a></li> #}
+-    </ul>
+-{% endblock %}
+diff --git a/src/Acme/DemoBundle/Resources/views/Secured/hello.html.twig b/src/Acme/DemoBundle/Resources/views/Secured/hello.html.twig
+deleted file mode 100644
+index faf95cf..0000000
+--- a/src/Acme/DemoBundle/Resources/views/Secured/hello.html.twig
++++ /dev/null
+@@ -1,11 +0,0 @@
+-{% extends "AcmeDemoBundle:Secured:layout.html.twig" %}
+-
+-{% block title "Hello " ~ name %}
+-
+-{% block content %}
+-    <h1 class="title">Hello {{ name }}!</h1>
+-
+-    <a href="{{ path('_demo_secured_hello_admin', { 'name': name }) }}">Hello resource secured for <strong>admin</strong> only.</a>
+-{% endblock %}
+-
+-{% set code = code(_self) %}
+diff --git a/src/Acme/DemoBundle/Resources/views/Secured/helloadmin.html.twig b/src/Acme/DemoBundle/Resources/views/Secured/helloadmin.html.twig
+deleted file mode 100644
+index 4e3649f..0000000
+--- a/src/Acme/DemoBundle/Resources/views/Secured/helloadmin.html.twig
++++ /dev/null
+@@ -1,9 +0,0 @@
+-{% extends "AcmeDemoBundle:Secured:layout.html.twig" %}
+-
+-{% block title "Hello " ~ name %}
+-
+-{% block content %}
+-    <h1 class="title">Hello {{ name }} secured for Admins only!</h1>
+-{% endblock %}
+-
+-{% set code = code(_self) %}
+diff --git a/src/Acme/DemoBundle/Resources/views/Secured/layout.html.twig b/src/Acme/DemoBundle/Resources/views/Secured/layout.html.twig
+deleted file mode 100644
+index aeea55c..0000000
+--- a/src/Acme/DemoBundle/Resources/views/Secured/layout.html.twig
++++ /dev/null
+@@ -1,6 +0,0 @@
+-{% extends "AcmeDemoBundle::layout.html.twig" %}
+-
+-{% block content_header_more %}
+-    {{ parent() }}
+-    <li>logged in as <strong>{{ app.user ? app.user.username : 'Anonymous' }}</strong> - <a href="{{ path('_demo_logout') }}">Logout</a></li>
+-{% endblock %}
+diff --git a/src/Acme/DemoBundle/Resources/views/Secured/login.html.twig b/src/Acme/DemoBundle/Resources/views/Secured/login.html.twig
+deleted file mode 100644
+index e74a5aa..0000000
+--- a/src/Acme/DemoBundle/Resources/views/Secured/login.html.twig
++++ /dev/null
+@@ -1,35 +0,0 @@
+-{% extends 'AcmeDemoBundle::layout.html.twig' %}
+-
+-{% block content %}
+-    <h1 class="title">Login</h1>
+-
+-    <p>
+-        Choose between two default users: <em>user/userpass</em> <small>(ROLE_USER)</small> or <em>admin/adminpass</em> <small>(ROLE_ADMIN)</small>
+-    </p>
+-
+-    {% if error %}
+-        <div class="error">{{ error.message }}</div>
+-    {% endif %}
+-
+-    <form action="{{ path("_security_check") }}" method="post" id="login">
+-        <div>
+-            <label for="username">Username</label>
+-            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+-        </div>
+-
+-        <div>
+-            <label for="password">Password</label>
+-            <input type="password" id="password" name="_password" />
+-        </div>
+-
+-        <button type="submit" class="sf-button">
+-            <span class="border-l">
+-                <span class="border-r">
+-                    <span class="btn-bg">Login</span>
+-                </span>
+-            </span>
+-        </button>
+-    </form>
+-{% endblock %}
+-
+-{% set code = code(_self) %}
+diff --git a/src/Acme/DemoBundle/Resources/views/Welcome/index.html.twig b/src/Acme/DemoBundle/Resources/views/Welcome/index.html.twig
+deleted file mode 100644
+index ea3a729..0000000
+--- a/src/Acme/DemoBundle/Resources/views/Welcome/index.html.twig
++++ /dev/null
+@@ -1,83 +0,0 @@
+-{% extends 'AcmeDemoBundle::layout.html.twig' %}
+-
+-{% block title %}Symfony - Welcome{% endblock %}
+-
+-{% block content_header '' %}
+-
+-{% block content %}
+-    {% set version = constant('Symfony\\Component\\HttpKernel\\Kernel::MAJOR_VERSION') ~ '.' ~ constant('Symfony\\Component\\HttpKernel\\Kernel::MINOR_VERSION')%}
+-
+-    <h1 class="title">Welcome!</h1>
+-
+-    <p>Congratulations! You have successfully installed a new Symfony application.</p>
+-
+-    <div class="symfony-blocks-welcome">
+-        <div class="block-quick-tour">
+-            <div class="illustration">
+-                <img src="{{ asset('bundles/acmedemo/images/welcome-quick-tour.gif') }}" alt="Quick tour" />
+-            </div>
+-            <a href="http://symfony.com/doc/{{ version }}/quick_tour/index.html" class="sf-button sf-button-selected">
+-                <span class="border-l">
+-                    <span class="border-r">
+-                        <span class="btn-bg">Read the Quick Tour</span>
+-                    </span>
+-                </span>
+-            </a>
+-        </div>
+-        {% if app.environment == 'dev' %}
+-            <div class="block-configure">
+-                <div class="illustration">
+-                    <img src="{{ asset('bundles/acmedemo/images/welcome-configure.gif') }}" alt="Configure your application" />
+-                </div>
+-                <a href="{{ path('_configurator_home') }}" class="sf-button sf-button-selected">
+-                    <span class="border-l">
+-                        <span class="border-r">
+-                            <span class="btn-bg">Configure</span>
+-                        </span>
+-                    </span>
+-                </a>
+-            </div>
+-        {% endif %}
+-        <div class="block-demo">
+-            <div class="illustration">
+-                <img src="{{ asset('bundles/acmedemo/images/welcome-demo.gif') }}" alt="Demo" />
+-            </div>
+-            <a href="{{ path('_demo') }}" class="sf-button sf-button-selected">
+-                <span class="border-l">
+-                    <span class="border-r">
+-                        <span class="btn-bg">Run The Demo</span>
+-                    </span>
+-                </span>
+-            </a>
+-        </div>
+-    </div>
+-
+-    <div class="symfony-blocks-help">
+-        <div class="block-documentation">
+-            <ul>
+-                <li><strong>Documentation</strong></li>
+-                <li><a href="http://symfony.com/doc/{{ version }}/book/index.html">The Book</a></li>
+-                <li><a href="http://symfony.com/doc/{{ version }}/cookbook/index.html">The Cookbook</a></li>
+-                <li><a href="http://symfony.com/doc/{{ version }}/components/index.html">The Components</a></li>
+-                <li><a href="http://symfony.com/doc/{{ version }}/reference/index.html">Reference</a></li>
+-                <li><a href="http://symfony.com/doc/{{ version }}/glossary.html">Glossary</a></li>
+-            </ul>
+-        </div>
+-        <div class="block-documentation-more">
+-            <ul>
+-                <li><strong>Sensio</strong></li>
+-                <li><a href="http://trainings.sensiolabs.com">Trainings</a></li>
+-                <li><a href="http://books.sensiolabs.com">Books</a></li>
+-            </ul>
+-        </div>
+-        <div class="block-community">
+-            <ul>
+-                <li><strong>Community</strong></li>
+-                <li><a href="http://symfony.com/irc">IRC channel</a></li>
+-                <li><a href="http://symfony.com/mailing-lists">Mailing lists</a></li>
+-                <li><a href="http://forum.symfony-project.org">Forum</a></li>
+-                <li><a href="http://symfony.com/doc/{{ version }}/contributing/index.html">Contributing</a></li>
+-            </ul>
+-        </div>
+-    </div>
+-{% endblock %}
+diff --git a/src/Acme/DemoBundle/Resources/views/layout.html.twig b/src/Acme/DemoBundle/Resources/views/layout.html.twig
+deleted file mode 100644
+index d7e97d5..0000000
+--- a/src/Acme/DemoBundle/Resources/views/layout.html.twig
++++ /dev/null
+@@ -1,37 +0,0 @@
+-{% extends "TwigBundle::layout.html.twig" %}
+-
+-{% block head %}
+-    <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+-    <link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}" />
+-{% endblock %}
+-
+-{% block title 'Demo Bundle' %}
+-
+-{% block body %}
+-    {% for flashMessage in app.session.flashbag.get('notice') %}
+-        <div class="flash-message">
+-            <em>Notice</em>: {{ flashMessage }}
+-        </div>
+-    {% endfor %}
+-
+-    {% block content_header %}
+-        <ul id="menu">
+-            {% block content_header_more %}
+-                <li><a href="{{ path('_demo') }}">Demo Home</a></li>
+-            {% endblock %}
+-        </ul>
+-
+-        <div style="clear: both"></div>
+-    {% endblock %}
+-
+-    <div class="block">
+-        {% block content %}{% endblock %}
+-    </div>
+-
+-    {% if code is defined %}
+-        <h2>Code behind this page</h2>
+-        <div class="block">
+-            <div class="symfony-content">{{ code|raw }}</div>
+-        </div>
+-    {% endif %}
+-{% endblock %}
+diff --git a/src/Acme/DemoBundle/Tests/Controller/DemoControllerTest.php b/src/Acme/DemoBundle/Tests/Controller/DemoControllerTest.php
+deleted file mode 100644
+index d217689..0000000
+--- a/src/Acme/DemoBundle/Tests/Controller/DemoControllerTest.php
++++ /dev/null
+@@ -1,45 +0,0 @@
+-<?php
+-
+-namespace Acme\DemoBundle\Tests\Controller;
+-
+-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+-
+-class DemoControllerTest extends WebTestCase
+-{
+-    public function testIndex()
+-    {
+-        $client = static::createClient();
+-
+-        $crawler = $client->request('GET', '/demo/hello/Fabien');
+-
+-        $this->assertGreaterThan(0, $crawler->filter('html:contains("Hello Fabien")')->count());
+-    }
+-
+-    public function testSecureSection()
+-    {
+-        $client = static::createClient();
+-
+-        // goes to the secure page
+-        $crawler = $client->request('GET', '/demo/secured/hello/World');
+-
+-        // redirects to the login page
+-        $crawler = $client->followRedirect();
+-
+-        // submits the login form
+-        $form = $crawler->selectButton('Login')->form(array('_username' => 'admin', '_password' => 'adminpass'));
+-        $client->submit($form);
+-
+-        // redirect to the original page (but now authenticated)
+-        $crawler = $client->followRedirect();
+-
+-        // check that the page is the right one
+-        $this->assertCount(1, $crawler->filter('h1.title:contains("Hello World!")'));
+-
+-        // click on the secure link
+-        $link = $crawler->selectLink('Hello resource secured')->link();
+-        $crawler = $client->click($link);
+-
+-        // check that the page is the right one
+-        $this->assertCount(1, $crawler->filter('h1.title:contains("secured for Admins only!")'));
+-    }
+-}
+diff --git a/src/Acme/DemoBundle/Twig/Extension/DemoExtension.php b/src/Acme/DemoBundle/Twig/Extension/DemoExtension.php
+deleted file mode 100644
+index def0757..0000000
+--- a/src/Acme/DemoBundle/Twig/Extension/DemoExtension.php
++++ /dev/null
+@@ -1,81 +0,0 @@
+-<?php
+-
+-namespace Acme\DemoBundle\Twig\Extension;
+-
+-use CG\Core\ClassUtils;
+-
+-class DemoExtension extends \Twig_Extension
+-{
+-    protected $loader;
+-    protected $controller;
+-
+-    public function __construct(\Twig_LoaderInterface $loader)
+-    {
+-        $this->loader = $loader;
+-    }
+-
+-    public function setController($controller)
+-    {
+-        $this->controller = $controller;
+-    }
+-
+-    /**
+-     * {@inheritdoc}
+-     */
+-    public function getFunctions()
+-    {
+-        return array(
+-            new \Twig_SimpleFunction('code', array($this, 'getCode'), array('is_safe' => array('html'))),
+-        );
+-    }
+-
+-    public function getCode($template)
+-    {
+-        // highlight_string highlights php code only if '<?php' tag is present.
+-        $controller = highlight_string("<?php" . $this->getControllerCode(), true);
+-        $controller = str_replace('<span style="color: #0000BB">&lt;?php&nbsp;&nbsp;&nbsp;&nbsp;</span>', '&nbsp;&nbsp;&nbsp;&nbsp;', $controller);
+-
+-        $template = htmlspecialchars($this->getTemplateCode($template), ENT_QUOTES, 'UTF-8');
+-
+-        // remove the code block
+-        $template = str_replace('{% set code = code(_self) %}', '', $template);
+-
+-        return <<<EOF
+-<p><strong>Controller Code</strong></p>
+-<pre>$controller</pre>
+-
+-<p><strong>Template Code</strong></p>
+-<pre>$template</pre>
+-EOF;
+-    }
+-
+-    protected function getControllerCode()
+-    {
+-        $class = get_class($this->controller[0]);
+-        if (class_exists('CG\Core\ClassUtils')) {
+-            $class = ClassUtils::getUserClass($class);
+-        }
+-
+-        $r = new \ReflectionClass($class);
+-        $m = $r->getMethod($this->controller[1]);
+-
+-        $code = file($r->getFilename());
+-
+-        return '    '.$m->getDocComment()."\n".implode('', array_slice($code, $m->getStartline() - 1, $m->getEndLine() - $m->getStartline() + 1));
+-    }
+-
+-    protected function getTemplateCode($template)
+-    {
+-        return $this->loader->getSource($template->getTemplateName());
+-    }
+-
+-    /**
+-     * Returns the name of the extension.
+-     *
+-     * @return string The extension name
+-     */
+-    public function getName()
+-    {
+-        return 'demo';
+-    }
+-}

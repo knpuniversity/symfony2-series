@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 22988e8..d02efc2 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -20,7 +20,7 @@ class EventController extends Controller
+     /**
+      * Lists all Event entities.
+      * @Template()
+-     * @Route("/")
++     * @Route("/", name="event")
+      */
+     public function indexAction()
+     {

@@ -1,0 +1,13 @@
+diff --git a/composer.json b/composer.json
+index dad465b..3e10187 100644
+--- a/composer.json
++++ b/composer.json
+@@ -47,6 +47,7 @@
+         },
+         "branch-alias": {
+             "dev-master": "2.4-dev"
+-        }
++        },
++        "symfony-assets-install": "symlink"
+     }
+ }
