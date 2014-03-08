@@ -77,4 +77,4 @@ PHP's good ol' fashioned `date function formats`_.
 
 .. _`PHP DateTime object`: http://www.php.net/manual/en/class.datetime.php
 .. _`date filter`: http://twig.sensiolabs.org/doc/filters/date.html
-.. _`PHP date function formats`: http://www.php.net/manual/en/function.date.php
+.. _`date function formats`: http://www.php.net/manual/en/function.date.php

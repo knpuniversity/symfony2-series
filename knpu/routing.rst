@@ -93,6 +93,8 @@ Sorry, that's about as scandalous as things get around Symfony.
 
 To be with the new, I'll change my routing to use ``path``:
 
+.. code-block:: yaml
+
     # src/Yoda/EventBundle/Resources/config/routing.yml
     event_homepage:
         path:  /hello/{name}

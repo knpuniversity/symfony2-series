@@ -62,7 +62,7 @@ Returning a JSON Response
 How would we return a JSON response? Let's create an array that includes
 the ``$firstName`` and ``$count`` variables and turn it into a string with
 ``json_encode``. Now, it's exactly the same as before: pass that to a ``Response``
-object and return it.
+object and return it::
 
     public function indexAction($count, $firstName)
     {

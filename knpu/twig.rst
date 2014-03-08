@@ -72,7 +72,7 @@ and check out the list on the left.
 .. tip::
 
     Symfony adds just a few more Twig "do something" tags. Find them in the
-    `Symfony`_ documentation.
+    `Symfony Reference`_ documentation.
 
 So the ``{{ }}`` syntax prints things and the ``{% %}`` performs other language
 actions. If you've got this down, I'd say you've just about mastered Twig.
@@ -273,3 +273,4 @@ are background Symfony events.
 .. _`Twig Screencast`: http://knpuniversity.com/screencast/twig
 .. _`parent()`: http://twig.sensiolabs.org/doc/functions/parent.html
 .. _`Episode 2`: http://knpuniversity.com/screencast/symfony2-ep2/basic-security#adding-css-to-a-single-page
+.. _`Symfony Reference`: http://symfony.com/doc/current/reference/twig_reference.html

@@ -142,7 +142,7 @@ property inside the entity::
 .. tip::
 
     Doctrine has a killer page that shows all of the annotations and their
-    options. See `Reference`_.
+    options. See `Annotations Reference`_.
 
 But before this does anything, the actual column in the database needs to
 be modified to reflect the change. Hey, console to the rescue! Run the

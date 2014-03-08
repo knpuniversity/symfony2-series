@@ -33,7 +33,7 @@ call it ``LoadEvents.php``, though the name doesn't matter.
 
 To breathe life into this, copy and paste `the example from the docs`_. Change
 the namespace above the class to match our project. Notice that the namespace
-always follows the directory structure of the file.:
+always follows the directory structure of the file::
 
     // src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php
     namespace Yoda\EventBundle\DataFixtures\ORM;
