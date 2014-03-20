@@ -83,7 +83,7 @@ change the ``pattern`` back to ``/hello/{name}``):
 path versus pattern: no difference
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ok, so when you generate your bundle, your rought might have ``path`` instead
+Ok, so when you generate your bundle, your route might have ``path`` instead
 of ``pattern``. Scandal!
 
 Here's the story. Once upon a time, the Symfony elders renamed ``pattern``
