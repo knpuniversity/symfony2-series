@@ -1,8 +1,8 @@
 diff --git a/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig b/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
-index 733f733..34aaef7 100644
+index 733f733..978af8a 100644
 --- a/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
 +++ b/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
-@@ -1,16 +1,52 @@
+@@ -1,16 +1,50 @@
 -{% extends '::base.html.twig' %}
 +{% extends 'EventBundle::layout.html.twig' %}
  
@@ -60,9 +60,7 @@ index 733f733..34aaef7 100644
 +                {# the closing </form> tag #}
 +                {{ form_end(edit_form) }}
 +
-+                <form action="{{ path('event_delete', { 'id': entity.id }) }}" method="post">
-+                    {{ form_widget(delete_form) }}
-+                </form>
++                {{ form(delete_form) }}
 +            </section>
 +        </article>
 +    </section>
