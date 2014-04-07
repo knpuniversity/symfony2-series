@@ -20,7 +20,7 @@ there:
 
 .. code-block:: html+jinja
 
-    {# src/Yoda/EventBundle/Resources/views/layout.html.twig #}
+    {# app/Resources/views/base.html.twig #}
     {# ... #}
 
     {% block stylesheets %}
@@ -89,7 +89,7 @@ Ok, *now* lets finish up the ``link`` tags:
 
 .. code-block:: html+jinja
 
-    {# src/Yoda/EventBundle/Resources/views/layout.html.twig #}
+    {# app/Resources/views/base.html.twig #}
     {# ... #}
 
     {% block stylesheets %}
@@ -112,7 +112,7 @@ files:
 
 .. code-block:: html+jinja
 
-    {# src/Yoda/EventBundle/Resources/views/layout.html.twig #}
+    {# app/Resources/views/base.html.twig #}
     {# ... #}
 
     {% block stylesheets %}
