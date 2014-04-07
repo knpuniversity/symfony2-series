@@ -43,9 +43,7 @@
                 {# the closing </form> tag #}
                 {{ form_end(edit_form) }}
 
-                <form action="{{ path('event_delete', { 'id': entity.id }) }}" method="post">
-                    {{ form_widget(delete_form) }}
-                </form>
+                {{ form(delete_form) }}
             </section>
         </article>
     </section>
