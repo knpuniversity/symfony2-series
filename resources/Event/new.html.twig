@@ -11,29 +11,36 @@
                 <img src="http://maps.googleapis.com/maps/api/staticmap?center=Somewhere,%20US&zoom=15&size=300x300&maptype=roadmap&sensor=false" />
             </header>
             <section>
-                <form action="{{ path('event_create') }}" method="post" {{ form_enctype(form) }}>
+                {# the opening <form> tag #}
+                {{ form_start(form) }}
+                    {{ form_errors(form) }}
                     <h1>
+                        {{ form_errors(form.name) }}
                         {{ form_widget(form.name) }}
                     </h1>
 
                     <dl>
                         <dt>where:</dt>
-                        <dd>{{ form_widget(form.location) }}</dd>
+                        <dd>
+                            {{ form_errors(form.location) }}
+                            {{ form_widget(form.location) }}
+                        </dd>
 
                         <dt>when:</dt>
-                        <dd>{{ form_widget(form.time) }}</dd>
+                        <dd>
+                            {{ form_errors(form.time) }}
+                            {{ form_widget(form.time) }}
+                        </dd>
 
                         <dt>what:</dt>
                         <dd>
+                            {{ form_errors(form.details) }}
                             {{ form_widget(form.details) }}
                         </dd>
                     </dl>
 
-                    {{ form_widget(form) }}
-
-                    <button type="submit" class="button">Save</button>
-
-                </form>
+                {# the closing </form> tag #}
+                {{ form_end(form) }}
             </section>
         </article>
     </section>
