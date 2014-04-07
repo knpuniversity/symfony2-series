@@ -1,8 +1,8 @@
 diff --git a/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig b/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
-index 733f733..26d7fd6 100644
+index 733f733..34aaef7 100644
 --- a/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
 +++ b/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
-@@ -1,16 +1,46 @@
+@@ -1,16 +1,52 @@
 -{% extends '::base.html.twig' %}
 +{% extends 'EventBundle::layout.html.twig' %}
  
@@ -29,33 +29,39 @@ index 733f733..26d7fd6 100644
 -</ul>
 +            </header>
 +            <section>
-+                <form action="{{ path('event_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
++                {# the opening <form> tag #}
++                {{ form_start(edit_form) }}
++                    {{ form_errors(edit_form) }}
 +                    <h1>
++                        {{ form_errors(edit_form.name) }}
 +                        {{ form_widget(edit_form.name) }}
 +                    </h1>
 +
 +                    <dl>
 +                        <dt>where:</dt>
-+                        <dd>{{ form_widget(edit_form.location) }}</dd>
++                        <dd>
++                            {{ form_errors(edit_form.location) }}
++                            {{ form_widget(edit_form.location) }}
++                        </dd>
 +
 +                        <dt>when:</dt>
-+                        <dd>{{ form_widget(edit_form.time) }}</dd>
++                        <dd>
++                            {{ form_errors(edit_form.time) }}
++                            {{ form_widget(edit_form.time) }}
++                        </dd>
 +
 +                        <dt>what:</dt>
 +                        <dd>
++                            {{ form_errors(edit_form.details) }}
 +                            {{ form_widget(edit_form.details) }}
 +                        </dd>
 +                    </dl>
 +
-+                    {{ form_widget(edit_form) }}
-+
-+                    <button type="submit" class="button">Save</button>
-+
-+                </form>
++                {# the closing </form> tag #}
++                {{ form_end(edit_form) }}
 +
 +                <form action="{{ path('event_delete', { 'id': entity.id }) }}" method="post">
 +                    {{ form_widget(delete_form) }}
-+                    <button type="submit" class="button">Delete</button>
 +                </form>
 +            </section>
 +        </article>
@@ -144,10 +150,10 @@ index 51d4a6c..9ae4a41 100644
 +    </section>
 +{% endblock %}
 diff --git a/src/Yoda/EventBundle/Resources/views/Event/new.html.twig b/src/Yoda/EventBundle/Resources/views/Event/new.html.twig
-index 25e6d26..5ec51c3 100644
+index 25e6d26..59f022d 100644
 --- a/src/Yoda/EventBundle/Resources/views/Event/new.html.twig
 +++ b/src/Yoda/EventBundle/Resources/views/Event/new.html.twig
-@@ -1,15 +1,40 @@
+@@ -1,15 +1,47 @@
 -{% extends '::base.html.twig' %}
 +{% extends 'EventBundle::layout.html.twig' %}
  
@@ -165,8 +171,11 @@ index 25e6d26..5ec51c3 100644
 +                <img src="http://maps.googleapis.com/maps/api/staticmap?center=Somewhere,%20US&zoom=15&size=300x300&maptype=roadmap&sensor=false" />
 +            </header>
 +            <section>
-+                <form action="{{ path('event_create') }}" method="post" {{ form_enctype(form) }}>
++                {# the opening <form> tag #}
++                {{ form_start(form) }}
++                    {{ form_errors(form) }}
 +                    <h1>
++                        {{ form_errors(form.name) }}
 +                        {{ form_widget(form.name) }}
 +                    </h1>
  
@@ -179,22 +188,26 @@ index 25e6d26..5ec51c3 100644
 -</ul>
 +                    <dl>
 +                        <dt>where:</dt>
-+                        <dd>{{ form_widget(form.location) }}</dd>
++                        <dd>
++                            {{ form_errors(form.location) }}
++                            {{ form_widget(form.location) }}
++                        </dd>
 +
 +                        <dt>when:</dt>
-+                        <dd>{{ form_widget(form.time) }}</dd>
++                        <dd>
++                            {{ form_errors(form.time) }}
++                            {{ form_widget(form.time) }}
++                        </dd>
 +
 +                        <dt>what:</dt>
 +                        <dd>
++                            {{ form_errors(form.details) }}
 +                            {{ form_widget(form.details) }}
 +                        </dd>
 +                    </dl>
 +
-+                    {{ form_widget(form) }}
-+
-+                    <button type="submit" class="button">Save</button>
-+
-+                </form>
++                {# the closing </form> tag #}
++                {{ form_end(form) }}
 +            </section>
 +        </article>
 +    </section>
