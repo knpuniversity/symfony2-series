@@ -1,6 +1,6 @@
 diff --git a/src/Yoda/EventBundle/Resources/public/css/event.css b/src/Yoda/EventBundle/Resources/public/css/event.css
 new file mode 100644
-index 0000000..9c30dc4
+index 0000000..3846939
 --- /dev/null
 +++ b/src/Yoda/EventBundle/Resources/public/css/event.css
 @@ -0,0 +1,187 @@
@@ -167,7 +167,7 @@ index 0000000..9c30dc4
 +    display:none;
 +}
 +
-+.event-edit button.button {
++.event-edit button {
 +    float:left;
 +    font-size:18px !important;
 +    margin-top:30px;
