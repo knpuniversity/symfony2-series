@@ -1,0 +1,12 @@
+diff --git a/src/Yoda/EventBundle/Resources/config/routing/event.yml b/src/Yoda/EventBundle/Resources/config/routing/event.yml
+index c72d228..bf09e64 100644
+--- a/src/Yoda/EventBundle/Resources/config/routing/event.yml
++++ b/src/Yoda/EventBundle/Resources/config/routing/event.yml
+@@ -1,6 +1,4 @@
+-event:
+-    pattern:  /
+-    defaults: { _controller: "EventBundle:Event:index" }
++# the / route is defined via annotations
+ 
+ event_show:
+     pattern:  /{id}/show

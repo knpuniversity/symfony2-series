@@ -1,0 +1,297 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig b/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
+index 733f733..978af8a 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
+@@ -1,16 +1,50 @@
+-{% extends '::base.html.twig' %}
++{% extends 'EventBundle::layout.html.twig' %}
+ 
+-{% block body -%}
+-    <h1>Event edit</h1>
++{% block body %}
++    <section class="event-show event-edit">
++        <header id="menu">
++            <a class="link" href="{{ path('event') }}">&larr; back to the event list</a>
++            <a class="link" href="{{ path('event_show', {'id': entity.id}) }}">show event</a>
++        </header>
+ 
+-    {{ form(edit_form) }}
++        <article>
++            <header class="map-container">
+ 
+-        <ul class="record_actions">
+-    <li>
+-        <a href="{{ path('event') }}">
+-            Back to the list
+-        </a>
+-    </li>
+-    <li>{{ form(delete_form) }}</li>
+-</ul>
++            </header>
++            <section>
++                {# the opening <form> tag #}
++                {{ form_start(edit_form) }}
++                    {{ form_errors(edit_form) }}
++                    <h1>
++                        {{ form_errors(edit_form.name) }}
++                        {{ form_widget(edit_form.name) }}
++                    </h1>
++
++                    <dl>
++                        <dt>where:</dt>
++                        <dd>
++                            {{ form_errors(edit_form.location) }}
++                            {{ form_widget(edit_form.location) }}
++                        </dd>
++
++                        <dt>when:</dt>
++                        <dd>
++                            {{ form_errors(edit_form.time) }}
++                            {{ form_widget(edit_form.time) }}
++                        </dd>
++
++                        <dt>what:</dt>
++                        <dd>
++                            {{ form_errors(edit_form.details) }}
++                            {{ form_widget(edit_form.details) }}
++                        </dd>
++                    </dl>
++
++                {# the closing </form> tag #}
++                {{ form_end(edit_form) }}
++
++                {{ form(delete_form) }}
++            </section>
++        </article>
++    </section>
+ {% endblock %}
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+index 51d4a6c..9ae4a41 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+@@ -1,47 +1,34 @@
+-{% extends '::base.html.twig' %}
++{% extends 'EventBundle::layout.html.twig' %}
+ 
+-{% block body -%}
+-    <h1>Event list</h1>
++{% block body %}
++
++    <section class="events">
++        <header id="menu">
++            <a class="button" href="{{ path('event_new') }}">Create new event</a>
++        </header>
+ 
+-    <table class="records_list">
+-        <thead>
+-            <tr>
+-                <th>Id</th>
+-                <th>Name</th>
+-                <th>Time</th>
+-                <th>Location</th>
+-                <th>Details</th>
+-                <th>Actions</th>
+-            </tr>
+-        </thead>
+-        <tbody>
+         {% for entity in entities %}
+-            <tr>
+-                <td><a href="{{ path('event_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+-                <td>{{ entity.name }}</td>
+-                <td>{% if entity.time %}{{ entity.time|date('Y-m-d H:i:s') }}{% endif %}</td>
+-                <td>{{ entity.location }}</td>
+-                <td>{{ entity.details }}</td>
+-                <td>
+-                <ul>
+-                    <li>
+-                        <a href="{{ path('event_show', { 'id': entity.id }) }}">show</a>
+-                    </li>
+-                    <li>
+-                        <a href="{{ path('event_edit', { 'id': entity.id }) }}">edit</a>
+-                    </li>
+-                </ul>
+-                </td>
+-            </tr>
+-        {% endfor %}
+-        </tbody>
+-    </table>
++            <article>
++                <header class="map-container">
++                    <img src="http://maps.googleapis.com/maps/api/staticmap?center={{ entity.location | url_encode }}&markers=color:red%7Ccolor:red%7C{{ entity.location | url_encode }}&zoom=14&size=150x150&maptype=roadmap&sensor=false" />
++                </header>
++                <section>
++                    <h3>
++                        <a href="{{ path('event_show', {'id': entity.id}) }}">{{ entity.name }}</a>
++                    </h3>
++
++                    <dl>
++                        <dt>where:</dt>
++                        <dd>{{ entity.location }}</dd>
+ 
+-        <ul>
+-        <li>
+-            <a href="{{ path('event_new') }}">
+-                Create a new entry
+-            </a>
+-        </li>
+-    </ul>
+-    {% endblock %}
++                        <dt>when:</dt>
++                        <dd>{{ entity.time | date('g:ia / l M j, Y') }}</dd>
++
++                        <dt>who:</dt>
++                        <dd>Todo # of people</dd>
++                    </dl>
++                </section>
++            </article>
++        {% endfor %}
++    </section>
++{% endblock %}
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/new.html.twig b/src/Yoda/EventBundle/Resources/views/Event/new.html.twig
+index 25e6d26..59f022d 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/new.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/new.html.twig
+@@ -1,15 +1,47 @@
+-{% extends '::base.html.twig' %}
++{% extends 'EventBundle::layout.html.twig' %}
+ 
+-{% block body -%}
+-    <h1>Event creation</h1>
++{% block body %}
++    <section class="event-show event-edit">
++        <header id="menu">
++            <a class="link" href="{{ path('event') }}">&larr; back to the event list</a>
++        </header>
+ 
+-    {{ form(form) }}
++        <article>
++            <header class="map-container">
++                <img src="http://maps.googleapis.com/maps/api/staticmap?center=Somewhere,%20US&zoom=15&size=300x300&maptype=roadmap&sensor=false" />
++            </header>
++            <section>
++                {# the opening <form> tag #}
++                {{ form_start(form) }}
++                    {{ form_errors(form) }}
++                    <h1>
++                        {{ form_errors(form.name) }}
++                        {{ form_widget(form.name) }}
++                    </h1>
+ 
+-        <ul class="record_actions">
+-    <li>
+-        <a href="{{ path('event') }}">
+-            Back to the list
+-        </a>
+-    </li>
+-</ul>
++                    <dl>
++                        <dt>where:</dt>
++                        <dd>
++                            {{ form_errors(form.location) }}
++                            {{ form_widget(form.location) }}
++                        </dd>
++
++                        <dt>when:</dt>
++                        <dd>
++                            {{ form_errors(form.time) }}
++                            {{ form_widget(form.time) }}
++                        </dd>
++
++                        <dt>what:</dt>
++                        <dd>
++                            {{ form_errors(form.details) }}
++                            {{ form_widget(form.details) }}
++                        </dd>
++                    </dl>
++
++                {# the closing </form> tag #}
++                {{ form_end(form) }}
++            </section>
++        </article>
++    </section>
+ {% endblock %}
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+index 4640854..27fc535 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+@@ -1,44 +1,40 @@
+-{% extends '::base.html.twig' %}
++{% extends 'EventBundle::layout.html.twig' %}
+ 
+-{% block body -%}
+-    <h1>Event</h1>
++{% block body %}
+ 
+-    <table class="record_properties">
+-        <tbody>
+-            <tr>
+-                <th>Id</th>
+-                <td>{{ entity.id }}</td>
+-            </tr>
+-            <tr>
+-                <th>Name</th>
+-                <td>{{ entity.name }}</td>
+-            </tr>
+-            <tr>
+-                <th>Time</th>
+-                <td>{{ entity.time|date('Y-m-d H:i:s') }}</td>
+-            </tr>
+-            <tr>
+-                <th>Location</th>
+-                <td>{{ entity.location }}</td>
+-            </tr>
+-            <tr>
+-                <th>Details</th>
+-                <td>{{ entity.details }}</td>
+-            </tr>
+-        </tbody>
+-    </table>
++    <section class="event-show">
++        <header id="menu">
++            <a class="link" href="{{ path('event') }}">&larr; back to the events list</a>
++        </header>
+ 
+-        <ul class="record_actions">
+-    <li>
+-        <a href="{{ path('event') }}">
+-            Back to the list
+-        </a>
+-    </li>
+-    <li>
+-        <a href="{{ path('event_edit', { 'id': entity.id }) }}">
+-            Edit
+-        </a>
+-    </li>
+-    <li>{{ form(delete_form) }}</li>
+-</ul>
++        <article>
++            <header class="map-container">
++                <img src="http://maps.googleapis.com/maps/api/staticmap?center={{ entity.location | url_encode }}&markers=color:red%7Ccolor:red%7C{{ entity.location | url_encode }}&zoom=14&size=300x300&maptype=roadmap&sensor=false" />
++            </header>
++            <section>
++                <h1>
++                    {{ entity.name }}
++                    <a class="button" href="{{ path('event_edit', {'id': entity.id}) }}">edit</a>
++                </h1>
++
++                <dl>
++                    <dt>where:</dt>
++                    <dd>{{ entity.location }}</dd>
++
++                    <dt>when:</dt>
++                    <dd>{{ entity.time | date('g:ia / l M j, Y') }}</dd>
++
++                    <dt>what:</dt>
++                    <dd>{{ entity.details }}</dd>
++
++                    <dt>who:</dt>
++                    <dd>
++                        <ul class="users">
++                            <li>nobody yet!</li>
++                        </ul>
++                    </dd>
++                </dl>
++            </section>
++        </article>
++    </section>
+ {% endblock %}

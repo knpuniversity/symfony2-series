@@ -1,0 +1,9 @@
+diff --git a/src/Yoda/EventBundle/Resources/config/routing.yml b/src/Yoda/EventBundle/Resources/config/routing.yml
+index ec1df16..585ce59 100644
+--- a/src/Yoda/EventBundle/Resources/config/routing.yml
++++ b/src/Yoda/EventBundle/Resources/config/routing.yml
+@@ -1,3 +1,3 @@
+ event_homepage:
+-    path:  /hello/{name}
++    path:  /hello/{firstName}
+     defaults: { _controller: EventBundle:Default:index }

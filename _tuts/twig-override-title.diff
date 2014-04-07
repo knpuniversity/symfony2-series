@@ -1,0 +1,12 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Default/index.html.twig b/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
+index 01abf85..7c0f4fd 100644
+--- a/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
+@@ -1,5 +1,7 @@
+ {% extends '::base.html.twig' %}
+ 
++{% block title %}Some Twiggy Goodness{% endblock %}
++
+ {% block body %}
+ {# Hello comments! #}
+ 

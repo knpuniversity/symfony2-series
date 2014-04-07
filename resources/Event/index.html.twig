@@ -1,0 +1,34 @@
+{% extends 'EventBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <section class="events">
+        <header id="menu">
+            <a class="button" href="{{ path('event_new') }}">Create new event</a>
+        </header>
+
+        {% for entity in entities %}
+            <article>
+                <header class="map-container">
+                    <img src="http://maps.googleapis.com/maps/api/staticmap?center={{ entity.location | url_encode }}&markers=color:red%7Ccolor:red%7C{{ entity.location | url_encode }}&zoom=14&size=150x150&maptype=roadmap&sensor=false" />
+                </header>
+                <section>
+                    <h3>
+                        <a href="{{ path('event_show', {'id': entity.id}) }}">{{ entity.name }}</a>
+                    </h3>
+
+                    <dl>
+                        <dt>where:</dt>
+                        <dd>{{ entity.location }}</dd>
+
+                        <dt>when:</dt>
+                        <dd>{{ entity.time | date('g:ia / l M j, Y') }}</dd>
+
+                        <dt>who:</dt>
+                        <dd>Todo # of people</dd>
+                    </dl>
+                </section>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}

@@ -1,0 +1,12 @@
+diff --git a/src/Yoda/EventBundle/Controller/DefaultController.php b/src/Yoda/EventBundle/Controller/DefaultController.php
+index e93bb6b..dadaf7e 100644
+--- a/src/Yoda/EventBundle/Controller/DefaultController.php
++++ b/src/Yoda/EventBundle/Controller/DefaultController.php
+@@ -15,5 +15,7 @@ class DefaultController extends Controller
+             'EventBundle:Default:index.html.twig',
+             array('name' => $firstName)
+         );
++
++        return new Response($content);
+     }
+ }

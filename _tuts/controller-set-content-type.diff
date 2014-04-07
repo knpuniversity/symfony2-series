@@ -1,0 +1,15 @@
+diff --git a/src/Yoda/EventBundle/Controller/DefaultController.php b/src/Yoda/EventBundle/Controller/DefaultController.php
+index 2d9efbd..a4fc675 100644
+--- a/src/Yoda/EventBundle/Controller/DefaultController.php
++++ b/src/Yoda/EventBundle/Controller/DefaultController.php
+@@ -15,6 +15,9 @@ class DefaultController extends Controller
+             'status'    => 'It\'s a traaaaaaaap!',
+         );
+ 
+-        return new Response(json_encode($arr));
++        $response = new Response(json_encode($arr));
++        $response->headers->set('Content-Type', 'application/json');
++
++        return $response;
+     }
+ }

@@ -1,0 +1,12 @@
+diff --git a/app/AppKernel.php b/app/AppKernel.php
+index b4a296e..6869184 100644
+--- a/app/AppKernel.php
++++ b/app/AppKernel.php
+@@ -17,6 +17,7 @@ class AppKernel extends Kernel
+             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+             new Yoda\EventBundle\EventBundle(),
++            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+         );
+ 
+         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

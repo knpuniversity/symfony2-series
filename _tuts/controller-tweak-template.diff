@@ -1,0 +1,7 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Default/index.html.twig b/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
+index 4ce626e..a2db84d 100644
+--- a/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Default/index.html.twig
+@@ -1 +1 @@
+-Hello {{ name }}!
++Hello <strong>{{ name }}</strong>

@@ -1,0 +1,20 @@
+diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
+index 433bbba..d87c952 100644
+--- a/app/Resources/views/base.html.twig
++++ b/app/Resources/views/base.html.twig
+@@ -2,7 +2,14 @@
+ <html>
+     <head>
+         <meta charset="UTF-8" />
+-        <title>{% block title %}Welcome!{% endblock %}</title>
++        <title>
++            {% if block('title') %}
++                {{ block('title') }} | Starwars Events
++            {% else %}
++                Events from a Galaxy, far far away
++            {% endif %}
++        </title>
++
+         {% block stylesheets %}
+             {% stylesheets
+                 'bundles/event/css/event.css'

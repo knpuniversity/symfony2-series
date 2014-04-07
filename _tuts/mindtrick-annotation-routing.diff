@@ -1,0 +1,36 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 45aeafd..22988e8 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+ use Yoda\EventBundle\Entity\Event;
+ use Yoda\EventBundle\Form\EventType;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ 
+ /**
+  * Event controller.
+@@ -19,6 +20,7 @@ class EventController extends Controller
+     /**
+      * Lists all Event entities.
+      * @Template()
++     * @Route("/")
+      */
+     public function indexAction()
+     {
+diff --git a/src/Yoda/EventBundle/Resources/config/routing.yml b/src/Yoda/EventBundle/Resources/config/routing.yml
+index facc516..0e054d8 100644
+--- a/src/Yoda/EventBundle/Resources/config/routing.yml
++++ b/src/Yoda/EventBundle/Resources/config/routing.yml
+@@ -4,4 +4,9 @@ event_homepage:
+ 
+ EventBundle_event:
+     resource: "@EventBundle/Resources/config/routing/event.yml"
+-    prefix:   /
+\ No newline at end of file
++    prefix:   /
++
++EventBundle_event_annotation:
++    resource: "@EventBundle/Controller"
++    prefix:   /
++    type:     annotation

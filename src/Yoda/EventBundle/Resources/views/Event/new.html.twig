@@ -1,0 +1,47 @@
+{% extends 'EventBundle::layout.html.twig' %}
+
+{% block body %}
+    <section class="event-show event-edit">
+        <header id="menu">
+            <a class="link" href="{{ path('event') }}">&larr; back to the event list</a>
+        </header>
+
+        <article>
+            <header class="map-container">
+                <img src="http://maps.googleapis.com/maps/api/staticmap?center=Somewhere,%20US&zoom=15&size=300x300&maptype=roadmap&sensor=false" />
+            </header>
+            <section>
+                {# the opening <form> tag #}
+                {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                    <h1>
+                        {{ form_errors(form.name) }}
+                        {{ form_widget(form.name) }}
+                    </h1>
+
+                    <dl>
+                        <dt>where:</dt>
+                        <dd>
+                            {{ form_errors(form.location) }}
+                            {{ form_widget(form.location) }}
+                        </dd>
+
+                        <dt>when:</dt>
+                        <dd>
+                            {{ form_errors(form.time) }}
+                            {{ form_widget(form.time) }}
+                        </dd>
+
+                        <dt>what:</dt>
+                        <dd>
+                            {{ form_errors(form.details) }}
+                            {{ form_widget(form.details) }}
+                        </dd>
+                    </dl>
+
+                {# the closing </form> tag #}
+                {{ form_end(form) }}
+            </section>
+        </article>
+    </section>
+{% endblock %}

@@ -1,0 +1,533 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+new file mode 100644
+index 0000000..7e2dac0
+--- /dev/null
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -0,0 +1,223 @@
++<?php
++
++namespace Yoda\EventBundle\Controller;
++
++use Symfony\Component\HttpFoundation\Request;
++use Symfony\Bundle\FrameworkBundle\Controller\Controller;
++
++use Yoda\EventBundle\Entity\Event;
++use Yoda\EventBundle\Form\EventType;
++
++/**
++ * Event controller.
++ *
++ */
++class EventController extends Controller
++{
++
++    /**
++     * Lists all Event entities.
++     *
++     */
++    public function indexAction()
++    {
++        $em = $this->getDoctrine()->getManager();
++
++        $entities = $em->getRepository('EventBundle:Event')->findAll();
++
++        return $this->render('EventBundle:Event:index.html.twig', array(
++            'entities' => $entities,
++        ));
++    }
++    /**
++     * Creates a new Event entity.
++     *
++     */
++    public function createAction(Request $request)
++    {
++        $entity = new Event();
++        $form = $this->createCreateForm($entity);
++        $form->handleRequest($request);
++
++        if ($form->isValid()) {
++            $em = $this->getDoctrine()->getManager();
++            $em->persist($entity);
++            $em->flush();
++
++            return $this->redirect($this->generateUrl('event_show', array('id' => $entity->getId())));
++        }
++
++        return $this->render('EventBundle:Event:new.html.twig', array(
++            'entity' => $entity,
++            'form'   => $form->createView(),
++        ));
++    }
++
++    /**
++    * Creates a form to create a Event entity.
++    *
++    * @param Event $entity The entity
++    *
++    * @return \Symfony\Component\Form\Form The form
++    */
++    private function createCreateForm(Event $entity)
++    {
++        $form = $this->createForm(new EventType(), $entity, array(
++            'action' => $this->generateUrl('event_create'),
++            'method' => 'POST',
++        ));
++
++        $form->add('submit', 'submit', array('label' => 'Create'));
++
++        return $form;
++    }
++
++    /**
++     * Displays a form to create a new Event entity.
++     *
++     */
++    public function newAction()
++    {
++        $entity = new Event();
++        $form   = $this->createCreateForm($entity);
++
++        return $this->render('EventBundle:Event:new.html.twig', array(
++            'entity' => $entity,
++            'form'   => $form->createView(),
++        ));
++    }
++
++    /**
++     * Finds and displays a Event entity.
++     *
++     */
++    public function showAction($id)
++    {
++        $em = $this->getDoctrine()->getManager();
++
++        $entity = $em->getRepository('EventBundle:Event')->find($id);
++
++        if (!$entity) {
++            throw $this->createNotFoundException('Unable to find Event entity.');
++        }
++
++        $deleteForm = $this->createDeleteForm($id);
++
++        return $this->render('EventBundle:Event:show.html.twig', array(
++            'entity'      => $entity,
++            'delete_form' => $deleteForm->createView(),        ));
++    }
++
++    /**
++     * Displays a form to edit an existing Event entity.
++     *
++     */
++    public function editAction($id)
++    {
++        $em = $this->getDoctrine()->getManager();
++
++        $entity = $em->getRepository('EventBundle:Event')->find($id);
++
++        if (!$entity) {
++            throw $this->createNotFoundException('Unable to find Event entity.');
++        }
++
++        $editForm = $this->createEditForm($entity);
++        $deleteForm = $this->createDeleteForm($id);
++
++        return $this->render('EventBundle:Event:edit.html.twig', array(
++            'entity'      => $entity,
++            'edit_form'   => $editForm->createView(),
++            'delete_form' => $deleteForm->createView(),
++        ));
++    }
++
++    /**
++    * Creates a form to edit a Event entity.
++    *
++    * @param Event $entity The entity
++    *
++    * @return \Symfony\Component\Form\Form The form
++    */
++    private function createEditForm(Event $entity)
++    {
++        $form = $this->createForm(new EventType(), $entity, array(
++            'action' => $this->generateUrl('event_update', array('id' => $entity->getId())),
++            'method' => 'PUT',
++        ));
++
++        $form->add('submit', 'submit', array('label' => 'Update'));
++
++        return $form;
++    }
++    /**
++     * Edits an existing Event entity.
++     *
++     */
++    public function updateAction(Request $request, $id)
++    {
++        $em = $this->getDoctrine()->getManager();
++
++        $entity = $em->getRepository('EventBundle:Event')->find($id);
++
++        if (!$entity) {
++            throw $this->createNotFoundException('Unable to find Event entity.');
++        }
++
++        $deleteForm = $this->createDeleteForm($id);
++        $editForm = $this->createEditForm($entity);
++        $editForm->handleRequest($request);
++
++        if ($editForm->isValid()) {
++            $em->flush();
++
++            return $this->redirect($this->generateUrl('event_edit', array('id' => $id)));
++        }
++
++        return $this->render('EventBundle:Event:edit.html.twig', array(
++            'entity'      => $entity,
++            'edit_form'   => $editForm->createView(),
++            'delete_form' => $deleteForm->createView(),
++        ));
++    }
++    /**
++     * Deletes a Event entity.
++     *
++     */
++    public function deleteAction(Request $request, $id)
++    {
++        $form = $this->createDeleteForm($id);
++        $form->handleRequest($request);
++
++        if ($form->isValid()) {
++            $em = $this->getDoctrine()->getManager();
++            $entity = $em->getRepository('EventBundle:Event')->find($id);
++
++            if (!$entity) {
++                throw $this->createNotFoundException('Unable to find Event entity.');
++            }
++
++            $em->remove($entity);
++            $em->flush();
++        }
++
++        return $this->redirect($this->generateUrl('event'));
++    }
++
++    /**
++     * Creates a form to delete a Event entity by id.
++     *
++     * @param mixed $id The entity id
++     *
++     * @return \Symfony\Component\Form\Form The form
++     */
++    private function createDeleteForm($id)
++    {
++        return $this->createFormBuilder()
++            ->setAction($this->generateUrl('event_delete', array('id' => $id)))
++            ->setMethod('DELETE')
++            ->add('submit', 'submit', array('label' => 'Delete'))
++            ->getForm()
++        ;
++    }
++}
+diff --git a/src/Yoda/EventBundle/Form/EventType.php b/src/Yoda/EventBundle/Form/EventType.php
+new file mode 100644
+index 0000000..e899a58
+--- /dev/null
++++ b/src/Yoda/EventBundle/Form/EventType.php
+@@ -0,0 +1,42 @@
++<?php
++
++namespace Yoda\EventBundle\Form;
++
++use Symfony\Component\Form\AbstractType;
++use Symfony\Component\Form\FormBuilderInterface;
++use Symfony\Component\OptionsResolver\OptionsResolverInterface;
++
++class EventType extends AbstractType
++{
++        /**
++     * @param FormBuilderInterface $builder
++     * @param array $options
++     */
++    public function buildForm(FormBuilderInterface $builder, array $options)
++    {
++        $builder
++            ->add('name')
++            ->add('time')
++            ->add('location')
++            ->add('details')
++        ;
++    }
++    
++    /**
++     * @param OptionsResolverInterface $resolver
++     */
++    public function setDefaultOptions(OptionsResolverInterface $resolver)
++    {
++        $resolver->setDefaults(array(
++            'data_class' => 'Yoda\EventBundle\Entity\Event'
++        ));
++    }
++
++    /**
++     * @return string
++     */
++    public function getName()
++    {
++        return 'yoda_eventbundle_event';
++    }
++}
+diff --git a/src/Yoda/EventBundle/Resources/config/routing.yml b/src/Yoda/EventBundle/Resources/config/routing.yml
+index 1de0ff3..c5ad164 100644
+--- a/src/Yoda/EventBundle/Resources/config/routing.yml
++++ b/src/Yoda/EventBundle/Resources/config/routing.yml
+@@ -1,3 +1,7 @@
+ event_homepage:
+     path:  /hello/{firstName}/{count}
+     defaults: { _controller: EventBundle:Default:index }
++
++EventBundle_event:
++    resource: "@EventBundle/Resources/config/routing/event.yml"
++    prefix:   /event
+\ No newline at end of file
+diff --git a/src/Yoda/EventBundle/Resources/config/routing/event.yml b/src/Yoda/EventBundle/Resources/config/routing/event.yml
+new file mode 100644
+index 0000000..c72d228
+--- /dev/null
++++ b/src/Yoda/EventBundle/Resources/config/routing/event.yml
+@@ -0,0 +1,30 @@
++event:
++    pattern:  /
++    defaults: { _controller: "EventBundle:Event:index" }
++
++event_show:
++    pattern:  /{id}/show
++    defaults: { _controller: "EventBundle:Event:show" }
++
++event_new:
++    pattern:  /new
++    defaults: { _controller: "EventBundle:Event:new" }
++
++event_create:
++    pattern:  /create
++    defaults: { _controller: "EventBundle:Event:create" }
++    requirements: { _method: post }
++
++event_edit:
++    pattern:  /{id}/edit
++    defaults: { _controller: "EventBundle:Event:edit" }
++
++event_update:
++    pattern:  /{id}/update
++    defaults: { _controller: "EventBundle:Event:update" }
++    requirements: { _method: post|put }
++
++event_delete:
++    pattern:  /{id}/delete
++    defaults: { _controller: "EventBundle:Event:delete" }
++    requirements: { _method: post|delete }
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig b/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
+new file mode 100644
+index 0000000..733f733
+--- /dev/null
++++ b/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
+@@ -0,0 +1,16 @@
++{% extends '::base.html.twig' %}
++
++{% block body -%}
++    <h1>Event edit</h1>
++
++    {{ form(edit_form) }}
++
++        <ul class="record_actions">
++    <li>
++        <a href="{{ path('event') }}">
++            Back to the list
++        </a>
++    </li>
++    <li>{{ form(delete_form) }}</li>
++</ul>
++{% endblock %}
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+new file mode 100644
+index 0000000..51d4a6c
+--- /dev/null
++++ b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+@@ -0,0 +1,47 @@
++{% extends '::base.html.twig' %}
++
++{% block body -%}
++    <h1>Event list</h1>
++
++    <table class="records_list">
++        <thead>
++            <tr>
++                <th>Id</th>
++                <th>Name</th>
++                <th>Time</th>
++                <th>Location</th>
++                <th>Details</th>
++                <th>Actions</th>
++            </tr>
++        </thead>
++        <tbody>
++        {% for entity in entities %}
++            <tr>
++                <td><a href="{{ path('event_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
++                <td>{{ entity.name }}</td>
++                <td>{% if entity.time %}{{ entity.time|date('Y-m-d H:i:s') }}{% endif %}</td>
++                <td>{{ entity.location }}</td>
++                <td>{{ entity.details }}</td>
++                <td>
++                <ul>
++                    <li>
++                        <a href="{{ path('event_show', { 'id': entity.id }) }}">show</a>
++                    </li>
++                    <li>
++                        <a href="{{ path('event_edit', { 'id': entity.id }) }}">edit</a>
++                    </li>
++                </ul>
++                </td>
++            </tr>
++        {% endfor %}
++        </tbody>
++    </table>
++
++        <ul>
++        <li>
++            <a href="{{ path('event_new') }}">
++                Create a new entry
++            </a>
++        </li>
++    </ul>
++    {% endblock %}
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/new.html.twig b/src/Yoda/EventBundle/Resources/views/Event/new.html.twig
+new file mode 100644
+index 0000000..25e6d26
+--- /dev/null
++++ b/src/Yoda/EventBundle/Resources/views/Event/new.html.twig
+@@ -0,0 +1,15 @@
++{% extends '::base.html.twig' %}
++
++{% block body -%}
++    <h1>Event creation</h1>
++
++    {{ form(form) }}
++
++        <ul class="record_actions">
++    <li>
++        <a href="{{ path('event') }}">
++            Back to the list
++        </a>
++    </li>
++</ul>
++{% endblock %}
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+new file mode 100644
+index 0000000..4640854
+--- /dev/null
++++ b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+@@ -0,0 +1,44 @@
++{% extends '::base.html.twig' %}
++
++{% block body -%}
++    <h1>Event</h1>
++
++    <table class="record_properties">
++        <tbody>
++            <tr>
++                <th>Id</th>
++                <td>{{ entity.id }}</td>
++            </tr>
++            <tr>
++                <th>Name</th>
++                <td>{{ entity.name }}</td>
++            </tr>
++            <tr>
++                <th>Time</th>
++                <td>{{ entity.time|date('Y-m-d H:i:s') }}</td>
++            </tr>
++            <tr>
++                <th>Location</th>
++                <td>{{ entity.location }}</td>
++            </tr>
++            <tr>
++                <th>Details</th>
++                <td>{{ entity.details }}</td>
++            </tr>
++        </tbody>
++    </table>
++
++        <ul class="record_actions">
++    <li>
++        <a href="{{ path('event') }}">
++            Back to the list
++        </a>
++    </li>
++    <li>
++        <a href="{{ path('event_edit', { 'id': entity.id }) }}">
++            Edit
++        </a>
++    </li>
++    <li>{{ form(delete_form) }}</li>
++</ul>
++{% endblock %}
+diff --git a/src/Yoda/EventBundle/Tests/Controller/EventControllerTest.php b/src/Yoda/EventBundle/Tests/Controller/EventControllerTest.php
+new file mode 100644
+index 0000000..33858c5
+--- /dev/null
++++ b/src/Yoda/EventBundle/Tests/Controller/EventControllerTest.php
+@@ -0,0 +1,55 @@
++<?php
++
++namespace Yoda\EventBundle\Tests\Controller;
++
++use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
++
++class EventControllerTest extends WebTestCase
++{
++    /*
++    public function testCompleteScenario()
++    {
++        // Create a new client to browse the application
++        $client = static::createClient();
++
++        // Create a new entry in the database
++        $crawler = $client->request('GET', '/event/');
++        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /event/");
++        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
++
++        // Fill in the form and submit it
++        $form = $crawler->selectButton('Create')->form(array(
++            'yoda_eventbundle_eventtype[field_name]'  => 'Test',
++            // ... other fields to fill
++        ));
++
++        $client->submit($form);
++        $crawler = $client->followRedirect();
++
++        // Check data in the show view
++        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
++
++        // Edit the entity
++        $crawler = $client->click($crawler->selectLink('Edit')->link());
++
++        $form = $crawler->selectButton('Edit')->form(array(
++            'yoda_eventbundle_eventtype[field_name]'  => 'Foo',
++            // ... other fields to fill
++        ));
++
++        $client->submit($form);
++        $crawler = $client->followRedirect();
++
++        // Check the element contains an attribute with value equals "Foo"
++        $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
++
++        // Delete the entity
++        $client->submit($crawler->selectButton('Delete')->form());
++        $crawler = $client->followRedirect();
++
++        // Check the entity has been delete on the list
++        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
++    }
++
++    */
++}

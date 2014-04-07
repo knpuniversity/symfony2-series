@@ -1,0 +1,16 @@
+diff --git a/src/Yoda/EventBundle/Controller/DefaultController.php b/src/Yoda/EventBundle/Controller/DefaultController.php
+index 52fad6f..83e86c2 100644
+--- a/src/Yoda/EventBundle/Controller/DefaultController.php
++++ b/src/Yoda/EventBundle/Controller/DefaultController.php
+@@ -6,8 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+ 
+ class DefaultController extends Controller
+ {
+-    public function indexAction($firstName)
++    public function indexAction($firstName, $count)
+     {
++        var_dump($firstName, $count);die;
++
+         return $this->render(
+             'EventBundle:Default:index.html.twig',
+             array('name' => $firstName)

@@ -1,0 +1,19 @@
+diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
+index d87c952..3a4c6cd 100644
+--- a/app/Resources/views/base.html.twig
++++ b/app/Resources/views/base.html.twig
+@@ -3,11 +3,11 @@
+     <head>
+         <meta charset="UTF-8" />
+         <title>
+-            {% if block('title') %}
++            {%- if block('title') -%}
+                 {{ block('title') }} | Starwars Events
+-            {% else %}
++            {%- else -%}
+                 Events from a Galaxy, far far away
+-            {% endif %}
++            {%- endif -%}
+         </title>
+ 
+         {% block stylesheets %}
