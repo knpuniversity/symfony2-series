@@ -389,7 +389,7 @@ git and commit:
     ``git status`` before committing.
 
 Find some friends! It's time to celebrate the first to your awesome project.
-Do some jumping high fives, grab a pint, and make a Chubacca cry.
+Do some jumping high fives, grab a pint, and make a Chewbacca cry.
 
 .. _`Composer`: https://getcomposer.org/
 .. _`Installer for you`: https://getcomposer.org/doc/00-intro.md#installation-windows
