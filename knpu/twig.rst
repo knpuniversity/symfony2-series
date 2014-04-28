@@ -145,7 +145,7 @@ top of the ``index.html.twig`` template. Now, wrap everthing else in a
     {# src/Yoda/EventBundle/Resources/views/Default/index.html.twig #}
     {% extends '::base.html.twig' %}
 
-    {% block body % }
+    {% block body %}
         {# ... the rest of the template ... #}
     {% endblock %}
 
