@@ -10,6 +10,8 @@ Starting in Symfony2: Episode2
     login-form
     login-form2
     logout
+    twig-security-is-authenticated
+    deny-access-controller
     entity-security
     repository
     registration-form
