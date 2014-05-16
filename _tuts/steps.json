@@ -299,6 +299,77 @@
             "id": "mindtrick-twig-whitespace-control",
             "name": "MindTrick: Twig whitespace control",
             "description": null
+        },
+        {
+            "id": "basic-security-remove-extra-firewalls",
+            "name": "Basic Security: Remove extra firewalls",
+            "description": null
+        },
+        {
+            "id": "basic-security-changing-firewall-paths",
+            "name": "Basic Security: Changing firewall paths",
+            "description": null
+        },
+        {
+            "id": "basic-security-anonymous-key",
+            "name": "Basic Security: Anonymous key",
+            "description": null
+        },
+        {
+            "id": "access-control-adding-basic-controls",
+            "name": "Access Control: Adding basic controls",
+            "description": null
+        },
+        {
+            "id": "login-form-create-user-bundle",
+            "name": "Login Form: Create User Bundle",
+            "description": null
+        },
+        {
+            "id": "login-form-create-controller",
+            "name": "Login Form: Create controller",
+            "description": null
+        },
+        {
+            "id": "login-form-annotation-routing",
+            "name": "Login Form: Annotation routing",
+            "description": null
+        },
+        {
+            "id": "login-form-copied-loginaction",
+            "name": "Login Form: Copied loginAction",
+            "description": null
+        },
+        {
+            "id": "login-form-template-annotation",
+            "name": "Login Form: @Template Annotation",
+            "description": null
+        },
+        {
+            "id": "login-form-copied-template",
+            "name": "Login Form: Copied template",
+            "description": null
+        },
+        {
+            "id": "login-form-extend-base-template",
+            "name": "Login Form: Extend base template",
+            "description": null
+        },
+        {
+            "id": "login-form-logincheckaction",
+            "name": "Login Form: loginCheckAction",
+            "description": null
+        },
+        {
+            "id": "login-form-form-login-config-paths",
+            "name": "Login Form: form_login config paths",
+            "description": null
+        },
+        {
+            "id": "login-form-logout-configuration",
+            "name": "Login Form: Logout configuration",
+            "description": null
         }
-    ]
+    ],
+    "sha": "d7980785b5589d86763a87e25e8ba52d842fbd39"
 }
