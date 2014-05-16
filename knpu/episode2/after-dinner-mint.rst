@@ -246,6 +246,8 @@ has changed to user. So cool! To switch back, use the ``_exit`` key:
 
     http://events.local/app_dev.php/new?_switch_user=_exit
 
+.. _symfony-ep2-access_control-whitelist:
+
 Whitelisting: Securing all Pages, except a few
 ----------------------------------------------
 

@@ -35,7 +35,7 @@ chapters:
         is_free:    true
         length:     1:08
     "basic-security":
-        title:      "Basic Security"
+        title:      "Security Fundamentals"
         is_free:    true
         length:     16:47
     "entity-security":
