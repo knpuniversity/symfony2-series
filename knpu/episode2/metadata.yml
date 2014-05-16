@@ -1,0 +1,64 @@
+title:  Starting in Symfony2: Episode 2 (2.2)
+price:  12
+length: 1:22:53
+summary: |
+    Over the next hour, we're going to take you through some of the most difficult areas of Symfony learning all about security, forms, and parts of Doctrine. We'll also see testing and learn more about how Symfony's service container works. When you get to the end, you'll be well on your way to mastering Symfony.
+
+    Own the original second episode? Login and get this upgrade for $4!
+
+    One of the things we'll be creating is a security system that stores users in the database. This is functionality similar to what's offered by the very popular FOSUserBundle. That bundle is really great, but until you understand how the security system works, you're going to run into limitations. Once you do, you'll feel at home using FOSUserBundle or configuring the security system all on your own.
+
+    Highlights:
+
+    * Learning and building a form-login security system from scratch
+    * Loading users from the database
+    * Using AdvancedUserInterface and UserProviderInterface classes to give us more control over login
+    * Doctrine Repositories and Querying
+    * Building forms: creating fields, the data_class option, form type classes
+    * Form field options & HTML5 validation
+    * Form rendering
+    * Functional Testing!
+
+    ... and of course, tips, tricks, best practices and other little features along the way!
+
+illustration: sf2-ep2.png
+priority: 140
+versionNumber: 2.2
+originalVersion: 25
+isActiveVersion: 1
+tags:
+    - { name: symfony }
+
+chapters:
+    intro:
+        title:      Introduction
+        is_free:    true
+        length:     1:08
+    "basic-security":
+        title:      "Basic Security"
+        is_free:    true
+        length:     16:47
+    "entity-security":
+        title:      Entity Security
+        is_free:    false
+        length:     12:11
+    repository:
+        title:      Repository Security
+        is_free:    false
+        length:     8:04
+    "registration-form":
+        title:      Registration Form
+        is_free:    false
+        length:     15:35
+    "registration-validation":
+        title:      Registration Validation
+        is_free:    false
+        length:     8:54
+    testing:
+        title:      Functional Testing
+        is_free:    false
+        length:     9:29
+    "after-dinner-mint":
+        title:      After-dinner Mint
+        is_free:    false
+        length:     10:45

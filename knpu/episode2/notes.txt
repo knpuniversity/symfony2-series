@@ -1,0 +1,43 @@
+- in basic security I talk a lot about customizing error pages later. Where
+    is this? Link to it!
+- need to fix code for episode 1 - the composer file
+- ability to ask questions or flag when you get confused so we can improve.
+- put out a poll on our upcoming features and have people vote? Open-source
+    our development plan and screencast plan? Open-source progress we have
+    on features?
+- any ability to see what a file should look like at a certain point? Instead
+    of us just showing little tid-bits. For example, something like:
+    
+    .. code-block:: php
+
+        :projectfile:`src/Yoda/EventBundle/Controller/EventController.php:4-7`
+        // ...
+
+        :projectfile:`src/Yoda/EventBundle/Controller/EventController.php:45-55`
+- change calls to Symfony's class to :symfonyclass:
+- add :doctrineclass:
+- add :doctrinesource:
+- some notes and tips will need to be code or video only:
+
+    .. tip::
+        :videoonly:
+        :scriptonly:
+
+- in registration-form, I tease form theming around line 244 - let's hook
+    that up later
+- in registration-form, I tease fixing the encoding password duplication
+    in a future cast - 518
+- in testing, on line 287, we talk about parameters.yml. But I don't know
+    if we've taught this yet. Find where we teach this, link to it.
+
+
+TODOS
+=====
+
++ add metadata and proofread format
++ fix code for ep2 and ep1
++ get the db queries ready for the version stuff then load onto beta
++ is the image ready to go as-is?
++ generate PDF script and upload
+- get chapter lengths from leanna
+- giving away the first chapter still?
