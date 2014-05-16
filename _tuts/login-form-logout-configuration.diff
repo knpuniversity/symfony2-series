@@ -1,0 +1,32 @@
+diff --git a/app/config/security.yml b/app/config/security.yml
+index 88fd06e..7b0e170 100644
+--- a/app/config/security.yml
++++ b/app/config/security.yml
+@@ -20,8 +20,8 @@ security:
+                 check_path: login_check
+                 login_path: login_form
+             logout:
+-                path:   _demo_logout
+-                target: _demo
++                path:   logout
++                target: event
+             anonymous: ~
+             #http_basic:
+             #    realm: "Secured Demo Area"
+diff --git a/src/Yoda/UserBundle/Controller/SecurityController.php b/src/Yoda/UserBundle/Controller/SecurityController.php
+index 43c3c7e..b78a43a 100644
+--- a/src/Yoda/UserBundle/Controller/SecurityController.php
++++ b/src/Yoda/UserBundle/Controller/SecurityController.php
+@@ -41,4 +41,11 @@ class SecurityController extends Controller
+     public function loginCheckAction()
+     {
+     }
++
++    /**
++     * @Route("/logout", name="logout")
++     */
++    public function logoutAction()
++    {
++    }
+ }
+\ No newline at end of file
