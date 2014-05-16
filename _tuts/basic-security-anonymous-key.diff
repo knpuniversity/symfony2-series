@@ -1,0 +1,13 @@
+diff --git a/app/config/security.yml b/app/config/security.yml
+index 6702776..c44acab 100644
+--- a/app/config/security.yml
++++ b/app/config/security.yml
+@@ -22,7 +22,7 @@ security:
+             logout:
+                 path:   _demo_logout
+                 target: _demo
+-            #anonymous: ~
++            anonymous: ~
+             #http_basic:
+             #    realm: "Secured Demo Area"
+ 
