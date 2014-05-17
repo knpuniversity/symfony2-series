@@ -1,5 +1,5 @@
 diff --git a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
-index 9a09cbc..40b076b 100644
+index 9a09cbc..de4493c 100644
 --- a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
 +++ b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
 @@ -1,19 +1,24 @@
@@ -19,7 +19,7 @@ index 9a09cbc..40b076b 100644
 -    <label for="password">Password:</label>
 -    <input type="password" id="password" name="_password" />
 +        {% if error %}
-+            <div class="error">{{ error.message }}</div>
++            <div>{{ error.message }}</div>
 +        {% endif %}
  
 -    {#
