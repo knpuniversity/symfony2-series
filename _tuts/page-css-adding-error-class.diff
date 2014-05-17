@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
+index f03e94f..a072e2f 100644
+--- a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
++++ b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
+@@ -12,7 +12,7 @@
+     <article>
+ 
+         {% if error %}
+-            <div>{{ error.message }}</div>
++            <div class="error">{{ error.message }}</div>
+         {% endif %}
+ 
+         <form action="{{ path('login_check') }}" method="post">
