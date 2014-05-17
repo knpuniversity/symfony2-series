@@ -45,7 +45,7 @@ index 0000000..73ef4af
 +    margin-bottom: 10px;
 +}
 diff --git a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
-index 40b076b..0a749b3 100644
+index de4493c..4e5823c 100644
 --- a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
 +++ b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
 @@ -1,6 +1,10 @@
