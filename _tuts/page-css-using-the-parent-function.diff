@@ -1,5 +1,5 @@
 diff --git a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
-index 0a749b3..a072e2f 100644
+index 4e5823c..f03e94f 100644
 --- a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
 +++ b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
 @@ -2,6 +2,8 @@
