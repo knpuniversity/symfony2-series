@@ -384,7 +384,12 @@
             "id": "page-css-using-the-parent-function",
             "name": "Page CSS: Using the parent function",
             "description": null
+        },
+        {
+            "id": "page-css-adding-error-class",
+            "name": "Page CSS: Adding error class",
+            "description": null
         }
     ],
-    "sha": "919be679ddff619409e2beab15a4a43043eca362"
+    "sha": "c063377eeac6a91c2a526eb7bfb3c7958268d741"
 }
