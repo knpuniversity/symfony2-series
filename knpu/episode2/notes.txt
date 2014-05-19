@@ -1,3 +1,14 @@
+UPDATE
+======
+
+- mention the new simple_preauth somewhere
+- LoginController -> SecurityController
+- "login" route -> "login_form"
+
+OLD
+===
+
+
 - in basic security I talk a lot about customizing error pages later. Where
     is this? Link to it!
 - need to fix code for episode 1 - the composer file

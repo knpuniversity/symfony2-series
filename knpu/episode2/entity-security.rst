@@ -1,6 +1,20 @@
 Entity Security
 ===============
 
+----> New note!?
+
+One of the things we'll be creating is a security system that stores users
+in the database. This is functionality similar to what's offered by the very
+popular `FOSUserBundle`_. That bundle is really great, but until you understand
+how the security system works, you're going to run into limitations. Once
+you do, you'll feel at home using `FOSUserBundle`_ or configuring the security
+system all on your own.
+
+Wait! Don't run off it's not all about security! We've got a lot of great
+things to get through, so let's get started!
+
+.. _FOSUserBundle: https://github.com/FriendsOfSymfony/FOSUserBundle
+
 Now that we have a working security system, we just need to go one step
 further and start loading users from the database instead of from a list
 in ``security.yml``.
