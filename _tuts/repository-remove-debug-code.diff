@@ -1,0 +1,26 @@
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index cf9c8a5..a6426b6 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
+  * Event
+  *
+  * @ORM\Table(name="yoda_event")
+- * @ORM\Entity()
++ * @ORM\Entity(repositoryClass="Yoda\EventBundle\Entity\EventRepository")
+  */
+ class Event
+ {
+diff --git a/src/Yoda/EventBundle/Entity/EventRepository.php b/src/Yoda/EventBundle/Entity/EventRepository.php
+index 0db3303..c34487e 100644
+--- a/src/Yoda/EventBundle/Entity/EventRepository.php
++++ b/src/Yoda/EventBundle/Entity/EventRepository.php
+@@ -12,8 +12,4 @@ use Doctrine\ORM\EntityRepository;
+  */
+ class EventRepository extends EntityRepository
+ {
+-    public function findAll()
+-    {
+-        die('NOOOOOOOOO!!!!!!!!!!');
+-    }
+ }
