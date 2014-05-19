@@ -489,7 +489,117 @@
             "id": "save-user-create-the-encodepassword-function",
             "name": "Save User: Create the encodePassword function",
             "description": null
+        },
+        {
+            "id": "roles-add-roles-property",
+            "name": "Roles: Add roles property",
+            "description": null
+        },
+        {
+            "id": "roles-always-giving-role-user",
+            "name": "Roles: Always giving ROLE_USER",
+            "description": null
+        },
+        {
+            "id": "roles-add-admin-user",
+            "name": "Roles: Add admin user",
+            "description": null
+        },
+        {
+            "id": "advanceduserinterface-adding-isactive-field",
+            "name": "AdvancedUserInterface: Adding isActive field",
+            "description": null
+        },
+        {
+            "id": "advanceduserinterface-adding-interface-and-methods",
+            "name": "AdvancedUserInterface: Adding interface and methods",
+            "description": null
+        },
+        {
+            "id": "advanceduserinterface-real-method-implementations",
+            "name": "AdvancedUserInterface: Real method implementations",
+            "description": null
+        },
+        {
+            "id": "advanceduserinterface-re-enable-admin",
+            "name": "AdvancedUserInterface: re-enable admin",
+            "description": null
+        },
+        {
+            "id": "serializable-adding-the-interface",
+            "name": "Serializable: Adding the interface",
+            "description": null
+        },
+        {
+            "id": "serializable-filling-in-the-real-methods",
+            "name": "Serializable: Filling in the real methods",
+            "description": null
+        },
+        {
+            "id": "email-adding-user-email-property",
+            "name": "Email: Adding User.email property",
+            "description": null
+        },
+        {
+            "id": "repository-findall-dummy-method",
+            "name": "Repository: findAll dummy method",
+            "description": null
+        },
+        {
+            "id": "repository-remove-repositoryclass-option",
+            "name": "Repository: remove repositoryClass option",
+            "description": null
+        },
+        {
+            "id": "repository-remove-debug-code",
+            "name": "Repository: Remove debug code",
+            "description": null
+        },
+        {
+            "id": "repository-empty-userrepo-findonebyusernameoremail-method",
+            "name": "Repository: Empty UserRepo::findOneByUsernameOrEmail method",
+            "description": null
+        },
+        {
+            "id": "repository-use-query-builder",
+            "name": "Repository: Use query builder",
+            "description": null
+        },
+        {
+            "id": "repository-trying-it-in-eventcontroller",
+            "name": "Repository: Trying it in EventController",
+            "description": null
+        },
+        {
+            "id": "repository-using-email-in-eventcontroller",
+            "name": "Repository: Using email in EventController",
+            "description": null
+        },
+        {
+            "id": "repository-remove-userrepo-test-code",
+            "name": "Repository: Remove UserRepo test code",
+            "description": null
+        },
+        {
+            "id": "userprovider-provider-configuration",
+            "name": "UserProvider: provider configuration",
+            "description": null
+        },
+        {
+            "id": "userprovider-implement-userproviderinterface",
+            "name": "UserProvider: Implement UserProviderInterface",
+            "description": null
+        },
+        {
+            "id": "userprovider-adding-userproviderinterface-methods",
+            "name": "UserProvider: Adding UserProviderInterface methods",
+            "description": null
+        },
+        {
+            "id": "userprovider-real-logic-for-loaduserbyusername",
+            "name": "UserProvider: Real logic for loadUserByUsername",
+            "description": null
         }
     ],
-    "sha": "9066d6bd64f234a334066b57879756b27ef7d907"
+    "sha": "d7b21a6d9384bf9ea698d98a15e99b65099e2460"
 }
