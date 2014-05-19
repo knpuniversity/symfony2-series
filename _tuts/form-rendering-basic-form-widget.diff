@@ -1,0 +1,17 @@
+diff --git a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+index e2b5784..97a8c52 100644
+--- a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
++++ b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+@@ -11,7 +11,11 @@
+     <article>
+         <h1>Register</h1>
+ 
+-        {# render the form in a moment ... #}
++        <form action="{{ path('user_register') }}" method="POST">
++            {{ form_widget(form) }}
++
++            <input type="submit" value="Register!" />
++        </form>
+     </article>
+ </section>
+ {% endblock %}
