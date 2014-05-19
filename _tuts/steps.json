@@ -439,7 +439,57 @@
             "id": "deny-access-check-role-user-in-controller",
             "name": "Deny Access: Check ROLE_USER in controller",
             "description": null
+        },
+        {
+            "id": "user-entity-generate-it",
+            "name": "User Entity: Generate it",
+            "description": null
+        },
+        {
+            "id": "user-entity-control-table-name",
+            "name": "User Entity: Control table name",
+            "description": null
+        },
+        {
+            "id": "user-entity-implement-userinterface",
+            "name": "User Entity: Implement UserInterface",
+            "description": null
+        },
+        {
+            "id": "user-entity-using-bcrypt-encoder",
+            "name": "User Entity: Using bcrypt encoder",
+            "description": null
+        },
+        {
+            "id": "user-entity-installing-password-compat",
+            "name": "User Entity: Installing password_compat",
+            "description": null
+        },
+        {
+            "id": "user-entity-security-yml-provider",
+            "name": "User Entity: security.yml provider",
+            "description": null
+        },
+        {
+            "id": "save-user-copy-fixtures-class",
+            "name": "Save User: Copy fixtures class",
+            "description": null
+        },
+        {
+            "id": "save-user-create-user-but-no-password",
+            "name": "Save User: Create User, but no password",
+            "description": null
+        },
+        {
+            "id": "save-user-implement-containerawareinterface-on-fixture",
+            "name": "Save User: Implement ContainerAwareInterface on fixture",
+            "description": null
+        },
+        {
+            "id": "save-user-create-the-encodepassword-function",
+            "name": "Save User: Create the encodePassword function",
+            "description": null
         }
     ],
-    "sha": "a6465957950bf5844a930b9365aea55a54e6300a"
+    "sha": "9066d6bd64f234a334066b57879756b27ef7d907"
 }
