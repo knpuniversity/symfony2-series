@@ -1,0 +1,23 @@
+diff --git a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+new file mode 100644
+index 0000000..e2b5784
+--- /dev/null
++++ b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+@@ -0,0 +1,17 @@
++{% extends '::base.html.twig' %}
++
++{% block stylesheets %}
++    {{ parent() }}
++
++    <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}" />
++{% endblock %}
++
++{% block body %}
++<section class="login">
++    <article>
++        <h1>Register</h1>
++
++        {# render the form in a moment ... #}
++    </article>
++</section>
++{% endblock %}
