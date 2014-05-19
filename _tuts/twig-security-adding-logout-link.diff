@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+index 9ae4a41..bbf7679 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+@@ -5,6 +5,8 @@
+     <section class="events">
+         <header id="menu">
+             <a class="button" href="{{ path('event_new') }}">Create new event</a>
++
++            <a class="link" href="{{ path('logout') }}">Logout</a>
+         </header>
+ 
+         {% for entity in entities %}
