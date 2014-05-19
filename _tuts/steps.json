@@ -599,7 +599,37 @@
             "id": "userprovider-real-logic-for-loaduserbyusername",
             "name": "UserProvider: Real logic for loadUserByUsername",
             "description": null
+        },
+        {
+            "id": "registration-create-controller-class",
+            "name": "Registration: Create controller class",
+            "description": null
+        },
+        {
+            "id": "registration-annotation-routing",
+            "name": "Registration: Annotation routing",
+            "description": null
+        },
+        {
+            "id": "registration-build-form",
+            "name": "Registration: Build Form",
+            "description": null
+        },
+        {
+            "id": "registration-template-without-use",
+            "name": "Registration: @Template without use",
+            "description": null
+        },
+        {
+            "id": "registration-create-template",
+            "name": "Registration: Create template",
+            "description": null
+        },
+        {
+            "id": "registration-adding-template-use",
+            "name": "Registration: Adding @Template use",
+            "description": null
         }
     ],
-    "sha": "d02e438d058cb4cdbdd4d3bb7ebb49bfac469640"
+    "sha": "003b3f1ba25aec1a2f7370d627e2c9424c5615cd"
 }
