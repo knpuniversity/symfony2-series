@@ -1,0 +1,15 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+index bbf7679..536ee1d 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+@@ -6,7 +6,9 @@
+         <header id="menu">
+             <a class="button" href="{{ path('event_new') }}">Create new event</a>
+ 
+-            <a class="link" href="{{ path('logout') }}">Logout</a>
++            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
++                <a class="link" href="{{ path('logout') }}">Logout</a>
++            {% endif %}
+         </header>
+ 
+         {% for entity in entities %}
