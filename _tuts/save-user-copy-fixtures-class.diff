@@ -1,0 +1,20 @@
+diff --git a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
+new file mode 100644
+index 0000000..2329c1b
+--- /dev/null
++++ b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
+@@ -0,0 +1,14 @@
++<?php
++
++namespace Yoda\UserBundle\DataFixtures\ORM;
++
++use Doctrine\Common\DataFixtures\FixtureInterface;
++use Doctrine\Common\Persistence\ObjectManager;
++
++class LoadUsers implements FixtureInterface
++{
++    public function load(ObjectManager $manager)
++    {
++
++    }
++}
