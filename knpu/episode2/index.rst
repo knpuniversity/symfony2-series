@@ -20,6 +20,7 @@ Starting in Symfony2: Episode2
     user-provider
     user-serialization
     registration-form
+    form-rendering
     registration-validation
     testing
     after-dinner-mint
