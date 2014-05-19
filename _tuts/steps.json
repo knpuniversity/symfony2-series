@@ -629,7 +629,22 @@
             "id": "registration-adding-template-use",
             "name": "Registration: Adding @Template use",
             "description": null
+        },
+        {
+            "id": "form-rendering-basic-form-widget",
+            "name": "Form Rendering: Basic form_widget",
+            "description": null
+        },
+        {
+            "id": "form-rendering-add-createview",
+            "name": "Form Rendering: Add createView",
+            "description": null
+        },
+        {
+            "id": "form-rendering-form-row",
+            "name": "Form Rendering: form_row",
+            "description": null
         }
     ],
-    "sha": "003b3f1ba25aec1a2f7370d627e2c9424c5615cd"
+    "sha": "5fb8dc1652c36b82d68dfa8530ca476822aa1560"
 }
