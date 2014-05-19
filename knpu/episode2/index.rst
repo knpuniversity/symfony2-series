@@ -16,6 +16,9 @@ Starting in Symfony2: Episode2
     saving-users
     roles-disabling-user
     repository
+    query-builder
+    user-provider
+    user-serialization
     registration-form
     registration-validation
     testing
