@@ -1,0 +1,27 @@
+diff --git a/resources/episode2/UserRepository.php b/resources/episode2/UserRepository.php
+index b9b5de9..5ba5792 100644
+--- a/resources/episode2/UserRepository.php
++++ b/resources/episode2/UserRepository.php
+@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityRepository;
+ use Symfony\Component\Security\Core\User\UserProviderInterface;
+ use Symfony\Component\Security\Core\User\UserInterface;
+ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
++use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+ 
+ /**
+  * UserRepository
+@@ -17,7 +18,13 @@ class UserRepository extends EntityRepository implements UserProviderInterface
+ {
+     public function loadUserByUsername($username)
+     {
+-        // todo
++        $user = $this->findOneByUsernameOrEmail($username);
++
++        if (!$user) {
++            throw new UsernameNotFoundException('No user found for username '.$username);
++        }
++
++        return $user;
+     }
+ 
+     public function refreshUser(UserInterface $user)
