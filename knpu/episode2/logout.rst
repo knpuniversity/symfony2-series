@@ -50,11 +50,12 @@ web debug toolbar, we're anonymous once again.
 Cleaning up loginAction
 -----------------------
 
-Next, let's fail the login. Notice that we get the "Bad Credentials" error.
-When we fail a login, the error is saved to the session. This is all visible in
-``loginAction``. In fact, get rid of the if statement and just leave the
-second part. The first part is not useful unless you reconfigure the login
-system to forward you to the login page::
+If we fail login, we see a "Bad Credentials" message. When Symfony handles
+the login, it saves this error to the session under a special key, and we're
+just fetching it out in ``loginAction``.
+
+Actually, we have more code than we need here. Remove rhe if statement and
+just leave the second part::
 
     // src/Yoda/UserBundle/Controller/SecurityController.php
     // ...
@@ -64,22 +65,32 @@ system to forward you to the login page::
         $session = $request->getSession();
 
         // get the login error if there is one
-        $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
-        $session->remove(SecurityContext::AUTHENTICATION_ERROR);
+        $error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
+        $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
 
         return array(
             // last username entered by the user
-            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+            'last_username' => $session->get(SecurityContextInterface::LAST_USERNAME),
             'error'         => $error,
         );
     }
 
+The first part isn't used unless you reconfigure how Symfony sends you to
+the login page.
+
+.. note::
+
+    The configuration I'm talking about here is the ``use_forward``, which
+    causes Symfony to forward to the login page, instead of redirecting.
+
 Adding CSS to a Single Page
 ---------------------------
 
-Our page is pretty ugly, so let's add some CSS! We already have a special
-``login.css`` prepared for *just* this page. Since it should live in the ``UserBundle``,
-create a ``Resources/public/css`` directory and place it there.
+I know I know, the login page is embarrassing loogkin. So I made a ``login.css``
+file to fix things - find it in the ``resources/episode2`` directory of the
+code download.
+
+Let's move it into a ``Resources/public/css`` directory in the ``UserBundle``.
 
 .. code-block:: css
 
@@ -91,19 +102,38 @@ create a ``Resources/public/css`` directory and place it there.
 
     /* for the rest of login.css, see the code download */
 
-Like in episode 1, we can run the ``assets:install`` command after creating
-a ``Resources/public`` directory in a bundle. This creates a symbolic link
-so that the new CSS file is accessible via ``bundles/user/css/login.css``
-with respect to the public directory:
+Just like in episode 1, run ``app/console assets:install`` and add the ``--symlink``
+option, unless you're on Windows:
 
 .. code-block:: bash
 
     php app/console assets:install --symlink
 
-To include the file in *just* this template, let's use some Twig magic! Recall
-that our base layout has several blocks. One of them is ``stylesheets``, and
-it brings in all of our base CSS. We can easily override this block in our
-template by redefining it and adding in a ``link`` tag for ``login.css``:
+This creates a symbolic link from ``web/bundles/user`` to the ``Resources/public``
+directory in UserBundle. Since ``web/`` is our application's document root,
+this makes our new CSS file accessible in a browser by going to
+``/bundles/user/css/login.css``.
+
+So how can we add this CSS file to *only* this page? First, open up the base
+template. Here, we have a bunch of blocks, including one called ``stylesheets``.
+All of our global CSS link tags live inside of it:
+
+    # app/Resources/views/base.html.twig
+    # ...
+
+    {% block stylesheets %}
+        {% stylesheets
+            'bundles/event/css/event.css'
+            'bundles/event/css/events.css'
+            'bundles/event/css/main.css'
+            filter='cssrewrite'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+
+Let's override this block in ``login.html.twig`` and add the new link tag
+to ``login.css``:
 
 .. code-block:: html+jinja
 
@@ -113,10 +143,9 @@ template by redefining it and adding in a ``link`` tag for ``login.css``:
         <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}" />
     {% endblock %}
 
-Of course if we did this, we'd really have a broken site! Instead of replacing
-the ``stylesheets`` block, we want to add to it. The trick is the
-Twig `parent() function`_. By including this, all the parent block's content
-is included first:
+Cool, but do you see the problem? This would entirely *replace* the block,
+but we want to *add* to it. The trick is the Twig `parent() function`_. By
+including this, all the parent block's content is included first:
 
 .. code-block:: html+jinja
 
@@ -128,43 +157,49 @@ is included first:
         <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}" />
     {% endblock %}
 
-This is the standard way of including page-specific CSS or JS files. Now the 
-login form looks good. And by adding a little error class, it looks even better.
+Refresh now. Much less embarrassing looking. When you need to add CSS or
+JS to just one page, this is how you do it.
+
+And by adding a little error class, it looks even better:
+
+.. code-block:: html+jinja
+
+    {# src/Yoda/UserBundle/Resources/views/Security/login.html.twig #}
+    {# ... #}
+
+    {% if error %}
+        <div class="error">{{ error.message }}</div>
+    {% endif %}
 
 .. _symfony-ep2-login-error-translation:
 
 Translating the Login Error Message
 -----------------------------------
 
-While we're here, let's do one more thing. The error "Bad Credentials" comes
-from deep inside Symfony. The easiest way to customize it is by translating
-it, which is really quite easy. First, add the ``trans`` filter to the string:
+While we're here, let's change that "Bad Credentials" message, it's a little,
+"programmery". The message comes from deep inside Symfony. So to customize
+it, we'll use the translator.
+
+First, use the Twig ``trans`` filter on the message:
 
 .. code-block:: html+jinja
 
     {# src/Yoda/UserBundle/Resources/views/Security/login.html.twig #}
-
     {# ... #}
-    {% block body %}
-        {# ... #}
 
-        {% if error %}
-            <div class="error">{{ error.message|trans }}</div>
-        {% endif %}
+    {% if error %}
+        <div class="error">{{ error.message|trans }}</div>
+    {% endif %}
 
-        {# ... #}
-    {% endblock %}
-
-Next, create an english translation file in ``app/Resources/translations/messages.en.yml``.
-The translation is just a simple key-value pair:
+Next, create a translation file in ``app/Resources/translations/messages.en.yml``.
+This file is just a simple key-value pair of translations:
 
 .. code-block:: yaml
 
     # app/Resources/translations/messages.en.yml
-
     "Bad credentials": "Wrong password bro!"
 
-Finally, turn the translation engine on in `app/config.yml`:
+Now, we just need to activate the translation engine in ``app/config.yml``:
 
 .. code-block:: yaml
 

@@ -13,6 +13,8 @@ Starting in Symfony2: Episode2
     twig-security-is-authenticated
     deny-access-controller
     entity-security
+    saving-users
+    roles-disabling-user
     repository
     registration-form
     registration-validation
