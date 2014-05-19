@@ -1,0 +1,63 @@
+diff --git a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
+index 0f027a6..4ce18dc 100644
+--- a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
++++ b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
+@@ -17,12 +17,14 @@ class LoadUsers implements FixtureInterface, ContainerAwareInterface
+         $user = new User();
+         $user->setUsername('user');
+         $user->setPassword($this->encodePassword($user, 'userpass'));
++        $user->setEmail('user@user.com');
+         $manager->persist($user);
+ 
+         $admin = new User();
+         $admin->setUsername('admin');
+         $admin->setPassword($this->encodePassword($admin, 'adminpass'));
+         $admin->setRoles(array('ROLE_ADMIN'));
++        $admin->setEmail('admin@admin.com');
+         $manager->persist($admin);
+ 
+         // the queries aren't done until now
+diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
+index 327dd7a..ff3a6e5 100644
+--- a/src/Yoda/UserBundle/Entity/User.php
++++ b/src/Yoda/UserBundle/Entity/User.php
+@@ -39,6 +39,11 @@ class User implements AdvancedUserInterface, Serializable
+     private $password;
+ 
+     /**
++     * @ORM\Column(type="string", length=255)
++     */
++    private $email;
++
++    /**
+      * @ORM\Column(type="json_array")
+      */
+     private $roles = array();
+@@ -214,4 +219,27 @@ class User implements AdvancedUserInterface, Serializable
+             $this->password,
+         ) = unserialize($serialized);
+     }
++
++    /**
++     * Set email
++     *
++     * @param string $email
++     * @return User
++     */
++    public function setEmail($email)
++    {
++        $this->email = $email;
++
++        return $this;
++    }
++
++    /**
++     * Get email
++     *
++     * @return string
++     */
++    public function getEmail()
++    {
++        return $this->email;
++    }
+ }
