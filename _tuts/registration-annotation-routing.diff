@@ -1,0 +1,18 @@
+diff --git a/src/Yoda/UserBundle/Controller/RegisterController.php b/src/Yoda/UserBundle/Controller/RegisterController.php
+index 0b8aa21..c3786da 100644
+--- a/src/Yoda/UserBundle/Controller/RegisterController.php
++++ b/src/Yoda/UserBundle/Controller/RegisterController.php
+@@ -3,9 +3,13 @@
+ namespace Yoda\UserBundle\Controller;
+ 
+ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ 
+ class RegisterController extends Controller
+ {
++    /**
++     * @Route("/register", name="user_register")
++     */
+     public function registerAction()
+     {
+         // todo
