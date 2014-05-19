@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
+index 6898c99..2fdd1a0 100644
+--- a/src/Yoda/UserBundle/Entity/User.php
++++ b/src/Yoda/UserBundle/Entity/User.php
+@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
+ /**
+  * User
+  *
+- * @ORM\Table()
++ * @ORM\Table(name="yoda_user")
+  * @ORM\Entity(repositoryClass="Yoda\UserBundle\Entity\UserRepository")
+  */
+ class User
