@@ -1,0 +1,31 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 6160ff1..598f000 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -39,6 +39,13 @@ class EventController extends Controller
+      */
+     public function createAction(Request $request)
+     {
++        $securityContext = $this->container->get('security.context');
++        if (!$securityContext->isGranted('ROLE_USER')) {
++            // in Symfony 2.5
++            // throw $this->createAccessDeniedException('message!');
++            throw new AccessDeniedException('Need ROLE_USER');
++        }
++
+         $entity = new Event();
+         $form = $this->createCreateForm($entity);
+         $form->handleRequest($request);
+@@ -83,10 +90,10 @@ class EventController extends Controller
+     public function newAction()
+     {
+         $securityContext = $this->container->get('security.context');
+-        if (!$securityContext->isGranted('ROLE_ADMIN')) {
++        if (!$securityContext->isGranted('ROLE_USER')) {
+             // in Symfony 2.5
+             // throw $this->createAccessDeniedException('message!');
+-            throw new AccessDeniedException('Only an admin can do this!!!!');
++            throw new AccessDeniedException('Need ROLE_USER');
+         }
+ 
+         $entity = new Event();
