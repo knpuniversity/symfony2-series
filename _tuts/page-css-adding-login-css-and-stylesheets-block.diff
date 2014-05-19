@@ -1,9 +1,9 @@
 diff --git a/src/Yoda/UserBundle/Resources/public/css/login.css b/src/Yoda/UserBundle/Resources/public/css/login.css
 new file mode 100644
-index 0000000..73ef4af
+index 0000000..eb6ae89
 --- /dev/null
 +++ b/src/Yoda/UserBundle/Resources/public/css/login.css
-@@ -0,0 +1,40 @@
+@@ -0,0 +1,44 @@
 +.login {
 +    width: 500px;
 +    margin: 100px auto;
@@ -15,6 +15,10 @@ index 0000000..73ef4af
 +    -webkit-border-radius:5px;
 +    -moz-border-radius:5px;
 +    border-radius:5px;
++}
++.login article h1 {
++    margin-top: 0;
++    font-family:Arial;
 +}
 +
 +.login article label {
