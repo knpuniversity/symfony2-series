@@ -389,7 +389,57 @@
             "id": "page-css-adding-error-class",
             "name": "Page CSS: Adding error class",
             "description": null
+        },
+        {
+            "id": "translation-translation-the-error-messages",
+            "name": "Translation: Translation the error messages",
+            "description": null
+        },
+        {
+            "id": "twig-security-adding-logout-link",
+            "name": "Twig Security: Adding logout link",
+            "description": null
+        },
+        {
+            "id": "twig-security-is-granted-around-logout-link",
+            "name": "Twig Security: is_granted around logout link",
+            "description": null
+        },
+        {
+            "id": "twig-security-adding-login-link",
+            "name": "Twig Security: Adding login link",
+            "description": null
+        },
+        {
+            "id": "deny-access-role-admin-in-access-control",
+            "name": "Deny Access: ROLE_ADMIN in access_control",
+            "description": null
+        },
+        {
+            "id": "deny-access-comment-out-access-control",
+            "name": "Deny Access: Comment out access_control",
+            "description": null
+        },
+        {
+            "id": "deny-access-isgranted-in-the-controller",
+            "name": "Deny Access: isGranted in the controller",
+            "description": null
+        },
+        {
+            "id": "deny-access-throw-accessdeniedexception",
+            "name": "Deny Access: Throw AccessDeniedException",
+            "description": null
+        },
+        {
+            "id": "deny-access-createaccessdeniedexception-for-2-5",
+            "name": "Deny Access: createAccessDeniedException for 2.5",
+            "description": null
+        },
+        {
+            "id": "deny-access-check-role-user-in-controller",
+            "name": "Deny Access: Check ROLE_USER in controller",
+            "description": null
         }
     ],
-    "sha": "c063377eeac6a91c2a526eb7bfb3c7958268d741"
+    "sha": "a6465957950bf5844a930b9365aea55a54e6300a"
 }
