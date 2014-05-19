@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index a6426b6..cf9c8a5 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
+  * Event
+  *
+  * @ORM\Table(name="yoda_event")
+- * @ORM\Entity(repositoryClass="Yoda\EventBundle\Entity\EventRepository")
++ * @ORM\Entity()
+  */
+ class Event
+ {
