@@ -1,7 +1,7 @@
-diff --git a/resources/episode2/UserRepository.php b/resources/episode2/UserRepository.php
-index b9b5de9..5ba5792 100644
---- a/resources/episode2/UserRepository.php
-+++ b/resources/episode2/UserRepository.php
+diff --git a/src/Yoda/UserBundle/Entity/UserRepository.php b/src/Yoda/UserBundle/Entity/UserRepository.php
+index 2d6344d..1e6cc1a 100644
+--- a/src/Yoda/UserBundle/Entity/UserRepository.php
++++ b/src/Yoda/UserBundle/Entity/UserRepository.php
 @@ -6,6 +6,7 @@ use Doctrine\ORM\EntityRepository;
  use Symfony\Component\Security\Core\User\UserProviderInterface;
  use Symfony\Component\Security\Core\User\UserInterface;
@@ -10,8 +10,8 @@ index b9b5de9..5ba5792 100644
  
  /**
   * UserRepository
-@@ -17,7 +18,13 @@ class UserRepository extends EntityRepository implements UserProviderInterface
- {
+@@ -28,7 +29,13 @@ class UserRepository extends EntityRepository implements UserProviderInterface
+ 
      public function loadUserByUsername($username)
      {
 -        // todo
