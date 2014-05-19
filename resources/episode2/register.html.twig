@@ -1,13 +1,17 @@
 {% extends '::base.html.twig' %}
 
-{% block body %}
-<section class="main-block">
-    <article>
-        <section>
-            <h1>Register</h1>
+{% block stylesheets %}
+    {{ parent() }}
 
-            {# render the form in a moment ... #}
-        </section>
+    <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}" />
+{% endblock %}
+
+{% block body %}
+<section class="login">
+    <article>
+        <h1>Register</h1>
+
+        {# render the form in a moment ... #}
     </article>
 </section>
 {% endblock %}
