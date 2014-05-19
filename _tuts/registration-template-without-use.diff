@@ -1,0 +1,20 @@
+diff --git a/src/Yoda/UserBundle/Controller/RegisterController.php b/src/Yoda/UserBundle/Controller/RegisterController.php
+index 78c1d82..c91e3d0 100644
+--- a/src/Yoda/UserBundle/Controller/RegisterController.php
++++ b/src/Yoda/UserBundle/Controller/RegisterController.php
+@@ -9,6 +9,7 @@ class RegisterController extends Controller
+ {
+     /**
+      * @Route("/register", name="user_register")
++     * @Template
+      */
+     public function registerAction()
+     {
+@@ -18,5 +19,7 @@ class RegisterController extends Controller
+             ->add('password', 'password')
+             ->getForm()
+         ;
++
++        return array('form' => $form);
+     }
+ }
