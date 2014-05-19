@@ -1,0 +1,38 @@
+diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
+index deee083..30e4e73 100644
+--- a/src/Yoda/UserBundle/Entity/User.php
++++ b/src/Yoda/UserBundle/Entity/User.php
+@@ -43,6 +43,13 @@ class User implements UserInterface
+     private $roles = array();
+ 
+     /**
++     * @var bool
++     *
++     * @ORM\Column(type="boolean")
++     */
++    private $isActive = true;
++
++    /**
+      * Get id
+      *
+      * @return integer 
+@@ -153,5 +160,19 @@ class User implements UserInterface
+         return null;
+     }
+ 
++    /**
++     * @return boolean
++     */
++    public function getIsActive()
++    {
++        return $this->isActive;
++    }
+ 
++    /**
++     * @param boolean $isActive
++     */
++    public function setIsActive($isActive)
++    {
++        $this->isActive = $isActive;
++    }
+ }
