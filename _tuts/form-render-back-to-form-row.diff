@@ -1,5 +1,5 @@
 diff --git a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
-index f509680..62d9ed5 100644
+index 7695afa..d957317 100644
 --- a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
 +++ b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
 @@ -12,12 +12,7 @@
