@@ -1,5 +1,5 @@
 diff --git a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
-index 97a8c52..62d9ed5 100644
+index 28b5859..d957317 100644
 --- a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
 +++ b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
 @@ -12,7 +12,9 @@
@@ -11,5 +11,5 @@ index 97a8c52..62d9ed5 100644
 +            {{ form_row(form.email) }}
 +            {{ form_row(form.password) }}
  
-             <input type="submit" value="Register!" />
-         </form>
+             <hr/>
+             <input type="submit" class="btn btn-primary pull-right" value="Register!" />
