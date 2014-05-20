@@ -1,14 +1,14 @@
 Cleaning up with a plainPassword Field
---------------------------------------
+======================================
 
-One strange thing is that we're using our password field both to temporarily
-store the plain-text password as well as the encoded password later. This
-is a bad idea. What if we forget to encode a user's password? In this case,
-the plain-text password would be saved to the database instead of throwing
-an error.
+We're abusing our ``password`` field. It temporarily stores the plain text
+submitted password and then later stores the encoded version. This is a bad
+idea. What if we forget to encode a user's password? The plain-text password
+would be saved to the database instead of throwing an error. And storing
+plain text passwords is a bummer!
 
-A better practice is to create a new property on the ``User`` entity called
-``plainPassword``::
+Instead, create a new property on the ``User`` entity called ``plainPassword``.
+Let's also add the getter and setter method for it::
 
     private $plainPassword;
 
@@ -27,19 +27,28 @@ A better practice is to create a new property on the ``User`` entity called
     }
 
 This property is just like the others, except that it's not actually persisted
-to the database. It exists just as a temporary place to store data. Find the
-``eraseCredentials`` method and clear out the ``plainPassword`` field::
+to the database. It exists just as a temporary place to store data.
+
+Using eraseCredentials
+----------------------
+
+Find the ``eraseCredentials`` method and clear out the ``plainPassword``
+field::
 
     public function eraseCredentials()
     {
         $this->setPlainPassword(null);
     }
 
-This method isn't particularly important, but it's called during the authentication
-process and it's purpose is to make sure your User doesn't have any sensitive
-data on it. I've also generated a getter and a setter for the new field.
+This method isn't really important, but it's called during the authentication
+process and its purpose is to make sure your User doesn't have any sensitive
+data on it.
 
-Let's update our form code - changing "password" to "plainPassword"::
+Using plainPassword
+-------------------
+
+Now, update the form code - changing the field name from ``password`` to
+``plainPassword``::
 
     // src/Yoda/UserBundle/Controller/RegisterController.php
     // ...
@@ -73,10 +82,13 @@ Also don't forget to update the template:
         'label': 'Repeat Password'
     }) }}
 
-When the form submits, ``plainPassword`` is populated. We can use it to set
-the real, encoded ``password`` value::
+Now, when the form submits, the ``plainPassword`` is populated on the User.
+Use it to set the real, encoded ``password`` property::
 
     // inside registerAction()
     $user->setPassword(
         $this->encodePassword($user, $user->getPlainPassword())
     );
+
+Let's try it out! I'll register as a new user and then try to login. Once
+again, things work perfectly!

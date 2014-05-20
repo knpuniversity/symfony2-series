@@ -33,6 +33,13 @@ for emails:
 
     <input type="email" ... />
 
+Head over to Symfony's documentation and go into the `Reference Section`_.
+There, you'll find a page called `Form Field Type Reference`_. This is awesome:
+it shows you *all* of the built-in field types and the options you can pass
+to each. For example, if you click ``repeated``, it shows you how to customize
+the error message that shows up if the fields don't match and some other
+stuff. Use this section to your advantage!
+
 The Repeated Fields and "Compound" fields
 -----------------------------------------
 
@@ -100,3 +107,6 @@ a ``label`` key:
     }) }}
 
 Refresh! Much better!
+
+.. _`Reference Section`: http://symfony.com/doc/current/reference/index.html
+.. _`Form Field Type Reference`: http://symfony.com/doc/current/reference/forms/types.html

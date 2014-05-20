@@ -197,4 +197,22 @@ this URL.
 Ok, time to kick the tires! As expected, we end up on the homepage. We can
 even login as the new user!
 
+You Don't Need isSubmitted
+--------------------------
+
+Head back to the controller and remove the ``isSubmitted()`` call in the
+``if`` statement::
+
+    // src/Yoda/UserBundle/Controller/RegisterController.php
+
+    $form->handleRequest($request);
+    if ($form->isValid()) {
+        // ...
+    }
+
+This actually doesn't change anything because ``isValid()`` automatically
+returns false if the form wasn't submitted - meaning, if the request isn't
+a POST. So either just do this, or keep the ``isSubmitted`` part in there
+if you want - I find it adds some clarity.
+
 .. _`method`: http://symfony.com/doc/current/reference/forms/types/form.html#method
