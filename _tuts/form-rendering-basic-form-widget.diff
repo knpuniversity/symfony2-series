@@ -1,8 +1,8 @@
 diff --git a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
-index e2b5784..97a8c52 100644
+index e2b5784..28b5859 100644
 --- a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
 +++ b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
-@@ -11,7 +11,11 @@
+@@ -11,7 +11,12 @@
      <article>
          <h1>Register</h1>
  
@@ -10,7 +10,8 @@ index e2b5784..97a8c52 100644
 +        <form action="{{ path('user_register') }}" method="POST">
 +            {{ form_widget(form) }}
 +
-+            <input type="submit" value="Register!" />
++            <hr/>
++            <input type="submit" class="btn btn-primary pull-right" value="Register!" />
 +        </form>
      </article>
  </section>
