@@ -1,0 +1,17 @@
+diff --git a/src/Yoda/UserBundle/Controller/RegisterController.php b/src/Yoda/UserBundle/Controller/RegisterController.php
+index 722caaa..f66c950 100644
+--- a/src/Yoda/UserBundle/Controller/RegisterController.php
++++ b/src/Yoda/UserBundle/Controller/RegisterController.php
+@@ -16,8 +16,10 @@ class RegisterController extends Controller
+     {
+         $form = $this->createFormBuilder()
+             ->add('username', 'text')
+-            ->add('email', 'text')
+-            ->add('password', 'password')
++            ->add('email', 'email')
++            ->add('password', 'repeated', array(
++                'type' => 'password',
++            ))
+             ->getForm()
+         ;
+ 
