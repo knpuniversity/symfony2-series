@@ -21,7 +21,7 @@
     width: 120px;
     font-size: 24px;
 }
-.login article input[type="text"], .login article input[type="password"] {
+.login article input[type="text"], .login article input[type="password"], .login article input[type="email"] {
     border: 1px solid #ccc;
     font-size: 24px;
     padding: 5px;
