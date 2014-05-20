@@ -20,7 +20,7 @@ index c08c399..e6841de 100644
      router:
          resource: "%kernel.root_dir%/config/routing.yml"
 diff --git a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
-index a072e2f..20abdbf 100644
+index ae54b93..fdc912c 100644
 --- a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
 +++ b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
 @@ -12,7 +12,7 @@
