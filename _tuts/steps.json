@@ -699,7 +699,72 @@
             "id": "form-submit-redirecting",
             "name": "Form Submit: Redirecting",
             "description": null
+        },
+        {
+            "id": "form-submit-no-issubmitted",
+            "name": "Form Submit: no isSubmitted",
+            "description": null
+        },
+        {
+            "id": "form-data-passing-array-default-data",
+            "name": "Form Data: Passing array default data",
+            "description": null
+        },
+        {
+            "id": "form-data-adding-data-class",
+            "name": "Form Data: Adding data_class",
+            "description": null
+        },
+        {
+            "id": "form-data-simplify-user-creation",
+            "name": "Form Data: Simplify user creation",
+            "description": null
+        },
+        {
+            "id": "form-data-putting-back-array-default-data",
+            "name": "Form Data: Putting back array default data",
+            "description": null
+        },
+        {
+            "id": "form-data-user-object-default-data",
+            "name": "Form Data: User object default data",
+            "description": null
+        },
+        {
+            "id": "plainpassword-creating-the-property",
+            "name": "plainPassword: Creating the property",
+            "description": null
+        },
+        {
+            "id": "plainpassword-populating-erasecredentials",
+            "name": "plainPassword: Populating eraseCredentials",
+            "description": null
+        },
+        {
+            "id": "plainpassword-using-in-the-form",
+            "name": "plainPassword: Using in the form",
+            "description": null
+        },
+        {
+            "id": "form-class-create-registerformtype",
+            "name": "Form Class: Create RegisterFormType",
+            "description": null
+        },
+        {
+            "id": "form-class-getname",
+            "name": "Form Class: getName",
+            "description": null
+        },
+        {
+            "id": "form-class-filling-in-the-guts",
+            "name": "Form Class: Filling in the guts",
+            "description": null
+        },
+        {
+            "id": "form-class-using-in-the-controller",
+            "name": "Form Class: Using in the controller",
+            "description": null
         }
     ],
-    "sha": "1d9adf0773e613e8a8773b9652cfd86e236f508d"
+    "sha": "d9193672ef30b1910955f8173f52ebc274b206cc"
 }
