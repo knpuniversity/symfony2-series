@@ -356,11 +356,6 @@
             "description": null
         },
         {
-            "id": "login-form-adding-bootstrap-styling",
-            "name": "Login Form: Adding bootstrap styling",
-            "description": null
-        },
-        {
             "id": "login-form-logincheckaction",
             "name": "Login Form: loginCheckAction",
             "description": null
@@ -813,11 +808,6 @@
         {
             "id": "flash-setting-the-message",
             "name": "Flash: Setting the message",
-            "description": null
-        },
-        {
-            "id": "flash-adding-twitter-bootstrap",
-            "name": "Flash: Adding Twitter Bootstrap",
             "description": null
         }
     ],
