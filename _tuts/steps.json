@@ -644,7 +644,62 @@
             "id": "form-rendering-form-row",
             "name": "Form Rendering: form_row",
             "description": null
+        },
+        {
+            "id": "form-render-form-widget-form-label-form-errors",
+            "name": "Form Render: form_widget, form_label, form_errors",
+            "description": null
+        },
+        {
+            "id": "form-render-back-to-form-row",
+            "name": "Form Render: Back to form_row",
+            "description": null
+        },
+        {
+            "id": "form-render-global-form-errors",
+            "name": "Form Render: Global form_errors",
+            "description": null
+        },
+        {
+            "id": "form-render-form-rest",
+            "name": "Form Render: form_rest",
+            "description": null
+        },
+        {
+            "id": "repeated-adding-repeated-field",
+            "name": "Repeated: Adding repeated field",
+            "description": null
+        },
+        {
+            "id": "repeated-rendering-fields-individually",
+            "name": "Repeated: Rendering fields individually",
+            "description": null
+        },
+        {
+            "id": "repeated-customizing-the-labels",
+            "name": "Repeated: Customizing the labels",
+            "description": null
+        },
+        {
+            "id": "form-submit-basic-submit-code",
+            "name": "Form Submit: Basic submit code",
+            "description": null
+        },
+        {
+            "id": "form-submit-build-user-by-hand",
+            "name": "Form Submit: Build User by hand",
+            "description": null
+        },
+        {
+            "id": "form-submit-encoding-the-password",
+            "name": "Form Submit: Encoding the password",
+            "description": null
+        },
+        {
+            "id": "form-submit-redirecting",
+            "name": "Form Submit: Redirecting",
+            "description": null
         }
     ],
-    "sha": "5fb8dc1652c36b82d68dfa8530ca476822aa1560"
+    "sha": "1d9adf0773e613e8a8773b9652cfd86e236f508d"
 }
