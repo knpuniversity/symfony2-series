@@ -26,6 +26,9 @@ Starting in Symfony2: Episode2
     form-data
     plain-password
     form-type-class
+    field-options-html5
     registration-validation
+    flash-message
+    auto-login
     testing
     after-dinner-mint
