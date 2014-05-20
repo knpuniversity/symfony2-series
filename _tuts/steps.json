@@ -356,6 +356,11 @@
             "description": null
         },
         {
+            "id": "login-form-adding-bootstrap-styling",
+            "name": "Login Form: Adding bootstrap styling",
+            "description": null
+        },
+        {
             "id": "login-form-logincheckaction",
             "name": "Login Form: loginCheckAction",
             "description": null
@@ -388,6 +393,11 @@
         {
             "id": "page-css-adding-error-class",
             "name": "Page CSS: Adding error class",
+            "description": null
+        },
+        {
+            "id": "page-css-adding-bootstrap",
+            "name": "Page CSS: Adding bootstrap",
             "description": null
         },
         {
@@ -764,7 +774,52 @@
             "id": "form-class-using-in-the-controller",
             "name": "Form Class: Using in the controller",
             "description": null
+        },
+        {
+            "id": "field-options-setting-required-to-false",
+            "name": "Field Options: Setting required to false",
+            "description": null
+        },
+        {
+            "id": "field-options-label-and-attr",
+            "name": "Field Options: label and attr",
+            "description": null
+        },
+        {
+            "id": "validation-disable-html5-validation",
+            "name": "Validation: Disable HTML5 validation",
+            "description": null
+        },
+        {
+            "id": "validation-basic-notblank-constraint",
+            "name": "Validation: Basic NotBlank constraint",
+            "description": null
+        },
+        {
+            "id": "validation-customizing-the-message",
+            "name": "Validation: Customizing the message",
+            "description": null
+        },
+        {
+            "id": "validation-adding-the-other-constraints",
+            "name": "Validation: Adding the other constraints",
+            "description": null
+        },
+        {
+            "id": "validation-uniqueentity",
+            "name": "Validation: UniqueEntity",
+            "description": null
+        },
+        {
+            "id": "flash-setting-the-message",
+            "name": "Flash: Setting the message",
+            "description": null
+        },
+        {
+            "id": "flash-adding-twitter-bootstrap",
+            "name": "Flash: Adding Twitter Bootstrap",
+            "description": null
         }
     ],
-    "sha": "d9193672ef30b1910955f8173f52ebc274b206cc"
+    "sha": "c845e6079ab6d5cf4a31c0c339471c41c664e203"
 }
