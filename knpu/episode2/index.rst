@@ -21,6 +21,11 @@ Starting in Symfony2: Episode2
     user-serialization
     registration-form
     form-rendering
+    repeat-compound-fields
+    form-submit
+    form-data
+    plain-password
+    form-type-class
     registration-validation
     testing
     after-dinner-mint
