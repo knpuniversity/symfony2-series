@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/UserBundle/Controller/RegisterController.php b/src/Yoda/UserBundle/Controller/RegisterController.php
+index 3d30f51..367f56b 100644
+--- a/src/Yoda/UserBundle/Controller/RegisterController.php
++++ b/src/Yoda/UserBundle/Controller/RegisterController.php
+@@ -26,7 +26,7 @@ class RegisterController extends Controller
+         ;
+ 
+         $form->handleRequest($request);
+-        if ($form->isSubmitted() && $form->isValid()) {
++        if ($form->isValid()) {
+             $data = $form->getData();
+ 
+             $user = new User();
