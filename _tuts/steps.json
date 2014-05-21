@@ -809,7 +809,52 @@
             "id": "flash-setting-the-message",
             "name": "Flash: Setting the message",
             "description": null
+        },
+        {
+            "id": "autologin-adding-everything-for-logging-in",
+            "name": "AutoLogin: Adding everything for logging in",
+            "description": null
+        },
+        {
+            "id": "test-copying-functional-test",
+            "name": "Test: Copying functional test",
+            "description": null
+        },
+        {
+            "id": "test-renaming-to-testregister",
+            "name": "Test: Renaming to testRegister",
+            "description": null
+        },
+        {
+            "id": "test-adding-first-test",
+            "name": "Test: Adding first test",
+            "description": null
+        },
+        {
+            "id": "test-installing-phpunit",
+            "name": "Test: Installing phpunit",
+            "description": null
+        },
+        {
+            "id": "test-removing-stub-test-files",
+            "name": "Test: Removing stub test files",
+            "description": null
+        },
+        {
+            "id": "test-make-it-fail",
+            "name": "Test: Make it fail",
+            "description": null
+        },
+        {
+            "id": "test-make-it-pass-again",
+            "name": "Test: Make it pass again!",
+            "description": null
+        },
+        {
+            "id": "test-using-the-crawler",
+            "name": "Test: Using the Crawler",
+            "description": null
         }
     ],
-    "sha": "c845e6079ab6d5cf4a31c0c339471c41c664e203"
+    "sha": "ce03e3ff239b9c1c0daf2ae103ec80782bccb0d3"
 }
