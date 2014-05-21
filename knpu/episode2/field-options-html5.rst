@@ -110,3 +110,5 @@ I recommend avoiding HTML5 validation entirely. To disable it, just add a
 Refresh the form and try to submit empty. We get a *huge* error from the database
 which proves that HTML5 validation is off! Now let's add some server-side
 validation!
+
+.. _`Form Field Type Reference`: http://symfony.com/doc/current/reference/forms/types.html

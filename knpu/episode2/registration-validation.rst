@@ -3,21 +3,24 @@ Server-Side Validation
 
 In Symfony, validation is done a little bit differently. Instead of validating
 the submitted form data itself, validation is applied to the ``User`` object.
-Let's see how this works. Start by heading to the
-`validation chapter of the documentation`_. Click on the "Annotations" tab
-of the code example and copy the ``use`` statement. Paste this into your
-``User`` class::
+
+Start by heading to the `validation chapter of the documentation`_. Click
+on the "Annotations" tab of the code example and copy the ``use`` statement.
+Paste this into your ``User`` class::
 
     // src/Yoda/UserBundle/Entity/User.php
     // ...
 
     use Symfony\Component\Validator\Constraints as Assert;
 
+We're going to use annotations, and whenever you use annotations, you need
+a ``use`` statement.
+
 Basic Constraints and Options
 -----------------------------
 
-Adding validation constraints is easy. To make the ``username`` field required,
-just add ``@Assert\NotBlank``::
+Adding a validation constraint is easy. To make the ``username`` field required,
+add ``@Assert\NotBlank`` above the property::
 
     // src/Yoda/UserBundle/Entity/User.php
     // ...
@@ -28,36 +31,40 @@ just add ``@Assert\NotBlank``::
      */
     private $username;
 
-Let's try it out! When we submit the form, we can see the validation error
-above the field. To customize the message, add the `message` option::
+Try it out! When we submit the form blank, we see the validation error above
+the field. It looks terrible, but we'll work on that later. To customize
+the message, add the ``message`` option::
 
     // src/Yoda/UserBundle/Entity/User.php
     // ...
 
     /**
      * @ORM\Column(name="username", type="string", length=255)
-     * @Assert\NotBlank(message="Put in a username of course!")
+     * @Assert\NotBlank(message="Put in a username you dork :P")
      */
     private $username;
 
 Refresh to see the new error.
 
-All of this magic happens automatically when we call ``bind``. This takes
-the submitted values, pushes them into the User object, and then applies
-validation.
+All of this magic happens automatically when we call ``handleRequest`` in
+our controller. This takes the submitted values, pushes them into the User
+object, and then applies validation.
 
-Let's keep going. The ``Length`` constraint has several options including
-the minimum length and the error message. For the ``email`` property, let's
-add ``NotBlank`` and ``Email`` to guarantee that it's a valid email address.
-For the ``plainPassword``, we can use the ``NotBlank`` constraint and the
-``Regex`` constraint to guarantee a strong password::
+Add all the Constraints!
+------------------------
+
+Let's keep going. We can use the ``Length`` constraint to make sure the
+``username`` is at least 3 characters long::
 
     /**
      * @ORM\Column(name="username", type="string", length=255)
      * @Assert\NotBlank(message="Put in a username of course!")
-     * @Assert\Length(min=2, minMessage="[0,+Inf] Enter something longer!")
+     * @Assert\Length(min=3, minMessage="Give us at least 3 characters!")
      */
     private $username;
+
+For the ``email`` property, use ``NotBlank`` *and* ``Email`` to guarantee
+that it's a valid email address::
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -66,38 +73,44 @@ For the ``plainPassword``, we can use the ``NotBlank`` constraint and the
      */
     private $email;
 
+For ``plainPassword``, we can use the ``NotBlank`` constraint and the ``Regex``
+constraint to guarantee a strong password::
+
     /**
      * @Assert\NotBlank
      * @Assert\Regex(
      *      pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/",
-     *      message="Please use at least one upper case letter, one lower case letter, and one number"
+     *      message="Use 1 upper case letter, 1 lower case letter, and 1 number"
      * )
      */
     private $plainPassword;
 
-.. note::
+Let's try this out by filling out the form in different ways. All the errors
+show up! They're just really ugly.
 
-    The ``[0,+Inf]`` relates to translations and pluralizations. See the
-    `Translation Chapter`_ for more details.
+Docs for The Built-In Constraints
+---------------------------------
 
-We can see this in action by trying various values. All the errors come up
-as expected, however, probably not where you want them. We'll clean these up later.
+Symfony has a bunch of built-in constraints. Check them out by going to the
+Reference section and click on `Validation Constraints Reference`_
+
+Symfony comes packed with a lot of other constraints you can use. Check them
+out in the `reference section of the documentation`_. You can see the ``Length``
+constraint we just used and all of the options for it. Cool!
 
 The UniqueEntity Constraint
 ---------------------------
 
-Symfony comes packed with a lot of other constraints you can use. Check them
-out in the `reference section of the documentation`_. Check out the
-`UniqueEntity constraint`_. This constraint is useful if you need to make
-sure a value stays unique in the database. Let's use it, since we need to
-make sure that nobody signs up with an existing username or email address.
+Check out the `UniqueEntity constraint`_. This is useful if you need to make
+sure a value stays unique in the database. We need to make sure that nobody
+signs up using an existing username or email address, so this is perfect.
 
 The :symfonyclass:`Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntity`
-constraint is special because unlike the others, this one requires its own
+constraint is special because unlike the others, this one requires a different
 ``use`` statement. Copy it into your ``User`` class. Also, ``@UniqueEntity``
-goes above the class itself. It takes two options: the field that should be
-unique followed by a message. Add a constraint for both the username and the
-email::
+goes *above* the class, not above a property. It takes two options: the field
+that should be unique followed by a message. Add a constraint for both the
+username and the email::
 
     // src/Yoda/UserBundle/Entity/User.php
     // ...
@@ -118,22 +131,22 @@ email::
     the "default" option. If it's the only option you're using, saying ``fields``
     isn't needed. See `Constraint Configuration`_.
 
-If we try to register with an existing username or email, we can see the error.
+If we try to register with an existing username or email, we see the error!
 
 The Callback Constraint
 -----------------------
 
-Before we move on, I just want to point out one more useful constraint:
-`Callback`_. This constraint lets you create a method inside your class that's
-called during the validation process. You can apply whatever logic you need
-to in order figure out if the object is valid. We won't show it here, but
-check it out.
+Before we move on, I want to show you one more useful constraint: `Callback`_.
+This constraint is *awesome* because it lets you create a method inside your
+class that's called during validation. You can apply whatever logic you need
+to figure out if the object is valid. You can even place the errors on exactly
+which field you want. If you have a more difficult validation problem, this
+might exatly what you ened.
 
+We won't show it here, but check it out.
 
-.. _`Form Field Type Reference`: http://symfony.com/doc/current/reference/forms/types.html
 .. _`validation chapter of the documentation`: http://symfony.com/doc/current/book/validation.html
-.. _`Translation Chapter`: http://symfony.com/doc/current/book/translation.html
-.. _`reference section of the documentation`: http://symfony.com/doc/current/reference/constraints.html
+.. _`Validation Constraints Reference`: http://symfony.com/doc/current/reference/constraints.html
 .. _`UniqueEntity constraint`: http://symfony.com/doc/current/reference/constraints/UniqueEntity.html
 .. _`Callback`: http://symfony.com/doc/current/reference/constraints/Callback.html
 .. _`Constraint Configuration`: http://bit.ly/sf2-validation-config

@@ -171,6 +171,30 @@ And by adding a little error class, it looks even better:
         <div class="error">{{ error.message }}</div>
     {% endif %}
 
+And while we're making things look better, let's open up ``base.html.twig``
+and add a link tag to the Bootstrap CSS file. Just use a CDN URL for simplicity:
+
+    {# app/Resources/views/base.html.twig #}
+    {# ... #}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+        
+        ...
+    {% block stylesheets %}
+
+Back in ``login.html.twig``, I'll tweak the submit button so things look
+better:
+
+    {# src/Yoda/UserBundle/Resources/views/Security/login.html.twig #}
+    {# ... #}
+    
+    <hr/>
+    <button type="submit" class="btn btn-primary pull-right">login</button>
+
+Refresh! Ah, much better. I'm a programmer, but I don't want the site to
+look totally embarrassing!
+
 .. _symfony-ep2-login-error-translation:
 
 Translating the Login Error Message
