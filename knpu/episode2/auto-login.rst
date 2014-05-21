@@ -1,14 +1,14 @@
 Automatically Authenticating after Registration
 ===============================================
 
-Before we try this out, let's also automatically log the user in after registration.
-To do this, create a private function inside the controller. Normally, authentication
-happens automatically, but we can also trigger it manually::
+After registration, let's log the user in automatically. Create a private
+function inside ``RegisterController``. Normally, authentication happens
+automatically, but we can also trigger it manually::
 
     // src/Yoda/UserBundle/Entity/Controller/RegisterController.php
     // ...
 
-    private function authenticateUser(UserInterface $user)
+    private function authenticateUser(User $user)
     {
         $providerKey = 'secured_area'; // your firewall name
         $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
@@ -16,10 +16,11 @@ happens automatically, but we can also trigger it manually::
         $this->container->get('security.context')->setToken($token);
     }
 
-This code might look a little strange, but don't worry about that now. The
-basic idea is that we create an authentication package, called a token, and
-pass it off to Symfony's security system. Call this method after registration
-to automatically log the user in::
+This code might look strange, and I don't want you to worry about it too
+much. The basic idea is that we create a token, which holds details about
+the user, and then pass this into Symrony's security system.
+
+Call this method right after registration::
 
     // src/Yoda/UserBundle/Entity/Controller/RegisterController.php
     // ...
@@ -34,16 +35,19 @@ to automatically log the user in::
         return $this->redirect($url);
     }
 
-Head back to the browser to try the whole process. After registration, we're
-redirected back to the homepage, but this time with our message. If you check
-the web debug toolbar, you'll see that we're also authenticated as the new
-user. Perfect, that was easy, right?!
+Try it out! After registration, we're redirected back to the homepage. But
+if you check the web debug toolbar, you'll see that we're also authenticated
+as the new user. Sweet!
 
 .. sidebar:: Redirecting back to the original URL
 
-    If you want to redirect to the page that the user was trying to request
-    before being forced to register, you can take advantage of the fact that
-    this URL is stored to the session::
+    Suppose an anonymous user tries to access a page and is redirected to
+    ``/login``. Then, they register for a new account. After registration,
+    wouldn't it be nice to redirect them back to the page they were originally
+    trying to access?
+
+    Yes! And that's possible because Symfony stores the original, protected
+    URL in the session::
 
         $key = '_security.'.$providerKey.'.target_path';
         $session = $this->getRequest()->getSession();

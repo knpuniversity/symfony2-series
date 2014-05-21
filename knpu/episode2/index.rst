@@ -31,4 +31,7 @@ Starting in Symfony2: Episode2
     flash-message
     auto-login
     testing
+    testing-forms
+    testing-data
+    container-deoctrine
     after-dinner-mint
