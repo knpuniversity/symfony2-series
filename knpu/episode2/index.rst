@@ -35,3 +35,8 @@ Starting in Symfony2: Episode2
     testing-data
     container-deoctrine
     after-dinner-mint
+    role-hierarchies
+    impersonation
+    secure-every-page
+    accessing-security-user
+    remember-me
