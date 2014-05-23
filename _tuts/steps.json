@@ -854,7 +854,112 @@
             "id": "test-using-the-crawler",
             "name": "Test: Using the Crawler",
             "description": null
+        },
+        {
+            "id": "test-select-a-button",
+            "name": "Test: Select a button",
+            "description": null
+        },
+        {
+            "id": "test-fill-out-a-blank-form",
+            "name": "Test: Fill out a blank form",
+            "description": null
+        },
+        {
+            "id": "test-fill-out-form-with-data",
+            "name": "Test: Fill out form with data",
+            "description": null
+        },
+        {
+            "id": "test-data-clear-users",
+            "name": "Test Data: Clear Users",
+            "description": null
+        },
+        {
+            "id": "test-data-test-database",
+            "name": "Test Data: test database",
+            "description": null
+        },
+        {
+            "id": "field-guessing-remove-novalidate",
+            "name": "Field Guessing: Remove novalidate",
+            "description": null
+        },
+        {
+            "id": "field-guessing-making-email-not-required",
+            "name": "Field Guessing: Making email not required",
+            "description": null
+        },
+        {
+            "id": "field-guessing-remove-email-constraint",
+            "name": "Field Guessing: Remove Email constraint",
+            "description": null
+        },
+        {
+            "id": "field-guessing-add-back-notblank",
+            "name": "Field Guessing: Add back NotBlank",
+            "description": null
+        },
+        {
+            "id": "field-guessing-swap-notblank-for-nullable-false",
+            "name": "Field Guessing: Swap NotBlank for nullable=false",
+            "description": null
+        },
+        {
+            "id": "field-guessing-re-add-type",
+            "name": "Field Guessing: Re-add type",
+            "description": null
+        },
+        {
+            "id": "roles-use-role-event-manager",
+            "name": "Roles: Use ROLE_EVENT_MANAGER",
+            "description": null
+        },
+        {
+            "id": "impersonation-configuration",
+            "name": "Impersonation: Configuration",
+            "description": null
+        },
+        {
+            "id": "whitelisting-access-control-config",
+            "name": "Whitelisting: access_control config",
+            "description": null
+        },
+        {
+            "id": "whitelisting-adding-whitelist-access-control",
+            "name": "Whitelisting: Adding whitelist access_control",
+            "description": null
+        },
+        {
+            "id": "whitelisting-debug-urls-whitelisted",
+            "name": "Whitelisting: debug URLS whitelisted",
+            "description": null
+        },
+        {
+            "id": "user-access-user-in-template",
+            "name": "User: Access user in template",
+            "description": null
+        },
+        {
+            "id": "user-access-in-controller",
+            "name": "User: Access in controller",
+            "description": null
+        },
+        {
+            "id": "user-controller-getuser",
+            "name": "User: Controller::getUser",
+            "description": null
+        },
+        {
+            "id": "user-removing-debug-code",
+            "name": "User: Removing debug code",
+            "description": null
+        },
+        {
+            "id": "remember-me-setting-it-all-up",
+            "name": "Remember Me: Setting it all up",
+            "description": null
         }
     ],
-    "sha": "ce03e3ff239b9c1c0daf2ae103ec80782bccb0d3"
+    "sha": "be7d3861c03cb67707fd21d606efccea76ae2278"
 }
