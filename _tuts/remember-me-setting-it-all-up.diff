@@ -1,0 +1,25 @@
+diff --git a/app/config/security.yml b/app/config/security.yml
+index 1606aec..a5a7e1b 100644
+--- a/app/config/security.yml
++++ b/app/config/security.yml
+@@ -21,6 +21,8 @@ security:
+                 target: event
+             anonymous: ~
+             switch_user: ~
++            remember_me:
++                key: "The name of our cat is Edgar!"
+             #http_basic:
+             #    realm: "Secured Demo Area"
+ 
+diff --git a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
+index fdc912c..0b1060f 100644
+--- a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
++++ b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
+@@ -23,6 +23,7 @@
+             <input type="password" id="password" name="_password" />
+ 
+             <hr/>
++            Remember me <input type="checkbox" name="_remember_me" />
+             <button type="submit" class="btn btn-primary pull-right">login</button>
+         </form>
+ 
