@@ -1,11 +1,10 @@
 Switching Users / Impersonation
 ===============================
 
-Let's look at just a few more quick things. Notice the ``ROLE_ALLOWED_TO_SWITCH``
-role in ``security.yml``. What's that all about? One feature of Symfony is
-the ability to actually change which user you're logged in as. Ever have a
-client complaint you couldn't replicate? Well now you can login as them without
-knowing their password to test things.
+What's that ``ROLE_ALLOWED_TO_SWITCH`` all about in ``security.yml``. Symfony
+gives you the ability to actually *change* the user you're logged in as.
+Ever have a client complaint you couldn't replicate? Well now you can login
+as them without knowing their password.
 
 To activate this feature, add the ``switch_user`` key to your firewall:
 
@@ -34,7 +33,7 @@ hierarchy to get it:
     security:
         # ...
         role_hierarchy:
-            ROLE_ADMIN:       [ROLE_USER, ROLE_EVENT_MANAGER, ROLE_ALLOWED_TO_SWITCH]
+            ROLE_ADMIN:       [ROLE_USER, ROLE_EVENT_CREATE, ROLE_ALLOWED_TO_SWITCH]
             # ...
 
 When we refresh, you'll see that the our username in the web debug toolbar

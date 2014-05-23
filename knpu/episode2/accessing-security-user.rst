@@ -47,10 +47,6 @@ shortcut method called ``getUser``::
         // ...
     }
 
-.. note::
-
-    Remove this debug code before moving on.
-
 I showed you the longer option first so that you'll understand that there
 is a service called ``security.context`` which is your key to getting the current
-``User`` object.
+``User`` object. Remove this debug code before moving on.

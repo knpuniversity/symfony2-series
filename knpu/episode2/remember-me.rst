@@ -15,9 +15,9 @@ a secret, random key:
             secured_area:
                 # ...
                 remember_me:
-                    key: The name of our cat is Edgar!
+                    key: "The name of our cat is Edgar!"
 
-Now, just open the login template and add a field named ``_remember_me``:
+Next, open the login template and add a field named ``_remember_me``:
 
 .. code-block:: html+jinja
 
@@ -25,20 +25,29 @@ Now, just open the login template and add a field named ``_remember_me``:
     {# ... #}
 
     <form ...>
-        <input type="checkbox" name="_remember_me" />
-        Remember me
+
+        <hr/>
+        Remember me <input type="checkbox" name="_remember_me" />
+        <button type="submit" class="btn btn-primary pull-right">login</button>
     </form>
 
+This works a bit like login does: as long as we have a ``_remember_me``
+check and it's checked, Symfony will take care of everything automatically.
 
-This works a bit like the login itself - as long as we have a ``_remember_me``
-field and its checked, everything else happens automatically.
+Try it out! After logging in, we now have a ``REMEMBERME`` cookie. Let's
+clear our session cookie to make sure it's working. When I refresh,
+my session is gone but I'm still logged in. Nice! Click anywhere on the web
+debug toolbar to get into the profile. Next, click on the "Logs" tab. If
+you look closely, you can even see some logs for the remember me login process:
 
-Try it out. After logging in, we can see that a ``REMEMBERME`` cookie has been
-set. Let's clear our session cookie to make sure it's working. When I refresh,
-my session is gone but I'm still logged in. Nice!
+.. code-block:: text
 
-Alright, that's it for now! I hope I'll see you in future Knp screencasts.
-Also, be sure to checkout `KnpBundles.com`_ if you're curious about all
+    DEBUG - Remember-me cookie detected.
+    INFO - Remember-me cookie accepted.
+    DEBUG - SecurityContext populated with remember-me token.
+
+Ok gang, that's all for now! I hope I'll see you in future Knp screencasts.
+And remember to check out `KnpBundles.com`_ if you're curious about all
 the open source bundles that you can bring into your app. Seeya next time!
 
 .. _`KnpBundles.com`: http://knpbundles.com/
