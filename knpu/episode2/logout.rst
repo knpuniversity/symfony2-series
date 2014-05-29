@@ -3,7 +3,7 @@ Logging Out and Cleaning Up
 
 What about logging out? Symfony has some magic for that too!
 
-Check out the ``logout`` part of ``security.yml``:
+Look at the ``logout`` part of ``security.yml``:
 
     # app/config/security.yml
     # ...
@@ -42,7 +42,7 @@ and use the ``@Route`` annotation::
     }
 
 Just like with the ``loginCheckAction``, the code here won't actually get
-hit. Instead, Symfony intercepts the request and process the logout for us.
+hit. Instead, Symfony intercepts the request and processes the logout for us.
 
 Try it out by going to ``/logout`` manually. Great! As you can see by the
 web debug toolbar, we're anonymous once again.
@@ -54,7 +54,7 @@ If we fail login, we see a "Bad Credentials" message. When Symfony handles
 the login, it saves this error to the session under a special key, and we're
 just fetching it out in ``loginAction``.
 
-Actually, we have more code than we need here. Remove rhe if statement and
+Actually, we have more code than we need here. Remove the if statement and
 just leave the second part::
 
     // src/Yoda/UserBundle/Controller/SecurityController.php
@@ -86,7 +86,7 @@ the login page.
 Adding CSS to a Single Page
 ---------------------------
 
-I know I know, the login page is embarrassing loogkin. So I made a ``login.css``
+I know I know, the login page is embarrassing looking. So I made a ``login.css``
 file to fix things - find it in the ``resources/episode2`` directory of the
 code download.
 
@@ -184,7 +184,7 @@ and add a link tag to the Bootstrap CSS file. Just use a CDN URL for simplicity:
     {% block stylesheets %}
 
 Back in ``login.html.twig``, I'll tweak the submit button so things look
-better:
+nicer:
 
     {# src/Yoda/UserBundle/Resources/views/Security/login.html.twig #}
     {# ... #}
@@ -231,6 +231,6 @@ Now, we just need to activate the translation engine in ``app/config.yml``:
         # ...
         translator:      { fallback: %locale% }
 
-Now, try it! So, much better!
+Ok now, try it! Again, so much better!
 
 .. _`parent() function`: http://twig.sensiolabs.org/doc/functions/parent.html
