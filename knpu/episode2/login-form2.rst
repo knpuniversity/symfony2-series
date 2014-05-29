@@ -92,7 +92,7 @@ Let's create another action method and use ``@Route`` to create that route.
     }
 
 Call me crazy, but I'm going to leave this action method completely blank.
-Normally, it means going to ``/login_check`` would execute this controller
+Normally, it means that if you went to ``/login_check`` it would execute this controller
 and cause an error since we're not returning anything.
 
 Configuring login_path and check_path
