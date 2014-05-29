@@ -108,33 +108,37 @@ sure you read the Symfony Cookbook entry called `How to Authenticate Users with
 API Keys`_. It uses a feature that's new to Symfony 2.4, so you may not see it 
 mentioned in older blog posts.
 
-Ok, let's unbreak our site. Change the security check in ``newAction`` to
-look for ``ROLE_USER`` instead of ``ROLE_ADMIN`` and change the message.
-Next, copy this into ``createAction`` as well::
+Ok, let's unbreak our site. To keep things short, create a new private function
+in the controller called ``enforceUserSecurity`` and copy our security check
+into this::
 
-    public function newAction()
+    private function enforceUserSecurity()
     {
         $securityContext = $this->container->get('security.context');
         if (!$securityContext->isGranted('ROLE_USER')) {
             throw new AccessDeniedException('Need ROLE_USER!')
         }
+    }
+
+Now, use this in ``newAction``, ``createAction``, ``editAction``, ``updateAction``
+and ``deleteAction``::
+
+    public function newAction()
+    {
+        $this->enforceUserSecurity();
 
         // ...
     }
 
     public function createAction(Request $request)
     {
-        $securityContext = $this->container->get('security.context');
-        if (!$securityContext->isGranted('ROLE_USER')) {
-            throw new AccessDeniedException('Need ROLE_USER!')
-        }
+        $this->enforceUserSecurity();
 
         // ...
     }
 
-Refresh! Ok great, we have access again. For these 2 URLs, we could protect
-them via ``access_control`` in ``security.yml`` or like we are in the controller.
-Both are totally equal, but I usually like controller security a little better.
+You can see how sometimes using ``access_control`` can be simpler, even if this
+method is more flexible. Choose whichever works the best for you in each situation.
 
 .. _`prod environment`: http://knpuniversity.com/screencast/symfony2-ep1/vhost#the-dev-and-prod-environments
 .. _`customize error pages`: http://knpuniversity.com/screencast/symfony2-ep3/error-pages#overriding-the-error-template-content
