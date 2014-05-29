@@ -140,6 +140,12 @@ and ``deleteAction``::
 You can see how sometimes using ``access_control`` can be simpler, even if this
 method is more flexible. Choose whichever works the best for you in each situation.
 
+.. tip::
+
+    You can also use annotations to add security to a controller! Check
+    out `SensioFrameworkExtraBundle`_.
+
 .. _`prod environment`: http://knpuniversity.com/screencast/symfony2-ep1/vhost#the-dev-and-prod-environments
 .. _`customize error pages`: http://knpuniversity.com/screencast/symfony2-ep3/error-pages#overriding-the-error-template-content
 .. _`How to Authenticate Users with API Keys`: http://symfony.com/doc/current/cookbook/security/api_key_authentication.html
+.. _`SensioFrameworkExtraBundle`: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/security.html
