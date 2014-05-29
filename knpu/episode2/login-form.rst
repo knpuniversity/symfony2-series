@@ -1,13 +1,13 @@
 Creating a Login Form (Part 1)
 ==============================
 
-So where's the actual login form? That's our job - the security layer just
+So where's the actual login form? Well, that's our job - the security layer just
 helps us by redirecting the user here.
 
 Oh, and there's a really popular open source bundle called `FosUserBundle`_
 that gives you a lot of what we're about to build. The good news is that
-after building a login system in this tutorial, you'll understand how it
-works much better. So build it once here, then take a serious look at ``FosUserBundle``.
+after building a login system in this tutorial, you'll better understand how it
+works. So build it once here, then take a serious look at ``FosUserBundle``.
 
 Creating a Bundle by Hand
 -------------------------
@@ -73,7 +73,7 @@ and add a route there.
 Ha! I'm not so predictable! Instead, we're going to get crazy and build our
 routes right inside the controller class using annotations. The 
 `docs for this feature`_ live at symfony.com under a bundle called `SensioFrameworkExtraBundle`_.
-This bundle came pre-installed in our project. How nice of it!
+This bundle came pre-installed in our project. How thoughtful!
 
 First, add the ``Route`` annotation namespace::
 
@@ -115,14 +115,14 @@ to the main ``routing.yml`` file:
 Remember that Symfony never automatically finds routing files: we always
 import them manually from here.
 
-Cool - change the URL in your browser to ``/login``. That big ugly error
+Cool - change the URL in your browser to ``/login``. This big ugly error
 about our controller not returning a response is great news! No seriously,
 it means that the route is working. Now let's fill in the controller!
 
 The loginAction Logic
 ---------------------
 
-Most of the login page are pretty boilerplate. So let's use the age-old art
+Most of the login page code is pretty boilerplate. So let's use the age-old art
 of copy-and-paste from the docs.
 
 Head to the security chapter and find the `login form section`_. Copy the
@@ -170,7 +170,7 @@ classes:
 
 The method *just* renders a login template: it doesn't handle the submit
 or check to see if the username and password are correct. Another layer handles
-this. It *does* pass the login error message to the template if there is
+that. It *does* pass the login error message to the template if there is
 one, but that's it.
 
 .. _symfony-ep2-template-annotation:
@@ -213,7 +213,8 @@ to Twig::
     }
 
 With ``@Template``, Symfony renders a template automatically, and passes
-the variables we're returning into it. It's cool, it saves us some typing.
+the variables we're returning into it. It's cool, saves us some typing and
+supports the rebel forces.
 
 
 .. _`docs for this feature`: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/routing.html
