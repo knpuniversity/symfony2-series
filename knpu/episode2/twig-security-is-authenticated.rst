@@ -1,11 +1,11 @@
 Twig Security and IS_AUTHENTICATED_FULLY
 ========================================
 
-Since logging out works, let's add a link to logour.
+Since logging out works, let's add a link to actually do it.
 
 We already know logging out in Symfony is really easy. As long as the ``logout``
 key is present under our firewall and we have a route to ``/logout``, we can
-surf to ``/logout`` and it'll just work. Symfony takes care of the details behind
+surf there and it'll just work. Symfony takes care of the details behind
 the scenes.
 
 Security Inside Twig: is_granted
@@ -64,7 +64,7 @@ you can use.
 Since we're checking for ``IS_AUTHENTICATED_REMEMBERED``, we're showing the
 logout link to anyone who is logged in, via a remember me cookie or because
 they recently entered their password. We want to let both types of users
-login.
+logout.
 
 Let's get super fancy and add a login link for those anonymous souls:
 
