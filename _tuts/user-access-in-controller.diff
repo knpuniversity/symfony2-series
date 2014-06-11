@@ -1,5 +1,5 @@
 diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
-index e3c3285..5de51d8 100644
+index 38fa8d6..b0b5e86 100644
 --- a/src/Yoda/EventBundle/Controller/EventController.php
 +++ b/src/Yoda/EventBundle/Controller/EventController.php
 @@ -25,6 +25,13 @@ class EventController extends Controller
