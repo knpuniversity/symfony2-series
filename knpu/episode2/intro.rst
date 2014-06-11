@@ -11,4 +11,4 @@ some serious Doctrine topics. Some of this stuff will look pretty tough at
 first, but that's just because we're taking your Symfony foo up to the next
 level. When you finish, you'll be another huge step towards mastering Symfony.
 
-Ok, drink some coffee, stretch a little, a lets get to it!
+Ok, drink some coffee, stretch a little, and lets get to it!

@@ -8,7 +8,7 @@ database or even across an API.
 
 The bummer is that hooking all this up can be tough. But since you'll know
 how each piece works, you'll be able to do amazing things. There's also some
-magic I'll show you later that makes custom authentication systems much easier.
+jedi magic I'll show you later that makes custom authentication systems much easier.
 
 Authentication, Authorization and the Deathstar
 -----------------------------------------------
@@ -47,7 +47,7 @@ file, which is imported from the main ``config.yml`` file:
 
 Security config lives in its own file because, well, it's kind of big and
 ugly. But there's no technical reason: you could move all of this into ``config.yml``
-an it would work just the same.
+and it would work just the same.
 
 Firewalls Configuration (security.yml)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,7 +75,7 @@ just one firewall:
             #http_basic:
             #    realm: "Secured Demo Area"
 
-Just like in a giant floating death machine, it make sense for everyone pass
+Just like in a giant floating death machine, it make sense for everyone to pass
 through the same security system that looks up people in the same corrupt,
 imperial database. In fact, change the ``pattern`` key to be ``^/``:
 
@@ -89,7 +89,7 @@ imperial database. In fact, change the ``pattern`` key to be ``^/``:
             pattern:    ^/
             # ...
 
-Now, every request that to our app will use this one firewall for authentication.
+Now, every request that goes to our app will use this one firewall for authentication.
 Let's also change the ``login_path`` key to be ``/my-login-url``:
 
 .. code-block:: yaml
@@ -111,7 +111,7 @@ there to confuse you. I'll explain it all in a second.
 Anonymous Access (security.yml)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now, uncomment out that ``anonymous`` key:
+Now, uncomment the ``anonymous`` key:
 
 .. code-block:: yaml
 
@@ -140,7 +140,7 @@ now "authenticated". Yes, it's a bit odd, but anonymous users are actually
 authenticated, since they passed through our firewall.
 
 But don't panic, it's easy in code to check if the user has *actually* logged
-in or not. I'll show you later. Or course, we haven't actually done the work
+in or not. I'll show you later. Of course, we haven't actually done the work
 to make it possible to login yet, but we'll get to those silly details in
 a second.
 

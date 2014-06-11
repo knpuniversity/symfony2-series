@@ -16,7 +16,27 @@ Starting in Symfony2: Episode2
     saving-users
     roles-disabling-user
     repository
+    query-builder
+    user-provider
+    user-serialization
     registration-form
+    form-rendering
+    repeat-compound-fields
+    form-submit
+    form-data
+    plain-password
+    form-type-class
+    field-options-html5
     registration-validation
+    flash-message
+    auto-login
     testing
+    testing-forms
+    testing-data
+    container-deoctrine
     after-dinner-mint
+    role-hierarchies
+    impersonation
+    secure-every-page
+    accessing-security-user
+    remember-me

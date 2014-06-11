@@ -1,9 +1,6 @@
 Authorization with Access Control
 =================================
 
-- only one access_control is matched
-- mention other access_control features
-
 Before we keep going with authentication and make it possible to login, let's
 try out our first piece of authorization and start denying access!
 

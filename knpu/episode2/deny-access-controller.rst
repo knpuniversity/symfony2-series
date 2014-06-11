@@ -36,8 +36,7 @@ to deny access from inside our controller class instead.
 Denying Access From a Controller: AccessDeniedException
 -------------------------------------------------------
 
-To get really precise with security, we'll control access right inside our
-controllers. Find the ``newAction`` in ``EventController``. To check if the
+Find the ``newAction`` in ``EventController``. To check if the
 current user has a role, we need to get the "security context". This is a
 scary sounding object, which has just one easy method on it: ``isGranted``.
 
@@ -96,47 +95,57 @@ AccessDeniedException: The Special Class for Security
 -----------------------------------------------------
 
 Normally, if you throw an exception, it'll turn into a 500 page. But the
-``AccessDeniedException`` is special. First, we're not already logged in,
+``AccessDeniedException`` is special. First, if we're not already logged in,
 throwing this causes us to be redirected to the login page. But if we *are*
 logged in, we'll be shown the access denied 403 page. We don't have to worry
-about if the user is logged in or not here, we can just throw this exception.
+about whether the user is logged in or not here, we can just throw this exception.
 
 Phew! Security is hard, but wow, you seriously know almost everything you'll
-need to know. The *really* hard stuff is if you need to create a custom authentication
-system, like if you're authenticating users via an API key instead of a form
-login. If you're in this situation, make sure you read the Symfony Cookbook
-entry called `How to Authenticate Users with API Keys`_. It uses a feature
-that's new to Symfony 2.4, so you may not see it mentioned in older blog
-posts.
+need to know. You'll only need to worry about the *really* hard stuff if you 
+need to create a custom authentication system, like if you're authenticating 
+users via an API key instead of a login form. If you're in this situation, make 
+sure you read the Symfony Cookbook entry called `How to Authenticate Users with 
+API Keys`_. It uses a feature that's new to Symfony 2.4, so you may not see it 
+mentioned in older blog posts.
 
-Ok, let's unbreak our site. Change the security check in ``newAction`` to
-look for ``ROLE_USER`` instead of ``ROLE_ADMIN`` and change the message.
-Next, copy this into ``createAction`` as well::
+Ok, let's unbreak our site. To keep things short, create a new private function
+in the controller called ``enforceUserSecurity`` and copy our security check
+into this::
 
-    public function newAction()
+    private function enforceUserSecurity()
     {
         $securityContext = $this->container->get('security.context');
         if (!$securityContext->isGranted('ROLE_USER')) {
             throw new AccessDeniedException('Need ROLE_USER!')
         }
+    }
+
+Now, use this in ``newAction``, ``createAction``, ``editAction``, ``updateAction``
+and ``deleteAction``::
+
+    public function newAction()
+    {
+        $this->enforceUserSecurity();
 
         // ...
     }
 
     public function createAction(Request $request)
     {
-        $securityContext = $this->container->get('security.context');
-        if (!$securityContext->isGranted('ROLE_USER')) {
-            throw new AccessDeniedException('Need ROLE_USER!')
-        }
+        $this->enforceUserSecurity();
 
         // ...
     }
 
-Refresh! Ok great, we have access again. For these 2 URLs, we could protect
-them via ``access_control`` in ``security.yml`` or like we are in the controller.
-Both are totally equal, but I usually like controller security a little better.
+You can see how sometimes using ``access_control`` can be simpler, even if this
+method is more flexible. Choose whichever works the best for you in each situation.
+
+.. tip::
+
+    You can also use annotations to add security to a controller! Check
+    out `SensioFrameworkExtraBundle`_.
 
 .. _`prod environment`: http://knpuniversity.com/screencast/symfony2-ep1/vhost#the-dev-and-prod-environments
 .. _`customize error pages`: http://knpuniversity.com/screencast/symfony2-ep3/error-pages#overriding-the-error-template-content
 .. _`How to Authenticate Users with API Keys`: http://symfony.com/doc/current/cookbook/security/api_key_authentication.html
+.. _`SensioFrameworkExtraBundle`: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/security.html
