@@ -12,24 +12,41 @@ index 0e2d477..fca1fc3 100644
  
      providers:
 diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
-index 598f000..e3c3285 100644
+index b329915..38fa8d6 100644
 --- a/src/Yoda/EventBundle/Controller/EventController.php
 +++ b/src/Yoda/EventBundle/Controller/EventController.php
-@@ -40,7 +40,7 @@ class EventController extends Controller
+@@ -39,7 +39,7 @@ class EventController extends Controller
+      */
      public function createAction(Request $request)
      {
-         $securityContext = $this->container->get('security.context');
--        if (!$securityContext->isGranted('ROLE_USER')) {
-+        if (!$securityContext->isGranted('ROLE_EVENT_CREATE')) {
-             // in Symfony 2.5
-             // throw $this->createAccessDeniedException('message!');
-             throw new AccessDeniedException('Need ROLE_USER');
-@@ -90,7 +90,7 @@ class EventController extends Controller
+-        $this->enforceUserSecurity();
++        $this->enforceUserSecurity('ROLE_EVENT_CREATE');
+ 
+         $entity = new Event();
+         $form = $this->createCreateForm($entity);
+@@ -84,7 +84,7 @@ class EventController extends Controller
+      */
      public function newAction()
+     {
+-        $this->enforceUserSecurity();
++        $this->enforceUserSecurity('ROLE_EVENT_CREATE');
+ 
+         $entity = new Event();
+         $form   = $this->createCreateForm($entity);
+@@ -232,13 +232,13 @@ class EventController extends Controller
+         ;
+     }
+ 
+-    private function enforceUserSecurity()
++    private function enforceUserSecurity($role = 'ROLE_USER')
      {
          $securityContext = $this->container->get('security.context');
 -        if (!$securityContext->isGranted('ROLE_USER')) {
-+        if (!$securityContext->isGranted('ROLE_EVENT_CREATE')) {
++        if (!$securityContext->isGranted($role)) {
              // in Symfony 2.5
              // throw $this->createAccessDeniedException('message!');
-             throw new AccessDeniedException('Need ROLE_USER');
+-            throw new AccessDeniedException('Need ROLE_USER');
++            throw new AccessDeniedException('Need '.$role);
+         }
+     }
+ }
