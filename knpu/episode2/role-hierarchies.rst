@@ -11,21 +11,32 @@ the access denied screen.
 In our example, we showed a pretty basic system with just ``ROLE_USER`` and
 ``ROLE_ADMIN.`` If you need another role, just start using it. For example,
 if only *some* users are able to create events, we can protect event creation
-with a new role called ``ROLE_EVENT_CREATE``::
+with a new role.
+
+To show this, let's make the role passed to ``enforceUserSecurity`` configurable
+and then only let a user create an event if they have some ``ROLE_EVENT_CREATE``
+role::
 
     // src/Yoda/EventBundle/Controller/EventController.php
     // ...
 
     public function createAction(Request $request)
     {
-        $securityContext = $this->container->get('security.context');
-        if (!$securityContext->isGranted('ROLE_EVENT_CREATE')) {
-            // ...
-        }
-        // ...
+        $this->enforceUserSecurity('ROLE_EVENT_CREATE');
     }
     
-    // also change ROLE_USER to ROLE_EVENT_MANGER in newAction
+    // also change ROLE_USER to ROLE_EVENT_CREATE in newAction
+
+    // ...
+    private function enforceUserSecurity($role = 'ROLE_USER')
+    {
+        $securityContext = $this->container->get('security.context');
+        if (!$securityContext->isGranted($role)) {
+            // in Symfony 2.5
+            // throw $this->createAccessDeniedException('message!');
+            throw new AccessDeniedException('Need '.$role);
+        }
+    }
 
 The *only* rule when creating a role is that it *must* start with ``ROLE_``.
 If it doesn't, you won't get an error, but security won't be enforced. 
