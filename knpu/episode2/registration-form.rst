@@ -75,8 +75,8 @@ want and their types. It'll help us render the form and process its values.
 It's pretty fancy!
 
 Start by calling the ``createFormBuilder()`` method. Now, use the ``add``
-function for to give the form a ``username``, an ``email`` and a ``password``
-field.
+function to give the form ``username``, ``email`` and ``password``
+fields.
 
     // src/Yoda/UserBundle/Controller/RegisterController.php
 
@@ -92,7 +92,7 @@ field.
         // todo next - render a template
     }
 
-The arguments to ``add`` are the name of the field and the field "type".
+The two arguments to ``add`` are the name of the field and the field "type".
 Symfony comes with built-in types for creating text fields, select fields,
 date fields and forcefields. I'll show you where to find a list in a minute.
 
@@ -102,7 +102,7 @@ Passing the Form into Twig
 --------------------------
 
 I want to render the form, so let's pass it to Twig. To save and impress my
-friends, I'm going use the :ref:`@Template annotation trick<symfony-ep2-template-annotation>`
+ewok friends, I'm going use the :ref:`@Template annotation trick<symfony-ep2-template-annotation>`
 we saw earlier. Pass the form as the only variable::
 
     // src/Yoda/UserBundle/Controller/RegisterController.php
