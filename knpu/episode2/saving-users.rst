@@ -37,7 +37,7 @@ to be encoded with ``bcrypt``.
     public function load(ObjectManager $manager)
     {
         $user = new User();
-        $user->setUsername('user');
+        $user->setUsername('darth');
         // todo - fill in this encoded password... ya know... somehow...
         $user->setPassword('');
         $manager->persist($user);
@@ -127,8 +127,8 @@ then encrypts the whole thing using bcrypt. Ok, so let's set this onto the
     public function load(ObjectManager $manager)
     {
         $user = new User();
-        $user->setUsername('user');
-        $user->setPassword($this->encodePassword($user, 'userpass'));
+        $user->setUsername('darth');
+        $user->setPassword($this->encodePassword($user, 'darthpass'));
         $manager->persist($user);
 
         // the queries aren't done until now

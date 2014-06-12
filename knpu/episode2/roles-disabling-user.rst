@@ -69,8 +69,8 @@ Imperial user ``ROLE_ADMIN``::
         $manager->persist($user);
 
         $admin = new User();
-        $admin->setUsername('admin');
-        $admin->setPassword($this->encodePassword($admin, 'adminpass'));
+        $admin->setUsername('wayne');
+        $admin->setPassword($this->encodePassword($admin, 'waynepass'));
         $admin->setRoles(array('ROLE_ADMIN'));
         $manager->persist($admin);
 
