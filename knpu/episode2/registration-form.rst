@@ -138,22 +138,26 @@ get us started:
     {# src/Yoda/UserBundle/Resources/views/Register/register.html.twig #}
     {% extends '::base.html.twig' %}
 
-    {% block body %}
-    <section class="main-block">
-        <article>
-            <section>
-                <h1>Register</h1>
+    {% block stylesheets %}
+        {{ parent() }}
 
-                {# render the form in a moment ... #}
-            </section>
+        <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}" />
+    {% endblock %}
+
+    {% block body %}
+    <section class="login">
+        <article>
+            <h1>Register</h1>
+
         </article>
     </section>
     {% endblock %}
 
+
 .. tip::
 
-    You can find this template code in the ``resources`` directory of the
-    code download. Go get it!
+    You can find this template code in the ``resources/episode2`` directory
+    of the code download. Go get it!
 
 So let's head to the browser to see how things look so far. When we go to
 ``/register``, we see a nice looking page. Kidding! We see a huge, horrible
