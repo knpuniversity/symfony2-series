@@ -1,19 +1,19 @@
 diff --git a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
-index 0f027a6..4ce18dc 100644
+index 5c55673..220f53a 100644
 --- a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
 +++ b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
-@@ -17,12 +17,14 @@ class LoadUsers implements FixtureInterface, ContainerAwareInterface
+@@ -20,12 +20,14 @@ class LoadUsers implements FixtureInterface, ContainerAwareInterface
          $user = new User();
-         $user->setUsername('user');
-         $user->setPassword($this->encodePassword($user, 'userpass'));
-+        $user->setEmail('user@user.com');
+         $user->setUsername('darth');
+         $user->setPassword($this->encodePassword($user, 'darthpass'));
++        $user->setEmail('darth@deathstar.com');
          $manager->persist($user);
  
          $admin = new User();
-         $admin->setUsername('admin');
-         $admin->setPassword($this->encodePassword($admin, 'adminpass'));
+         $admin->setUsername('wayne');
+         $admin->setPassword($this->encodePassword($admin, 'waynepass'));
          $admin->setRoles(array('ROLE_ADMIN'));
-+        $admin->setEmail('admin@admin.com');
++        $admin->setEmail('wayne@deathstar.com');
          $manager->persist($admin);
  
          // the queries aren't done until now
