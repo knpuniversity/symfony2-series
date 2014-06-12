@@ -47,14 +47,14 @@ The reason this is separated into two steps is to avoid `SQL injection attacks`_
 which are really no fun.
 
 To finish the query, call ``getQuery`` and then ``getOneOrNullResult``, which,
-as the name sounds, will return the ``User`` object if it's found or null
-otherwise.
+as the name sounds, will return the ``User`` object if it's found or null if it's
+not found.
 
 .. note::
 
     To learn more about the Query Builder, see `doctrine-project.org: The QueryBuilder`.
 
-To try this out, let's temporarily just reuse the EventController's ``indexAction``.
+To try this out, let's temporarily reuse the EventController's ``indexAction``.
 Get the ``UserRepository`` by calling ``getRepository`` on the entity manager.
 Remember, the argument you pass to ``getRepository`` is the entity's
 "shortcut name": the bundle name followed by the entity name::
@@ -89,7 +89,7 @@ the same result::
     var_dump($userRepo->findOneByUsernameOrEmail('user@user.com'));die;
 
 Cool! Now let's get rid of these debug lines - I'm trying to get a working
-project going here!
+project going here people!
 
 But this is a really common pattern we'll see more of: use the repository
 in a controller to fetch objects from the database. If you need a special
