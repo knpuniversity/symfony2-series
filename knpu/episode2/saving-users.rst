@@ -4,9 +4,9 @@ Saving Users
 Now that the error is gone, try logging in! Wait, but our user table is empty.
 So we can see the bad password message, but we can't *actually* log in yet.
 
-But we're pros, so it's no problem. Let's copy the ``LoadEvents fixtures
-class (``LoadEvents.php``) into the ``UserBundle``, rename it, and update
-the namespaces::
+But we're pros, so it's no problem. Let's copy the ``LoadEvents`` fixtures
+class (``LoadEvents.php``) into the ``UserBundle``, rename it to ``LoadUsers``, 
+and update the namespaces::
 
     // src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
     namespace Yoda\UserBundle\DataFixtures\ORM;
@@ -23,8 +23,11 @@ the namespaces::
         }
     }
 
-Saving users is *almost* easy: The tricky part is that darn ``password``
-field, which needs to be encoded with ``bcrypt``.
+Saving users is *almost* easy: just create the object, give
+it a username and then persist and flush it.
+
+The tricky part is that darn ``password`` field, which needs
+to be encoded with ``bcrypt``.
 
     // src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
     // ...
@@ -47,7 +50,7 @@ ContainerAwareInterface for Fixtures
 ------------------------------------
 
 But what's *cool* is that Symfony gives us an object that can do all that
-encoding for us. To get it first make the fixture implement the
+encoding for us. To get it, first make the fixture implement the
 :symfonyclass:`Symfony\\Component\\DependencyInjection\\ContainerAwareInterface`::
 
     // src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
@@ -94,12 +97,12 @@ task:
 Encoding the Password
 ---------------------
 
-Let's create a helper function to do the encoding. This step may look strange,
-but stay with me. First, we ask Symfony for a special "encoder" object that
-knows how to encrypt our passwords. Remember the ``bcrypt`` config we put
-in ``security.yml``? Yep, this object will use that.
+Let's create a helper function called ``encodePassword`` to you know encode the password! 
+This step may look strange, but stay with me. First, we ask Symfony for a 
+special "encoder" object that knows how to encrypt our passwords. Remember 
+the ``bcrypt`` config we put in ``security.yml``? Yep, this object will use that.
 
-After we grab the encoder, we just call ``encodePassword()`` and let it do
+After we grab the encoder, we just call ``encodePassword()``, grab a sandwich and let it do
 all the work:
 
     // src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
@@ -138,7 +141,7 @@ Try it! Reload the fixtures from the command line:
 
     php app/console doctrine:fixtures:load
 
-Let's use the query console task to look at what each user looks like:
+Let's use the query console task to look at what the user looks like:
 
 .. code-block:: bash
 
@@ -167,6 +170,7 @@ happening:
 2. The plain-text password we entered is encoded with bcrypt;
 
 3. The encoded version of the submitted password is compared with the saved
-   password field. If they match, then great success!
+   password field. If they match, then you now have access to roam about this
+   fully armed and operational battle station!
 
 .. _`array-like object that holds all the useful objects in the system`: http://knpuniversity.com/screencast/symfony2-ep1/controller#symfony-ep1-what-is-a-service
