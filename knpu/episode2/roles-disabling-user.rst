@@ -2,7 +2,7 @@ Adding Dynamic Roles to each User
 ---------------------------------
 
 Right now, all users get just one role: ``ROLE_USER``, because it's what
-we're returning rom the ``getRoles()`` function inside the ``User`` entity.
+we're returning from the ``getRoles()`` function inside the ``User`` entity.
 
 Add a ``roles`` field and make it a ``json_array`` type::
 
