@@ -4,7 +4,7 @@ The UserProvider: Custom Logic to Load Security Users
 Hey there repository expert. So our *actual* goal was to let the user login
 using a username *or* email. If we could get the security system to use our
 shiny new ``findOneByUsernameOrEmail`` method to look up users at login, we'd
-be done.
+be done. And back to our real job of crushing the rebel forces.
 
 Open up ``security.yml`` and remove the ``property`` key from our entity
 provider:

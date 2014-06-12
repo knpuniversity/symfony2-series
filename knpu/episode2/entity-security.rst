@@ -1,9 +1,9 @@
 Entity Security
 ===============
 
-We're really great. And our security system is almost as cool as we are.
-So let's keep up the pace and load users from the database instead of the
-little list in ``security.yml``.
+Repeat after me, "We're really great." And our security system is almost 
+as cool as we are. So let's keep up the pace and load users from the database 
+instead of the little list in ``security.yml``.
 
 What we're about to do is similar to what the awesome open source `FOSUserBundle`_
 gives you. We're going to build this all ourselves so that we *really* understand
@@ -33,8 +33,7 @@ Give the class just 2 fields:
 * ``password`` as a string
 
 And of course, choose "yes" to generating the :ref:`repository class<symfony-ep2-repository-intro>`.
-We're about to talk about repository classes, which means you're about to
-see why they are sweet!
+I'll explain why these are so fabulous in a second.
 
 Once the robots are done writing the code for us, we should have a new ``User``
 class in the ``Entity`` directory of ``UserBundle``. Let's change the table
@@ -115,7 +114,7 @@ Finally, add ``getSalt()`` and just make it return ``null``::
         return null;
     }
 
-I'll talk more about this method on a second.
+I'll talk more about this method in a second.
 
 Now that the ``User`` class implements ``UserInterface``, Symfony's authentication
 system will be able to use it. But before we hook that up, let's add the
@@ -152,7 +151,7 @@ Installing password_compat
 The one catch is that bcrypt isn't supported until PHP 5.5. So if you're
 using PHP 5.4 or lower, you'll need to install an extra library via Composer.
 No problem! Head to your terminal and use the composer ``require`` command
-and pass it ``ircmaxwell/password-compat``:
+and pass it ``ircmaxell/password-compat``:
 
 .. code-block:: bash
 
@@ -172,7 +171,7 @@ the Composer ``update``:
 Using the entity Provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now for the magic! In ``security.yml``, remove the single ``providers`` entry
+Now for the Jedi magic! In ``security.yml``, remove the single ``providers`` entry
 and replace it with a new one:
 
 .. _symfony-ep2-providers-config:

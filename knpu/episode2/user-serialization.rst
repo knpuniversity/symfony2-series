@@ -15,7 +15,7 @@ turned back into the User object.
     the user information is called ``ContextListener``.
 
 This is great! And it's obviously working great - we're surfing around as
-admin. But there's a "gotcha" in Doctrine. Sometimes, Doctrine will stick
+Wayne the admin. But there's a "gotcha" in Doctrine. Sometimes, Doctrine will stick
 some extra information onto our entity, like the entity manager: that big
 important object we used to save things.
 
@@ -27,8 +27,8 @@ just *can't* be serialized.
 Using the Serializable Interface
 --------------------------------
 
-We need to help Doctrine our. Start by adding the :phpclass:`Serializable`
-interface to the User class. This core PHP interface that has two methods:
+We need to help Doctrine out. Start by adding the :phpclass:`Serializable`
+interface to the User class. This core PHP interface has two methods:
 ``serialize`` and ``unserialize``::
 
     // src/Yoda/UserBundle/Entity/User.php

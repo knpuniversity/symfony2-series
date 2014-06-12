@@ -20,7 +20,7 @@ that we passed into the template, and add a submit button:
                 <form action="{{ path('user_register') }}" method="POST">
                     {{ form_widget(form) }}
 
-                    <input type="submit" value="Register!" />
+                    <input type="submit" class="btn btn-primary pull-right" value="Register!" />
                 </form>
             </section>
         </article>
@@ -60,7 +60,7 @@ from a ``Form`` into a ``FormView``::
         return array('form' => $form->createView());
     }
 
-This isn't important... other than remember to do it. The error is a bit
+This isn't important... just remember to do it. The error is a bit
 tough, but now you know it!
 
 Refresh now and celebrate. We have a fully operational and rendred form.
@@ -70,17 +70,17 @@ come in a minute.
 Being event Lazier with form() and button
 -----------------------------------------
 
-There's actually an even *easier* way to render the form, and while I don't
+There's an even *easier* way to render the form, and while I don't
 love it, I want you to see it. Head to the `Forms Chapter`_ of the docs.
-Under the `Rendering the Form`_ section, it renders the form, including the
-HTML form tag with just one line:
+Under the `Rendering the Form`_ section, it renders it with just one line:
 
 .. code-block:: html+jinja
 
     {{ form(form) }}
 
-In this example, this is even printing out a submit tag. If you scroll up,
-you'll see that the form has a ``save`` field that's a ``submit`` type:
+This displays the fields, the HTML form tag and even a submit button, if you
+configure one. If you scroll up, you'll see that the form has a ``save`` field 
+that's a ``submit`` type:
 
 .. code-block:: html+jinja
 
@@ -110,7 +110,7 @@ on each of your fields:
         {{ form_row(form.email) }}
         {{ form_row(form.password) }}
 
-        <input type="submit" value="Register!" />
+        <input type="submit" class="btn btn-primary pull-right" value="Register!" />
     </form>
 
 Refresh the page and inspect the form. Each field row is surrounded by a ``div``
@@ -147,7 +147,7 @@ field:
         {{ form_row(form.email) }}
         {{ form_row(form.password) }}
 
-        <input type="submit" value="Register!" />
+        <input type="submit" class="btn btn-primary pull-right" value="Register!" />
     </form>
 
 ``form_row`` just renders these 3 parts automatically, so this is basically
@@ -173,14 +173,14 @@ object:
         {{ form_row(form.email) }}
         {{ form_row(form.password) }}
 
-        <input type="submit" value="Register!" />
+        <input type="submit" class="btn btn-primary pull-right" value="Register!" />
     </form>
 
-Most errors appear appear next to the field they belong to. But in some cases,
+Most errors appear next to the field they belong to. But in some cases,
 you might have a "global" error that doesn't apply to any one specific field.
 It's not common, but this takes care of rendering those.
 
-Next, add ``form_rest``. It renders any fields that you forgot to render:
+Next, add ``form_rest``. It renders any fields that you forgot:
 
 .. code-block:: html+jinja
 
@@ -196,13 +196,13 @@ Next, add ``form_rest``. It renders any fields that you forgot to render:
 
         {{ form_rest(form) }}
 
-        <input type="submit" value="Register!" />
+        <input type="submit" class="btn btn-primary pull-right" value="Register!" />
     </form>
 
 In addition to that, ``form_rest`` is really handy because it renders any
 hidden fields automatically.
 
-Actuall,y *all* forms have a hidden "token" field by default to protect against
+*All* forms have a hidden "token" field by default to protect against
 CSRF attacks. With ```form_rest```, you never have to worry or think about
 hidden fields.
 
