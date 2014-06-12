@@ -114,7 +114,7 @@ Finally, add ``getSalt()`` and just make it return ``null``::
         return null;
     }
 
-I'll talk more about this method on a second.
+I'll talk more about this method in a second.
 
 Now that the ``User`` class implements ``UserInterface``, Symfony's authentication
 system will be able to use it. But before we hook that up, let's add the
