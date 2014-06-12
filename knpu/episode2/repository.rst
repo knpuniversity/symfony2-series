@@ -1,7 +1,7 @@
 Repository Security
 ===================
 
-Now, let's give our users an email and let them login using it or their username.
+Now, let's have our users provide an email and let them login using it or their username.
 
 Giving the User an Email
 ------------------------
@@ -43,10 +43,10 @@ Finally, update the fixtures so that each user has an email::
     public function load(ObjectManager $manager)
     {
         // ...
-        $user->setEmail('user@user.com');
+        $user->setEmail('darth@deathstar.com');
 
         // ...
-        $admin->setEmail('admin@admin.com');
+        $admin->setEmail('wayne@deathstar.com');
 
         // ...
     }
@@ -59,7 +59,7 @@ Doctrine Repositories
 ---------------------
 
 When a user logs in right now, the security system queries for it using the
-``username`` field. That's because we told it ti in our 
+``username`` field. That's because we told it to in our 
 :ref:`security.yml configuration<symfony-ep2-providers-config>`.
 We could change it here to be ``email`` instead, but there's no way to say
 ``email`` *or* ``username``. We *can* make this more flexible. But first,
@@ -135,7 +135,7 @@ To query for Events, we call ``getRepository`` on the entity manager. The
         // nothing here... boring!
     }
 
-So where does ``findAll`` method live? The answer is Doctrine's base
+So where does the ``findAll`` method live? The answer is Doctrine's base
 `EntityRepository`_ class, which we're extending. If we `open it`_, you'll
 find some of the helpful methods that we talked about in the previous screencast,
 including ``findAll()``. So *every* repository class comes with a few helpful
@@ -171,8 +171,8 @@ annotation::
      */
     class Event
 
-Ah-hah! The ``repositoryClass`` is what's telling Doctrine to use ``EventRepository``
-as the repository for ``Event``. Let's remove that part and see what happens::
+Ah-hah! The ``repositoryClass`` is what's telling Doctrine to use ``EventRepository``. 
+Let's remove that part and see what happens::
 
     // src/Yoda/EventBundle/Entity/Event.php
     // ...
@@ -184,8 +184,8 @@ as the repository for ``Event``. Let's remove that part and see what happens::
      */
     class Event
 
-When we refresh, there's no epi cry. In fact, everything works perfectly!
-We didn't tel Doctrine about our custom repository, so when we call ``getRepository``
+When we refresh, there's no epic cry. In fact, everything works perfectly!
+We didn't tell Doctrine about our custom repository, so when we call ``getRepository``
 in the controller, it just gives us an instance of the base ``EntityRepository``
 class. That was nice! Our overridden ``findAll`` method is bypassed and the
 real one is used.
