@@ -20,7 +20,7 @@ that we passed into the template, and add a submit button:
                 <form action="{{ path('user_register') }}" method="POST">
                     {{ form_widget(form) }}
 
-                    <input type="submit" value="Register!" />
+                    <input type="submit" class="btn btn-primary pull-right" value="Register!" />
                 </form>
             </section>
         </article>
@@ -110,7 +110,7 @@ on each of your fields:
         {{ form_row(form.email) }}
         {{ form_row(form.password) }}
 
-        <input type="submit" value="Register!" />
+        <input type="submit" class="btn btn-primary pull-right" value="Register!" />
     </form>
 
 Refresh the page and inspect the form. Each field row is surrounded by a ``div``
@@ -147,7 +147,7 @@ field:
         {{ form_row(form.email) }}
         {{ form_row(form.password) }}
 
-        <input type="submit" value="Register!" />
+        <input type="submit" class="btn btn-primary pull-right" value="Register!" />
     </form>
 
 ``form_row`` just renders these 3 parts automatically, so this is basically
@@ -173,7 +173,7 @@ object:
         {{ form_row(form.email) }}
         {{ form_row(form.password) }}
 
-        <input type="submit" value="Register!" />
+        <input type="submit" class="btn btn-primary pull-right" value="Register!" />
     </form>
 
 Most errors appear next to the field they belong to. But in some cases,
@@ -196,7 +196,7 @@ Next, add ``form_rest``. It renders any fields that you forgot:
 
         {{ form_rest(form) }}
 
-        <input type="submit" value="Register!" />
+        <input type="submit" class="btn btn-primary pull-right" value="Register!" />
     </form>
 
 In addition to that, ``form_rest`` is really handy because it renders any
