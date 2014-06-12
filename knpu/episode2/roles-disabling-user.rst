@@ -14,7 +14,7 @@ Add a ``roles`` field and make it a ``json_array`` type::
      */
     private $roles = array();
 
-``json_arra`` allows us to store an array of strings in one field. In the
+``json_array`` allows us to store an array of strings in one field. In the
 database, these are stored as a JSON string. Doctrine takes care of converting
 back and forth between the array and JSON.
 
@@ -58,7 +58,7 @@ Update the SQL for the new field and then head back to the fixture file:
     php app/console doctrine:schema:update --force
 
 Let's copy the code here and make a second, ``admin`` user. Give this powerful
-user ``ROLE_ADMIN``::
+Imperial user ``ROLE_ADMIN``::
 
     // src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
     // ...
@@ -119,7 +119,7 @@ After that, update our schema to add the new field:
 
 So the ``isActive`` field *exists*, but it's not actually used during login.
 To make this work, change the ``User`` class to implement
-with :symfonyclass:`Symfony\\Component\\Security\\Core\\User\\AdvancedUserInterface`
+:symfonyclass:`Symfony\\Component\\Security\\Core\\User\\AdvancedUserInterface`
 instead of ``UserInterface``:
 
     // src/Yoda/UserBundle/Entity/User.php
