@@ -10,14 +10,14 @@ The bummer is that hooking all this up can be tough. But since you'll know
 how each piece works, you'll be able to do amazing things. There's also some
 jedi magic I'll show you later that makes custom authentication systems much easier.
 
-Authentication, Authorization and the Deathstar
------------------------------------------------
+Authentication, Authorization and the Death Star
+------------------------------------------------
 
 Security is two parts: authentication and authorization.
 **Authentication, checks the user's credentials**. Its job is *not* to restrict
 access, it just wants to know *who* you are.
 
-Ok, so think of a building, or maybe even the deathstar. After the tractor
+Ok, so think of a building, or maybe even the Death Star. After the tractor
 beam forces you to land, you walk out and pass through a security checkpoint.
 Both Stormtroopers *and* rebels check-in here, prove who they are and receive
 an access card, or a *token* in Symfony-speak.
@@ -127,7 +127,7 @@ Now, uncomment the ``anonymous`` key:
                 anonymous: ~
 
 This lets anonymous users into the site, similar to letting a tourist enter
-the deathstar. We may want to require login for certain pages, or even maybe
+the Death Star. We may want to require login for certain pages, or even maybe
 nearly every page. But we're not going to do that here. Remember, the firewall
 is all about finding out *who* you are, not denying access.
 
