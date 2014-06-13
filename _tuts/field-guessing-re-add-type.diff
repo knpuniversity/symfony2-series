@@ -14,15 +14,15 @@ index d44c79b..baac841 100644
      private $email;
  
 diff --git a/src/Yoda/UserBundle/Form/RegisterFormType.php b/src/Yoda/UserBundle/Form/RegisterFormType.php
-index 4d9bea0..169c38b 100644
+index f1fe8af..68511b6 100644
 --- a/src/Yoda/UserBundle/Form/RegisterFormType.php
 +++ b/src/Yoda/UserBundle/Form/RegisterFormType.php
-@@ -16,7 +16,7 @@ class RegisterFormType extends AbstractType
-                 'label' => 'Nickname',
-                 'attr'    => array('class' => 'foob')
-             ))
--            ->add('email')
-+            ->add('email', 'email')
-             ->add('plainPassword', 'repeated', array(
-                 'type' => 'password',
-             ))
+@@ -12,7 +12,7 @@ class RegisterFormType extends AbstractType
+     {
+         $builder
+             ->add('username', 'text')
+-            ->add('email', null, array(
++            ->add('email', 'email', array(
+                 'required' => false,
+                 'label' => 'Email Address',
+                 'attr'    => array('class' => 'C-3PO')
