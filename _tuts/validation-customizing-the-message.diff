@@ -1,5 +1,5 @@
 diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
-index 6c4a8be..7c8b5c4 100644
+index 6c4a8be..b2547c9 100644
 --- a/src/Yoda/UserBundle/Entity/User.php
 +++ b/src/Yoda/UserBundle/Entity/User.php
 @@ -29,7 +29,7 @@ class User implements AdvancedUserInterface, Serializable
@@ -7,7 +7,7 @@ index 6c4a8be..7c8b5c4 100644
       *
       * @ORM\Column(name="username", type="string", length=255)
 -     * @Assert\NotBlank()
-+     * @Assert\NotBlank(message="Put in a username you dork :P")
++     * @Assert\NotBlank(message="Give us at least 3 characters")
       */
      private $username;
  
