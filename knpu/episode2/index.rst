@@ -33,7 +33,7 @@ Starting in Symfony2: Episode2
     testing
     testing-forms
     testing-data
-    container-deoctrine
+    container-doctrine
     after-dinner-mint
     role-hierarchies
     impersonation

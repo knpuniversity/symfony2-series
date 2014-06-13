@@ -40,15 +40,19 @@ that the ``email`` field isn't required in ``User`` and set the option to
 ``false`` for us?
 
 Actually, it can! The feature is called "field guessing" and it works like
-this. Open up ``RegisterFormType`` and remove the second argument to ``add``
-entirely::
+this. Open up ``RegisterFormType`` and set the second argument to ``add``
+to ``null``::
 
     // src/Yoda/UserBundle/Form/RegisterFormType.php
     // ...
 
     $builder
         // ...
-        ->add('email')
+        ->add('email', null, array(
+            'required' => false,
+            'label' => 'Email Address',
+            'attr'    => array('class' => 'C-3PO')
+        ))
         // ...
     ;
 
