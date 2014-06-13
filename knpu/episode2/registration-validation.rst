@@ -13,8 +13,7 @@ Paste this into your ``User`` class::
 
     use Symfony\Component\Validator\Constraints as Assert;
 
-We're going to use annotations, and whenever you use annotations, you need
-a ``use`` statement.
+Whenever you add annotations, you need a ``use`` statement.
 
 Basic Constraints and Options
 -----------------------------
@@ -40,7 +39,7 @@ the message, add the ``message`` option::
 
     /**
      * @ORM\Column(name="username", type="string", length=255)
-     * @Assert\NotBlank(message="Put in a username you dork :P")
+     * @Assert\NotBlank(message="Put in a username you rebel scum :P")
      */
     private $username;
 
@@ -91,9 +90,6 @@ show up! They're just really ugly.
 Docs for The Built-In Constraints
 ---------------------------------
 
-Symfony has a bunch of built-in constraints. Check them out by going to the
-Reference section and click on `Validation Constraints Reference`_
-
 Symfony comes packed with a lot of other constraints you can use. Check them
 out in the `reference section of the documentation`_. You can see the ``Length``
 constraint we just used and all of the options for it. Cool!
@@ -141,7 +137,7 @@ This constraint is *awesome* because it lets you create a method inside your
 class that's called during validation. You can apply whatever logic you need
 to figure out if the object is valid. You can even place the errors on exactly
 which field you want. If you have a more difficult validation problem, this
-might exatly what you ened.
+might be exactly what you need.
 
 We won't show it here, but check it out.
 
