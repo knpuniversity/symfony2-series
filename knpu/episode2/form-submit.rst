@@ -34,8 +34,9 @@ object. This doesn't work for everything, only the Request class.
 Using handleRequest
 -------------------
 
-Create an ``if`` statement to handle the form processing and
-use the form's ``bind`` method::
+Use the form's ``handleRequest`` method to actually process the data. Next,
+add an ``if`` statement that checks to see if the form was submitted and
+if all of the data is valid::
 
     // src/Yoda/UserBundle/Controller/RegisterController.php
 
@@ -163,13 +164,6 @@ to the homepage. First, we need to generate a URL - just like we do with
 the ``path()`` function in Twig. In a controller, there's a ``generateUrl``
 function that works exactly the same way::
 
-
-
-After registration, let's redirect the user to the homepage. To do this, first
-generate the URL to the homepage by calling the ``generateUrl`` method. This
-takes the exact same arguments as the Twig ``path`` function. Now, to actually
-redirect, use the ``redirect`` method and pass it the URL::
-
     // src/Yoda/UserBundle/Controller/RegisterController.php
     // ...
 
@@ -194,7 +188,7 @@ Remember that a controller always returns a Response object. ``redirect``
 is just a shortcut to create a Response that's all setup to redirect to
 this URL.
 
-Ok, time to kick the tires! As expected, we end up on the homepage. We can
+Ok, time to kick this proton torpedo! As expected, we end up on the homepage. We can
 even login as the new user!
 
 You Don't Need isSubmitted
