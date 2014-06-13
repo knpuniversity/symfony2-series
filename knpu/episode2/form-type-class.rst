@@ -32,12 +32,12 @@ used as part of the ``name`` attribute on your rendered form::
         return 'user_register';
     }
 
-The really important method is is :symfonymethod:`Symfony\\Component\\Form\\FormTypeInterface::buildForm`.
+The really important method is :symfonymethod:`Symfony\\Component\\Form\\FormTypeInterface::buildForm`.
 I'm going to use my IDE to create this method for me. If you create your's
-manually, just don'e forget the use statement for the
+manually, just don't forget the use statement for the
 :symfonyclass:`Symfony\\Component\\Form\\FormBuilderInterface`.
 
-The ``buildForm`` method is where we build out form! Genius! Copy the code
+The ``buildForm`` method is where we build our form! Genius! Copy the code
 from our controller that adds the fields and put that here::
 
     // src/Yoda/UserBundle/Form/RegisterFormType.php
