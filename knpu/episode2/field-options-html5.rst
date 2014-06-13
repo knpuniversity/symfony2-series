@@ -32,7 +32,7 @@ options array::
     // src/Yoda/UserBundle/Form/RegisterFormType.php
     // ...
 
-    $builder->add('username', 'text', array(
+    $builder->add('email', 'email', array(
         // an array of options to pass to this field
     ))
 

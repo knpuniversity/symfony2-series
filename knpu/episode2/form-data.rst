@@ -85,7 +85,7 @@ So how can we set default data on the form now? Put back the array we had
 earlier::
 
     $defaultData = array(
-        'username' => 'Foo',
+        'username' => 'Leia',
     );
 
     $form = $this->createFormBuilder($defaultData, array(
