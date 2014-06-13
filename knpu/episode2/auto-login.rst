@@ -2,8 +2,8 @@ Automatically Authenticating after Registration
 ===============================================
 
 After registration, let's log the user in automatically. Create a private
-function inside ``RegisterController``. Normally, authentication happens
-automatically, but we can also trigger it manually::
+function called ``authenticateUser`` inside ``RegisterController``. Normally,
+authentication happens automatically, but we can also trigger it manually::
 
     // src/Yoda/UserBundle/Entity/Controller/RegisterController.php
     // ...
@@ -37,7 +37,7 @@ Call this method right after registration::
 
 Try it out! After registration, we're redirected back to the homepage. But
 if you check the web debug toolbar, you'll see that we're also authenticated
-as the new user. Sweet!
+as Padmé. Sweet!
 
 .. sidebar:: Redirecting back to the original URL
 
