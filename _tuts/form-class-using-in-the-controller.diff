@@ -1,5 +1,5 @@
 diff --git a/src/Yoda/UserBundle/Controller/RegisterController.php b/src/Yoda/UserBundle/Controller/RegisterController.php
-index 3bd5c00..860f6dc 100644
+index f17190e..06961ad 100644
 --- a/src/Yoda/UserBundle/Controller/RegisterController.php
 +++ b/src/Yoda/UserBundle/Controller/RegisterController.php
 @@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -12,7 +12,7 @@ index 3bd5c00..860f6dc 100644
  {
 @@ -19,16 +20,7 @@ class RegisterController extends Controller
          $user = new User();
-         $user->setUsername('Foo');
+         $user->setUsername('Leia');
  
 -        $form = $this->createFormBuilder($user, array(
 -            'data_class' => 'Yoda\UserBundle\Entity\User',
