@@ -1,5 +1,5 @@
 diff --git a/src/Yoda/UserBundle/Controller/RegisterController.php b/src/Yoda/UserBundle/Controller/RegisterController.php
-index df980b4..72d72c0 100644
+index 1389f49..b8f33c1 100644
 --- a/src/Yoda/UserBundle/Controller/RegisterController.php
 +++ b/src/Yoda/UserBundle/Controller/RegisterController.php
 @@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -11,7 +11,7 @@ index df980b4..72d72c0 100644
  class RegisterController extends Controller
  {
 @@ -39,6 +40,8 @@ class RegisterController extends Controller
-                 ->add('success', 'Registration went super smooth!')
+                 ->add('success', 'Welcome to the Death Star! Have a magical day!')
              ;
  
 +            $this->authenticateUser($user);
