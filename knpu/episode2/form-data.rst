@@ -10,7 +10,7 @@ can just pass the data as the first argument to ``createFormBuilder``::
     public function registerAction(Request $request)
     {
         $defaultData = array(
-            'username' => 'Foo',
+            'username' => 'Leia',
         );
 
         $form = $this->createFormBuilder($defaultData)
@@ -111,7 +111,7 @@ the input of the form should be a ``User``. So to set default data, just
 create a ``User`` object, give it some data and pass it in::
 
     $user = new User();
-    $user->setUsername('Foo');
+    $user->setUsername('Leia');
 
     $form = $this->createFormBuilder($user, array(
         'data_class' => 'Yoda\UserBundle\Entity\User',

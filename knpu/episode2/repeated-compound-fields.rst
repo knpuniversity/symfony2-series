@@ -21,13 +21,13 @@ We have just one password box, so lets turn this into 2 boxes by using the
         // ..
     }
 
-The ``repeated`` field type is a special because it actually renders *two*
-fields, in this case, password fields. If the two values don't match, the
+The ``repeated`` field type is special because it actually renders *two*
+fields, in this case, password fields. If the two values don't match,
 a validation error will show up. If you refresh, you'll see the 2 fields.
+Oh no, attack of the clones!
 
 The ``email`` field looks the same, but if you inspect it, you'll see that
-it's an input ``email`` field, a new HTML5 field type that should be used
-for emails:
+it's an input ``email`` field, an HTML5 field type that should be used:
 
 .. code-block:: text
 

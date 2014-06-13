@@ -9,7 +9,7 @@ HTML5 Validation
 ----------------
 
 Try to submit a blank form right now! Woh! We *do* have some validation.
-In fact, if I enter an invalid email  address, we see another error. This
+In fact, if I enter an invalid email address, we see another error. This
 is HTML5 validation. When I inspect a field, we see what's triggering it:
 
 .. code-block:: text
@@ -37,15 +37,16 @@ options array::
     ))
 
 Every field type can be configured in different ways. For example, the ``repeated``
-field has a required ``type`` option. There are also a bunch of options that
+field has a ``type`` option. There are also a bunch of options that
 every field has, ``required`` being one of them. Set the ``required`` option
-on username to false and refresh::
+on email to false and refresh::
 
     // src/Yoda/UserBundle/Form/RegisterFormType.php
     // ...
 
     $builder
-        ->add('username', 'text', array(
+        // ...
+        ->add('email', 'email', array(
             'required' => false
         ))
         // ...
@@ -65,10 +66,10 @@ Digging into the Core
 You can also dig into the source code to find out what options are available
 For the ``repeated`` type, there is a class called, well,
 :symfonyclass:`Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType`.
-Inside, the ``setDefaultOptions`` method shows you the options that are special
+The ``setDefaultOptions`` method shows you the options that are special
 to this type.
 
-Most of global options are inherited from a class called
+Most of the global options are inherited from a class called
 :symfonyclass:`Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType`.
 In here you can see ``required`` and a few others. In its parent class,
 :symfonyclass:`Symfony\\Component\\Form\\Extension\\Core\\Type\\BaseType`,
@@ -79,10 +80,10 @@ the label or add a class to the field from right inside the form class::
     // ...
 
     $builder
-        ->add('username', 'text', array(
+        ->add('email', 'email', array(
             'required' => false,
-            'label' => 'Nickname',
-            'attr'    => array('class' => 'foob')
+            'label' => 'Email Address',
+            'attr'    => array('class' => 'C-3PO')
         ))
         // ...
     ;
@@ -98,7 +99,7 @@ easily. And finally, Symfony automatically defaults all fields to have the
 ``required`` attribute, which is kind of annoying.
 
 I recommend avoiding HTML5 validation entirely. To disable it, just add a
-``novalidate`` attribue to your ``form`` tag:
+``novalidate`` attribute to your ``form`` tag:
 
 .. code-block:: html+jinja
 

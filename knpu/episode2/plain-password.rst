@@ -5,7 +5,7 @@ We're abusing our ``password`` field. It temporarily stores the plain text
 submitted password and then later stores the encoded version. This is a bad
 idea. What if we forget to encode a user's password? The plain-text password
 would be saved to the database instead of throwing an error. And storing
-plain text passwords is a bummer!
+plain text passwords is definitely against the Jedi Code!
 
 Instead, create a new property on the ``User`` entity called ``plainPassword``.
 Let's also add the getter and setter method for it::

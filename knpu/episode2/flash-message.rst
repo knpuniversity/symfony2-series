@@ -4,7 +4,7 @@ Adding a Flash Message
 After registration, let's make the new user feel loved by giving them a big
 happy success message! Symfony has a feature called "flash messages", which
 is perfect for this. A flash is a message that we set to the session, but
-that disappears after we access exactly one time.
+that disappears after we access it exactly one time.
 
 After registration, grab the ``session`` object from the request and get an
 object called a "flash bag". Set a message on it using ``add``::
@@ -17,7 +17,7 @@ object called a "flash bag". Set a message on it using ``add``::
 
         $request->getSession()
             ->getFlashBag()
-            ->add('success', 'Registration went super smooth!')
+            ->add('success', 'Welcome to the Death Star, have a magical day!')
         ;
 
         $url = $this->generateUrl('event');
