@@ -15,7 +15,7 @@ a secret, random key:
             secured_area:
                 # ...
                 remember_me:
-                    key: "The name of our cat is Edgar!"
+                    key: "Order 1138"
 
 Next, open the login template and add a field named ``_remember_me``:
 
@@ -32,12 +32,12 @@ Next, open the login template and add a field named ``_remember_me``:
     </form>
 
 This works a bit like login does: as long as we have a ``_remember_me``
-check and it's checked, Symfony will take care of everything automatically.
+checkbox and it's checked, Symfony will take care of everything automatically.
 
 Try it out! After logging in, we now have a ``REMEMBERME`` cookie. Let's
 clear our session cookie to make sure it's working. When I refresh,
 my session is gone but I'm still logged in. Nice! Click anywhere on the web
-debug toolbar to get into the profile. Next, click on the "Logs" tab. If
+debug toolbar to get into the profiler. Next, click on the "Logs" tab. If
 you look closely, you can even see some logs for the remember me login process:
 
 .. code-block:: text
