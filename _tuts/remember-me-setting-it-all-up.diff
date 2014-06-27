@@ -1,5 +1,5 @@
 diff --git a/app/config/security.yml b/app/config/security.yml
-index 1606aec..a5a7e1b 100644
+index 6e3339a..767cca2 100644
 --- a/app/config/security.yml
 +++ b/app/config/security.yml
 @@ -21,6 +21,8 @@ security:
@@ -7,7 +7,7 @@ index 1606aec..a5a7e1b 100644
              anonymous: ~
              switch_user: ~
 +            remember_me:
-+                key: "The name of our cat is Edgar!"
++                key: "Order 1138"
              #http_basic:
              #    realm: "Secured Demo Area"
  
