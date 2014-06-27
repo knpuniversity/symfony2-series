@@ -48,12 +48,14 @@ this URL pattern because *every* user, even anonymous users, have this role.
 
 Run the ``router:debug`` task to see a few other URLs that we should whitelist.
 These include some URLs that load our CSS files as well as the web debug toolbar
-and profiler during development:
+and profiler during development. We also need to let anonymous users get to
+the registration page:
 
     _assetic_01e9169                       ANY      /css/01e9169.css
     ...
     _wdt                                   ANY      /_wdt/{token}
     _profiler_home                         ANY      /_profiler/
+    user_register                          ANY      /register
     ... 
 
 We haven't talked about assetic much yet, but by blocking it's URLs, we're
@@ -66,6 +68,7 @@ blocking our stylesheets. With these entries in place, we're in good shape:
         # ...
         access_control:
             - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/(css|js), roles: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/(_wdt|_profiler), roles: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/, roles: ROLE_USER }
