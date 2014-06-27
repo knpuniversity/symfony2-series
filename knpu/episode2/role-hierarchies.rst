@@ -13,7 +13,7 @@ In our example, we showed a pretty basic system with just ``ROLE_USER`` and
 if only *some* users are able to create events, we can protect event creation
 with a new role.
 
-To show this, let's make the role passed to ``enforceUserSecurity`` configurable
+To show this, let's make the role that's passed to ``enforceUserSecurity`` configurable
 and then only let a user create an event if they have some ``ROLE_EVENT_CREATE``
 role::
 
@@ -41,11 +41,13 @@ role::
 The *only* rule when creating a role is that it *must* start with ``ROLE_``.
 If it doesn't, you won't get an error, but security won't be enforced. 
 
-Try it out by logging in as admin, and trying to create an event. No access!
-Our admin user has ``ROLE_USER`` and ``ROLE_ADMIN``, but not ``ROLE_EVENT_CREATE``.
-If we want to give all administrators the ability to create events, we can
-take advantage of role hierarchy, which we can see in ``security.yml``.
-Add ``ROLE_EVENT_CREATE`` to ``ROLE_ADMIN`` and refresh again:
+Try it out by logging in as admin. But first, reload the fixtures, since
+our users were deleted earlier when running our functional test.
+
+Now, try to create an event. No access! Our admin user has ``ROLE_USER`` and 
+``ROLE_ADMIN``, but not ``ROLE_EVENT_CREATE``. If we want to give all administrators 
+the ability to create events, we can take advantage of role hierarchy, which we can 
+see in ``security.yml``. Add ``ROLE_EVENT_CREATE`` to ``ROLE_ADMIN`` and refresh again:
 
 .. code-block:: yaml
 
