@@ -16,7 +16,7 @@ you can also use the ``id`` or ``name`` attributes::
     }
 
 In the browser, if we submit the form blank, we should see the form again with
-some errors. We can simulate a submit by calling ``submit()`` on the client
+some errors. We can simulate this by calling ``submit()`` on the client
 and passing it the ``$form`` variable.
 
 .. tip::
