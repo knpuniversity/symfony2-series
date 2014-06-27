@@ -123,3 +123,11 @@ You can now re-run the tests knowing that our main database isn't being affected
 .. code-block:: bash
 
     php bin/phpunit -c app
+
+Behat
+-----
+
+As cool as this is, in reality we use a tool called Behat instead of Symfony's
+built in functional testing tools. And you're in luck because everything you just
+learned translates to Behat. Check out our tutorial on this to take your functional
+testing into space!
