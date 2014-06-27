@@ -90,7 +90,7 @@ shows up after the redirect::
         $this->assertTrue($client->getResponse()->isRedirect());
         $client->followRedirect();
         $this->assertContains(
-            'Registration went super smooth',
+            'Welcome to the Death Star! Have a magical day!',
             $client->getResponse()->getContent()
         );
     }
