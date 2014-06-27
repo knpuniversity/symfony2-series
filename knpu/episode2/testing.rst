@@ -2,7 +2,7 @@ Functional Testing
 ==================
 
 Our site is looking cool. But how can we be sure that we haven't broken anything
-along the way? Rigth now, we can't!
+along the way? Right now, we can't!
 
 Let's avoid the future angry phone calls from clients by adding some tests.
 There are two main types: unit tests and functional tests. Unit tests test
@@ -16,8 +16,8 @@ Your First Functional Test
 When we generated the ``EventBundle`` in the last screencast, it created
 2 stub functional tests for us. How nice!
 
-Create a ``Tests/Controller`` directory in ``UserBundle``, copy ``DefaultControllerTest.php``
-here and rename it to ``RegisterControllerTest``::
+Create a ``Tests/Controller`` directory in ``UserBundle``, copy one of the
+test files and rename it to ``RegisterControllerTest``::
 
     // src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
     namespace Yoda\EventBundle\Tests\Controller;
@@ -33,7 +33,7 @@ here and rename it to ``RegisterControllerTest``::
         }
     }
 
-You can also rename ``testRegister`` to ``testRegister``::
+Rename the method to ``testRegister``::
 
     // src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
     // ...
@@ -70,12 +70,12 @@ the word "Register" appears somewhere::
     }
 
 The ``assertEquals`` and ``assertContains`` methods come from PHPUnit, the
-library will actually run the test.
+library that will actually run the test.
 
 Installing PHPUnit
 ------------------
 
-To run the test, we need PHPUnit: the de-facto PHP library for testing. You
+To run the test, we need PHPUnit: the de-facto tool for testing. You
 can install it globally or locally in this project via Composer. For the
 global option, check out their docs.
 
@@ -86,7 +86,7 @@ Let's use Composer's ``require`` command and search for phpunit:
     php composer.phar require
 
 Choose the ``phpunit/phpunit`` result. For a version, I'll go to `packagist.org`_
-and find the library. Right now, it looks like the latest version is ``4.1.0``.
+and find the library. Right now, it looks like the latest version is ``4.1.3``.
 I'll use the constraint ``~4.1``, which basically means 4.1 or higher.
 
 .. tip::
@@ -95,7 +95,7 @@ I'll use the constraint ``~4.1``, which basically means 4.1 or higher.
     on Composer's website.
 
 This added ``phpunit/phpunit`` to the ``require`` key in ``composer.json``
-and ran the ``update`` command in the background to download it.
+and it ran the ``update`` command in the background to download it.
 
 .. tip::
 
@@ -107,7 +107,7 @@ and ran the ``update`` command in the background to download it.
 Running the Tests
 -----------------
 
-We know have a ``bin/phpunit`` executable, so let's use it! Pass it a ``-c app``
+We now have a ``bin/phpunit`` executable, so let's use it! Pass it a ``-c app``
 option:
 
 .. code-block:: bash
@@ -124,7 +124,7 @@ option:
         php vendor/phpunit/phpunit/phpunit -c app
 
 This tells PHPUnit to look for a configuration file in the ``app/`` directory.
-And hey! There's a ``phpunit.xml.dist`` file there already it reads. This
+And hey! There's a ``phpunit.xml.dist`` file there already for it to read. This
 tells phpunit how to bootstrap and where to find our tests.
 
 But we see a few errors. If you look closely, you'll see that it's executing
@@ -139,12 +139,13 @@ Git rid of these troublemakers and try again:
 Green! PHPUnit runs our test, where we make a request to ``/register`` and
 check the status code and look for the word "Register".
 
-To see what a failed test looks like, change the test and re-run it::
+To see what a failed test looks like, change the test to check for Ackbar instead
+of Resgister and re-run it::
 
-    $this->assertContains('Registerxxxx', $response->getContent());
+    $this->assertContains('Ackbar', $response->getContent());
 
 It doesn't find it, but it does print out the page's content, which we could
-use to debug. Change the test back to look for ``Register``::
+use to debug. It's a trap! Change the test back to look for ``Register``::
 
     $this->assertContains('Register', $response->getContent());
 
@@ -155,7 +156,7 @@ When we call the ``request()`` function, it returns a
 :symfonyclass:`Symfony\\Component\\DomCrawler\\Crawler` object, which works
 a lot like the jQuery object in JavaScript. For example, to find the value
 of the username field, we can search by its ``id`` and use the ``attr`` function.
-It should be equal to "Foo"::
+It should be equal to "Leia"::
 
     public function testRegister()
     {
@@ -171,7 +172,7 @@ It should be equal to "Foo"::
             ->filter('#user_register_username')
             ->attr('value')
         ;
-        $this->assertEquals('Foo', $usernameVal);
+        $this->assertEquals('Leia', $usernameVal);
     }
 
 Re-run the test to see the result:
