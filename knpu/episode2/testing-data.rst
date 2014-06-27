@@ -8,7 +8,7 @@ the username and email in the test are already taken. So instead of success,
 we see a validation error.
 
 This is a *very* important detail about testing. Before running any test,
-we need to make sure the database is in a predicable state. Our test will
+we need to make sure the database is in a predictable state. Our test will
 pass... unless there *happens* to already be a ``user5`` in the database.
 
 Deleting Users
