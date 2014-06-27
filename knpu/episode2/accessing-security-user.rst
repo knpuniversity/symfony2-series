@@ -6,8 +6,8 @@ Now that we're logged in, how can we get access to the User object?
 In a Template
 -------------
 
-In a template, it's as simple as ``app.user``. For example, we can use it
-to print out the username:
+Open up the homepage template. In Twig, we can access the User object
+by calling ``app.user``. Let's use it to print out the username:
 
 .. code-block:: html+jinja
 
@@ -23,8 +23,9 @@ to print out the username:
 Accessing the User in a Controller
 ----------------------------------
 
-From a controller, it's just as easy. Just grab an object called the security
-context, get the token, and then get the user::
+From a controller, it's just as easy. Go to the controller function for the
+homepage and grab an object called the security context. Then call ``getToken()``
+and ``getUser()``::
 
     public function indexAction()
     {
