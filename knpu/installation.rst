@@ -77,8 +77,19 @@ is downloading these into the ``vendor/`` directory. If you
 run ``ls vendor/``, you'll see that more and more things are popping up here.
 
 When that finishes, our terminal will become self-aware and start asking
-us configuration questions. Just hit enter through all of these - we can
-tweak the config later.
+us configuration questions.
+
+If it asks you:
+
+    Would you like to use Symfony 3 directory structure?
+
+Choose "No". And if it asks you:
+
+    Would you like to install Acme demo bundle?
+
+Choose "Yes". This will give us some code that we'll play with.
+
+Hit enter through the rest of the questions - we can tweak the config later.
 
 Setup Checks and Web Server Config
 ----------------------------------
