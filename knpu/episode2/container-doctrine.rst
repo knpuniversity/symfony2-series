@@ -23,7 +23,8 @@ So when we say ``$container->get('doctrine')``, we're getting this object.
 
 Find the shortcut in your editor that can open files by typing in their
 filename. Use this to find and open ``Registry.php``. Inside, you'll see
-the ``getManager`` method that we're using.
+the ``getManager`` method being used, which actually lives on its parent
+class. 
 
 The Base Controller
 -------------------
