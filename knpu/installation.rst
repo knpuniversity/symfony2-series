@@ -79,8 +79,7 @@ run ``ls vendor/``, you'll see that more and more things are popping up here.
 When that finishes, our terminal will become self-aware and start asking
 us configuration questions.
 
-If you're using Symfony 2.5 or higher, you may see a few questions that you
-*don't* see here. If it asks you:
+If it asks you:
 
     Would you like to use Symfony 3 directory structure?
 
