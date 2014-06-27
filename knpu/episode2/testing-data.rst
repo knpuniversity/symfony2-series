@@ -131,3 +131,6 @@ As cool as this is, in reality we use a tool called Behat instead of Symfony's
 built in functional testing tools. And you're in luck because everything you just
 learned translates to Behat. Check out our tutorial on this to take your functional
 testing into space!
+
+Do this or risk an angry phone call from Darth Vader when the super laser doesn't fire because
+you added a new espresso machine to the breakroom.
