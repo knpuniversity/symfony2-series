@@ -9,7 +9,7 @@ Form Field Guessing
 -------------------
 
 Remember when we disabled HTML5 validation earlier. Let's add it back temporarily.
-Remove the ``formnovalidate`` attribute so that it works again:
+Remove the ``novalidate`` attribute so that it works again:
 
 .. code-block:: html+jinja
 
@@ -32,6 +32,21 @@ worry about updating your schema - this change is just temporary::
      */
     private $email;
 
+Now, open up ``RegisterFormType`` and remove the ``required`` option, which
+determines whether or not the HTML5 ``required`` attribute should be rendered::
+
+    // src/Yoda/UserBundle/Form/RegisterFormType.php
+    // ...
+
+    $builder
+        // ...
+        ->add('email', 'email', array(
+            'label' => 'Email Address',
+            'attr'    => array('class' => 'C-3PO')
+        ))
+        // ...
+    ;
+
 When we surf to the registration page and try to submit, HTML5 validation
 stops us. And just like before, the ``email`` field has the ``required`` attribute
 on it. We saw earlier that we can fix the problem by setting the ``required``
@@ -40,8 +55,7 @@ that the ``email`` field isn't required in ``User`` and set the option to
 ``false`` for us?
 
 Actually, it can! The feature is called "field guessing" and it works like
-this. Open up ``RegisterFormType`` and set the second argument to ``add``
-to ``null``::
+this. Set the second argument of ``add`` for the ``email`` field to null::
 
     // src/Yoda/UserBundle/Form/RegisterFormType.php
     // ...
@@ -56,14 +70,17 @@ to ``null``::
         // ...
     ;
 
-Refresh the page and inspect the ``email`` field - there are a bunch of awesome
+This might seem a little crazy, because this argument normally tells Symfony
+what type of field this is. Will it be able to figure how to render this field?
+
+Refresh the page and inspect ``email`` - there are a bunch of awesome
 things happening:
 
 .. code-block:: text
 
     <input type="email" id="user_register_email" name="user_register[email]" maxlength="255" />
 
-First, notice that the field is still ``type="email"``. That's being being
+First, notice that the field is still ``type="email"``. That's being
 guessed based on the fact that there is an ``Email`` constraint on the property.
 Remove the ``Email`` constraint and refresh::
 
@@ -79,7 +96,7 @@ Remove the ``Email`` constraint and refresh::
 
     <input type="text" id="user_register_email" name="user_register[email]" maxlength="255" />
 
-Now refresh! Symfony doesn't know anything about the field now, so it just
+Symfony doesn't know anything about the field now, so it just
 defaults to the ``text`` type.
 
 Field Option Guessing
@@ -111,7 +128,7 @@ of the field in the database.
 
 So here's the deal. If you leave the second argument empty when creating
 a field, Symfony will try to guess the field type *and* some options, like
-``required``, ``max_length`` and ``pattern`` options. Field guessing isn't
+``required``, ``max_length`` and ``pattern``. Field guessing isn't
 always perfect, but I tend to try it at first and explicitly set things that
 aren't guessed correctly.
 
