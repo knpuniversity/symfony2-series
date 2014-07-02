@@ -1,13 +1,2 @@
-+ finish text edits and read-through of everything
-+ finish updates of video
-+ check that the code works with 2.2
-+ get code prepped
-    - start and finish, use 2.2
-+ proof-read on the site
-+ prep PDF and upload
-+ get sf2-ep3.png uploaded
-+ get content on site, unpublished
-- get lengths into metadata (total and chapters)
-- get videos uploaded
-- change all the version stuff and publish
-
+- need a more-security.rst file
+- talk about cascade and orphanRemoval?

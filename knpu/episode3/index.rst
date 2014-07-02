@@ -5,7 +5,7 @@ Starting in Symfony2: Episode3
     :hidden:
 
     intro
-    more-security
+    doctrine-relationship
     doctrine-extensions
     attend-event-ajax
     error-pages
