@@ -1,0 +1,12 @@
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index a6426b6..41ab24e 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -49,6 +49,7 @@ class Event
+      */
+     private $details;
+ 
++    protected $owner;
+ 
+     /**
+      * Get id
