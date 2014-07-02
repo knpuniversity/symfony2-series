@@ -20,6 +20,11 @@ by calling ``app.user``. Let's use it to print out the username:
         </a>
     {% endif %}
 
+.. tip::
+
+    If the user isn't logged in, ``app.user`` will be null. So be sure
+    to check that the user is logged in first before using ``app.user``.
+
 Accessing the User in a Controller
 ----------------------------------
 
