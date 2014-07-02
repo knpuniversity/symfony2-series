@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index 3a3bfd0..c738efa 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -51,7 +51,7 @@ class Event
+     private $details;
+ 
+     /**
+-     * @ORM\ManyToOne(targetEntity="Yoda\UserBundle\Entity\User")
++     * @ORM\ManyToOne(targetEntity="Yoda\UserBundle\Entity\User", cascade={"remove"})
+      * @ORM\JoinColumn(onDelete="CASCADE")
+      */
+     protected $owner;
