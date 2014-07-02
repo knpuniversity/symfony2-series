@@ -1,0 +1,68 @@
+title:  Starting in Symfony2: Episode 3 (2.2)
+price:  12
+length: 1:27:20
+summary: |
+    Welcome back for part 3 of our Starting in Symfony2 series! In part 3 of this series, we're going to discover even more about Symfony and begin to learn more about how Symfony really works under the hood. Over the next hour or so, we're going to learn what a service is, find out more about the core Symfony services, and create a few of our own. In Doctrine, we'll create some Doctrine associations, including ManyToOne and ManyToMany relationships. We'll also talk about lifecycle callbacks and event listeners. Plus a ton more!
+
+    Own the original third episode? Login and get this upgrade for $4!
+
+    Highlights:
+
+    * Doctrine relations, metadata, and the JoinColumn
+    * ManyToMany relationship that's bidirectional, owning versus inverse side and why that matters
+    * Loading fixtures with shared data
+    * Creating shortcuts with your very own base controller!
+    * Doctrine extensions: timestampable, sluggable
+    * Ajax: returning Json from a controller, setting the content type and the _format parameter
+    * Customizing error pages at the template and controller level
+    * Overriding bundle templates
+    * Embedding other controllers with Twig's render tag
+    * Services! What they are, where to find and use the core services, and a step-by-step on how to create your own. Also, demystifying dependency injection.
+    * Creating your very own Twig extension
+    * Doctrine lifecycle callbacks and how to create and leverage your own doctrine event listener service
+
+illustration: sf2-ep3.png
+priority: 130
+versionNumber: 2.2
+originalVersion: 26
+isActiveVersion: 1
+tags:
+    - { name: symfony }
+
+chapters:
+    intro:
+        title:      Introduction
+        is_free:    true
+        length:     1:09
+    "more-security":
+        title:      "More Security"
+        is_free:    true
+        length:     16:22
+    "doctrine-extensions":
+        title:      Doctrine Extensions: Sluggable and Timestampable
+        is_free:    false
+        length:     8:06
+    "attend-event-ajax":
+        title:      AJAX and JSON Responses
+        is_free:    false
+        length:     15:43
+    "error-pages":
+        title:      "Customizing Error Pages and How Errors are Handled"
+        is_free:    false
+        length:     13:27
+    "services":
+        title:      "Services, Dependency Injection and Service Containers"
+        is_free:    false
+        length:     14:25
+    "twig-extension-listener":
+        title:      Twig Extensions and Dependency Injection Tags
+        is_free:    false
+        length:     4:21
+    "doctrine-listener":
+        title:      Doctrine Listeners
+        is_free:    false
+        length:     10:49
+    "outro":
+        title:      Keep Going!
+        is_free:    false
+        length:     2:58
