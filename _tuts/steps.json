@@ -994,7 +994,62 @@
             "id": "manytoone-relate-event-to-user-on-create",
             "name": "ManyToOne: Relate Event to User on create",
             "description": null
+        },
+        {
+            "id": "fixtures-orderedfixturesinterface",
+            "name": "Fixtures: OrderedFixturesInterface",
+            "description": null
+        },
+        {
+            "id": "fixtures-give-events-an-owner",
+            "name": "Fixtures: Give Events an owner",
+            "description": null
+        },
+        {
+            "id": "event-security-prevent-edit-delete-for-non-owners",
+            "name": "Event Security: Prevent edit\/delete for non-owners",
+            "description": null
+        },
+        {
+            "id": "eventsecurity-hide-edit-button",
+            "name": "EventSecurity: Hide edit button",
+            "description": null
+        },
+        {
+            "id": "base-controller-create-the-class",
+            "name": "Base Controller: Create the class",
+            "description": null
+        },
+        {
+            "id": "base-controller-extend-controller",
+            "name": "Base Controller: Extend Controller",
+            "description": null
+        },
+        {
+            "id": "base-controller-remove-use-statement",
+            "name": "Base Controller: Remove use statement",
+            "description": null
+        },
+        {
+            "id": "base-controller-use-getsecuritycontext-everywhere",
+            "name": "Base Controller: Use getSecurityContext everywhere",
+            "description": null
+        },
+        {
+            "id": "base-controller-move-enforceownersecurity",
+            "name": "Base Controller: Move enforceOwnerSecurity",
+            "description": null
+        },
+        {
+            "id": "base-controller-phpdoc",
+            "name": "Base Controller: PHPDoc",
+            "description": null
+        },
+        {
+            "id": "basecontroller-getuser",
+            "name": "BaseController: getUser()",
+            "description": null
         }
     ],
-    "sha": "73055daad819b4e87ae5a0353a1dcfe74b6a4fef"
+    "sha": "4374b6b1cda9f7e92c93204268b07be26b9866aa"
 }
