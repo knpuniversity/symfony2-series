@@ -1,13 +1,18 @@
 Sharing Data between Fixture Classes
-------------------------------------
+====================================
 
-Next, we need to update our fixtures so that each event has an owner. This
-is easy, but a bit wordy, so we'll push through it quickly. Right now, we
-have two fixture classes: one that loads events and one that loads users.
+Let's update the fixtures so that each event has an owner.
+
+This is easy, but a bit wordy, so we'll push through it quickly. We have
+two fixture classes: one that loads events and one that loads users.
+
+Ordering how Fixtures are Loaded
+--------------------------------
+
 Start in the ``LoadUsers`` class. Now that events depend on users, we'll want
-this fixture class to be executed before the events. To force this, add a
-new interface called ``OrderedFixtureInterface``. This requires one method
-called ``getOrder``, which will return 10::
+this fixture class to be executed *before* the events class. To force this,
+implement a new interface called ``OrderedFixtureInterface``. This requires
+one method called ``getOrder``. Let's return 10::
 
     // src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
     // ...
@@ -34,82 +39,61 @@ so that the class is run second::
 
     class LoadEvents implements FixtureInterface, OrderedFixtureInterface
     {
+        // ...
+
         public function getOrder()
         {
             return 20;
         }
     }
 
-Now that the ordering is right, head back to ``LoadUsers`` and replace the
-standard ``FixtureInterface`` with a new ``AbstractFixture`` base class::
+Assigning Owners in Fixtures
+----------------------------
 
-    // src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
-    // ...
-
-    use Doctrine\Common\DataFixtures\AbstractFixture;
-
-    class LoadUsers extends AbstractFixture implements ContainerAwareInterface, OrderedFixtureInterface
-    {
-        // ...
-    }
-
-This class allows us to store objects that we create here so that other fixture
-classes can use them. Store the ``user`` by calling ``addReference``::
-
-    // src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
-    // ...
-
-    public function load(ObjectManager $manager)
-    {
-        // ...
-        $this->addReference('user-user', $user);
-    }
-
-.. note::
-
-    The key ``user-user`` is just an arbitrary name. We will use it to grab
-    this object in a second.
-
-Make the same change in ``LoadEvent``::
+Now, we just need to get our new User objects inside ``LoadEvents``. DoctrineFixturesBundle
+has a standard way of sharing data between fixtures, but a much easier way
+is just to query for our wayne user::
 
     // src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php
     // ...
 
-    use Doctrine\Common\DataFixtures\AbstractFixture;
-
-    class LoadEvents extends AbstractFixture implements OrderedFixtureInterface
+    class LoadEvents implements FixtureInterface, OrderedFixtureInterface
     {
+        $wayne = $manager->getRepository('UserBundle:User')
+            ->findOneByUsernameOrEmail('wayne');
+    
         // ...
     }
 
-.. note::
-
-    The only purpose of extending ``AbstractFixture`` is to share objects
-    between fixtures.
-
-To get the stored user back out, just call ``getReference``. Once we have
-the ``User``, we can set it as the owner for both new Events::
+All we need to do now is call ``setOwner`` on both events so that it looks
+like wayne created them::
 
     // src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php
     // ...
     public function load(ObjectManager $manager)
     {
-        $user = $this->getReference('user-user');
+        $wayne = $manager->getRepository('UserBundle:User')
+            ->findOneByUsernameOrEmail('wayne');
         // ...
         
-        $event1->setOwner($user);
-        $event2->setOwner($user);
+        $event1->setOwner($wayne);
+        $event2->setOwner($wayne);
         
         // ...
         $manager->flush();
     }
 
-After all this work, let's reload the fixtures and check to make sure things
-look ok. Relating objects that live in different fixture classes is easy,
-but still can be a bit of a pain. My recommendation is to create only a few
-fixture classes to minimize the issue. I'd also recommend copying the `fixture setup`_
-from the documentation instead of writing it by hand. This all may be a little
-shorter in the future, but it's still doable now.
+Ok! Reload the fixtures!
+
+.. code-block:: bash
+
+    php app/console doctrine:fixtures:load
+
+Now use ``app/console`` to check that each event has an owner:
+
+.. code-block:: bash
+
+    php app/console doctrine:query:sql "SELECT * FROM yoda_event"
 
 Restricting Edit Access to Owners
 ---------------------------------

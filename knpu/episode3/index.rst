@@ -7,6 +7,10 @@ Starting in Symfony2: Episode3
     intro
     doctrine-relationship
     sharing-data-fixtures
+    event-edit-security
+    base-controller
+    phpdoc-autocomplete
+    doctrine-inverse-relation
     doctrine-extensions
     attend-event-ajax
     error-pages

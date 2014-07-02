@@ -32,6 +32,8 @@ Refresh again, the site looks fine. When I surf to a page that doesn't exist,
 I see Symfony's standard ugly 404 page. Gross! So where is the content for
 this page actually coming from?
 
+.. _symfony2-ep3-error-template:
+
 Overriding the Error Template Content
 -------------------------------------
 
