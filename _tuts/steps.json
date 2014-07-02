@@ -994,11 +994,6 @@
             "id": "manytoone-relate-event-to-user-on-create",
             "name": "ManyToOne: Relate Event to User on create",
             "description": null
-        },
-        {
-            "id": "fixtures-orderedfixtureinterface",
-            "name": "Fixtures: OrderedFixtureInterface",
-            "description": null
         }
     ],
     "sha": "73055daad819b4e87ae5a0353a1dcfe74b6a4fef"
