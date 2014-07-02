@@ -6,6 +6,7 @@ Starting in Symfony2: Episode3
 
     intro
     doctrine-relationship
+    sharing-data-fixtures
     doctrine-extensions
     attend-event-ajax
     error-pages
