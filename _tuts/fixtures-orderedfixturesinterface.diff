@@ -1,0 +1,56 @@
+diff --git a/src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php b/src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php
+index 05c0dc1..df30dfc 100644
+--- a/src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php
++++ b/src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php
+@@ -3,10 +3,11 @@
+ namespace Yoda\EventBundle\DataFixtures\ORM;
+ 
+ use Doctrine\Common\DataFixtures\FixtureInterface;
++use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+ use Doctrine\Common\Persistence\ObjectManager;
+ use Yoda\EventBundle\Entity\Event;
+ 
+-class LoadEvents implements FixtureInterface
++class LoadEvents implements FixtureInterface, OrderedFixtureInterface
+ {
+     public function load(ObjectManager $manager)
+     {
+@@ -27,4 +28,9 @@ class LoadEvents implements FixtureInterface
+         // the queries aren't done until now
+         $manager->flush();
+     }
++
++    public function getOrder()
++    {
++        return 20;
++    }
+ }
+diff --git a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
+index 220f53a..142aa8e 100644
+--- a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
++++ b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
+@@ -3,12 +3,13 @@
+ namespace Yoda\UserBundle\DataFixtures\ORM;
+ 
+ use Doctrine\Common\DataFixtures\FixtureInterface;
++use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+ use Doctrine\Common\Persistence\ObjectManager;
+ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+ use Yoda\UserBundle\Entity\User;
+ use Symfony\Component\DependencyInjection\ContainerInterface;
+ 
+-class LoadUsers implements FixtureInterface, ContainerAwareInterface
++class LoadUsers implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
+ {
+     /**
+      * @var ContainerInterface
+@@ -47,4 +48,9 @@ class LoadUsers implements FixtureInterface, ContainerAwareInterface
+     {
+         $this->container = $container;
+     }
++
++    public function getOrder()
++    {
++        return 10;
++    }
+ }
