@@ -959,7 +959,47 @@
             "id": "remember-me-setting-it-all-up",
             "name": "Remember Me: Setting it all up",
             "description": null
+        },
+        {
+            "id": "manytoone-add-event-owner-property",
+            "name": "ManyToOne: Add Event.owner property",
+            "description": null
+        },
+        {
+            "id": "manytoone-add-owner-annotations",
+            "name": "ManyToOne: Add owner annotations",
+            "description": null
+        },
+        {
+            "id": "manytoone-joincolumn-ondelete",
+            "name": "ManyToOne: JoinColumn onDelete",
+            "description": null
+        },
+        {
+            "id": "manytoone-cascade-remove",
+            "name": "ManyToOne: cascade remove",
+            "description": null
+        },
+        {
+            "id": "manytoone-cascade-persist",
+            "name": "ManyToOne: cascade persist",
+            "description": null
+        },
+        {
+            "id": "manytoone-remove-cascade",
+            "name": "ManyToOne: Remove cascade",
+            "description": null
+        },
+        {
+            "id": "manytoone-relate-event-to-user-on-create",
+            "name": "ManyToOne: Relate Event to User on create",
+            "description": null
+        },
+        {
+            "id": "fixtures-orderedfixtureinterface",
+            "name": "Fixtures: OrderedFixtureInterface",
+            "description": null
         }
     ],
-    "sha": "11798707f981fbee310d873f10aef4a67b559572"
+    "sha": "73055daad819b4e87ae5a0353a1dcfe74b6a4fef"
 }
