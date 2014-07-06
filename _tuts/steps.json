@@ -1049,7 +1049,27 @@
             "id": "basecontroller-getuser",
             "name": "BaseController: getUser()",
             "description": null
+        },
+        {
+            "id": "inverse-trying-getevents-in-play",
+            "name": "Inverse: Trying getEvents in play",
+            "description": null
+        },
+        {
+            "id": "inverse-setting-up-user-getevents",
+            "name": "Inverse: Setting up User::getEvents",
+            "description": null
+        },
+        {
+            "id": "inverse-inverse-setting-example",
+            "name": "Inverse: Inverse setting example",
+            "description": null
+        },
+        {
+            "id": "inverse-remove-setevents",
+            "name": "Inverse: Remove setEvents",
+            "description": null
         }
     ],
-    "sha": "5453ed0325f8a5e866d8e315fdada10c89f868ea"
+    "sha": "1eebb38974886e7a4465c08251d2b2cedeb06ee7"
 }
