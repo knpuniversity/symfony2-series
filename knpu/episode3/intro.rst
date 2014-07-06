@@ -6,14 +6,13 @@ keep going!
 
 In this episode, I want us to really start to learn how Symfony works under
 the hood. We'll learn what a service is, find out more about the core Symfony
-services and create a few of our own. In Doctrine, we'll create some Doctrine
-ManyToOne and ManyToMany relationships. We'll also talk about lifecycle callbacks
-and event listeners. And there's a lot more that we're hiding in between
-all of these topics.
+services and create a few of our own. In Doctrine, we'll create some ManyToOne 
+and ManyToMany relationships. We'll also talk about lifecycle callbacks and 
+event listeners. And there's a lot more that we're hiding in between all of 
+these topics.
 
-And you *are* planning on coding with us, right? You should now feel comfortable
-creating new classes, routes and templates. But if you're actually practicing,
-then you're going to really kill that first project.
+And you have been coding with me, right? If you have you should now feel comfortable
+creating new classes, routes and templates. You're going to really kill that first project!
 
 So when you see new concepts, stop the video, investigate, play with them,
 and then keep going. Ultimately, looking inside some of Symfony's own classes
