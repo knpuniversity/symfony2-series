@@ -1,0 +1,60 @@
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index 3a3bfd0..0b5988d 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -51,7 +51,10 @@ class Event
+     private $details;
+ 
+     /**
+-     * @ORM\ManyToOne(targetEntity="Yoda\UserBundle\Entity\User")
++     * @ORM\ManyToOne(
++     *      targetEntity="Yoda\UserBundle\Entity\User",
++     *      inversedBy="events"
++     * )
+      * @ORM\JoinColumn(onDelete="CASCADE")
+      */
+     protected $owner;
+diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
+index e329ccc..2046225 100644
+--- a/src/Yoda/UserBundle/Entity/User.php
++++ b/src/Yoda/UserBundle/Entity/User.php
+@@ -8,6 +8,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+ use Serializable;
+ use Symfony\Component\Validator\Constraints as Assert;
+ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
++use Doctrine\Common\Collections\ArrayCollection;
+ 
+ /**
+  * User
+@@ -73,6 +74,16 @@ class User implements AdvancedUserInterface, Serializable
+     private $plainPassword;
+ 
+     /**
++     * @ORM\OneToMany(targetEntity="Yoda\EventBundle\Entity\Event", mappedBy="owner")
++     */
++    protected $events;
++
++    public function __construct()
++    {
++        $this->events = new ArrayCollection();
++    }
++
++    /**
+      * Get id
+      *
+      * @return integer 
+@@ -271,4 +282,14 @@ class User implements AdvancedUserInterface, Serializable
+ 
+         return $this;
+     }
++
++    public function getEvents()
++    {
++        return $this->events;
++    }
++
++    public function setEvents($events)
++    {
++        $this->events = $events;
++    }
+ }
