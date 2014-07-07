@@ -1,0 +1,14 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+index 5ba1a0b..9913c70 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+@@ -23,6 +23,9 @@
+                     <dt>where:</dt>
+                     <dd>{{ entity.location }}</dd>
+ 
++                    <dt>host:</dt>
++                    <dd>{{ entity.owner.username }}</dd>
++
+                     <dt>when:</dt>
+                     <dd>{{ entity.time | date('g:ia / l M j, Y') }}</dd>
+ 
