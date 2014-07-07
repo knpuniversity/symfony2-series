@@ -1046,8 +1046,8 @@
             "description": null
         },
         {
-            "id": "basecontroller-getuser",
-            "name": "BaseController: getUser()",
+            "id": "inverse-print-event-owner",
+            "name": "Inverse: Print event owner",
             "description": null
         },
         {
