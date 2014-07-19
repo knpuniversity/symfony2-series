@@ -1,2 +1,3 @@
 - need a more-security.rst file
 - talk about cascade and orphanRemoval?
+- doctrine-extensions beginning needs to be actually tested and code built

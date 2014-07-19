@@ -1,34 +1,31 @@
 Doctrine Extensions: Sluggable and Timestampable
 ================================================
 
-Over the past two casts we've done a lot of work on this project, so now
-let's add something fun. In this section we're going to use a third-party
-library called ``DoctrineExtensions`` to add some magic to our entities. The
-first bit of magic we'll add is a ``slug`` to Event. Not the jabba the hutt
-variety, but a property that is automatically cleaned and populated based
-on the event name.
+I want to show you a little bit of Doctrine magic by using an open source
+library called `DoctrineExtensions`_. The first bit of magic we'll add is
+a ``slug`` to Event. Not the jabba the hutt variety, but a property that
+is automatically cleaned and populated based on the event name.
 
 Installing the StofDoctrineExtensionsBundle
 -------------------------------------------
 
-Find the bundle we need by going to `knpbundles.com`_ and searching for ``doctrine extension``.
-Click to view its documentation. Installing the bundle is always the same
-three-steps. First, add the bundle package name to your ``composer.json`` file:
+Head over to `knpbundles.com`_ and search for ``doctrine extension``. The
+`StofDoctrineExtensionsBundle`_ is what we want: it brings in that DoctrineExtensions
+library and adds some Symfony glue to make things really easy.
 
-.. code-block:: json
 
-    {
-        ... 
-        "require": {
-            ...
-            "doctrine/doctrine-fixtures-bundle": "dev-master",
-            "stof/doctrine-extensions-bundle": "dev-master"
-        },
-        ... 
-    }
+Installing a bundle is always the same  3steps. First, use Composer's ``require``
+command and pass it the name of the library:
 
-Run ``composer.phar update stof/doctrine-extensions-bundle`` to download the
-bundle and the dependent doctrine-extensions library.
+.. code-block:: bash
+
+    php composer.phar require stof/doctrine-extensions-bundle
+
+If it asks you for a version, type "FOOOOOOOOOOOOOOO". In the future, Composer
+should decide the best version for you.
+
+Like we've seen before, the ``require`` command just added the library to
+``composer.json`` for us and started downloading it.
 
 Second, add the new bundle to your ``AppKernel``::
 
@@ -45,9 +42,7 @@ Second, add the new bundle to your ``AppKernel``::
         // ...
     }
 
-And third, configure the bundle.
-
-Configure the actual bundle by copying a few lines from the README:
+And third, configure the bundle by copying a few lines from the README:
 
 .. code-block:: yaml
 
@@ -55,7 +50,6 @@ Configure the actual bundle by copying a few lines from the README:
     # ...
 
     stof_doctrine_extensions:
-        default_locale: en_US
         orm:
             default:    ~
 
@@ -71,7 +65,6 @@ manually here. The first is called "sluggable":
     # ...
 
     stof_doctrine_extensions:
-        default_locale: en_US
         orm:
             default:
                 sluggable:   true
