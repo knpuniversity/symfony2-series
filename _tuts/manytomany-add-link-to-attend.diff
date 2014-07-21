@@ -1,0 +1,17 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+index fd6be33..a31ba3b 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+@@ -43,6 +43,12 @@
+                                 <li>nobody yet!</li>
+                             {% endfor %}
+                         </ul>
++
++                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
++                            <a href="{{ path('event_attend', {'id': entity.id}) }}" class="btn btn-success btn-xs">
++                                I totally want to go!
++                            </a>
++                        {% endif %}
+                     </dd>
+                 </dl>
+             </section>
