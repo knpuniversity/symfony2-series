@@ -12,6 +12,9 @@ Starting in Symfony2: Episode3
     phpdoc-autocomplete
     doctrine-inverse-relation
     doctrine-extensions
+    slug-url
+    timestampable
+    custom-repository-query
     attend-event-ajax
     error-pages
     services

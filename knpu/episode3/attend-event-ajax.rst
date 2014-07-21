@@ -446,7 +446,7 @@ might have problems understanding the data it's getting back.
 
 .. tip::
 
-    There is also a :symfonyclass:`Symfony\\Component\\HttpFoundation\\JsonResponse``
+    There is also a :symfonyclass:`Symfony\\Component\\HttpFoundation\\JsonResponse`
     class that's even easier. Just pass the array of data into its constructor.
     Internally, it will call ``json_encode`` for you and set the ``Content-Type``
     header::
