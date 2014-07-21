@@ -1069,7 +1069,107 @@
             "id": "inverse-remove-setevents",
             "name": "Inverse: Remove setEvents",
             "description": null
+        },
+        {
+            "id": "stofextensions-install-the-bundle",
+            "name": "StofExtensions: Install the bundle",
+            "description": null
+        },
+        {
+            "id": "stofextensions-add-slug-property",
+            "name": "StofExtensions: Add slug property",
+            "description": null
+        },
+        {
+            "id": "stofextensions-add-gedmo-slug-annotations",
+            "name": "StofExtensions: Add Gedmo slug annotations",
+            "description": null
+        },
+        {
+            "id": "stofextensions-use-slug-in-url",
+            "name": "StofExtensions: Use slug in URL",
+            "description": null
+        },
+        {
+            "id": "stofextensions-timestampable",
+            "name": "StofExtensions: Timestampable",
+            "description": null
+        },
+        {
+            "id": "repository-events-orderby-query",
+            "name": "Repository: Events orderBy Query",
+            "description": null
+        },
+        {
+            "id": "repository-only-show-upcoming-evnets",
+            "name": "Repository: Only show upcoming evnets",
+            "description": null
+        },
+        {
+            "id": "repository-adding-getupcomingevents-method",
+            "name": "Repository: Adding getUpcomingEvents method",
+            "description": null
+        },
+        {
+            "id": "manytomany-add-attendees-property",
+            "name": "ManyToMany: Add attendees property",
+            "description": null
+        },
+        {
+            "id": "manytomany-adding-attendees-annotations",
+            "name": "ManyToMany: Adding attendees annotations",
+            "description": null
+        },
+        {
+            "id": "manytomany-jointable",
+            "name": "ManyToMany: JoinTable",
+            "description": null
+        },
+        {
+            "id": "manytomany-basic-routing-controller-for-attend-unattend",
+            "name": "ManyToMany: Basic routing\/controller for attend\/unattend",
+            "description": null
+        },
+        {
+            "id": "manytomany-adding-attendaction-logic",
+            "name": "ManyToMany: Adding attendAction logic",
+            "description": null
+        },
+        {
+            "id": "manytomany-print-out-num-of-attendees",
+            "name": "ManyToMany: Print out num of attendees",
+            "description": null
+        },
+        {
+            "id": "manytomany",
+            "name": "ManyToMany",
+            "description": null
+        },
+        {
+            "id": "manytomany-print-out-all-users",
+            "name": "ManyToMany: Print out all users",
+            "description": null
+        },
+        {
+            "id": "manytomany-add-link-to-attend",
+            "name": "ManyToMany: Add link to attend",
+            "description": null
+        },
+        {
+            "id": "tostring-printing-out-specific-property",
+            "name": "toString: Printing out specific property",
+            "description": null
+        },
+        {
+            "id": "tostring-adding-tostring-method",
+            "name": "toString: Adding __toString method",
+            "description": null
+        },
+        {
+            "id": "manytomany-avoiding-dups-with-hasattendee",
+            "name": "ManyToMany: Avoiding dups with hasAttendee",
+            "description": null
         }
     ],
-    "sha": "2ed0e8c6e7c32ef457c04b80d6c5fd93f4d05c1e"
+    "sha": "81188803d04745634eb89a37378f59c8b896ce12"
 }
