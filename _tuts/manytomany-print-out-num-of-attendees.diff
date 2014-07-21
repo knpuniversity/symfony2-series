@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+index 9913c70..bf9d6db 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+@@ -34,6 +34,8 @@
+ 
+                     <dt>who:</dt>
+                     <dd>
++                        {{ entity.attendees|length }} attending!
++
+                         <ul class="users">
+                             <li>nobody yet!</li>
+                         </ul>
