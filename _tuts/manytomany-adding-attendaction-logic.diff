@@ -25,17 +25,3 @@ index 4f9d4c2..a01f219 100644
      }
  
      public function unattendAction($id)
-diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
-index 1ca65a8..730889b 100644
---- a/src/Yoda/EventBundle/Entity/Event.php
-+++ b/src/Yoda/EventBundle/Entity/Event.php
-@@ -237,9 +237,6 @@ class Event
-         return $this->updatedAt;
-     }
- 
--    /**
--     * @return ArrayCollection
--     */
-     public function getAttendees()
-     {
-         return $this->attendees;
