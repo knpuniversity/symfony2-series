@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+index 579a956..f4627f3 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+@@ -33,7 +33,7 @@
+                         <dd>{{ entity.time | date('g:ia / l M j, Y') }}</dd>
+ 
+                         <dt>who:</dt>
+-                        <dd>Todo # of people</dd>
++                        <dd>{{ entity.attendees|length }} attending!</dd>
+                     </dl>
+                 </section>
+             </article>
