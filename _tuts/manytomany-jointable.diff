@@ -1,5 +1,5 @@
 diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
-index ea1d366..730889b 100644
+index ea1d366..1ca65a8 100644
 --- a/src/Yoda/EventBundle/Entity/Event.php
 +++ b/src/Yoda/EventBundle/Entity/Event.php
 @@ -81,6 +81,10 @@ class Event
@@ -13,13 +13,3 @@ index ea1d366..730889b 100644
       */
      protected $attendees;
  
-@@ -233,9 +237,6 @@ class Event
-         return $this->updatedAt;
-     }
- 
--    /**
--     * @return ArrayCollection
--     */
-     public function getAttendees()
-     {
-         return $this->attendees;
