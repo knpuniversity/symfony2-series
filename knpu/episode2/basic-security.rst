@@ -52,6 +52,13 @@ and it would work just the same.
 Firewalls Configuration (security.yml)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. note::
+
+    If your ``security.yml`` file is mostly empty, don't worry! You installed
+    Symfony in a slightly different way. Just download the code for this
+    tutorial and replace your ``security.yml`` file with the one from the
+    download.
+
 Find the ``firewalls`` key: it's the most important part in this file. A
 firewall represents the authentication layer, or security check-point for
 your app. Delete the ``login`` and ``dev`` firewall sections so that we have
