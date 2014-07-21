@@ -1,0 +1,42 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index a77785a..5e6aa03 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -73,4 +73,5 @@ swiftmailer:
+ 
+ stof_doctrine_extensions:
+     orm:
+-        default:    ~
++        default:
++            sluggable:   true
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index 0b5988d..9766bdc 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -60,6 +60,11 @@ class Event
+     protected $owner;
+ 
+     /**
++     * @ORM\Column(length=255, unique=true)
++     */
++    protected $slug;
++
++    /**
+      * Get id
+      *
+      * @return integer 
+@@ -176,4 +181,14 @@ class Event
+     {
+         $this->owner = $owner;
+     }
++
++    public function getSlug()
++    {
++        return $this->slug;
++    }
++
++    public function setSlug($slug)
++    {
++        $this->slug = $slug;
++    }
+ }
