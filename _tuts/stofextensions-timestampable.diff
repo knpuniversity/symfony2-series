@@ -1,0 +1,53 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index 5e6aa03..29620f1 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -75,3 +75,4 @@ stof_doctrine_extensions:
+     orm:
+         default:
+             sluggable:   true
++            timestampable: true
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index d9fd092..f7c6d37 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -67,6 +67,18 @@ class Event
+     protected $slug;
+ 
+     /**
++     * @Gedmo\Timestampable(on="create")
++     * @ORM\Column(type="datetime")
++     */
++    private $createdAt;
++
++    /**
++     * @Gedmo\Timestampable(on="update")
++     * @ORM\Column(type="datetime")
++     */
++    private $updatedAt;
++
++    /**
+      * Get id
+      *
+      * @return integer 
+@@ -193,4 +205,20 @@ class Event
+     {
+         $this->slug = $slug;
+     }
++
++    /**
++     * @return \DateTime
++     */
++    public function getCreatedAt()
++    {
++        return $this->createdAt;
++    }
++
++    /**
++     * @return \DateTime
++     */
++    public function getUpdatedAt()
++    {
++        return $this->updatedAt;
++    }
+ }
