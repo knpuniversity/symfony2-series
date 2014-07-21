@@ -27,19 +27,6 @@ index 03f7291..df01846 100644
      }
  
      /**
-diff --git a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
-index f4627f3..579a956 100644
---- a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
-+++ b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
-@@ -33,7 +33,7 @@
-                         <dd>{{ entity.time | date('g:ia / l M j, Y') }}</dd>
- 
-                         <dt>who:</dt>
--                        <dd>{{ entity.attendees|length }} attending!</dd>
-+                        <dd>Todo # of people</dd>
-                     </dl>
-                 </section>
-             </article>
 diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
 index a31ba3b..8cf13b9 100644
 --- a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
