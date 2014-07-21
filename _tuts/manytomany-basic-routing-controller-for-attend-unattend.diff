@@ -1,0 +1,37 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index ae17b43..4f9d4c2 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -234,6 +234,16 @@ class EventController extends Controller
+         return $this->redirect($this->generateUrl('event'));
+     }
+ 
++    public function attendAction($id)
++    {
++
++    }
++
++    public function unattendAction($id)
++    {
++
++    }
++
+     /**
+      * Creates a form to delete a Event entity by id.
+      *
+diff --git a/src/Yoda/EventBundle/Resources/config/routing/event.yml b/src/Yoda/EventBundle/Resources/config/routing/event.yml
+index 45cd96f..9ad25fe 100644
+--- a/src/Yoda/EventBundle/Resources/config/routing/event.yml
++++ b/src/Yoda/EventBundle/Resources/config/routing/event.yml
+@@ -26,3 +26,11 @@ event_delete:
+     pattern:  /{id}/delete
+     defaults: { _controller: "EventBundle:Event:delete" }
+     requirements: { _method: post|delete }
++
++event_attend:
++    pattern:  /{id}/attend
++    defaults: { _controller: "EventBundle:Event:attend" }
++
++event_unattend:
++    pattern:  /{id}/unattend
++    defaults: { _controller: "EventBundle:Event:unattend" }
