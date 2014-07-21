@@ -1166,10 +1166,20 @@
             "description": null
         },
         {
+            "id": "manytomany-print-attendees-on-homepage",
+            "name": "ManyToMany: Print attendees on homepage",
+            "description": null
+        },
+        {
             "id": "manytomany-avoiding-dups-with-hasattendee",
             "name": "ManyToMany: Avoiding dups with hasAttendee",
             "description": null
+        },
+        {
+            "id": "manytomany-add-unattendaction-and-link",
+            "name": "ManyToMany: Add unattendAction and link",
+            "description": null
         }
     ],
-    "sha": "a875ba2b1b3a41204a6fa222f106973305b6ff2f"
+    "sha": "63568681e5ee49b090f4ca6535d81b45383599f5"
 }
