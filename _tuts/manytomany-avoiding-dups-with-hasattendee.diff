@@ -31,16 +31,3 @@ index 1ca65a8..aac7b73 100644
 +        return $this->getAttendees()->contains($user);
 +    }
  }
-diff --git a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
-index f4627f3..579a956 100644
---- a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
-+++ b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
-@@ -33,7 +33,7 @@
-                         <dd>{{ entity.time | date('g:ia / l M j, Y') }}</dd>
- 
-                         <dt>who:</dt>
--                        <dd>{{ entity.attendees|length }} attending!</dd>
-+                        <dd>Todo # of people</dd>
-                     </dl>
-                 </section>
-             </article>
