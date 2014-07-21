@@ -1,0 +1,20 @@
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index 9766bdc..d9fd092 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -4,6 +4,7 @@ namespace Yoda\EventBundle\Entity;
+ 
+ use Doctrine\ORM\Mapping as ORM;
+ use Yoda\UserBundle\Entity\User;
++use Gedmo\Mapping\Annotation as Gedmo;
+ 
+ /**
+  * Event
+@@ -60,6 +61,7 @@ class Event
+     protected $owner;
+ 
+     /**
++     * @Gedmo\Slug(fields={"name"}, updatable=false)
+      * @ORM\Column(length=255, unique=true)
+      */
+     protected $slug;
