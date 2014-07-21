@@ -24,7 +24,8 @@ Start by creating an ``owner`` property inside Event::
 For normal fields, we use the ``@ORM\Column`` annotation. But for relationships,
 we use ``@ORM\ManyToOne``, ``@ORM\ManyToMany`` or ``@ORM\OneToMany``. This
 is a ``ManyToOne`` relationship because many events may have the same *one*
-``User``. I'll talk about the other 2 relationships later.
+``User``. I'll talk about the other 2 relationships later (:doc:`OneToMany <doctrine-inverse-relation>`,
+:doc:`ManyToMany <many-to-many-relationship>`).
 
 Add the ``@ORM\ManyToOne`` relationship and pass in the entity that forms
 the other side::

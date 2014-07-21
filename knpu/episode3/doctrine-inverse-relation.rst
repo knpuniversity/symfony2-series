@@ -99,6 +99,8 @@ on ``User``::
 
 I broke this onto multiple lines only to make things more readable.
 
+.. _`inverse-relation-array-collection`:
+
 Step 3: Initializing the ArrayCollection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

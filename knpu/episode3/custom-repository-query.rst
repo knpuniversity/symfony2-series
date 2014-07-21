@@ -92,7 +92,7 @@ but now just call ``getUpcomingEvents`` to use the method::
     The ``$em->getRepository('EventBundle:Event')`` returns our ``EventRepository``
     object.
 
-We saw this before in episode 2, but it's so important that I wanted to show
+We saw this before in `episode 2`_, but it's so important that I wanted to show
 it again. Whenever you have a custom query: create a new method in the right
 repository class and build it there. This keeps all of our queries organized,
 makes them reusable, and makes our controllers readable.
@@ -101,3 +101,5 @@ We now have a "skinny" controller, which means that we're doing a good job
 of organizing any logic we need in other classes. It also means that you
 can show your code to fellow programmers and impress them with your well-organized
 Jedi ways.
+
+.. _`episode 2`: http://knpuniversity.com/screencast/symfony2-ep2/repository
