@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+index a31ba3b..aa4784f 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+@@ -38,7 +38,7 @@
+ 
+                         <ul class="users">
+                             {% for attendee in entity.attendees %}
+-                                <li>{{ attendee }}</li>
++                                <li>{{ attendee.username }}</li>
+                             {% else %}
+                                 <li>nobody yet!</li>
+                             {% endfor %}
