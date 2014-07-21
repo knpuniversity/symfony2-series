@@ -19,20 +19,6 @@ index ae17b43..4f9d4c2 100644
      /**
       * Creates a form to delete a Event entity by id.
       *
-diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
-index 1ca65a8..730889b 100644
---- a/src/Yoda/EventBundle/Entity/Event.php
-+++ b/src/Yoda/EventBundle/Entity/Event.php
-@@ -237,9 +237,6 @@ class Event
-         return $this->updatedAt;
-     }
- 
--    /**
--     * @return ArrayCollection
--     */
-     public function getAttendees()
-     {
-         return $this->attendees;
 diff --git a/src/Yoda/EventBundle/Resources/config/routing/event.yml b/src/Yoda/EventBundle/Resources/config/routing/event.yml
 index 45cd96f..9ad25fe 100644
 --- a/src/Yoda/EventBundle/Resources/config/routing/event.yml
