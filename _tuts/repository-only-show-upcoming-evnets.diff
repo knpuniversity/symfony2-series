@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 7f8e172..46e4e5a 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -30,6 +30,8 @@ class EventController extends Controller
+             ->getRepository('EventBundle:Event')
+             ->createQueryBuilder('e')
+             ->addOrderBy('e.time', 'ASC')
++            ->andWhere('e.time > :now')
++            ->setParameter('now', new \DateTime())
+             ->getQuery()
+             ->execute()
+         ;
