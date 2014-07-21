@@ -1,17 +1,3 @@
-diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
-index 1ca65a8..730889b 100644
---- a/src/Yoda/EventBundle/Entity/Event.php
-+++ b/src/Yoda/EventBundle/Entity/Event.php
-@@ -237,9 +237,6 @@ class Event
-         return $this->updatedAt;
-     }
- 
--    /**
--     * @return ArrayCollection
--     */
-     public function getAttendees()
-     {
-         return $this->attendees;
 diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
 index a31ba3b..aa4784f 100644
 --- a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
