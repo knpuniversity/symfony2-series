@@ -71,7 +71,7 @@ The first step is to make your class implement a ``UserInterface``::
     }
 
 This interface requires us to have 5 methods and hey! We already have 2 of
-them: ``getUsername()`` and ``getPassword()``:
+them: ``getUsername()`` and ``getPassword()``::
 
     // src/Yoda/UserBundle/Entity/User.php
     // ...
