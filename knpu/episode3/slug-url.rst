@@ -1,8 +1,9 @@
 Using the slug in the Event URL
 ===============================
 
-Now that we have a ``slug`` property that's populated, let's use it in our
-URLs! First, change the ``event_show`` route to use the ``slug`` instead
+We've got slugs! So let's enjoy them by putting them into our URLS! 
+
+First, change the ``event_show`` route to use the ``slug`` instead
 of the ``id``:
 
 .. code-block:: yaml
