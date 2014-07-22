@@ -211,7 +211,6 @@ section of Symfony's documentation, there's a page called
 `Twig Template Form Function and Variable Reference`_ that mentions all of
 these functions and how to use them.
 
-.. _`repeated field type`: http://symfony.com/doc/current/reference/forms/types/repeated.html
 .. _`Forms Chapter`: http://symfony.com/doc/current/book/forms.html
 .. _`Rendering the Form`: http://symfony.com/doc/current/book/forms.html#rendering-the-form
 .. _`Twig Template Form Function and Variable Reference`: http://symfony.com/doc/current/reference/forms/twig_reference.html

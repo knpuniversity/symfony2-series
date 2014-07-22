@@ -71,12 +71,11 @@ so on a GET request, ``$form->isSubmitted()`` returns false.
 If the form *is* submitted because it's a POST request *and* passes validation,
 let's just print the submitted data for now. If the form is invalid, or if
 this is a GET request, it'll just skip this block and re-render the form
-with errors if there are any.
+with errors if there are any::
 
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            var_dump($form->getData());die;
-        }
+    if ($form->isSubmitted() && $form->isValid()) {
+        var_dump($form->getData());die;
+    }
 
 Time to test it! We haven't added validation yet, but the password fields
 have built-in validation if the values don't match. When I submit, the form

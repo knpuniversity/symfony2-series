@@ -110,3 +110,4 @@ Refresh! Much better!
 
 .. _`Reference Section`: http://symfony.com/doc/current/reference/index.html
 .. _`Form Field Type Reference`: http://symfony.com/doc/current/reference/forms/types.html
+.. _`repeated field type`: http://symfony.com/doc/current/reference/forms/types/repeated.html

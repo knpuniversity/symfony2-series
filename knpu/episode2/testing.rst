@@ -188,4 +188,4 @@ Re-run the test to see the result:
 .. _`Next Significant Release`: https://getcomposer.org/doc/01-basic-usage.md#next-significant-release-tilde-operator-
 .. _`this post`: http://daylerees.com/composer-primer
 .. _`The DomCrawler Component`: http://bit.ly/sf2-crawler
-.. _`first episode in this series`: http://knpuniversity.com/screencast/symfony2-ep1/controller#symfony-ep1-what-is-a-service
+.. _`packagist.org`: https://packagist.org/
