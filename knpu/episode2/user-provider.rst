@@ -54,6 +54,7 @@ just paste these in::
     use Symfony\Component\Security\Core\User\UserProviderInterface;
     use Symfony\Component\Security\Core\User\UserInterface;
     use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+    use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
     class UserRepository extends EntityRepository implements UserProviderInterface
     {
@@ -74,7 +75,11 @@ just paste these in::
                 ));
             }
 
-            return $this->find($user->getId());
+            if (!$refreshedUser = $this->find($user->getId())) {
+                throw new UsernameNotFoundException(sprintf('User with id %s not found', json_encode($user->getId())));
+            }
+
+            return $refreshedUser;
         }
 
         public function supportsClass($class)
@@ -91,7 +96,7 @@ just paste these in::
 Filling in loadUserByUsername
 -----------------------------
 
-The really important method is `loadUserByUsername` because Symfony calls
+The really important method is ``loadUserByUsername`` because Symfony calls
 it when you login to get the ``User`` object for the given username. So we
 can use any logic we want to find or not find a user, like never returning
 User's named "Jar Jar Binks"::
@@ -104,14 +109,11 @@ User's named "Jar Jar Binks"::
         }
     }
 
-We can just resuse the ``findOneByUsernameOrEmail`` method we created earlier.
-If no user is found, this method should throw a special `UsernameNotFoundException`::
+We can just re-use the ``findOneByUsernameOrEmail`` method we created earlier.
+If no user is found, this method should throw a special ``UsernameNotFoundException``::
 
     // src/Yoda/UserBundle/Entity/UserRepository.php
     // ...
-
-    // add 1 more "use" statement
-    use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
     class UserRepository extends EntityRepository implements UserProviderInterface
     {
