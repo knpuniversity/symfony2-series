@@ -1,17 +1,18 @@
 diff --git a/src/Yoda/UserBundle/Entity/UserRepository.php b/src/Yoda/UserBundle/Entity/UserRepository.php
-index 11defa5..2d6344d 100644
+index 11defa5..268ae26 100644
 --- a/src/Yoda/UserBundle/Entity/UserRepository.php
 +++ b/src/Yoda/UserBundle/Entity/UserRepository.php
-@@ -4,6 +4,8 @@ namespace Yoda\UserBundle\Entity;
+@@ -4,6 +4,9 @@ namespace Yoda\UserBundle\Entity;
  
  use Doctrine\ORM\EntityRepository;
  use Symfony\Component\Security\Core\User\UserProviderInterface;
 +use Symfony\Component\Security\Core\User\UserInterface;
 +use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
++use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
  
  /**
   * UserRepository
-@@ -23,4 +25,28 @@ class UserRepository extends EntityRepository implements UserProviderInterface
+@@ -23,4 +26,32 @@ class UserRepository extends EntityRepository implements UserProviderInterface
              ->getOneOrNullResult()
          ;
      }
@@ -31,7 +32,11 @@ index 11defa5..2d6344d 100644
 +            ));
 +        }
 +
-+        return $this->find($user->getId());
++        if (!$refreshedUser = $this->find($user->getId())) {
++            throw new UsernameNotFoundException(sprintf('User with id %s not found', json_encode($user->getId())));
++        }
++
++        return $refreshedUser;
 +    }
 +
 +    public function supportsClass($class)
