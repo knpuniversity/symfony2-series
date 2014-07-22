@@ -1,7 +1,7 @@
 Using PHPDoc for Auto-Completion
 ================================
 
-With the base Controller, we can give ourselves shortcuts to developer faster
+With the base Controller, we can give ourselves shortcuts to develop faster
 and faster.
 
 Inside ``RegisterController``, my IDE recognizes the ``setToken`` method

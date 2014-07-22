@@ -1,6 +1,6 @@
 title:  Starting in Symfony2: Episode 2 (2.2)
 price:  12
-length: 1:22:53
+length: 1:50:47
 summary: |
     Over the next hour, we're going to take you through some of the most difficult areas of Symfony learning all about security, forms, and parts of Doctrine. We'll also see testing and learn more about how Symfony's service container works. When you get to the end, you'll be well on your way to mastering Symfony.
 
@@ -33,32 +33,144 @@ chapters:
     intro:
         title:      Introduction
         is_free:    true
-        length:     1:08
+        length:     0:44
     "basic-security":
         title:      "Security Fundamentals"
         is_free:    true
-        length:     16:47
+        length:     03:47
+    "authorization-access-control":
+        title:      Authorization Access Control
+        is_free:    false
+        length:     02:08
+    "login-form":
+        title:      Login Form
+        is_free:    false
+        length:     04:46
+    "login-form2":
+        title:      Login Form Revisted
+        is_free:    false
+        length:     03:57
+    "logout":
+        title:      Logout
+        is_free:    false
+        length:     05:03
+    "twig-security-is-authenticated":
+        title:      Twig Security is Authenticated
+        is_free:    false
+        length:     02:41
+    "deny-access-controller":
+        title:      Deny Access Controller
+        is_free:    false
+        length:     04:23
     "entity-security":
         title:      Entity Security
         is_free:    false
-        length:     12:11
-    repository:
-        title:      Repository Security
+        length:     04:32        
+    "saving-users":
+        title:      Saving Users
         is_free:    false
-        length:     8:04
+        length:     03:37         
+    "roles-disabling-user":
+        title:      Roles Disabling User
+        is_free:    false
+        length:     04:56 
+    "repository":
+        title:      Repository
+        is_free:    false
+        length:     04:20
+    "query-builder":
+        title:      Query Builder
+        is_free:    false
+        length:     02:25
+    "user-provider":
+        title:      User Provider
+        is_free:    false
+        length:     03:20
+    "user-serialization":
+        title:      User Serialization
+        is_free:    false
+        length:     02:16
     "registration-form":
         title:      Registration Form
         is_free:    false
-        length:     15:35
+        length:     03:11
+    "form-rendering":
+        title:      Form Rendering
+        is_free:    false
+        length:     04:38
+    "repeat-compound-fields":
+        title:      Repeat Compound Fields
+        is_free:    false
+        length:     02:31
+    "form-submit":
+        title:      Form Submit
+        is_free:    false
+        length:     04:22
+    "form-data":
+        title:      Form Data
+        is_free:    false
+        length:     02:10
+    "plain-password":
+        title:      Plain Password
+        is_free:    false
+        length:     01:34
+    "form-type-class":
+        title:      Form Type Class
+        is_free:    false
+        length:     02:39
+    "field-options-html5":
+        title:      Field Options HTML5
+        is_free:    false
+        length:     03:36
     "registration-validation":
         title:      Registration Validation
         is_free:    false
-        length:     8:54
-    testing:
-        title:      Functional Testing
+        length:     04:18
+    "flash-message":
+        title:      Flash Message
         is_free:    false
-        length:     9:29
+        length:     01:35
+    "auto-login":
+        title:      Auto Login
+        is_free:    false
+        length:     0:55
+    "testing":
+        title:      Testing
+        is_free:    false
+        length:     05:04
+    "testing-forms":
+        title:      Testing Forms
+        is_free:    false
+        length:     03:21
+    "testing-data":
+        title:      Testing Data
+        is_free:    false
+        length:     03:23
+    "container-doctrine":
+        title:      Container Doctrine
+        is_free:    false
+        length:     01:54
     "after-dinner-mint":
-        title:      After-dinner Mint
+        title:      After Dinner Mint
         is_free:    false
-        length:     10:45
+        length:     03:35
+    "role-hierarchies":
+        title:      Role Hierarchies
+        is_free:    false
+        length:     02:50
+    "impersonation":
+        title:      Impersonation
+        is_free:    false
+        length:     01:08
+    "secure-every-page":
+        title:      Secure Every Page
+        is_free:    false
+        length:     02:15
+    "accessing-security-user":
+        title:      Accessing Security User
+        is_free:    false
+        length:     01:09
+    "remember-me":
+        title:      Remember Me
+        is_free:    false
+        length:     01:44

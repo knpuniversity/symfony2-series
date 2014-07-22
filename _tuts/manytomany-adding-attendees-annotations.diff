@@ -1,0 +1,42 @@
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index ec56add..ea1d366 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -5,6 +5,7 @@ namespace Yoda\EventBundle\Entity;
+ use Doctrine\ORM\Mapping as ORM;
+ use Yoda\UserBundle\Entity\User;
+ use Gedmo\Mapping\Annotation as Gedmo;
++use Doctrine\Common\Collections\ArrayCollection;
+ 
+ /**
+  * Event
+@@ -78,8 +79,16 @@ class Event
+      */
+     private $updatedAt;
+ 
++    /**
++     * @ORM\ManyToMany(targetEntity="Yoda\UserBundle\Entity\User")
++     */
+     protected $attendees;
+ 
++    public function __construct()
++    {
++        $this->attendees = new ArrayCollection();
++    }
++
+     /**
+      * Get id
+      *
+@@ -223,4 +232,12 @@ class Event
+     {
+         return $this->updatedAt;
+     }
++
++    /**
++     * @return ArrayCollection
++     */
++    public function getAttendees()
++    {
++        return $this->attendees;
++    }
+ }

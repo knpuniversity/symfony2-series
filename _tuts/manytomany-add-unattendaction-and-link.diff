@@ -1,0 +1,52 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 03f7291..df01846 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -258,7 +258,24 @@ class EventController extends Controller
+ 
+     public function unattendAction($id)
+     {
++        $em = $this->getDoctrine()->getManager();
++        /** @var $event \Yoda\EventBundle\Entity\Event */
++        $event = $em->getRepository('EventBundle:Event')->find($id);
++
++        if (!$event) {
++            throw $this->createNotFoundException('No event found for id '.$id);
++        }
+ 
++        if ($event->hasAttendee($this->getUser())) {
++            $event->getAttendees()->removeElement($this->getUser());
++        }
++
++        $em->persist($event);
++        $em->flush();
++
++        return $this->redirect($this->generateUrl('event_show', array(
++            'slug' => $event->getSlug()
++        )));
+     }
+ 
+     /**
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+index a31ba3b..8cf13b9 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+@@ -45,9 +45,15 @@
+                         </ul>
+ 
+                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+-                            <a href="{{ path('event_attend', {'id': entity.id}) }}" class="btn btn-success btn-xs">
+-                                I totally want to go!
+-                            </a>
++                            {% if entity.hasAttendee(app.user) %}
++                                <a href="{{ path('event_unattend', {'id': entity.id}) }}" class="btn btn-warning btn-xs">
++                                    Oh no! I can't go anymore!
++                                </a>
++                            {% else %}
++                                <a href="{{ path('event_attend', {'id': entity.id}) }}" class="btn btn-success btn-xs">
++                                    I totally want to go!
++                                </a>
++                            {% endif %}
+                         {% endif %}
+                     </dd>
+                 </dl>

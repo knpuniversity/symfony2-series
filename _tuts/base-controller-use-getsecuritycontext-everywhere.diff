@@ -1,0 +1,61 @@
+diff --git a/src/Yoda/EventBundle/Controller/DefaultController.php b/src/Yoda/EventBundle/Controller/DefaultController.php
+index 8237e0d..7b06443 100644
+--- a/src/Yoda/EventBundle/Controller/DefaultController.php
++++ b/src/Yoda/EventBundle/Controller/DefaultController.php
+@@ -2,8 +2,6 @@
+ 
+ namespace Yoda\EventBundle\Controller;
+ 
+-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+-
+ class DefaultController extends Controller
+ {
+     public function indexAction($count, $firstName)
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index f25a57a..e4ee35f 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -243,8 +243,7 @@ class EventController extends Controller
+ 
+     private function enforceUserSecurity($role = 'ROLE_USER')
+     {
+-        $securityContext = $this->container->get('security.context');
+-        if (!$securityContext->isGranted($role)) {
++        if (!$this->getSecurityContext()->isGranted($role)) {
+             // in Symfony 2.5
+             // throw $this->createAccessDeniedException('message!');
+             throw new AccessDeniedException('Need '.$role);
+diff --git a/src/Yoda/UserBundle/Controller/RegisterController.php b/src/Yoda/UserBundle/Controller/RegisterController.php
+index b8f33c1..3e9c5ec 100644
+--- a/src/Yoda/UserBundle/Controller/RegisterController.php
++++ b/src/Yoda/UserBundle/Controller/RegisterController.php
+@@ -2,7 +2,7 @@
+ 
+ namespace Yoda\UserBundle\Controller;
+ 
+-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
++use Yoda\EventBundle\Controller\Controller;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+ use Symfony\Component\HttpFoundation\Request;
+@@ -64,6 +64,6 @@ class RegisterController extends Controller
+         $providerKey = 'secured_area'; // your firewall name
+         $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
+ 
+-        $this->container->get('security.context')->setToken($token);
++        $this->getSecurityContext()->setToken($token);
+     }
+ }
+diff --git a/src/Yoda/UserBundle/Controller/SecurityController.php b/src/Yoda/UserBundle/Controller/SecurityController.php
+index 9e50da8..8cec3d6 100644
+--- a/src/Yoda/UserBundle/Controller/SecurityController.php
++++ b/src/Yoda/UserBundle/Controller/SecurityController.php
+@@ -2,7 +2,7 @@
+ 
+ namespace Yoda\UserBundle\Controller;
+ 
+-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
++use Yoda\EventBundle\Controller\Controller;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Security\Core\SecurityContextInterface;

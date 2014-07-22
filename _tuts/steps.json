@@ -959,7 +959,227 @@
             "id": "remember-me-setting-it-all-up",
             "name": "Remember Me: Setting it all up",
             "description": null
+        },
+        {
+            "id": "manytoone-add-event-owner-property",
+            "name": "ManyToOne: Add Event.owner property",
+            "description": null
+        },
+        {
+            "id": "manytoone-add-owner-annotations",
+            "name": "ManyToOne: Add owner annotations",
+            "description": null
+        },
+        {
+            "id": "manytoone-joincolumn-ondelete",
+            "name": "ManyToOne: JoinColumn onDelete",
+            "description": null
+        },
+        {
+            "id": "manytoone-cascade-remove",
+            "name": "ManyToOne: cascade remove",
+            "description": null
+        },
+        {
+            "id": "manytoone-cascade-persist",
+            "name": "ManyToOne: cascade persist",
+            "description": null
+        },
+        {
+            "id": "manytoone-remove-cascade",
+            "name": "ManyToOne: Remove cascade",
+            "description": null
+        },
+        {
+            "id": "manytoone-relate-event-to-user-on-create",
+            "name": "ManyToOne: Relate Event to User on create",
+            "description": null
+        },
+        {
+            "id": "fixtures-orderedfixturesinterface",
+            "name": "Fixtures: OrderedFixturesInterface",
+            "description": null
+        },
+        {
+            "id": "fixtures-give-events-an-owner",
+            "name": "Fixtures: Give Events an owner",
+            "description": null
+        },
+        {
+            "id": "event-security-prevent-edit-delete-for-non-owners",
+            "name": "Event Security: Prevent edit\/delete for non-owners",
+            "description": null
+        },
+        {
+            "id": "eventsecurity-hide-edit-button",
+            "name": "EventSecurity: Hide edit button",
+            "description": null
+        },
+        {
+            "id": "base-controller-create-the-class",
+            "name": "Base Controller: Create the class",
+            "description": null
+        },
+        {
+            "id": "base-controller-extend-controller",
+            "name": "Base Controller: Extend Controller",
+            "description": null
+        },
+        {
+            "id": "base-controller-remove-use-statement",
+            "name": "Base Controller: Remove use statement",
+            "description": null
+        },
+        {
+            "id": "base-controller-use-getsecuritycontext-everywhere",
+            "name": "Base Controller: Use getSecurityContext everywhere",
+            "description": null
+        },
+        {
+            "id": "base-controller-move-enforceownersecurity",
+            "name": "Base Controller: Move enforceOwnerSecurity",
+            "description": null
+        },
+        {
+            "id": "base-controller-phpdoc",
+            "name": "Base Controller: PHPDoc",
+            "description": null
+        },
+        {
+            "id": "inverse-print-event-owner",
+            "name": "Inverse: Print event owner",
+            "description": null
+        },
+        {
+            "id": "inverse-trying-getevents-in-play",
+            "name": "Inverse: Trying getEvents in play",
+            "description": null
+        },
+        {
+            "id": "inverse-setting-up-user-getevents",
+            "name": "Inverse: Setting up User::getEvents",
+            "description": null
+        },
+        {
+            "id": "inverse-inverse-setting-example",
+            "name": "Inverse: Inverse setting example",
+            "description": null
+        },
+        {
+            "id": "inverse-remove-setevents",
+            "name": "Inverse: Remove setEvents",
+            "description": null
+        },
+        {
+            "id": "stofextensions-install-the-bundle",
+            "name": "StofExtensions: Install the bundle",
+            "description": null
+        },
+        {
+            "id": "stofextensions-add-slug-property",
+            "name": "StofExtensions: Add slug property",
+            "description": null
+        },
+        {
+            "id": "stofextensions-add-gedmo-slug-annotations",
+            "name": "StofExtensions: Add Gedmo slug annotations",
+            "description": null
+        },
+        {
+            "id": "stofextensions-use-slug-in-url",
+            "name": "StofExtensions: Use slug in URL",
+            "description": null
+        },
+        {
+            "id": "stofextensions-timestampable",
+            "name": "StofExtensions: Timestampable",
+            "description": null
+        },
+        {
+            "id": "repository-events-orderby-query",
+            "name": "Repository: Events orderBy Query",
+            "description": null
+        },
+        {
+            "id": "repository-only-show-upcoming-evnets",
+            "name": "Repository: Only show upcoming evnets",
+            "description": null
+        },
+        {
+            "id": "repository-adding-getupcomingevents-method",
+            "name": "Repository: Adding getUpcomingEvents method",
+            "description": null
+        },
+        {
+            "id": "manytomany-add-attendees-property",
+            "name": "ManyToMany: Add attendees property",
+            "description": null
+        },
+        {
+            "id": "manytomany-adding-attendees-annotations",
+            "name": "ManyToMany: Adding attendees annotations",
+            "description": null
+        },
+        {
+            "id": "manytomany-jointable",
+            "name": "ManyToMany: JoinTable",
+            "description": null
+        },
+        {
+            "id": "manytomany-basic-routing-controller-for-attend-unattend",
+            "name": "ManyToMany: Basic routing\/controller for attend\/unattend",
+            "description": null
+        },
+        {
+            "id": "manytomany-adding-attendaction-logic",
+            "name": "ManyToMany: Adding attendAction logic",
+            "description": null
+        },
+        {
+            "id": "manytomany-print-out-num-of-attendees",
+            "name": "ManyToMany: Print out num of attendees",
+            "description": null
+        },
+        {
+            "id": "manytomany",
+            "name": "ManyToMany",
+            "description": null
+        },
+        {
+            "id": "manytomany-print-out-all-users",
+            "name": "ManyToMany: Print out all users",
+            "description": null
+        },
+        {
+            "id": "manytomany-add-link-to-attend",
+            "name": "ManyToMany: Add link to attend",
+            "description": null
+        },
+        {
+            "id": "tostring-printing-out-specific-property",
+            "name": "toString: Printing out specific property",
+            "description": null
+        },
+        {
+            "id": "tostring-adding-tostring-method",
+            "name": "toString: Adding __toString method",
+            "description": null
+        },
+        {
+            "id": "manytomany-print-attendees-on-homepage",
+            "name": "ManyToMany: Print attendees on homepage",
+            "description": null
+        },
+        {
+            "id": "manytomany-avoiding-dups-with-hasattendee",
+            "name": "ManyToMany: Avoiding dups with hasAttendee",
+            "description": null
+        },
+        {
+            "id": "manytomany-add-unattendaction-and-link",
+            "name": "ManyToMany: Add unattendAction and link",
+            "description": null
         }
     ],
-    "sha": "11798707f981fbee310d873f10aef4a67b559572"
+    "sha": "63568681e5ee49b090f4ca6535d81b45383599f5"
 }

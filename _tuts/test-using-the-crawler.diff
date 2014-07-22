@@ -1,5 +1,5 @@
 diff --git a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
-index 415aa8d..247bdff 100644
+index 415aa8d..2b0cc6a 100644
 --- a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
 +++ b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
 @@ -10,10 +10,16 @@ class RegisterControllerTest extends WebTestCase
@@ -17,6 +17,6 @@ index 415aa8d..247bdff 100644
 +            ->filter('#user_register_username')
 +            ->attr('value')
 +        ;
-+        $this->assertEquals('Foo', $usernameVal);
++        $this->assertEquals('Leia', $usernameVal);
      }
  }

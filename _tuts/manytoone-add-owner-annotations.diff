@@ -1,0 +1,43 @@
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index 41ab24e..7161bf4 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -3,6 +3,7 @@
+ namespace Yoda\EventBundle\Entity;
+ 
+ use Doctrine\ORM\Mapping as ORM;
++use Yoda\UserBundle\Entity\User;
+ 
+ /**
+  * Event
+@@ -49,6 +50,9 @@ class Event
+      */
+     private $details;
+ 
++    /**
++     * @ORM\ManyToOne(targetEntity="Yoda\UserBundle\Entity\User")
++     */
+     protected $owner;
+ 
+     /**
+@@ -152,4 +156,20 @@ class Event
+     {
+         return $this->details;
+     }
++
++    /**
++     * @return mixed
++     */
++    public function getOwner()
++    {
++        return $this->owner;
++    }
++
++    /**
++     * @param User $owner
++     */
++    public function setOwner(User $owner)
++    {
++        $this->owner = $owner;
++    }
+ }

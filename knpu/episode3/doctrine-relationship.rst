@@ -2,7 +2,7 @@ ManyToOne Doctrine Relationships
 ================================
 
 Right now, if I creat an Event, there's no database link back to my user.
-This means that we don't which user created each Event.
+We don't know which user created each Event.
 
 To fix this, we need to create a ``OneToMany`` relationship from ``User``
 to ``Event``. In the database, this will mean a ``user_id`` foreign key column
@@ -111,14 +111,15 @@ Now, let's run the ``doctrine:schema:update`` command again:
     php app/console doctrine:schema:update --dump-sql
     php app/console doctrine:schema:update --force
 
-The SQL tells us taht this actually re-creates the foreign key with the "on delete"
+The SQL tells us that this actually re-creates the foreign key with the "on delete"
 behavior. So if we delete a ``User``, the database will automatically delete
-all rows in the ``yoda_event`` table that link to that user.
+all rows in the ``yoda_event`` table that link to that user and ship them off into
+hyper space.
 
 The cascade Option
 ~~~~~~~~~~~~~~~~~~
 
-Another common option is ``cascade`` on the actual ``ManyToOne`` annotation::
+Another common option is ``cascade`` on the actual ``ManyToOne`` part::
 
     // src/Yoda/EventBundle/Entity/Event.php
     // ...
@@ -159,7 +160,7 @@ Remove the ``cascade`` option because it's dangerous in our situation::
     protected $owner;
 
 If we delete an Event, we definitely don't want that to delete the Event's
-owner.
+owner. Darth would be so angry.
 
 Linking an Event to its owner on creation
 -----------------------------------------
@@ -204,7 +205,7 @@ To complete the link, just call ``setOwner`` on the Event and pass in the *whole
 Yep, that's it. When we save the Event, Doctrine will automatically grab
 the id of the ``User`` object and place it on the ``owner_id`` field.
 
-Time to test! Login as wayne. Remember, he has ``ROLE_ADMIN``, which also
+Time to test! Login as Wayne. Remember, he has ``ROLE_ADMIN``, which also
 means he has ``ROLE_EVENT_CREATE`` because of the ``role_hierarchy`` section
 in ``security.yml``.
 

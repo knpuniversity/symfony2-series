@@ -1,0 +1,15 @@
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index ea1d366..1ca65a8 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -81,6 +81,10 @@ class Event
+ 
+     /**
+      * @ORM\ManyToMany(targetEntity="Yoda\UserBundle\Entity\User")
++     * @ORM\JoinTable(
++     *      joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},
++     *      inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}
++     * )
+      */
+     protected $attendees;
+ 

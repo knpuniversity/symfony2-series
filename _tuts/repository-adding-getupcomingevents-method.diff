@@ -1,0 +1,41 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 46e4e5a..ae17b43 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -28,12 +28,7 @@ class EventController extends Controller
+ 
+         $entities = $em
+             ->getRepository('EventBundle:Event')
+-            ->createQueryBuilder('e')
+-            ->addOrderBy('e.time', 'ASC')
+-            ->andWhere('e.time > :now')
+-            ->setParameter('now', new \DateTime())
+-            ->getQuery()
+-            ->execute()
++            ->getUpcomingEvents()
+         ;
+ 
+         return array(
+diff --git a/src/Yoda/EventBundle/Entity/EventRepository.php b/src/Yoda/EventBundle/Entity/EventRepository.php
+index c34487e..e48576e 100644
+--- a/src/Yoda/EventBundle/Entity/EventRepository.php
++++ b/src/Yoda/EventBundle/Entity/EventRepository.php
+@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
+  */
+ class EventRepository extends EntityRepository
+ {
++    /**
++     * @return Event[]
++     */
++    public function getUpcomingEvents()
++    {
++        return $this
++            ->createQueryBuilder('e')
++            ->addOrderBy('e.time', 'ASC')
++            ->andWhere('e.time > :now')
++            ->setParameter('now', new \DateTime())
++            ->getQuery()
++            ->execute()
++        ;
++    }
+ }

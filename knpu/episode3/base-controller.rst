@@ -67,7 +67,7 @@ Ok! Let's use the new ``getSecurityContext`` method to shorten things::
         }
     } 
 
-And even though we're not really using this page, remove the ``use`` statement
+And even though we're not really using its page, remove the ``use`` statement
 in ``DefaultController`` as well so that we're using the new class::
 
     // src/Yoda/EventBundle/Controller/DefaultController.php

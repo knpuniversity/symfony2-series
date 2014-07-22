@@ -2,7 +2,7 @@ OneToMany: The Inverse Side of a Relationship
 =============================================
 
 Earlier, we gave every ``Event`` an owner. This was our first Doctrine relationship:
-a class ``ManyToOne`` from ``Event`` to ``User``.
+a ``ManyToOne`` from ``Event`` to ``User``.
 
 This lets us do things like call ``$event->getOwner()``. Let's use this to
 print the owner of an ``Event``:
@@ -20,7 +20,7 @@ and call ``getEvents()`` to get all the ``Event`` objects the User has created?
 Trying User::getEvents()
 ------------------------
 
-Open up the play script we created in episode one to test this out. Clear
+Open up the play script we made in episode one to test this out. Clear
 out all the code below the setup, then query for a ``User`` object and call
 ``getEvents()`` on it::
 
@@ -145,7 +145,7 @@ Now try the play script:
 It works! And we see both event names, since wayne owns both of them.
 
 Behind the scenes, Doctrine automatically queries for the two event objects
-owned by this wayne and puts them on the ``events`` property.
+owned by this wayne dude and puts them on the ``events`` property.
 
 Owning Versus Inverse Side
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -181,11 +181,11 @@ calling ``setOwner`` on Event::
 
 This is perfect because ``owner``, coincidentally, is the *owning* side of
 the relationship. In a ``ManyToOne`` and ``OneToMany`` association, the *owning*
-side is always the singular side. We are talkign about *one* owner, so it's
+side is always the singular side. We are talking about *one* owner, so it's
 the owning side.
 
 If instead we decided to call ``setEvents()`` on the ``User``, we'd be setting
-the inverse side, an Doctrine would completely ignore it::
+the inverse side, and Doctrine would completely ignore it::
 
     // src/Yoda/EventBundle/Controller/EventController.php
     // ...

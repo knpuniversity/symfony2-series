@@ -1,0 +1,15 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 38fa8d6..3474255 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -46,6 +46,10 @@ class EventController extends Controller
+         $form->handleRequest($request);
+ 
+         if ($form->isValid()) {
++            $user = $this->getUser();
++
++            $entity->setOwner($user);
++
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($entity);
+             $em->flush();

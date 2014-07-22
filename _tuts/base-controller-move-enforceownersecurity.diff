@@ -1,0 +1,51 @@
+diff --git a/src/Yoda/EventBundle/Controller/Controller.php b/src/Yoda/EventBundle/Controller/Controller.php
+index df18b88..258482f 100644
+--- a/src/Yoda/EventBundle/Controller/Controller.php
++++ b/src/Yoda/EventBundle/Controller/Controller.php
+@@ -3,6 +3,8 @@
+ namespace Yoda\EventBundle\Controller;
+ 
+ use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
++use Yoda\EventBundle\Entity\Event;
++use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+ 
+ class Controller extends BaseController
+ {
+@@ -10,4 +12,15 @@ class Controller extends BaseController
+     {
+         return $this->container->get('security.context');
+     }
+-} 
+\ No newline at end of file
++
++    public function enforceOwnerSecurity(Event $event)
++    {
++        $user = $this->getUser();
++
++        if ($user != $event->getOwner()) {
++            // if you're using 2.5 or higher
++            // throw $this->createAccessDeniedException('You are not the owner!!!');
++            throw new AccessDeniedException('You are not the owner!!!');
++        }
++    }
++}
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index e4ee35f..e13a851 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -249,15 +249,4 @@ class EventController extends Controller
+             throw new AccessDeniedException('Need '.$role);
+         }
+     }
+-
+-    private function enforceOwnerSecurity(Event $event)
+-    {
+-        $user = $this->getUser();
+-
+-        if ($user != $event->getOwner()) {
+-            // if you're using 2.5 or higher
+-            // throw $this->createAccessDeniedException('You are not the owner!!!');
+-            throw new AccessDeniedException('You are not the owner!!!');
+-        }
+-    }
+ }

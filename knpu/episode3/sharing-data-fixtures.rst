@@ -3,8 +3,7 @@ Sharing Data between Fixture Classes
 
 Let's update the fixtures so that each event has an owner.
 
-This is easy, but a bit wordy, so we'll push through it quickly. We have
-two fixture classes: one that loads events and one that loads users.
+We have two fixture classes: one that loads events and one that loads users.
 
 Ordering how Fixtures are Loaded
 --------------------------------
