@@ -210,4 +210,21 @@ method to the ``User`` class::
 
 Refresh now. Sweet, no errors!
 
+On the index page, we can also fill in the # of attendees:
+
+.. code-block:: html+jinja
+
+    {# src/Yoda/EventBundle/Resources/views/Event/index.html.twig #}
+    {# ... #}
+
+    {% for entity in entities %}
+        {# ... #}
+
+        <dt>who:</dt>
+        <dd>{{ entity.attendees|length }} attending!</dd>
+
+        {# ... #}
+    {% endfor %}
+
+
 .. _`for-else`: http://twig.sensiolabs.org/doc/tags/for.html#the-else-clause
