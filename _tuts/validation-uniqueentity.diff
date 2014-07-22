@@ -1,0 +1,20 @@
+diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
+index 02b90b3..e329ccc 100644
+--- a/src/Yoda/UserBundle/Entity/User.php
++++ b/src/Yoda/UserBundle/Entity/User.php
+@@ -7,12 +7,15 @@ use Symfony\Component\Security\Core\Role\Role;
+ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+ use Serializable;
+ use Symfony\Component\Validator\Constraints as Assert;
++use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+ 
+ /**
+  * User
+  *
+  * @ORM\Table(name="yoda_user")
+  * @ORM\Entity(repositoryClass="Yoda\UserBundle\Entity\UserRepository")
++ * @UniqueEntity(fields="username", message="That username is taken!")
++ * @UniqueEntity(fields="email", message="That email is taken!")
+  */
+ class User implements AdvancedUserInterface, Serializable
+ {

@@ -1,0 +1,28 @@
+diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
+index e329ccc..0ce50d8 100644
+--- a/src/Yoda/UserBundle/Entity/User.php
++++ b/src/Yoda/UserBundle/Entity/User.php
+@@ -45,8 +45,7 @@ class User implements AdvancedUserInterface, Serializable
+     private $password;
+ 
+     /**
+-     * @ORM\Column(type="string", length=255)
+-     * @Assert\NotBlank
++     * @ORM\Column(type="string", length=255, nullable=true)
+      * @Assert\Email
+      */
+     private $email;
+diff --git a/src/Yoda/UserBundle/Form/RegisterFormType.php b/src/Yoda/UserBundle/Form/RegisterFormType.php
+index 68511b6..281aaf4 100644
+--- a/src/Yoda/UserBundle/Form/RegisterFormType.php
++++ b/src/Yoda/UserBundle/Form/RegisterFormType.php
+@@ -12,8 +12,7 @@ class RegisterFormType extends AbstractType
+     {
+         $builder
+             ->add('username', 'text')
+-            ->add('email', 'email', array(
+-                'required' => false,
++            ->add('email', null, array(
+                 'label' => 'Email Address',
+                 'attr'    => array('class' => 'C-3PO')
+             ))

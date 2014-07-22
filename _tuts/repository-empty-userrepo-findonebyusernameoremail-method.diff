@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/UserBundle/Entity/UserRepository.php b/src/Yoda/UserBundle/Entity/UserRepository.php
+index 320c231..4a33490 100644
+--- a/src/Yoda/UserBundle/Entity/UserRepository.php
++++ b/src/Yoda/UserBundle/Entity/UserRepository.php
+@@ -12,4 +12,8 @@ use Doctrine\ORM\EntityRepository;
+  */
+ class UserRepository extends EntityRepository
+ {
++    public function findOneByUsernameOrEmail($username)
++    {
++        // ... todo - get your query on
++    }
+ }

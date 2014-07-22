@@ -1,0 +1,12 @@
+diff --git a/app/config/config_test.yml b/app/config/config_test.yml
+index 2f6d925..030e4f9 100644
+--- a/app/config/config_test.yml
++++ b/app/config/config_test.yml
+@@ -14,3 +14,7 @@ web_profiler:
+ 
+ swiftmailer:
+     disable_delivery: true
++
++doctrine:
++    dbal:
++        dbname:   %database_name%_test

@@ -1,0 +1,12 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 584939d..f25a57a 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -3,7 +3,6 @@
+ namespace Yoda\EventBundle\Controller;
+ 
+ use Symfony\Component\HttpFoundation\Request;
+-use Yoda\EventBundle\Controller\Controller;
+ 
+ use Yoda\EventBundle\Entity\Event;
+ use Yoda\EventBundle\Form\EventType;

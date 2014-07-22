@@ -1,0 +1,52 @@
+diff --git a/app/config/security.yml b/app/config/security.yml
+index 0e2d477..fca1fc3 100644
+--- a/app/config/security.yml
++++ b/app/config/security.yml
+@@ -3,7 +3,7 @@ security:
+         Yoda\UserBundle\Entity\User: bcrypt
+ 
+     role_hierarchy:
+-        ROLE_ADMIN:       ROLE_USER
++        ROLE_ADMIN:       [ROLE_USER, ROLE_EVENT_CREATE]
+         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+ 
+     providers:
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index b329915..38fa8d6 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -39,7 +39,7 @@ class EventController extends Controller
+      */
+     public function createAction(Request $request)
+     {
+-        $this->enforceUserSecurity();
++        $this->enforceUserSecurity('ROLE_EVENT_CREATE');
+ 
+         $entity = new Event();
+         $form = $this->createCreateForm($entity);
+@@ -84,7 +84,7 @@ class EventController extends Controller
+      */
+     public function newAction()
+     {
+-        $this->enforceUserSecurity();
++        $this->enforceUserSecurity('ROLE_EVENT_CREATE');
+ 
+         $entity = new Event();
+         $form   = $this->createCreateForm($entity);
+@@ -232,13 +232,13 @@ class EventController extends Controller
+         ;
+     }
+ 
+-    private function enforceUserSecurity()
++    private function enforceUserSecurity($role = 'ROLE_USER')
+     {
+         $securityContext = $this->container->get('security.context');
+-        if (!$securityContext->isGranted('ROLE_USER')) {
++        if (!$securityContext->isGranted($role)) {
+             // in Symfony 2.5
+             // throw $this->createAccessDeniedException('message!');
+-            throw new AccessDeniedException('Need ROLE_USER');
++            throw new AccessDeniedException('Need '.$role);
+         }
+     }
+ }

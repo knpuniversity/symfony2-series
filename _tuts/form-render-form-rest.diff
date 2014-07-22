@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+index 9ce8d8b..dc8140f 100644
+--- a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
++++ b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+@@ -18,6 +18,8 @@
+             {{ form_row(form.email) }}
+             {{ form_row(form.password) }}
+ 
++            {{ form_rest(form) }}
++
+             <hr/>
+             <input type="submit" class="btn btn-primary pull-right" value="Register!" />
+         </form>

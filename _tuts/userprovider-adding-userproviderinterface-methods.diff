@@ -1,0 +1,42 @@
+diff --git a/src/Yoda/UserBundle/Entity/UserRepository.php b/src/Yoda/UserBundle/Entity/UserRepository.php
+index 11defa5..2d6344d 100644
+--- a/src/Yoda/UserBundle/Entity/UserRepository.php
++++ b/src/Yoda/UserBundle/Entity/UserRepository.php
+@@ -4,6 +4,8 @@ namespace Yoda\UserBundle\Entity;
+ 
+ use Doctrine\ORM\EntityRepository;
+ use Symfony\Component\Security\Core\User\UserProviderInterface;
++use Symfony\Component\Security\Core\User\UserInterface;
++use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+ 
+ /**
+  * UserRepository
+@@ -23,4 +25,28 @@ class UserRepository extends EntityRepository implements UserProviderInterface
+             ->getOneOrNullResult()
+         ;
+     }
++
++    public function loadUserByUsername($username)
++    {
++        // todo
++    }
++
++    public function refreshUser(UserInterface $user)
++    {
++        $class = get_class($user);
++        if (!$this->supportsClass($class)) {
++            throw new UnsupportedUserException(sprintf(
++                'Instances of "%s" are not supported.',
++                $class
++            ));
++        }
++
++        return $this->find($user->getId());
++    }
++
++    public function supportsClass($class)
++    {
++        return $this->getEntityName() === $class
++            || is_subclass_of($class, $this->getEntityName());
++    }
+ }

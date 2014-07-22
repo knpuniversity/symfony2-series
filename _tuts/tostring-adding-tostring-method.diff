@@ -1,0 +1,27 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+index aa4784f..a31ba3b 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+@@ -38,7 +38,7 @@
+ 
+                         <ul class="users">
+                             {% for attendee in entity.attendees %}
+-                                <li>{{ attendee.username }}</li>
++                                <li>{{ attendee }}</li>
+                             {% else %}
+                                 <li>nobody yet!</li>
+                             {% endfor %}
+diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
+index 2046225..2a68584 100644
+--- a/src/Yoda/UserBundle/Entity/User.php
++++ b/src/Yoda/UserBundle/Entity/User.php
+@@ -292,4 +292,9 @@ class User implements AdvancedUserInterface, Serializable
+     {
+         $this->events = $events;
+     }
++
++    public function __toString()
++    {
++        return (string) $this->getUsername();
++    }
+ }

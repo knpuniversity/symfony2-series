@@ -299,6 +299,887 @@
             "id": "mindtrick-twig-whitespace-control",
             "name": "MindTrick: Twig whitespace control",
             "description": null
+        },
+        {
+            "id": "basic-security-remove-extra-firewalls",
+            "name": "Basic Security: Remove extra firewalls",
+            "description": null
+        },
+        {
+            "id": "basic-security-changing-firewall-paths",
+            "name": "Basic Security: Changing firewall paths",
+            "description": null
+        },
+        {
+            "id": "basic-security-anonymous-key",
+            "name": "Basic Security: Anonymous key",
+            "description": null
+        },
+        {
+            "id": "access-control-adding-basic-controls",
+            "name": "Access Control: Adding basic controls",
+            "description": null
+        },
+        {
+            "id": "login-form-create-user-bundle",
+            "name": "Login Form: Create User Bundle",
+            "description": null
+        },
+        {
+            "id": "login-form-create-controller",
+            "name": "Login Form: Create controller",
+            "description": null
+        },
+        {
+            "id": "login-form-annotation-routing",
+            "name": "Login Form: Annotation routing",
+            "description": null
+        },
+        {
+            "id": "login-form-copied-loginaction",
+            "name": "Login Form: Copied loginAction",
+            "description": null
+        },
+        {
+            "id": "login-form-template-annotation",
+            "name": "Login Form: @Template Annotation",
+            "description": null
+        },
+        {
+            "id": "login-form-copied-template",
+            "name": "Login Form: Copied template",
+            "description": null
+        },
+        {
+            "id": "login-form-extend-base-template",
+            "name": "Login Form: Extend base template",
+            "description": null
+        },
+        {
+            "id": "login-form-logincheckaction",
+            "name": "Login Form: loginCheckAction",
+            "description": null
+        },
+        {
+            "id": "login-form-form-login-config-paths",
+            "name": "Login Form: form_login config paths",
+            "description": null
+        },
+        {
+            "id": "login-form-logout-configuration",
+            "name": "Login Form: Logout configuration",
+            "description": null
+        },
+        {
+            "id": "login-form-clean-up-error-fetching",
+            "name": "Login Form: clean up error fetching",
+            "description": null
+        },
+        {
+            "id": "page-css-adding-login-css-and-stylesheets-block",
+            "name": "Page CSS: Adding login.css and stylesheets block",
+            "description": null
+        },
+        {
+            "id": "page-css-using-the-parent-function",
+            "name": "Page CSS: Using the parent function",
+            "description": null
+        },
+        {
+            "id": "page-css-adding-error-class",
+            "name": "Page CSS: Adding error class",
+            "description": null
+        },
+        {
+            "id": "page-css-adding-bootstrap",
+            "name": "Page CSS: Adding bootstrap",
+            "description": null
+        },
+        {
+            "id": "translation-translation-the-error-messages",
+            "name": "Translation: Translation the error messages",
+            "description": null
+        },
+        {
+            "id": "twig-security-adding-logout-link",
+            "name": "Twig Security: Adding logout link",
+            "description": null
+        },
+        {
+            "id": "twig-security-is-granted-around-logout-link",
+            "name": "Twig Security: is_granted around logout link",
+            "description": null
+        },
+        {
+            "id": "twig-security-adding-login-link",
+            "name": "Twig Security: Adding login link",
+            "description": null
+        },
+        {
+            "id": "deny-access-role-admin-in-access-control",
+            "name": "Deny Access: ROLE_ADMIN in access_control",
+            "description": null
+        },
+        {
+            "id": "deny-access-comment-out-access-control",
+            "name": "Deny Access: Comment out access_control",
+            "description": null
+        },
+        {
+            "id": "deny-access-isgranted-in-the-controller",
+            "name": "Deny Access: isGranted in the controller",
+            "description": null
+        },
+        {
+            "id": "deny-access-throw-accessdeniedexception",
+            "name": "Deny Access: Throw AccessDeniedException",
+            "description": null
+        },
+        {
+            "id": "deny-access-createaccessdeniedexception-for-2-5",
+            "name": "Deny Access: createAccessDeniedException for 2.5",
+            "description": null
+        },
+        {
+            "id": "deny-access-check-role-user-in-controller",
+            "name": "Deny Access: Check ROLE_USER in controller",
+            "description": null
+        },
+        {
+            "id": "user-entity-generate-it",
+            "name": "User Entity: Generate it",
+            "description": null
+        },
+        {
+            "id": "user-entity-control-table-name",
+            "name": "User Entity: Control table name",
+            "description": null
+        },
+        {
+            "id": "user-entity-implement-userinterface",
+            "name": "User Entity: Implement UserInterface",
+            "description": null
+        },
+        {
+            "id": "user-entity-using-bcrypt-encoder",
+            "name": "User Entity: Using bcrypt encoder",
+            "description": null
+        },
+        {
+            "id": "user-entity-installing-password-compat",
+            "name": "User Entity: Installing password_compat",
+            "description": null
+        },
+        {
+            "id": "user-entity-security-yml-provider",
+            "name": "User Entity: security.yml provider",
+            "description": null
+        },
+        {
+            "id": "save-user-copy-fixtures-class",
+            "name": "Save User: Copy fixtures class",
+            "description": null
+        },
+        {
+            "id": "save-user-create-user-but-no-password",
+            "name": "Save User: Create User, but no password",
+            "description": null
+        },
+        {
+            "id": "save-user-implement-containerawareinterface-on-fixture",
+            "name": "Save User: Implement ContainerAwareInterface on fixture",
+            "description": null
+        },
+        {
+            "id": "save-user-create-the-encodepassword-function",
+            "name": "Save User: Create the encodePassword function",
+            "description": null
+        },
+        {
+            "id": "roles-add-roles-property",
+            "name": "Roles: Add roles property",
+            "description": null
+        },
+        {
+            "id": "roles-always-giving-role-user",
+            "name": "Roles: Always giving ROLE_USER",
+            "description": null
+        },
+        {
+            "id": "roles-add-admin-user",
+            "name": "Roles: Add admin user",
+            "description": null
+        },
+        {
+            "id": "advanceduserinterface-adding-isactive-field",
+            "name": "AdvancedUserInterface: Adding isActive field",
+            "description": null
+        },
+        {
+            "id": "advanceduserinterface-adding-interface-and-methods",
+            "name": "AdvancedUserInterface: Adding interface and methods",
+            "description": null
+        },
+        {
+            "id": "advanceduserinterface-real-method-implementations",
+            "name": "AdvancedUserInterface: Real method implementations",
+            "description": null
+        },
+        {
+            "id": "advanceduserinterface-re-enable-admin",
+            "name": "AdvancedUserInterface: re-enable admin",
+            "description": null
+        },
+        {
+            "id": "serializable-adding-the-interface",
+            "name": "Serializable: Adding the interface",
+            "description": null
+        },
+        {
+            "id": "serializable-filling-in-the-real-methods",
+            "name": "Serializable: Filling in the real methods",
+            "description": null
+        },
+        {
+            "id": "email-adding-user-email-property",
+            "name": "Email: Adding User.email property",
+            "description": null
+        },
+        {
+            "id": "repository-findall-dummy-method",
+            "name": "Repository: findAll dummy method",
+            "description": null
+        },
+        {
+            "id": "repository-remove-repositoryclass-option",
+            "name": "Repository: remove repositoryClass option",
+            "description": null
+        },
+        {
+            "id": "repository-remove-debug-code",
+            "name": "Repository: Remove debug code",
+            "description": null
+        },
+        {
+            "id": "repository-empty-userrepo-findonebyusernameoremail-method",
+            "name": "Repository: Empty UserRepo::findOneByUsernameOrEmail method",
+            "description": null
+        },
+        {
+            "id": "repository-use-query-builder",
+            "name": "Repository: Use query builder",
+            "description": null
+        },
+        {
+            "id": "repository-trying-it-in-eventcontroller",
+            "name": "Repository: Trying it in EventController",
+            "description": null
+        },
+        {
+            "id": "repository-using-email-in-eventcontroller",
+            "name": "Repository: Using email in EventController",
+            "description": null
+        },
+        {
+            "id": "repository-remove-userrepo-test-code",
+            "name": "Repository: Remove UserRepo test code",
+            "description": null
+        },
+        {
+            "id": "userprovider-provider-configuration",
+            "name": "UserProvider: provider configuration",
+            "description": null
+        },
+        {
+            "id": "userprovider-implement-userproviderinterface",
+            "name": "UserProvider: Implement UserProviderInterface",
+            "description": null
+        },
+        {
+            "id": "userprovider-adding-userproviderinterface-methods",
+            "name": "UserProvider: Adding UserProviderInterface methods",
+            "description": null
+        },
+        {
+            "id": "userprovider-real-logic-for-loaduserbyusername",
+            "name": "UserProvider: Real logic for loadUserByUsername",
+            "description": null
+        },
+        {
+            "id": "registration-create-controller-class",
+            "name": "Registration: Create controller class",
+            "description": null
+        },
+        {
+            "id": "registration-annotation-routing",
+            "name": "Registration: Annotation routing",
+            "description": null
+        },
+        {
+            "id": "registration-build-form",
+            "name": "Registration: Build Form",
+            "description": null
+        },
+        {
+            "id": "registration-template-without-use",
+            "name": "Registration: @Template without use",
+            "description": null
+        },
+        {
+            "id": "registration-create-template",
+            "name": "Registration: Create template",
+            "description": null
+        },
+        {
+            "id": "registration-adding-template-use",
+            "name": "Registration: Adding @Template use",
+            "description": null
+        },
+        {
+            "id": "form-rendering-basic-form-widget",
+            "name": "Form Rendering: Basic form_widget",
+            "description": null
+        },
+        {
+            "id": "form-rendering-add-createview",
+            "name": "Form Rendering: Add createView",
+            "description": null
+        },
+        {
+            "id": "form-rendering-form-row",
+            "name": "Form Rendering: form_row",
+            "description": null
+        },
+        {
+            "id": "form-render-form-widget-form-label-form-errors",
+            "name": "Form Render: form_widget, form_label, form_errors",
+            "description": null
+        },
+        {
+            "id": "form-render-back-to-form-row",
+            "name": "Form Render: Back to form_row",
+            "description": null
+        },
+        {
+            "id": "form-render-global-form-errors",
+            "name": "Form Render: Global form_errors",
+            "description": null
+        },
+        {
+            "id": "form-render-form-rest",
+            "name": "Form Render: form_rest",
+            "description": null
+        },
+        {
+            "id": "repeated-adding-repeated-field",
+            "name": "Repeated: Adding repeated field",
+            "description": null
+        },
+        {
+            "id": "repeated-rendering-fields-individually",
+            "name": "Repeated: Rendering fields individually",
+            "description": null
+        },
+        {
+            "id": "repeated-customizing-the-labels",
+            "name": "Repeated: Customizing the labels",
+            "description": null
+        },
+        {
+            "id": "form-submit-basic-submit-code",
+            "name": "Form Submit: Basic submit code",
+            "description": null
+        },
+        {
+            "id": "form-submit-build-user-by-hand",
+            "name": "Form Submit: Build User by hand",
+            "description": null
+        },
+        {
+            "id": "form-submit-encoding-the-password",
+            "name": "Form Submit: Encoding the password",
+            "description": null
+        },
+        {
+            "id": "form-submit-redirecting",
+            "name": "Form Submit: Redirecting",
+            "description": null
+        },
+        {
+            "id": "form-submit-no-issubmitted",
+            "name": "Form Submit: no isSubmitted",
+            "description": null
+        },
+        {
+            "id": "form-data-passing-array-default-data",
+            "name": "Form Data: Passing array default data",
+            "description": null
+        },
+        {
+            "id": "form-data-adding-data-class",
+            "name": "Form Data: Adding data_class",
+            "description": null
+        },
+        {
+            "id": "form-data-simplify-user-creation",
+            "name": "Form Data: Simplify user creation",
+            "description": null
+        },
+        {
+            "id": "form-data-putting-back-array-default-data",
+            "name": "Form Data: Putting back array default data",
+            "description": null
+        },
+        {
+            "id": "form-data-user-object-default-data",
+            "name": "Form Data: User object default data",
+            "description": null
+        },
+        {
+            "id": "plainpassword-creating-the-property",
+            "name": "plainPassword: Creating the property",
+            "description": null
+        },
+        {
+            "id": "plainpassword-populating-erasecredentials",
+            "name": "plainPassword: Populating eraseCredentials",
+            "description": null
+        },
+        {
+            "id": "plainpassword-using-in-the-form",
+            "name": "plainPassword: Using in the form",
+            "description": null
+        },
+        {
+            "id": "form-class-create-registerformtype",
+            "name": "Form Class: Create RegisterFormType",
+            "description": null
+        },
+        {
+            "id": "form-class-getname",
+            "name": "Form Class: getName",
+            "description": null
+        },
+        {
+            "id": "form-class-filling-in-the-guts",
+            "name": "Form Class: Filling in the guts",
+            "description": null
+        },
+        {
+            "id": "form-class-using-in-the-controller",
+            "name": "Form Class: Using in the controller",
+            "description": null
+        },
+        {
+            "id": "field-options-setting-required-to-false",
+            "name": "Field Options: Setting required to false",
+            "description": null
+        },
+        {
+            "id": "field-options-label-and-attr",
+            "name": "Field Options: label and attr",
+            "description": null
+        },
+        {
+            "id": "validation-disable-html5-validation",
+            "name": "Validation: Disable HTML5 validation",
+            "description": null
+        },
+        {
+            "id": "validation-basic-notblank-constraint",
+            "name": "Validation: Basic NotBlank constraint",
+            "description": null
+        },
+        {
+            "id": "validation-customizing-the-message",
+            "name": "Validation: Customizing the message",
+            "description": null
+        },
+        {
+            "id": "validation-adding-the-other-constraints",
+            "name": "Validation: Adding the other constraints",
+            "description": null
+        },
+        {
+            "id": "validation-uniqueentity",
+            "name": "Validation: UniqueEntity",
+            "description": null
+        },
+        {
+            "id": "flash-setting-the-message",
+            "name": "Flash: Setting the message",
+            "description": null
+        },
+        {
+            "id": "autologin-adding-everything-for-logging-in",
+            "name": "AutoLogin: Adding everything for logging in",
+            "description": null
+        },
+        {
+            "id": "test-copying-functional-test",
+            "name": "Test: Copying functional test",
+            "description": null
+        },
+        {
+            "id": "test-renaming-to-testregister",
+            "name": "Test: Renaming to testRegister",
+            "description": null
+        },
+        {
+            "id": "test-adding-first-test",
+            "name": "Test: Adding first test",
+            "description": null
+        },
+        {
+            "id": "test-installing-phpunit",
+            "name": "Test: Installing phpunit",
+            "description": null
+        },
+        {
+            "id": "test-removing-stub-test-files",
+            "name": "Test: Removing stub test files",
+            "description": null
+        },
+        {
+            "id": "test-make-it-fail",
+            "name": "Test: Make it fail",
+            "description": null
+        },
+        {
+            "id": "test-make-it-pass-again",
+            "name": "Test: Make it pass again!",
+            "description": null
+        },
+        {
+            "id": "test-using-the-crawler",
+            "name": "Test: Using the Crawler",
+            "description": null
+        },
+        {
+            "id": "test-select-a-button",
+            "name": "Test: Select a button",
+            "description": null
+        },
+        {
+            "id": "test-fill-out-a-blank-form",
+            "name": "Test: Fill out a blank form",
+            "description": null
+        },
+        {
+            "id": "test-fill-out-form-with-data",
+            "name": "Test: Fill out form with data",
+            "description": null
+        },
+        {
+            "id": "test-data-clear-users",
+            "name": "Test Data: Clear Users",
+            "description": null
+        },
+        {
+            "id": "test-data-test-database",
+            "name": "Test Data: test database",
+            "description": null
+        },
+        {
+            "id": "field-guessing-remove-novalidate",
+            "name": "Field Guessing: Remove novalidate",
+            "description": null
+        },
+        {
+            "id": "field-guessing-making-email-not-required",
+            "name": "Field Guessing: Making email not required",
+            "description": null
+        },
+        {
+            "id": "field-guessing-remove-email-constraint",
+            "name": "Field Guessing: Remove Email constraint",
+            "description": null
+        },
+        {
+            "id": "field-guessing-add-back-notblank",
+            "name": "Field Guessing: Add back NotBlank",
+            "description": null
+        },
+        {
+            "id": "field-guessing-swap-notblank-for-nullable-false",
+            "name": "Field Guessing: Swap NotBlank for nullable=false",
+            "description": null
+        },
+        {
+            "id": "field-guessing-re-add-type",
+            "name": "Field Guessing: Re-add type",
+            "description": null
+        },
+        {
+            "id": "roles-use-role-event-manager",
+            "name": "Roles: Use ROLE_EVENT_MANAGER",
+            "description": null
+        },
+        {
+            "id": "impersonation-configuration",
+            "name": "Impersonation: Configuration",
+            "description": null
+        },
+        {
+            "id": "whitelisting-access-control-config",
+            "name": "Whitelisting: access_control config",
+            "description": null
+        },
+        {
+            "id": "whitelisting-adding-whitelist-access-control",
+            "name": "Whitelisting: Adding whitelist access_control",
+            "description": null
+        },
+        {
+            "id": "whitelisting-debug-urls-whitelisted",
+            "name": "Whitelisting: debug URLS whitelisted",
+            "description": null
+        },
+        {
+            "id": "user-access-user-in-template",
+            "name": "User: Access user in template",
+            "description": null
+        },
+        {
+            "id": "user-access-in-controller",
+            "name": "User: Access in controller",
+            "description": null
+        },
+        {
+            "id": "user-controller-getuser",
+            "name": "User: Controller::getUser",
+            "description": null
+        },
+        {
+            "id": "user-removing-debug-code",
+            "name": "User: Removing debug code",
+            "description": null
+        },
+        {
+            "id": "remember-me-setting-it-all-up",
+            "name": "Remember Me: Setting it all up",
+            "description": null
+        },
+        {
+            "id": "manytoone-add-event-owner-property",
+            "name": "ManyToOne: Add Event.owner property",
+            "description": null
+        },
+        {
+            "id": "manytoone-add-owner-annotations",
+            "name": "ManyToOne: Add owner annotations",
+            "description": null
+        },
+        {
+            "id": "manytoone-joincolumn-ondelete",
+            "name": "ManyToOne: JoinColumn onDelete",
+            "description": null
+        },
+        {
+            "id": "manytoone-cascade-remove",
+            "name": "ManyToOne: cascade remove",
+            "description": null
+        },
+        {
+            "id": "manytoone-cascade-persist",
+            "name": "ManyToOne: cascade persist",
+            "description": null
+        },
+        {
+            "id": "manytoone-remove-cascade",
+            "name": "ManyToOne: Remove cascade",
+            "description": null
+        },
+        {
+            "id": "manytoone-relate-event-to-user-on-create",
+            "name": "ManyToOne: Relate Event to User on create",
+            "description": null
+        },
+        {
+            "id": "fixtures-orderedfixturesinterface",
+            "name": "Fixtures: OrderedFixturesInterface",
+            "description": null
+        },
+        {
+            "id": "fixtures-give-events-an-owner",
+            "name": "Fixtures: Give Events an owner",
+            "description": null
+        },
+        {
+            "id": "event-security-prevent-edit-delete-for-non-owners",
+            "name": "Event Security: Prevent edit\/delete for non-owners",
+            "description": null
+        },
+        {
+            "id": "eventsecurity-hide-edit-button",
+            "name": "EventSecurity: Hide edit button",
+            "description": null
+        },
+        {
+            "id": "base-controller-create-the-class",
+            "name": "Base Controller: Create the class",
+            "description": null
+        },
+        {
+            "id": "base-controller-extend-controller",
+            "name": "Base Controller: Extend Controller",
+            "description": null
+        },
+        {
+            "id": "base-controller-remove-use-statement",
+            "name": "Base Controller: Remove use statement",
+            "description": null
+        },
+        {
+            "id": "base-controller-use-getsecuritycontext-everywhere",
+            "name": "Base Controller: Use getSecurityContext everywhere",
+            "description": null
+        },
+        {
+            "id": "base-controller-move-enforceownersecurity",
+            "name": "Base Controller: Move enforceOwnerSecurity",
+            "description": null
+        },
+        {
+            "id": "base-controller-phpdoc",
+            "name": "Base Controller: PHPDoc",
+            "description": null
+        },
+        {
+            "id": "inverse-print-event-owner",
+            "name": "Inverse: Print event owner",
+            "description": null
+        },
+        {
+            "id": "inverse-trying-getevents-in-play",
+            "name": "Inverse: Trying getEvents in play",
+            "description": null
+        },
+        {
+            "id": "inverse-setting-up-user-getevents",
+            "name": "Inverse: Setting up User::getEvents",
+            "description": null
+        },
+        {
+            "id": "inverse-inverse-setting-example",
+            "name": "Inverse: Inverse setting example",
+            "description": null
+        },
+        {
+            "id": "inverse-remove-setevents",
+            "name": "Inverse: Remove setEvents",
+            "description": null
+        },
+        {
+            "id": "stofextensions-install-the-bundle",
+            "name": "StofExtensions: Install the bundle",
+            "description": null
+        },
+        {
+            "id": "stofextensions-add-slug-property",
+            "name": "StofExtensions: Add slug property",
+            "description": null
+        },
+        {
+            "id": "stofextensions-add-gedmo-slug-annotations",
+            "name": "StofExtensions: Add Gedmo slug annotations",
+            "description": null
+        },
+        {
+            "id": "stofextensions-use-slug-in-url",
+            "name": "StofExtensions: Use slug in URL",
+            "description": null
+        },
+        {
+            "id": "stofextensions-timestampable",
+            "name": "StofExtensions: Timestampable",
+            "description": null
+        },
+        {
+            "id": "repository-events-orderby-query",
+            "name": "Repository: Events orderBy Query",
+            "description": null
+        },
+        {
+            "id": "repository-only-show-upcoming-evnets",
+            "name": "Repository: Only show upcoming evnets",
+            "description": null
+        },
+        {
+            "id": "repository-adding-getupcomingevents-method",
+            "name": "Repository: Adding getUpcomingEvents method",
+            "description": null
+        },
+        {
+            "id": "manytomany-add-attendees-property",
+            "name": "ManyToMany: Add attendees property",
+            "description": null
+        },
+        {
+            "id": "manytomany-adding-attendees-annotations",
+            "name": "ManyToMany: Adding attendees annotations",
+            "description": null
+        },
+        {
+            "id": "manytomany-jointable",
+            "name": "ManyToMany: JoinTable",
+            "description": null
+        },
+        {
+            "id": "manytomany-basic-routing-controller-for-attend-unattend",
+            "name": "ManyToMany: Basic routing\/controller for attend\/unattend",
+            "description": null
+        },
+        {
+            "id": "manytomany-adding-attendaction-logic",
+            "name": "ManyToMany: Adding attendAction logic",
+            "description": null
+        },
+        {
+            "id": "manytomany-print-out-num-of-attendees",
+            "name": "ManyToMany: Print out num of attendees",
+            "description": null
+        },
+        {
+            "id": "manytomany",
+            "name": "ManyToMany",
+            "description": null
+        },
+        {
+            "id": "manytomany-print-out-all-users",
+            "name": "ManyToMany: Print out all users",
+            "description": null
+        },
+        {
+            "id": "manytomany-add-link-to-attend",
+            "name": "ManyToMany: Add link to attend",
+            "description": null
+        },
+        {
+            "id": "tostring-printing-out-specific-property",
+            "name": "toString: Printing out specific property",
+            "description": null
+        },
+        {
+            "id": "tostring-adding-tostring-method",
+            "name": "toString: Adding __toString method",
+            "description": null
+        },
+        {
+            "id": "manytomany-print-attendees-on-homepage",
+            "name": "ManyToMany: Print attendees on homepage",
+            "description": null
+        },
+        {
+            "id": "manytomany-avoiding-dups-with-hasattendee",
+            "name": "ManyToMany: Avoiding dups with hasAttendee",
+            "description": null
+        },
+        {
+            "id": "manytomany-add-unattendaction-and-link",
+            "name": "ManyToMany: Add unattendAction and link",
+            "description": null
         }
-    ]
+    ],
+    "sha": "63568681e5ee49b090f4ca6535d81b45383599f5"
 }

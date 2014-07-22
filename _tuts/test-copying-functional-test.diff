@@ -1,0 +1,23 @@
+diff --git a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+new file mode 100644
+index 0000000..2d11a75
+--- /dev/null
++++ b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+@@ -0,0 +1,17 @@
++<?php
++
++namespace Yoda\EventBundle\Tests\Controller;
++
++use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
++
++class RegisterControllerTest extends WebTestCase
++{
++    public function testIndex()
++    {
++        $client = static::createClient();
++
++        $crawler = $client->request('GET', '/hello/Fabien');
++
++        $this->assertTrue($crawler->filter('html:contains("Hello Fabien")')->count() > 0);
++    }
++}

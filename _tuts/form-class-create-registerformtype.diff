@@ -1,0 +1,17 @@
+diff --git a/src/Yoda/UserBundle/Form/RegisterFormType.php b/src/Yoda/UserBundle/Form/RegisterFormType.php
+new file mode 100644
+index 0000000..d6c17cb
+--- /dev/null
++++ b/src/Yoda/UserBundle/Form/RegisterFormType.php
+@@ -0,0 +1,10 @@
++<?php
++
++namespace Yoda\UserBundle\Form;
++
++use Symfony\Component\Form\AbstractType;
++
++class RegisterFormType extends AbstractType
++{
++
++} 
+\ No newline at end of file

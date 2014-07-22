@@ -1,0 +1,17 @@
+diff --git a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+index b34c934..9a6ef2a 100644
+--- a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
++++ b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+@@ -24,5 +24,12 @@ class RegisterControllerTest extends WebTestCase
+ 
+         // the name of our button is "Register!"
+         $form = $crawler->selectButton('Register!')->form();
++
++        $crawler = $client->submit($form);
++        $this->assertEquals(200, $client->getResponse()->getStatusCode());
++        $this->assertRegexp(
++            '/This value should not be blank/',
++            $client->getResponse()->getContent()
++        );
+     }
+ }

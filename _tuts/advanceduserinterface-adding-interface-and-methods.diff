@@ -1,0 +1,49 @@
+diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
+index 30e4e73..55015ce 100644
+--- a/src/Yoda/UserBundle/Entity/User.php
++++ b/src/Yoda/UserBundle/Entity/User.php
+@@ -4,7 +4,7 @@ namespace Yoda\UserBundle\Entity;
+ 
+ use Doctrine\ORM\Mapping as ORM;
+ use Symfony\Component\Security\Core\Role\Role;
+-use Symfony\Component\Security\Core\User\UserInterface;
++use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+ 
+ /**
+  * User
+@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
+  * @ORM\Table(name="yoda_user")
+  * @ORM\Entity(repositoryClass="Yoda\UserBundle\Entity\UserRepository")
+  */
+-class User implements UserInterface
++class User implements AdvancedUserInterface
+ {
+     /**
+      * @var integer
+@@ -175,4 +175,26 @@ class User implements UserInterface
+     {
+         $this->isActive = $isActive;
+     }
++
++    public function isAccountNonExpired()
++    {
++        return true;
++    }
++
++    public function isAccountNonLocked()
++    {
++        return false;
++    }
++
++    public function isCredentialsNonExpired()
++    {
++        return true;
++    }
++
++    public function isEnabled()
++    {
++        return true;
++    }
++
++
+ }

@@ -1,0 +1,15 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+index 27fc535..5ba1a0b 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+@@ -14,7 +14,9 @@
+             <section>
+                 <h1>
+                     {{ entity.name }}
+-                    <a class="button" href="{{ path('event_edit', {'id': entity.id}) }}">edit</a>
++                    {% if app.user == entity.owner %}
++                        <a class="button" href="{{ path('event_edit', {'id': entity.id}) }}">edit</a>
++                    {% endif %}
+                 </h1>
+ 
+                 <dl>

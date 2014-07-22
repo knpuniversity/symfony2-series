@@ -1,0 +1,15 @@
+diff --git a/src/Yoda/UserBundle/Form/RegisterFormType.php b/src/Yoda/UserBundle/Form/RegisterFormType.php
+index d6c17cb..2ea5b9d 100644
+--- a/src/Yoda/UserBundle/Form/RegisterFormType.php
++++ b/src/Yoda/UserBundle/Form/RegisterFormType.php
+@@ -6,5 +6,8 @@ use Symfony\Component\Form\AbstractType;
+ 
+ class RegisterFormType extends AbstractType
+ {
+-
++    public function getName()
++    {
++        return 'user_register';
++    }
+ } 
+\ No newline at end of file

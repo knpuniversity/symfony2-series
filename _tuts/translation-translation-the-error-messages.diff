@@ -1,0 +1,34 @@
+diff --git a/app/Resources/translations/messages.en.yml b/app/Resources/translations/messages.en.yml
+new file mode 100644
+index 0000000..614739d
+--- /dev/null
++++ b/app/Resources/translations/messages.en.yml
+@@ -0,0 +1 @@
++"Bad credentials": "Wrong password bro!"
+\ No newline at end of file
+diff --git a/app/config/config.yml b/app/config/config.yml
+index c08c399..e6841de 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -4,7 +4,7 @@ imports:
+ 
+ framework:
+     #esi:             ~
+-    #translator:      { fallback: "%locale%" }
++    translator:      { fallback: "%locale%" }
+     secret:          "%secret%"
+     router:
+         resource: "%kernel.root_dir%/config/routing.yml"
+diff --git a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
+index ae54b93..fdc912c 100644
+--- a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
++++ b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
+@@ -12,7 +12,7 @@
+     <article>
+ 
+         {% if error %}
+-            <div class="error">{{ error.message }}</div>
++            <div class="error">{{ error.message|trans }}</div>
+         {% endif %}
+ 
+         <form action="{{ path('login_check') }}" method="post">

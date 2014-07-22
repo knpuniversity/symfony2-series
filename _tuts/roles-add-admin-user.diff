@@ -1,0 +1,17 @@
+diff --git a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
+index 9e6ef5d..5c55673 100644
+--- a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
++++ b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
+@@ -22,6 +22,12 @@ class LoadUsers implements FixtureInterface, ContainerAwareInterface
+         $user->setPassword($this->encodePassword($user, 'darthpass'));
+         $manager->persist($user);
+ 
++        $admin = new User();
++        $admin->setUsername('wayne');
++        $admin->setPassword($this->encodePassword($admin, 'waynepass'));
++        $admin->setRoles(array('ROLE_ADMIN'));
++        $manager->persist($admin);
++
+         // the queries aren't done until now
+         $manager->flush();
+     }

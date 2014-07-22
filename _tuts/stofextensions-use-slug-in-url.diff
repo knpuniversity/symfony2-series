@@ -1,0 +1,74 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 1674e92..9a4027c 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -59,7 +59,7 @@ class EventController extends Controller
+             $em->persist($entity);
+             $em->flush();
+ 
+-            return $this->redirect($this->generateUrl('event_show', array('id' => $entity->getId())));
++            return $this->redirect($this->generateUrl('event_show', array('slug' => $entity->getSlug())));
+         }
+ 
+         return $this->render('EventBundle:Event:new.html.twig', array(
+@@ -108,17 +108,18 @@ class EventController extends Controller
+      * Finds and displays a Event entity.
+      *
+      */
+-    public function showAction($id)
++    public function showAction($slug)
+     {
+         $em = $this->getDoctrine()->getManager();
+ 
+-        $entity = $em->getRepository('EventBundle:Event')->find($id);
++        $entity = $em->getRepository('EventBundle:Event')
++            ->findOneBy(array('slug' => $slug));
+ 
+         if (!$entity) {
+             throw $this->createNotFoundException('Unable to find Event entity.');
+         }
+ 
+-        $deleteForm = $this->createDeleteForm($id);
++        $deleteForm = $this->createDeleteForm($entity->getId());
+ 
+         return $this->render('EventBundle:Event:show.html.twig', array(
+             'entity'      => $entity,
+diff --git a/src/Yoda/EventBundle/Resources/config/routing/event.yml b/src/Yoda/EventBundle/Resources/config/routing/event.yml
+index bf09e64..45cd96f 100644
+--- a/src/Yoda/EventBundle/Resources/config/routing/event.yml
++++ b/src/Yoda/EventBundle/Resources/config/routing/event.yml
+@@ -1,7 +1,7 @@
+ # the / route is defined via annotations
+ 
+ event_show:
+-    pattern:  /{id}/show
++    pattern:  /{slug}/show
+     defaults: { _controller: "EventBundle:Event:show" }
+ 
+ event_new:
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig b/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
+index 978af8a..5fc57e8 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/edit.html.twig
+@@ -4,7 +4,7 @@
+     <section class="event-show event-edit">
+         <header id="menu">
+             <a class="link" href="{{ path('event') }}">&larr; back to the event list</a>
+-            <a class="link" href="{{ path('event_show', {'id': entity.id}) }}">show event</a>
++            <a class="link" href="{{ path('event_show', {'slug': entity.slug}) }}">show event</a>
+         </header>
+ 
+         <article>
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+index 63a7e85..579a956 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+@@ -22,7 +22,7 @@
+                 </header>
+                 <section>
+                     <h3>
+-                        <a href="{{ path('event_show', {'id': entity.id}) }}">{{ entity.name }}</a>
++                        <a href="{{ path('event_show', {'slug': entity.slug}) }}">{{ entity.name }}</a>
+                     </h3>
+ 
+                     <dl>

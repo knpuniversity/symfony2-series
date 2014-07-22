@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Entity/EventRepository.php b/src/Yoda/EventBundle/Entity/EventRepository.php
+index c34487e..0db3303 100644
+--- a/src/Yoda/EventBundle/Entity/EventRepository.php
++++ b/src/Yoda/EventBundle/Entity/EventRepository.php
+@@ -12,4 +12,8 @@ use Doctrine\ORM\EntityRepository;
+  */
+ class EventRepository extends EntityRepository
+ {
++    public function findAll()
++    {
++        die('NOOOOOOOOO!!!!!!!!!!');
++    }
+ }

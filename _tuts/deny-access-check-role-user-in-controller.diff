@@ -1,0 +1,66 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 6160ff1..b329915 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -39,6 +39,8 @@ class EventController extends Controller
+      */
+     public function createAction(Request $request)
+     {
++        $this->enforceUserSecurity();
++
+         $entity = new Event();
+         $form = $this->createCreateForm($entity);
+         $form->handleRequest($request);
+@@ -82,12 +84,7 @@ class EventController extends Controller
+      */
+     public function newAction()
+     {
+-        $securityContext = $this->container->get('security.context');
+-        if (!$securityContext->isGranted('ROLE_ADMIN')) {
+-            // in Symfony 2.5
+-            // throw $this->createAccessDeniedException('message!');
+-            throw new AccessDeniedException('Only an admin can do this!!!!');
+-        }
++        $this->enforceUserSecurity();
+ 
+         $entity = new Event();
+         $form   = $this->createCreateForm($entity);
+@@ -125,6 +122,7 @@ class EventController extends Controller
+      */
+     public function editAction($id)
+     {
++        $this->enforceUserSecurity();
+         $em = $this->getDoctrine()->getManager();
+ 
+         $entity = $em->getRepository('EventBundle:Event')->find($id);
+@@ -167,6 +165,7 @@ class EventController extends Controller
+      */
+     public function updateAction(Request $request, $id)
+     {
++        $this->enforceUserSecurity();
+         $em = $this->getDoctrine()->getManager();
+ 
+         $entity = $em->getRepository('EventBundle:Event')->find($id);
+@@ -197,6 +196,7 @@ class EventController extends Controller
+      */
+     public function deleteAction(Request $request, $id)
+     {
++        $this->enforceUserSecurity();
+         $form = $this->createDeleteForm($id);
+         $form->handleRequest($request);
+ 
+@@ -231,4 +231,14 @@ class EventController extends Controller
+             ->getForm()
+         ;
+     }
++
++    private function enforceUserSecurity()
++    {
++        $securityContext = $this->container->get('security.context');
++        if (!$securityContext->isGranted('ROLE_USER')) {
++            // in Symfony 2.5
++            // throw $this->createAccessDeniedException('message!');
++            throw new AccessDeniedException('Need ROLE_USER');
++        }
++    }
+ }

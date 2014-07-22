@@ -1,0 +1,28 @@
+diff --git a/src/Yoda/EventBundle/Controller/Controller.php b/src/Yoda/EventBundle/Controller/Controller.php
+index 6db6474..df18b88 100644
+--- a/src/Yoda/EventBundle/Controller/Controller.php
++++ b/src/Yoda/EventBundle/Controller/Controller.php
+@@ -6,5 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
+ 
+ class Controller extends BaseController
+ {
+-
++    public function getSecurityContext()
++    {
++        return $this->container->get('security.context');
++    }
+ } 
+\ No newline at end of file
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 83b9516..584939d 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -3,7 +3,7 @@
+ namespace Yoda\EventBundle\Controller;
+ 
+ use Symfony\Component\HttpFoundation\Request;
+-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
++use Yoda\EventBundle\Controller\Controller;
+ 
+ use Yoda\EventBundle\Entity\Event;
+ use Yoda\EventBundle\Form\EventType;

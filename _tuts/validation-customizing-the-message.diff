@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
+index 6c4a8be..b2547c9 100644
+--- a/src/Yoda/UserBundle/Entity/User.php
++++ b/src/Yoda/UserBundle/Entity/User.php
+@@ -29,7 +29,7 @@ class User implements AdvancedUserInterface, Serializable
+      * @var string
+      *
+      * @ORM\Column(name="username", type="string", length=255)
+-     * @Assert\NotBlank()
++     * @Assert\NotBlank(message="Give us at least 3 characters")
+      */
+     private $username;
+ 

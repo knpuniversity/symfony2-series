@@ -1,0 +1,24 @@
+diff --git a/src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php b/src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php
+index df30dfc..8607bb7 100644
+--- a/src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php
++++ b/src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php
+@@ -11,6 +11,9 @@ class LoadEvents implements FixtureInterface, OrderedFixtureInterface
+ {
+     public function load(ObjectManager $manager)
+     {
++        $wayne = $manager->getRepository('UserBundle:User')
++            ->findOneByUsernameOrEmail('wayne');
++
+         $event1 = new Event();
+         $event1->setName('Darth\'s Birthday Party!');
+         $event1->setLocation('Deathstar');
+@@ -25,6 +28,9 @@ class LoadEvents implements FixtureInterface, OrderedFixtureInterface
+         $event2->setDetails('Ewok pies! Support the rebellion!');
+         $manager->persist($event2);
+ 
++        $event1->setOwner($wayne);
++        $event2->setOwner($wayne);
++
+         // the queries aren't done until now
+         $manager->flush();
+     }

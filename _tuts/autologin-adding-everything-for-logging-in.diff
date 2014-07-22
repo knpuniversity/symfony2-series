@@ -1,0 +1,34 @@
+diff --git a/src/Yoda/UserBundle/Controller/RegisterController.php b/src/Yoda/UserBundle/Controller/RegisterController.php
+index 1389f49..b8f33c1 100644
+--- a/src/Yoda/UserBundle/Controller/RegisterController.php
++++ b/src/Yoda/UserBundle/Controller/RegisterController.php
+@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+ use Symfony\Component\HttpFoundation\Request;
+ use Yoda\UserBundle\Entity\User;
+ use Yoda\UserBundle\Form\RegisterFormType;
++use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+ 
+ class RegisterController extends Controller
+ {
+@@ -39,6 +40,8 @@ class RegisterController extends Controller
+                 ->add('success', 'Welcome to the Death Star! Have a magical day!')
+             ;
+ 
++            $this->authenticateUser($user);
++
+             $url = $this->generateUrl('event');
+ 
+             return $this->redirect($url);
+@@ -55,4 +58,12 @@ class RegisterController extends Controller
+ 
+         return $encoder->encodePassword($plainPassword, $user->getSalt());
+     }
++
++    private function authenticateUser(User $user)
++    {
++        $providerKey = 'secured_area'; // your firewall name
++        $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
++
++        $this->container->get('security.context')->setToken($token);
++    }
+ }

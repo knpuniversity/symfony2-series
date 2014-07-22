@@ -1,0 +1,16 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index d02efc2..d4b0ea7 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -81,6 +81,11 @@ class EventController extends Controller
+      */
+     public function newAction()
+     {
++        $securityContext = $this->container->get('security.context');
++        if (!$securityContext->isGranted('ROLE_ADMIN')) {
++            // panic?
++        }
++
+         $entity = new Event();
+         $form   = $this->createCreateForm($entity);
+ 

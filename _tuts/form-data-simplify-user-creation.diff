@@ -1,0 +1,22 @@
+diff --git a/src/Yoda/UserBundle/Controller/RegisterController.php b/src/Yoda/UserBundle/Controller/RegisterController.php
+index 10464b7..486ad12 100644
+--- a/src/Yoda/UserBundle/Controller/RegisterController.php
++++ b/src/Yoda/UserBundle/Controller/RegisterController.php
+@@ -29,13 +29,11 @@ class RegisterController extends Controller
+ 
+         $form->handleRequest($request);
+         if ($form->isValid()) {
+-            $data = $form->getData();
+-            var_dump($data);die;
++            $user = $form->getData();
+ 
+-            $user = new User();
+-            $user->setUsername($data['username']);
+-            $user->setEmail($data['email']);
+-            $user->setPassword($this->encodePassword($user, $data['password']));
++            $user->setPassword(
++                $this->encodePassword($user, $user->getPassword())
++            );
+ 
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($user);

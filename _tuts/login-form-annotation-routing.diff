@@ -1,0 +1,30 @@
+diff --git a/app/config/routing.yml b/app/config/routing.yml
+index 0bdc2fd..39e8cba 100644
+--- a/app/config/routing.yml
++++ b/app/config/routing.yml
+@@ -2,3 +2,6 @@ event:
+     resource: "@EventBundle/Resources/config/routing.yml"
+     prefix:   /
+ 
++user_routes:
++    resource: "@UserBundle/Controller"
++    type: annotation
+\ No newline at end of file
+diff --git a/src/Yoda/UserBundle/Controller/SecurityController.php b/src/Yoda/UserBundle/Controller/SecurityController.php
+index d450328..1863ca4 100644
+--- a/src/Yoda/UserBundle/Controller/SecurityController.php
++++ b/src/Yoda/UserBundle/Controller/SecurityController.php
+@@ -3,9 +3,13 @@
+ namespace Yoda\UserBundle\Controller;
+ 
+ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ 
+ class SecurityController extends Controller
+ {
++    /**
++     * @Route("/login", name="login_form")
++     */
+     public function loginAction()
+     {
+     }

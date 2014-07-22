@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
+index 4e5823c..f03e94f 100644
+--- a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
++++ b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
+@@ -2,6 +2,8 @@
+ {% extends '::base.html.twig' %}
+ 
+ {% block stylesheets %}
++    {{ parent() }}
++
+     <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}" />
+ {% endblock %}
+ 

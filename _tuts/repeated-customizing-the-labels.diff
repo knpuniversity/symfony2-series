@@ -1,0 +1,21 @@
+diff --git a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+index ffd67c2..f169b35 100644
+--- a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
++++ b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+@@ -16,8 +16,14 @@
+ 
+             {{ form_row(form.username) }}
+             {{ form_row(form.email) }}
+-            {{ form_row(form.password.first) }}
+-            {{ form_row(form.password.second) }}
++
++            {{ form_row(form.password.first, {
++                label: 'Password'
++            }) }}
++
++            {{ form_row(form.password.second, {
++                label: 'Repeat Password'
++            }) }}
+ 
+             {{ form_rest(form) }}
+ 

@@ -1,0 +1,33 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index a01f219..03f7291 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -244,7 +244,9 @@ class EventController extends Controller
+             throw $this->createNotFoundException('No event found for id '.$id);
+         }
+ 
+-        $event->getAttendees()->add($this->getUser());
++        if (!$event->hasAttendee($this->getUser())) {
++            $event->getAttendees()->add($this->getUser());
++        }
+ 
+         $em->persist($event);
+         $em->flush();
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index 1ca65a8..aac7b73 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -244,4 +244,13 @@ class Event
+     {
+         return $this->attendees;
+     }
++
++    /**
++     * @param \Yoda\UserBundle\Entity\User $user
++     * @return bool
++     */
++    public function hasAttendee(User $user)
++    {
++        return $this->getAttendees()->contains($user);
++    }
+ }

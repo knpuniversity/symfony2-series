@@ -1,0 +1,11 @@
+diff --git a/app/config/security.yml b/app/config/security.yml
+index c44acab..ec4c001 100644
+--- a/app/config/security.yml
++++ b/app/config/security.yml
+@@ -27,4 +27,5 @@ security:
+             #    realm: "Secured Demo Area"
+ 
+     access_control:
+-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
++        - { path: ^/new, roles: ROLE_USER }
++        - { path: ^/create, roles: ROLE_USER }

@@ -1,0 +1,27 @@
+diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
+index 3a4c6cd..16f4fb5 100644
+--- a/app/Resources/views/base.html.twig
++++ b/app/Resources/views/base.html.twig
+@@ -11,6 +11,8 @@
+         </title>
+ 
+         {% block stylesheets %}
++            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
++
+             {% stylesheets
+                 'bundles/event/css/event.css'
+                 'bundles/event/css/events.css'
+diff --git a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
+index a072e2f..ae54b93 100644
+--- a/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
++++ b/src/Yoda/UserBundle/Resources/views/Security/login.html.twig
+@@ -22,7 +22,8 @@
+             <label for="password">Password:</label>
+             <input type="password" id="password" name="_password" />
+ 
+-            <button type="submit">login</button>
++            <hr/>
++            <button type="submit" class="btn btn-primary pull-right">login</button>
+         </form>
+ 
+     </article>

@@ -1,0 +1,47 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 3474255..83b9516 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -135,6 +135,8 @@ class EventController extends Controller
+             throw $this->createNotFoundException('Unable to find Event entity.');
+         }
+ 
++        $this->enforceOwnerSecurity($entity);
++
+         $editForm = $this->createEditForm($entity);
+         $deleteForm = $this->createDeleteForm($id);
+ 
+@@ -178,6 +180,8 @@ class EventController extends Controller
+             throw $this->createNotFoundException('Unable to find Event entity.');
+         }
+ 
++        $this->enforceOwnerSecurity($entity);
++
+         $deleteForm = $this->createDeleteForm($id);
+         $editForm = $this->createEditForm($entity);
+         $editForm->handleRequest($request);
+@@ -212,6 +216,8 @@ class EventController extends Controller
+                 throw $this->createNotFoundException('Unable to find Event entity.');
+             }
+ 
++            $this->enforceOwnerSecurity($entity);
++
+             $em->remove($entity);
+             $em->flush();
+         }
+@@ -245,4 +251,15 @@ class EventController extends Controller
+             throw new AccessDeniedException('Need '.$role);
+         }
+     }
++
++    private function enforceOwnerSecurity(Event $event)
++    {
++        $user = $this->getUser();
++
++        if ($user != $event->getOwner()) {
++            // if you're using 2.5 or higher
++            // throw $this->createAccessDeniedException('You are not the owner!!!');
++            throw new AccessDeniedException('You are not the owner!!!');
++        }
++    }
+ }

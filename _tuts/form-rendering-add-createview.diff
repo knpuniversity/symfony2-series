@@ -1,0 +1,12 @@
+diff --git a/src/Yoda/UserBundle/Controller/RegisterController.php b/src/Yoda/UserBundle/Controller/RegisterController.php
+index db6d490..722caaa 100644
+--- a/src/Yoda/UserBundle/Controller/RegisterController.php
++++ b/src/Yoda/UserBundle/Controller/RegisterController.php
+@@ -21,6 +21,6 @@ class RegisterController extends Controller
+             ->getForm()
+         ;
+ 
+-        return array('form' => $form);
++        return array('form' => $form->createView());
+     }
+ }

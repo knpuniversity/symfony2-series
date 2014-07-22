@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+index 2d11a75..d6bf3f4 100644
+--- a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
++++ b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+ 
+ class RegisterControllerTest extends WebTestCase
+ {
+-    public function testIndex()
++    public function testRegister()
+     {
+         $client = static::createClient();
+ 

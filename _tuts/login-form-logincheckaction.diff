@@ -1,0 +1,17 @@
+diff --git a/src/Yoda/UserBundle/Controller/SecurityController.php b/src/Yoda/UserBundle/Controller/SecurityController.php
+index e07694e..43c3c7e 100644
+--- a/src/Yoda/UserBundle/Controller/SecurityController.php
++++ b/src/Yoda/UserBundle/Controller/SecurityController.php
+@@ -34,4 +34,11 @@ class SecurityController extends Controller
+             'error'         => $error,
+         );
+     }
++
++    /**
++     * @Route("/login_check", name="login_check")
++     */
++    public function loginCheckAction()
++    {
++    }
+ }
+\ No newline at end of file

@@ -1,0 +1,20 @@
+diff --git a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+index d2aed6d..8812de7 100644
+--- a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
++++ b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+@@ -10,6 +10,15 @@ class RegisterControllerTest extends WebTestCase
+     {
+         $client = static::createClient();
+ 
++        $container = self::$kernel->getContainer();
++        $em = $container->get('doctrine');
++        $userRepo = $em->getRepository('UserBundle:User');
++        $userRepo->createQueryBuilder('u')
++            ->delete()
++            ->getQuery()
++            ->execute()
++        ;
++
+         $crawler = $client->request('GET', '/register');
+         $response = $client->getResponse();
+ 

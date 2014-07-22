@@ -1,0 +1,19 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 9a4027c..7f8e172 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -26,7 +26,13 @@ class EventController extends Controller
+     {
+         $em = $this->getDoctrine()->getManager();
+ 
+-        $entities = $em->getRepository('EventBundle:Event')->findAll();
++        $entities = $em
++            ->getRepository('EventBundle:Event')
++            ->createQueryBuilder('e')
++            ->addOrderBy('e.time', 'ASC')
++            ->getQuery()
++            ->execute()
++        ;
+ 
+         return array(
+             'entities' => $entities,

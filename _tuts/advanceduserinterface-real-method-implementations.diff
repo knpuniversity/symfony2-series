@@ -1,0 +1,34 @@
+diff --git a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
+index 5c55673..fa6d582 100644
+--- a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
++++ b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
+@@ -26,6 +26,7 @@ class LoadUsers implements FixtureInterface, ContainerAwareInterface
+         $admin->setUsername('wayne');
+         $admin->setPassword($this->encodePassword($admin, 'waynepass'));
+         $admin->setRoles(array('ROLE_ADMIN'));
++        $admin->setIsActive(false);
+         $manager->persist($admin);
+ 
+         // the queries aren't done until now
+diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
+index 55015ce..4b34f75 100644
+--- a/src/Yoda/UserBundle/Entity/User.php
++++ b/src/Yoda/UserBundle/Entity/User.php
+@@ -183,7 +183,7 @@ class User implements AdvancedUserInterface
+ 
+     public function isAccountNonLocked()
+     {
+-        return false;
++        return true;
+     }
+ 
+     public function isCredentialsNonExpired()
+@@ -193,7 +193,7 @@ class User implements AdvancedUserInterface
+ 
+     public function isEnabled()
+     {
+-        return true;
++        return $this->getIsActive();
+     }
+ 
+ 

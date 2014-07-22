@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index fec0e3b..b17cb14 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -29,7 +29,7 @@ class EventController extends Controller
+ 
+         // temporarily abuse this controller to see if this all works
+         $userRepo = $em->getRepository('UserBundle:User');
+-        var_dump($userRepo->findOneByUsernameOrEmail('user'));die;
++        var_dump($userRepo->findOneByUsernameOrEmail('user@user.com'));die;
+ 
+         $entities = $em->getRepository('EventBundle:Event')->findAll();
+ 

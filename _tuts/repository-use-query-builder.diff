@@ -1,0 +1,18 @@
+diff --git a/src/Yoda/UserBundle/Entity/UserRepository.php b/src/Yoda/UserBundle/Entity/UserRepository.php
+index 4a33490..d0fd160 100644
+--- a/src/Yoda/UserBundle/Entity/UserRepository.php
++++ b/src/Yoda/UserBundle/Entity/UserRepository.php
+@@ -14,6 +14,12 @@ class UserRepository extends EntityRepository
+ {
+     public function findOneByUsernameOrEmail($username)
+     {
+-        // ... todo - get your query on
++        return $this->createQueryBuilder('u')
++            ->andWhere('u.username = :username OR u.email = :email')
++            ->setParameter('username', $username)
++            ->setParameter('email', $username)
++            ->getQuery()
++            ->getOneOrNullResult()
++        ;
+     }
+ }

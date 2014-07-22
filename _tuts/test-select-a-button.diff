@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+index 2b0cc6a..b34c934 100644
+--- a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
++++ b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+@@ -21,5 +21,8 @@ class RegisterControllerTest extends WebTestCase
+             ->attr('value')
+         ;
+         $this->assertEquals('Leia', $usernameVal);
++
++        // the name of our button is "Register!"
++        $form = $crawler->selectButton('Register!')->form();
+     }
+ }

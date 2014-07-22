@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+index 536ee1d..d9b7a4c 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+@@ -8,6 +8,8 @@
+ 
+             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                 <a class="link" href="{{ path('logout') }}">Logout</a>
++            {% else %}
++                <a class="link" href="{{ path('login_form') }}">Login</a>
+             {% endif %}
+         </header>
+ 

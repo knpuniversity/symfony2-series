@@ -1,0 +1,17 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index b0b5e86..6808258 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -25,11 +25,7 @@ class EventController extends Controller
+      */
+     public function indexAction()
+     {
+-        $user = $this->container
+-            ->get('security.context')
+-            ->getToken()
+-            ->getUser()
+-        ;
++        $user = $this->getUser();
+         var_dump($user->getUsername());die;
+ 
+         $em = $this->getDoctrine()->getManager();

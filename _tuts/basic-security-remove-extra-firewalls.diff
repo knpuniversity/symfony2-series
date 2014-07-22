@@ -1,0 +1,19 @@
+diff --git a/app/config/security.yml b/app/config/security.yml
+index 989a6d2..693eb51 100644
+--- a/app/config/security.yml
++++ b/app/config/security.yml
+@@ -14,14 +14,6 @@ security:
+                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+ 
+     firewalls:
+-        dev:
+-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+-            security: false
+-
+-        login:
+-            pattern:  ^/demo/secured/login$
+-            security: false
+-
+         secured_area:
+             pattern:    ^/demo/secured/
+             form_login:

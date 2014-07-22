@@ -1,0 +1,22 @@
+diff --git a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+index 415aa8d..2b0cc6a 100644
+--- a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
++++ b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+@@ -10,10 +10,16 @@ class RegisterControllerTest extends WebTestCase
+     {
+         $client = static::createClient();
+ 
+-        $client->request('GET', '/register');
++        $crawler = $client->request('GET', '/register');
+         $response = $client->getResponse();
+ 
+         $this->assertEquals(200, $response->getStatusCode());
+         $this->assertContains('Register', $response->getContent());
++
++        $usernameVal = $crawler
++            ->filter('#user_register_username')
++            ->attr('value')
++        ;
++        $this->assertEquals('Leia', $usernameVal);
+     }
+ }

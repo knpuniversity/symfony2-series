@@ -1,0 +1,12 @@
+diff --git a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+index b74b469..415aa8d 100644
+--- a/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
++++ b/src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
+@@ -14,6 +14,6 @@ class RegisterControllerTest extends WebTestCase
+         $response = $client->getResponse();
+ 
+         $this->assertEquals(200, $response->getStatusCode());
+-        $this->assertContains('Registerxxxx', $response->getContent());
++        $this->assertContains('Register', $response->getContent());
+     }
+ }

@@ -1,0 +1,31 @@
+diff --git a/play.php b/play.php
+index f7fd5b9..1067b0d 100644
+--- a/play.php
++++ b/play.php
+@@ -21,14 +21,15 @@ $container->set('request', $request);
+ 
+ // all our setup is done!!!!!!
+ 
+-use Yoda\EventBundle\Entity\Event;
+-
+-$event = new Event();
+-$event->setName('Darth\'s surprise birthday party');
+-$event->setLocation('Deathstar');
+-$event->setTime(new \DateTime('tomorrow noon'));
+-//$event->setDetails('Ha! Darth HATES surprises!!!!');
+-
+-$em = $container->get('doctrine')->getManager();
+-$em->persist($event);
+-$em->flush();
++$em = $container->get('doctrine')
++    ->getManager()
++;
++
++$user = $em
++    ->getRepository('UserBundle:User')
++    ->findOneBy(array('username' => 'wayne'))
++;
++
++foreach ($user->getEvents() as $event) {
++    var_dump($event->getName());
++}

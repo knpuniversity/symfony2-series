@@ -1,0 +1,21 @@
+diff --git a/src/Yoda/UserBundle/Controller/SecurityController.php b/src/Yoda/UserBundle/Controller/SecurityController.php
+index b78a43a..9e50da8 100644
+--- a/src/Yoda/UserBundle/Controller/SecurityController.php
++++ b/src/Yoda/UserBundle/Controller/SecurityController.php
+@@ -19,14 +19,8 @@ class SecurityController extends Controller
+         $session = $request->getSession();
+ 
+         // get the login error if there is one
+-        if ($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
+-            $error = $request->attributes->get(
+-                SecurityContextInterface::AUTHENTICATION_ERROR
+-            );
+-        } else {
+-            $error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
+-            $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
+-        }
++        $error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
++        $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
+ 
+         return array(
+             // last username entered by the user

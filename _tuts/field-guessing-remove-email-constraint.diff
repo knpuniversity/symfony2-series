@@ -1,0 +1,12 @@
+diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
+index 0ce50d8..5b6cadb 100644
+--- a/src/Yoda/UserBundle/Entity/User.php
++++ b/src/Yoda/UserBundle/Entity/User.php
+@@ -46,7 +46,6 @@ class User implements AdvancedUserInterface, Serializable
+ 
+     /**
+      * @ORM\Column(type="string", length=255, nullable=true)
+-     * @Assert\Email
+      */
+     private $email;
+ 

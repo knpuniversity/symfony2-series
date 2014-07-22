@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index c1a9883..6160ff1 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -84,6 +84,8 @@ class EventController extends Controller
+     {
+         $securityContext = $this->container->get('security.context');
+         if (!$securityContext->isGranted('ROLE_ADMIN')) {
++            // in Symfony 2.5
++            // throw $this->createAccessDeniedException('message!');
+             throw new AccessDeniedException('Only an admin can do this!!!!');
+         }
+ 

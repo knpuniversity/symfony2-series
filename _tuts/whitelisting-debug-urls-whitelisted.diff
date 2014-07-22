@@ -1,0 +1,12 @@
+diff --git a/app/config/security.yml b/app/config/security.yml
+index d82815f..6e3339a 100644
+--- a/app/config/security.yml
++++ b/app/config/security.yml
+@@ -26,4 +26,7 @@ security:
+ 
+     access_control:
+         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
++        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
++        - { path: ^/(css|js), roles: IS_AUTHENTICATED_ANONYMOUSLY }
++        - { path: ^/(_wdt|_profiler), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/, roles: ROLE_USER }
