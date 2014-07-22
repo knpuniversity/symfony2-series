@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 /**
  * UserRepository
@@ -30,7 +31,11 @@ class UserRepository extends EntityRepository implements UserProviderInterface
             ));
         }
 
-        return $this->find($user->getId());
+        if (!$refreshedUser = $this->find($user->getId())) {
+            throw new UsernameNotFoundException(sprintf('User with id %s not found', json_encode($user->getId())));
+        }
+
+        return $refreshedUser;
     }
 
     public function supportsClass($class)
