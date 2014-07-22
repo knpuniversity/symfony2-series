@@ -1,4 +1,4 @@
-title:  Starting in Symfony2: Episode 2 (2.2)
+title:  Starting in Symfony2: Episode 2 (2.4+)
 price:  12
 length: 1:50:47
 summary: |
@@ -23,7 +23,7 @@ summary: |
 
 illustration: sf2-ep2.png
 priority: 140
-versionNumber: 2.2
+versionNumber: 2.4+
 originalVersion: 25
 isActiveVersion: 1
 tags:
