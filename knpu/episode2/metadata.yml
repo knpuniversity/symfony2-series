@@ -38,27 +38,139 @@ chapters:
         title:      "Security Fundamentals"
         is_free:    true
         length:     16:47
+    "authorization-access-control":
+        title:      Authorization Access Control
+        is_free:    false
+        length:     12:11
+    "login-form":
+        title:      Login Form
+        is_free:    false
+        length:     8:04
+    "login-form2":
+        title:      Login Form Revisted
+        is_free:    false
+        length:     15:35
+    "logout":
+        title:      Logout
+        is_free:    false
+        length:     8:54
+    "twig-security-is-authenticated":
+        title:      Twig Security is Authenticated
+        is_free:    false
+        length:     9:29
+    "deny-access-controller":
+        title:      Deny Access Controller
+        is_free:    false
+        length:     10:45
     "entity-security":
         title:      Entity Security
         is_free:    false
-        length:     12:11
-    repository:
-        title:      Repository Security
+        length:     10:45        
+    "saving-users":
+        title:      Saving Users
         is_free:    false
-        length:     8:04
+        length:     10:45         
+    "roles-disabling-user":
+        title:      Roles Disabling User
+        is_free:    false
+        length:     10:45 
+    "repository":
+        title:      Repository
+        is_free:    false
+        length:     10:45
+    "query-builder":
+        title:      Query Builder
+        is_free:    false
+        length:     10:45
+    "user-provider":
+        title:      User Provider
+        is_free:    false
+        length:     10:45
+    "user-serialization":
+        title:      User Serialization
+        is_free:    false
+        length:     10:45
     "registration-form":
         title:      Registration Form
         is_free:    false
-        length:     15:35
+        length:     10:45
+    "form-rendering":
+        title:      Form Rendering
+        is_free:    false
+        length:     10:45
+    "repeat-compound-fields":
+        title:      Repeat Compound Fields
+        is_free:    false
+        length:     10:45
+    "form-submit":
+        title:      Form Submit
+        is_free:    false
+        length:     10:45
+    "form-data":
+        title:      Form Data
+        is_free:    false
+        length:     10:45
+    "plain-password":
+        title:      Plain Password
+        is_free:    false
+        length:     10:45
+    "form-type-class":
+        title:      Form Type Class
+        is_free:    false
+        length:     10:45
+    "field-options-html5":
+        title:      Field Options HTML5
+        is_free:    false
+        length:     10:45
     "registration-validation":
         title:      Registration Validation
         is_free:    false
-        length:     8:54
-    testing:
-        title:      Functional Testing
+        length:     10:45
+    "flash-message":
+        title:      Flash Message
         is_free:    false
-        length:     9:29
+        length:     10:45
+    "auto-login":
+        title:      Auto Login
+        is_free:    false
+        length:     10:45
+    "testing":
+        title:      Testing
+        is_free:    false
+        length:     10:45
+    "testing-forms":
+        title:      Testing Forms
+        is_free:    false
+        length:     10:45
+    "testing-data":
+        title:      Testing Data
+        is_free:    false
+        length:     10:45
+    "container-doctrine":
+        title:      Container Doctrine
+        is_free:    false
+        length:     10:45
     "after-dinner-mint":
-        title:      After-dinner Mint
+        title:      After Dinner Mint
+        is_free:    false
+        length:     10:45
+    "role-hierarchies":
+        title:      Role Hierarchies
+        is_free:    false
+        length:     10:45
+    "impersonation":
+        title:      Impersonation
+        is_free:    false
+        length:     10:45
+    "secure-every-page":
+        title:      Secure Every Page
+        is_free:    false
+        length:     10:45
+    "accessing-security-user":
+        title:      Accessing Security User
+        is_free:    false
+        length:     10:45
+    "remember-me":
+        title:      Remember Me
         is_free:    false
         length:     10:45
