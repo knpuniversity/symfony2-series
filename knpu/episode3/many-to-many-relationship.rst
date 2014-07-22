@@ -1,8 +1,7 @@
 AJAX and JSON Responses
 =======================
 
-What if the site allowed users to say that they were "attending" an event?
-That would be awesome - so let's do it!
+I want you to attend my event! So, you are going to need to be able to RSVP.
 
 Adding a ManyToMany Relationship
 --------------------------------
@@ -16,14 +15,14 @@ We already added a :doc:`ManyToOne relationship <doctrine-relationship>`
 earlier and adding a ``ManyToMany`` will be very similar.
 
 To model this, create a new ``attendees`` property on ``Event`` that'll hold
-an array of Users attending this event::
+an array of Users that can't wait to go::
 
     // src/Yoda/EventBundle/Entity/Event.php
     // ...
 
     protected $attendees;
 
-Like with a ``ManyToOne``, we just need to add a simple annotation that tells
+Like with a ``ManyToOne``, we just need an annotation that tells
 Doctrine what type of association this is and what entity it relates to::
 
     // src/Yoda/EventBundle/Entity/Event.php
@@ -52,7 +51,7 @@ We saw this on the ``User.events`` property earlier when we added the
 :ref:`OneToMany association<inverse-relation-array-collection>`.
 
 
-Next, add a ``getter`` method only - I'll explain why the ``setter`` isn't
+Next, we'll add a ``getter`` method only - I'll explain why the ``setter`` isn't
 needed in a moment::
 
     // src/Yoda/EventBundle/Entity/Event.php
@@ -86,10 +85,10 @@ database:
         ADD CONSTRAINT FK_92589AE2A76ED395 FOREIGN KEY (user_id)
         REFERENCES yoda_user (id) ON DELETE CASCADE;
 
-With a ``ManyToMany``, Doctrine is smart enough to know that we need a new
-"join table" that has a ``event_id`` and ``user_id`` properties. When we
-relate an ``Event`` to a ``User``, it'll insert a new row in this table for
-us. Doctrine will handle all of those ugly details.
+Doctrine is smart enough to know that we need a new "join table" that has 
+``event_id`` and ``user_id`` properties. When we relate an ``Event`` to a 
+``User``, it'll insert a new row in this table for us. Doctrine will handle 
+all of those ugly details.
 
 Re-run the command with ``--force`` to add the table:
 
