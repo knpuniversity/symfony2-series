@@ -55,7 +55,7 @@ When the ``User`` object is serialized, it'll call the ``serialize`` method
 instead of trying to do it automatically. When the string is deserialized,
 the ``unserialize`` method is called. This may seem odd, but let's just return
 the ``id``, ``username`` and ``password`` inside an array for ``serialize``.
-For ``unserialize``, just put those 3 values back on the object
+For ``unserialize``, just put those 3 values back on the object::
 
     // src/Yoda/UserBundle/Entity/User.php
     // ..

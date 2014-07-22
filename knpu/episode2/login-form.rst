@@ -87,7 +87,7 @@ First, add the ``Route`` annotation namespace::
         // ...
     }
 
-Now, we can add the route right above the method.
+Now, we can add the route right above the method::
 
     // src/Yoda/UserBundle/Controller/SecurityController.php
     // ...
@@ -128,7 +128,7 @@ of copy-and-paste from the docs.
 Head to the security chapter and find the `login form section`_. Copy the
 ``loginAction`` and paste it into our controller. Don't forget to add
 the ``use`` statements for the ``SecurityContextInterface`` and ``Request``
-classes:
+classes::
 
     // src/Yoda/UserBundle/Controller/SecurityController.php
     namespace Yoda\UserBundle\Controller;
@@ -221,3 +221,4 @@ supports the rebel forces.
 .. _`login form section`: http://symfony.com/doc/current/book/security.html#using-a-traditional-login-form
 .. _`@Template annotation`: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/view.html
 .. _`SensioFrameworkExtraBundle`: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
+.. _`FosUserBundle`: https://github.com/FriendsOfSymfony/FOSUserBundle

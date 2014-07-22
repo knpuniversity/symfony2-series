@@ -79,7 +79,7 @@ Route check! Controller check! Template check! Let's try it! Oh boy, an error:
     route does not exist.
 
 Ah, the copied template code has a form that submits to a route called ``login_check``.
-Let's create another action method and use ``@Route`` to create that route.
+Let's create another action method and use ``@Route`` to create that route::
 
     // ...
     // src/Yoda/UserBundle/Controller/SecurityController.php

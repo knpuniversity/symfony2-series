@@ -76,7 +76,7 @@ It's pretty fancy!
 
 Start by calling the ``createFormBuilder()`` method. Now, use the ``add``
 function to give the form ``username``, ``email`` and ``password``
-fields.
+fields::
 
     // src/Yoda/UserBundle/Controller/RegisterController.php
 
