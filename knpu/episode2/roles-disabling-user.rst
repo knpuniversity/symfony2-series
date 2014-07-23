@@ -120,7 +120,7 @@ After that, update our schema to add the new field:
 So the ``isActive`` field *exists*, but it's not actually used during login.
 To make this work, change the ``User`` class to implement
 :symfonyclass:`Symfony\\Component\\Security\\Core\\User\\AdvancedUserInterface`
-instead of ``UserInterface``:
+instead of ``UserInterface``::
 
     // src/Yoda/UserBundle/Entity/User.php
     // ...

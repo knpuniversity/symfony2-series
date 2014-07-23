@@ -53,3 +53,5 @@ My big point is that if you have the container, then you can get *any* object
 in order to do *any* work you need to. The only tricky part is knowing what
 the name of the service object is and what methods you can call on it. Using
 the ``app/console container:debug`` task can help.
+
+.. _`first episode in this series`: http://knpuniversity.com/screencast/symfony2-ep1/controller#symfony-ep1-what-is-a-service

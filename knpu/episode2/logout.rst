@@ -5,6 +5,8 @@ What about logging out? Symfony has some magic for that too!
 
 Look at the ``logout`` part of ``security.yml``:
 
+.. code-block:: yaml
+
     # app/config/security.yml
     # ...
     firewalls:
@@ -18,6 +20,8 @@ Look at the ``logout`` part of ``security.yml``:
 that route in a second. ``target`` is where you want to redirect the user
 after logging out. We already have a route called ``event``, which is our
 event list page. Use that for ``target``:
+
+.. code-block:: yaml
 
     # app/config/security.yml
     # ...
@@ -118,6 +122,8 @@ So how can we add this CSS file to *only* this page? First, open up the base
 template. Here, we have a bunch of blocks, including one called ``stylesheets``.
 All of our global CSS link tags live inside of it:
 
+.. code-block:: html+jinja
+
     # app/Resources/views/base.html.twig
     # ...
 
@@ -174,6 +180,8 @@ And by adding a little error class, it looks even better:
 And while we're making things look better, let's open up ``base.html.twig``
 and add a link tag to the Bootstrap CSS file. Just use a CDN URL for simplicity:
 
+.. code-block:: html+jinja
+
     {# app/Resources/views/base.html.twig #}
     {# ... #}
 
@@ -185,6 +193,8 @@ and add a link tag to the Bootstrap CSS file. Just use a CDN URL for simplicity:
 
 Back in ``login.html.twig``, I'll tweak the submit button so things look
 nicer:
+
+.. code-block:: html+jinja
 
     {# src/Yoda/UserBundle/Resources/views/Security/login.html.twig #}
     {# ... #}

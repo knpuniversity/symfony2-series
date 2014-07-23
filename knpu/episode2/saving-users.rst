@@ -27,7 +27,7 @@ Saving users is *almost* easy: just create the object, give
 it a username and then persist and flush it.
 
 The tricky part is that darn ``password`` field, which needs
-to be encoded with ``bcrypt``.
+to be encoded with ``bcrypt``::
 
     // src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
     // ...
@@ -103,7 +103,7 @@ special "encoder" object that knows how to encrypt our passwords. Remember
 the ``bcrypt`` config we put in ``security.yml``? Yep, this object will use that.
 
 After we grab the encoder, we just call ``encodePassword()``, grab a sandwich and let it do
-all the work:
+all the work::
 
     // src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
     // ...

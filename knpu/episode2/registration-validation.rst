@@ -146,3 +146,4 @@ We won't show it here, but check it out.
 .. _`UniqueEntity constraint`: http://symfony.com/doc/current/reference/constraints/UniqueEntity.html
 .. _`Callback`: http://symfony.com/doc/current/reference/constraints/Callback.html
 .. _`Constraint Configuration`: http://bit.ly/sf2-validation-config
+.. _`reference section of the documentation`: http://symfony.com/doc/current/reference/constraints.html
