@@ -1,0 +1,12 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 1113d12..8fbd600 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -258,6 +258,7 @@ class EventController extends Controller
+             );
+ 
+             $response = new Response(json_encode($data));
++            $response->headers->set('Content-Type', 'application/json');
+ 
+             return $response;
+         }

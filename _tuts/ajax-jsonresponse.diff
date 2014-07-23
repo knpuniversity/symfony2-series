@@ -1,0 +1,23 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 8fbd600..2b30cb8 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -9,7 +9,7 @@ use Yoda\EventBundle\Form\EventType;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+-use Symfony\Component\HttpFoundation\Response;
++use Symfony\Component\HttpFoundation\JsonResponse;
+ 
+ /**
+  * Event controller.
+@@ -257,8 +257,7 @@ class EventController extends Controller
+                 'attending' => true
+             );
+ 
+-            $response = new Response(json_encode($data));
+-            $response->headers->set('Content-Type', 'application/json');
++            $response = new JsonResponse($data);
+ 
+             return $response;
+         }

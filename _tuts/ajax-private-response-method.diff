@@ -1,0 +1,47 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 63d1131..6f631ac 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -252,19 +252,7 @@ class EventController extends Controller
+         $em->persist($event);
+         $em->flush();
+ 
+-        if ($format == 'json') {
+-            $data = array(
+-                'attending' => true
+-            );
+-
+-            $response = new JsonResponse($data);
+-
+-            return $response;
+-        }
+-
+-        return $this->redirect($this->generateUrl('event_show', array(
+-            'slug' => $event->getSlug()
+-        )));
++        return $this->createAttendingResponse($event, $format);
+     }
+ 
+     public function unattendAction($id, $format)
+@@ -284,9 +272,20 @@ class EventController extends Controller
+         $em->persist($event);
+         $em->flush();
+ 
++        return $this->createAttendingResponse($event, $format);
++    }
++
++
++    /**
++     * @param Event $event
++     * @param string $format
++     * @return \Symfony\Component\HttpFoundation\Response
++     */
++    private function createAttendingResponse(Event $event, $format)
++    {
+         if ($format == 'json') {
+             $data = array(
+-                'attending' => false
++                'attending' => $event->hasAttendee($this->getUser())
+             );
+ 
+             $response = new JsonResponse($data);

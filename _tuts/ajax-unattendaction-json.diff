@@ -1,0 +1,30 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 2b30cb8..63d1131 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -267,7 +267,7 @@ class EventController extends Controller
+         )));
+     }
+ 
+-    public function unattendAction($id)
++    public function unattendAction($id, $format)
+     {
+         $em = $this->getDoctrine()->getManager();
+         /** @var $event \Yoda\EventBundle\Entity\Event */
+@@ -284,6 +284,16 @@ class EventController extends Controller
+         $em->persist($event);
+         $em->flush();
+ 
++        if ($format == 'json') {
++            $data = array(
++                'attending' => false
++            );
++
++            $response = new JsonResponse($data);
++
++            return $response;
++        }
++
+         return $this->redirect($this->generateUrl('event_show', array(
+             'slug' => $event->getSlug()
+         )));

@@ -1,0 +1,18 @@
+diff --git a/src/Yoda/EventBundle/Resources/config/routing/event.yml b/src/Yoda/EventBundle/Resources/config/routing/event.yml
+index 9ad25fe..59ff76d 100644
+--- a/src/Yoda/EventBundle/Resources/config/routing/event.yml
++++ b/src/Yoda/EventBundle/Resources/config/routing/event.yml
+@@ -28,9 +28,9 @@ event_delete:
+     requirements: { _method: post|delete }
+ 
+ event_attend:
+-    pattern:  /{id}/attend
+-    defaults: { _controller: "EventBundle:Event:attend" }
++    pattern:  /{id}/attend.{format}
++    defaults: { _controller: "EventBundle:Event:attend", format: html }
+ 
+ event_unattend:
+-    pattern:  /{id}/unattend
+-    defaults: { _controller: "EventBundle:Event:unattend" }
++    pattern:  /{id}/unattend.{format}
++    defaults: { _controller: "EventBundle:Event:unattend", format: html }

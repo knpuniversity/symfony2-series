@@ -1179,7 +1179,42 @@
             "id": "manytomany-add-unattendaction-and-link",
             "name": "ManyToMany: Add unattendAction and link",
             "description": null
+        },
+        {
+            "id": "ajax-format-in-route",
+            "name": "AJAX: _format in route",
+            "description": null
+        },
+        {
+            "id": "ajax-add-requirements",
+            "name": "AJAX: Add requirements",
+            "description": null
+        },
+        {
+            "id": "ajax-simple-json-response",
+            "name": "AJAX: Simple JSON response",
+            "description": null
+        },
+        {
+            "id": "ajax-set-content-type-header",
+            "name": "AJAX: Set content-type header",
+            "description": null
+        },
+        {
+            "id": "ajax-jsonresponse",
+            "name": "AJAX: JsonResponse",
+            "description": null
+        },
+        {
+            "id": "ajax-unattendaction-json",
+            "name": "AJAX: unattendAction JSON",
+            "description": null
+        },
+        {
+            "id": "ajax-private-response-method",
+            "name": "AJAX: private response method",
+            "description": null
         }
     ],
-    "sha": "4af55bb239517ca987a284fd6e7f978ad21a90cc"
+    "sha": "c2bfef51e57650047e4e2c144bfd9c8d5d5b07a8"
 }

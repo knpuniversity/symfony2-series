@@ -1,0 +1,38 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index df01846..1113d12 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -9,6 +9,7 @@ use Yoda\EventBundle\Form\EventType;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
++use Symfony\Component\HttpFoundation\Response;
+ 
+ /**
+  * Event controller.
+@@ -234,7 +235,7 @@ class EventController extends Controller
+         return $this->redirect($this->generateUrl('event'));
+     }
+ 
+-    public function attendAction($id)
++    public function attendAction($id, $format)
+     {
+         $em = $this->getDoctrine()->getManager();
+         /** @var $event \Yoda\EventBundle\Entity\Event */
+@@ -251,6 +252,16 @@ class EventController extends Controller
+         $em->persist($event);
+         $em->flush();
+ 
++        if ($format == 'json') {
++            $data = array(
++                'attending' => true
++            );
++
++            $response = new Response(json_encode($data));
++
++            return $response;
++        }
++
+         return $this->redirect($this->generateUrl('event_show', array(
+             'slug' => $event->getSlug()
+         )));
