@@ -1,7 +1,7 @@
 JSON up in your Response
 ========================
 
-Yea, we can RSVP for an event. But it's not super-impressive yet. But you
+Yea, we can RSVP for an event. But it's not super-impressive yet. You
 and I both know that a little AJAX could spice things up.
 
 Creating JSON-returning Actions for AJAX
@@ -13,7 +13,7 @@ the browser to do full page refreshes.
 
 So why not return something different, like a JSON response? JSON is great
 because it's easy to create in PHP and easy for JavaScript to understand.
-And actually, could we make the endpoints able to return both? Why not!
+And actually, could we make the endpoints return both? Why not!
 
 Start by adding a ``format`` wildcard to both of the routes. Give it a default
 value of ``html``:
@@ -33,11 +33,11 @@ value of ``html``:
 
 As soon as we give a wildcard a default value, it makes it optional. For
 us, it means that we can now go to ``/5/attend.json``, but ``/5/attend``
-still works too. So if there's if the ``format`` part is missing, the route
+still works too. So if the ``format`` part is missing, the route
 still matches.
 
 In a truly RESTful API, it's more "correct" to read the ``Accept`` header
-instead of putting the format in the URL like we're doing here If you're
+instead of putting the format in the URL like we're doing here. If you're
 interested in that, check out our `REST Series`_, it'll blow your mind.
 
 Routing Wildcard requirements
@@ -70,7 +70,7 @@ any wildcard.
 Returning a JSON Response from a Controller
 -------------------------------------------
 
-We've have a new wildcard in our route. Now we can use it to return JSON
+With this new wildcard in our route, we can now use it to return JSON
 *or* a redirect response.
 
 You know what the next step is: give ``attendAction`` a ``$format`` argument::
@@ -97,7 +97,7 @@ If it's equal to ``json``, we can reutrn a JSON string instead of a redirect::
 
         if ($format == 'json') {
             $data = array(
-                'attending' => 1
+                'attending' => true
             );
 
             $response = new Response(json_encode($data));
@@ -115,7 +115,7 @@ And do you remember the cardinal rule of controllers? A controller *always*
 returns a Symfony Response object. So just create a new ``Response`` object
 and set the JSON as its body. It's that simple, stop over-complicating it!
 
-Test it out by copying the link and adding ``.json`` to the end. Hey, beautiful
+Test it out by copying the link and adding ``.json`` to the end. Hello, beautiful
 JSON!
 
 .. tip::
