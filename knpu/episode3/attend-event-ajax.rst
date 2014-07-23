@@ -1,14 +1,14 @@
 Adding the AJAX Touch: JavaScript
 =================================
 
-Stop. We haven't touched JavaScript yet. And yet, because the attend and unattend
+Stop. We haven't touched JavaScript yet. But, because the attend and unattend
 endpoints can return JSON, our app is fully ready for some AJAX. The attend/unattend
 button will be a lot cooler with it anyways, so let's add some JavaScript.
 
 Click Event to Send AJAX
 ------------------------
 
-Let's give both links a ``js-attend-toggle`` class that we can look for in
+I'll give both links a ``js-attend-toggle`` class that we can look for in
 jQuery:
 
     {# src/Yoda/EventBundle/Resources/views/Event/show.html.twig #}
@@ -33,9 +33,9 @@ jQuery:
 Adding the JavaScript
 ---------------------
 
-Wait! We can't write jQuery without, ya know, including jQuery. So let's
-ppen up our base template add it inside the ``javascripts`` block. I'm just
-going to use a CDN:
+Wait! We can't write jQuery without, ya know, including jQuery. So
+open up the base template and add it inside the ``javascripts`` block.
+I'm just going to use a CDN:
 
 .. code-block:: html+jinja
 
@@ -83,7 +83,7 @@ file in the code download:
 I know. In a perfect world, this should live in an external JavaScript file.
 I'll leave that to you.
 
-Let's try it! Ooh, fancy. The link disappears and we get a cute message.
+Let's try our new AJAX magic! Ooh, fancy. The link disappears and we get a cute message.
 
 The code is simple enough: we listen on a click of either link, send an AJAX
 request, then hide the link and show a message. To get the URL, I'm using
