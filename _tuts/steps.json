@@ -1214,7 +1214,17 @@
             "id": "ajax-private-response-method",
             "name": "AJAX: private response method",
             "description": null
+        },
+        {
+            "id": "ajax-add-js-links",
+            "name": "AJAX: Add js- links",
+            "description": null
+        },
+        {
+            "id": "ajax-basic-javascript",
+            "name": "AJAX: Basic JavaScript",
+            "description": null
         }
     ],
-    "sha": "c2bfef51e57650047e4e2c144bfd9c8d5d5b07a8"
+    "sha": "30be3cdeb565e9097bf568fcce874b2a045613e8"
 }

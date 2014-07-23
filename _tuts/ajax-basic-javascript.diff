@@ -1,0 +1,53 @@
+diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
+index 42abf66..4120e2b 100644
+--- a/app/Resources/views/base.html.twig
++++ b/app/Resources/views/base.html.twig
+@@ -34,6 +34,8 @@
+         {% endif %}
+ 
+         {% block body %}{% endblock %}
+-        {% block javascripts %}{% endblock %}
++        {% block javascripts %}
++            <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
++        {% endblock %}
+     </body>
+ </html>
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+index 1201f9a..0029ff8 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+@@ -64,4 +64,34 @@
+             </section>
+         </article>
+     </section>
++
++    <div class="notifications top-left"></div>
++{% endblock %}
++
++{% block javascripts %}
++    {{ parent() }}
++
++    <script>
++        $(document).ready(function() {
++            $('.js-attend-toggle').on('click', function(e) {
++                // prevents the browser from "following" the link
++                e.preventDefault();
++
++                var $anchor = $(this);
++                var url = $(this).attr('href')+'.json';
++
++                $.post(url, null, function(data) {
++                    if (data.attending) {
++                        var message = 'See you there!';
++                    } else {
++                        var message = 'We\'ll miss you!';
++                    }
++
++                    $anchor.after('<span class="label label-default">&#10004; '+message+'</span>');
++                    $anchor.hide();
++                });
++            });
++        });
++    </script>
+ {% endblock %}
++

@@ -1,0 +1,22 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+index 8cf13b9..1201f9a 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/show.html.twig
+@@ -46,11 +46,15 @@
+ 
+                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                             {% if entity.hasAttendee(app.user) %}
+-                                <a href="{{ path('event_unattend', {'id': entity.id}) }}" class="btn btn-warning btn-xs">
++                                <a href="{{ path('event_unattend', {'id': entity.id}) }}"
++                                   class="btn btn-warning btn-xs js-attend-toggle">
++
+                                     Oh no! I can't go anymore!
+                                 </a>
+                             {% else %}
+-                                <a href="{{ path('event_attend', {'id': entity.id}) }}" class="btn btn-success btn-xs">
++                                <a href="{{ path('event_attend', {'id': entity.id}) }}"
++                                   class="btn btn-success btn-xs js-attend-toggle">
++
+                                     I totally want to go!
+                                 </a>
+                             {% endif %}
