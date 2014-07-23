@@ -1,49 +1,55 @@
+Adding the AJAX Touch: JavaScript
+=================================
 
+Stop. We haven't touched JavaScript yet. And yet, because the attend and unattend
+endpoints can return JSON, our app is fully ready for some AJAX. The attend/unattend
+button will be a lot cooler with it anyways, so let's add some JavaScript.
 
-Hooking up the JavaScript for AJAX
-----------------------------------
+Click Event to Send AJAX
+------------------------
 
-These two controllers are now fully capable of returning either a proper HTML
-or JSON response. This is perfect for JavaScript, so let's hook some
-up! Since most people know it, I'll use jQuery. Since I'm going to attach
-a jQuery click event to each of the links, let's add a class we can query
-for. Let's actually display both links, but use some logic to hide the link
-that we don't initially need::
+Let's give both links a ``js-attend-toggle`` class that we can look for in
+jQuery:
 
     {# src/Yoda/EventBundle/Resources/views/Event/show.html.twig #}
     {# ... #}
 
-    <dt>who:</dt>
-    <dd>
-        {# ... #}
-
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {% if entity.hasAttendee(app.user) %}
             <a href="{{ path('event_unattend', {'id': entity.id}) }}"
-               class="attend-toggle{{ entity.hasAttendee(app.user) ? '' : ' hidden' }}">
-               Oh no! I can't go anymore!
-            </a>
+                class="btn btn-warning btn-xs js-attend-toggle">
 
+                Oh no! I can't go anymore!
+            </a>
+        {% else %}
             <a href="{{ path('event_attend', {'id': entity.id}) }}"
-                class="attend-toggle{{ entity.hasAttendee(app.user) ? ' hidden' : '' }}">
+                class="btn btn-success btn-xs js-attend-toggle">
+
                 I totally want to go!
             </a>
         {% endif %}
-    </dd>
+    {% endif %}
 
-For the JavaScript, create a ``javascripts`` block and add the ``parent()``
-function:
+Adding the JavaScript
+---------------------
+
+Wait! We can't write jQuery without, ya know, including jQuery. So let's
+ppen up our base template add it inside the ``javascripts`` block. I'm just
+going to use a CDN:
 
 .. code-block:: html+jinja
 
-    {# src/Yoda/EventBundle/Resources/views/Event/show.html.twig #}
+    {# app/Resources/views/base.html.twig #}
     {# ... #}
-
+    
     {% block javascripts %}
-        {{ parent() }}
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     {% endblock %}
 
-This lets us add JavaScript to the ``javascripts`` block that lives in our base
-template. For ease I'll just paste in the logic:
+To add JavaScript on just this page, we can override this block and call
+the ``parent()`` function. I'll paste in some jQuery magic that makes an
+AJAX call when the links are clicked. You can get this magic from the ``attend-javascript.js``
+file in the code download:
 
 .. code-block:: html+jinja
 
@@ -51,44 +57,40 @@ template. For ease I'll just paste in the logic:
     {# ... #}
 
     {% block javascripts %}
-        {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('.js-attend-toggle').on('click', function(e) {
+                // prevents the browser from "following" the link
+                e.preventDefault();
 
-        <script type="text/javascript">
-            jQuery(document).ready(function() {
-                jQuery('.attend-toggle').click(function() {
+                var $anchor = $(this);
+                var url = $(this).attr('href')+'.json';
 
-                    $(this).siblings().show();
-                    $(this).hide();
+                $.post(url, null, function(data) {
+                    if (data.attending) {
+                        var message = 'See you there!';
+                    } else {
+                        var message = 'We\'ll miss you!';
+                    }
 
-                    var url = $(this).attr('href')+'.json';
-
-                    $.post(url, null, function(data) {
-                        if (data.attending) {
-                            $.growlUI('Awesome!', 'See you there!');
-                        } else {
-                            $.growlUI('Ah darn', 'We\'ll miss you!');
-                        }
-                    });
-
-                    return false;
+                    $anchor.after('<span class="label label-default">&#10004; '+message+'</span>');
+                    $anchor.hide();
                 });
             });
-        </script>
+        });
     {% endblock %}
 
-In an ideal world, this would live in an external JavaScript file, but we'll
-let that be for now. The JavaScript is pretty straight-forward: we listen
-on a click of either link, toggle which link is displayed, then make an AJAX
-post to the server. Notice that I've appended the ``.json`` to the URL so
-that we get the JSON response, not the HTML response. Since the JSON we return
-says whether or not we're attending, we can use that to show a super cool
-message. Try out these cool jedi powers.
+I know. In a perfect world, this should live in an external JavaScript file.
+I'll leave that to you.
 
-So that's really it! Doing AJAX with Symfony is more about turning your application
-into something that can serve multiple formats of content. Since JavaScript
-loves JSON, it's a natural fit. To take this idea to the next level, check
-out the `FOSRestBundle`_. This bundle is designed to make it really natural to
-create controllers that can serve content in many different formats. If you're
-creating a rich API for your app, it's definitely worth looking into.
+Let's try it! Ooh, fancy. The link disappears and we get a cute message.
 
-.. _`FOSRestBundle`: https://github.com/FriendsOfSymfony/FOSRestBundle
+The code is simple enough: we listen on a click of either link, send an AJAX
+request, then hide the link and show a message. To get the URL, I'm using
+the href then adding ``.json`` to the end of it. That's actually kinda hacky.
+There's a sweet bundle called `FOSJsRoutingBundle`_ that can do this much
+better. It let's you actually generate Symfony routes right in JavaScript.
+
+It's easy to use, so include it in your projects!
+
+.. _`FOSJsRoutingBundle`: https://github.com/FriendsOfSymfony/FOSJsRoutingBundle
