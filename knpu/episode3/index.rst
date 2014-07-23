@@ -22,6 +22,7 @@ Starting in Symfony2: Episode3
     content-type-jsonresponse
     attend-event-ajax
     error-pages
+    render-controller
     services
     twig-extension-listener
     doctrine-listener
