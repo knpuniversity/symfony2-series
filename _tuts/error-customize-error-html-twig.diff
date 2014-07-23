@@ -1,0 +1,24 @@
+diff --git a/app/Resources/TwigBundle/views/Exception/error.html.twig b/app/Resources/TwigBundle/views/Exception/error.html.twig
+new file mode 100644
+index 0000000..ebb326a
+--- /dev/null
++++ b/app/Resources/TwigBundle/views/Exception/error.html.twig
+@@ -0,0 +1,17 @@
++{% extends '::base.html.twig' %}
++
++{% block stylesheets %}
++    {{ parent() }}
++
++    <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}" />
++{% endblock %}
++
++{% block body %}
++    <section class="login">
++        <article>
++            <h1>Ah crap!</h1>
++
++            <div>These are not the droids you're looking for...</div>
++        </article>
++    </section>
++{% endblock %}
+\ No newline at end of file

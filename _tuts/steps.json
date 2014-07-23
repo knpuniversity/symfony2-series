@@ -1224,7 +1224,22 @@
             "id": "ajax-basic-javascript",
             "name": "AJAX: Basic JavaScript",
             "description": null
+        },
+        {
+            "id": "error-customize-error-html-twig",
+            "name": "Error: Customize error.html.twig",
+            "description": null
+        },
+        {
+            "id": "error-error404-html-twig",
+            "name": "Error: error404.html.twig",
+            "description": null
+        },
+        {
+            "id": "error-remove-testing-exception",
+            "name": "Error: Remove testing exception",
+            "description": null
         }
     ],
-    "sha": "30be3cdeb565e9097bf568fcce874b2a045613e8"
+    "sha": "d75e543ae4770a9a4807be006c8ccbb01bfe5eeb"
 }

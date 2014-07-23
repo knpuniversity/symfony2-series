@@ -1,0 +1,51 @@
+diff --git a/app/Resources/TwigBundle/views/Exception/error.html.twig b/app/Resources/TwigBundle/views/Exception/error.html.twig
+index ebb326a..7d77fcc 100644
+--- a/app/Resources/TwigBundle/views/Exception/error.html.twig
++++ b/app/Resources/TwigBundle/views/Exception/error.html.twig
+@@ -11,7 +11,7 @@
+         <article>
+             <h1>Ah crap!</h1>
+ 
+-            <div>These are not the droids you're looking for...</div>
++            <div>The servers are on fire!!!</div>
+         </article>
+     </section>
+ {% endblock %}
+\ No newline at end of file
+diff --git a/app/Resources/TwigBundle/views/Exception/error404.html.twig b/app/Resources/TwigBundle/views/Exception/error404.html.twig
+new file mode 100644
+index 0000000..ebb326a
+--- /dev/null
++++ b/app/Resources/TwigBundle/views/Exception/error404.html.twig
+@@ -0,0 +1,17 @@
++{% extends '::base.html.twig' %}
++
++{% block stylesheets %}
++    {{ parent() }}
++
++    <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}" />
++{% endblock %}
++
++{% block body %}
++    <section class="login">
++        <article>
++            <h1>Ah crap!</h1>
++
++            <div>These are not the droids you're looking for...</div>
++        </article>
++    </section>
++{% endblock %}
+\ No newline at end of file
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 6f631ac..f355030 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -25,6 +25,8 @@ class EventController extends Controller
+      */
+     public function indexAction()
+     {
++        throw new \Exception('Ahhhhahahhhah');
++
+         $em = $this->getDoctrine()->getManager();
+ 
+         $entities = $em
