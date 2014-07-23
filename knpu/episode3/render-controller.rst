@@ -1,7 +1,7 @@
 Render another Controller in Twig
 =================================
 
-When a user sees our 404 page, I'd *love* if we could show them a list of
+When a user sees our 404 page, I'd *love* it if we could show them a list of
 upcoming events. Hmm, but that's not possible. Normally, I'd query for some
 events and then pass them into my template. But we don't have access to Symfony's
 core controller that's rendering ``error404.html.twig``. 
@@ -147,9 +147,9 @@ Ah, but don't forget to clear your cache!
 Controller Arguments
 --------------------
 
-Great! Now what if we wanted to show a different a different number of upcoming
-events on the homepage versus the error page? No problem: ``render`` let's
-use pass arguments to the controller function. Let's pass a ``max`` argument
+Great! Now what if we wanted to show a different number of upcoming
+events on the homepage versus the error page? No problem: ``render`` let's 
+us pass arguments to the controller function. Pass a ``max`` argument
 of ``1`` from the error template:
 
     {# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
