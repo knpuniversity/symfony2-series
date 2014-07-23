@@ -60,7 +60,7 @@ Adding Sluggable to Event
 -------------------------
 
 This bundle brings in a bunch of cool features, which we have to activate
-manually here. The first is called "sluggable":
+manually in ``config.yml``. The first is called "sluggable":
 
 .. code-block:: yaml
 
@@ -82,8 +82,8 @@ Open up the ``Event`` entity and add a new property called ``slug``::
      */
     protected $slug;
 
-This is just a normal property that will store a URL-safe any unique version
-of the event's name. Add the getter and setter::
+This is just a normal property that will store a URL-safe and unique version
+of the event's name. And now let's add the getter and setter::
 
     // src/Yoda/EventBundle/Entity/Event.php
     // ...
@@ -136,7 +136,7 @@ it tells the library to set ``slug`` once and never change it again, even
 if the event's name changes. That's good because the slug will be used in
 the event's URL. And changing URLs is lame :).
 
-Let's try it! Update the database schema and then reload your fixtures:
+Let's try it! Update the database schema:
 
 .. code-block:: bash
 
@@ -152,16 +152,16 @@ around this:
     php app/console doctrine:schema:create
     php app/console doctrine:fixtures:load
 
-Check the results by querying for events via the console:
+Reload the fixtures and check the results by querying for events via the console:
 
 .. code-block:: bash
 
     php app/console doctrine:query:sql "SELECT * FROM yoda_event"
 
-Hey, our ``slug`` columns are populated with a normalized, URL-sfe version
-of the name. As an added bonus, if two events have the same name, the library
-will automatically add a ``-1`` to the end of one of the second slug. The
-library makes sure that these are always unique.
+Hey, we have slugs! That's not something you would be excited about outside of programming.
+As an added bonus, if two events have the same name, the library
+will automatically add a ``-1`` to the end of the second slug. The
+library has our back and makes sure that these are always unique.
 
 .. _`KnpBundles.com`: http://knpbundles.com/
 .. _`go to its readme`: https://github.com/Atlantic18/DoctrineExtensions/tree/master/doc

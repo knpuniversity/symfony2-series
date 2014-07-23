@@ -6,7 +6,7 @@ Now click the attend link again. Ah, an error!
     SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry
     '4-4' for key 'PRIMARY'
 
-Our User is once again added as an attendee to the Event. When Doctrine saves,
+Our User is once again added as an attendee to the Event. And when Doctrine saves,
 it tries to add a second row to the join table. Not cool!
 
 Adding the hasAttendee Method
@@ -31,7 +31,7 @@ this event::
 Avoiding Duplicates
 -------------------
 
-Find ``attendAction`` in ``EventController``. We can the new ``hasAttendee``
+Find ``attendAction`` in ``EventController``. We can use the new ``hasAttendee``
 method to avoid adding duplicate Users::
 
     // src/Yoda/EventBundle/Controller/EventController.php
@@ -47,14 +47,14 @@ method to avoid adding duplicate Users::
         // ...
     }
 
-Try it out! Now we can click the attend link as many times as we want: we're
+Try it out! Go crazy, click the attend link as many times as you want: you're
 only added the first time.
 
 Adding Unattend Logic
 ---------------------
 
 Let's fill in the logic in ``unattendAction``. Actually, we can just copy
-``attendAction`` and *remove* the current user from the attendees by using
+``attendAction`` and *remove* the current user from the attendee list by using
 the ``removeElement`` method::
 
     // src/Yoda/EventBundle/Controller/EventController.php
@@ -109,7 +109,7 @@ method::
     </dd>
 
 When we refresh, the unattend button is showing. Click it and then click the
-attend button again. Sweet!
+attend button again. This bake sale is going to be off the hook!
 
 What's really going on in the Base Controller
 ---------------------------------------------

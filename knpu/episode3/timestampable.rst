@@ -1,11 +1,11 @@
 Adding createdAt and updatdAt Timestampable Fields
 ==================================================
 
-Let's do more magic! I alwas like to have ``createdAt`` and ``updatedAt``
+Let's do more magic! I always like to have ``createdAt`` and ``updatedAt``
 fields on my database tables. A lot of times, this helps me debug any weird
 behavior I may see in the future.
 
-The DoctrineExtensions library can does this for is. It's called ``timestampable``,
+The DoctrineExtensions library does this for us. It's called ``timestampable``,
 enable it in ``config.yml``:
 
 .. code-block:: yaml
@@ -39,7 +39,7 @@ just because I like those names better::
      */
     private $updatedAt;
 
-Generate getter methods for these::
+And now we'll generate getter methods for these::
 
     /**
      * @return \DateTime
@@ -60,7 +60,7 @@ Generate getter methods for these::
 We can also add setter methods if we want, but we don't need them: the library
 will set these for us!
 
-Next, update the database schema to add the two new fields and the reload
+Next, update the database schema to add the two new fields and then reload
 the fixtures:
 
 .. code-block:: bash

@@ -35,9 +35,7 @@ methods::
 
 Start with ``attendAction``. The logic here should feel familiar. First,
 query for an ``Event`` entity. Next, throw a ``createNotFoundException``
-is no ``Event`` is found::
-
-These methods are pretty straightforward and follow a familiar pattern::
+if no ``Event`` is found::
 
     // src/Yoda/EventBundle/Controller/EventController.php
     // ...
@@ -85,13 +83,13 @@ Finally, redirect when you're finished::
 
 Notice that we just added an attendee without needing a ``setAttendees``
 method on ``Event``. This works because ``attendees`` is an object, so we
-can just call ``getAttendees`` and then modify that object.
+can just call ``getAttendees`` and then modify it.
 
 Printing Attendees in Twig
 --------------------------
 
 Before we try this out, let's update the event show page. Use the ``length``
-filter to count the number of attendees:
+filter to count the number of attendees, to make sure we make enough guacamole:
 
 .. code-block:: html+jinja
 
@@ -124,13 +122,12 @@ functionality:
             {% for attendee in entity.attendees %}
                 <li>{{ attendee }}</li>
             {% else %}
-                <li>nobody yet!</li>
+                <li>We're cool! RSVP!</li>
             {% endfor %}
         </ul>
     </dd>
 
-Ok, time to test this out! Add a link to the new ``event_attend`` route
-if the user is logged in:
+Now help me add a link to the new ``event_attend`` route if the user is logged in:
 
 .. code-block:: html+jinja
 
@@ -210,7 +207,7 @@ method to the ``User`` class::
 
 Refresh now. Sweet, no errors!
 
-On the index page, we can also fill in the # of attendees:
+Let's also take a second and fill in the # of attendees on the index page:
 
 .. code-block:: html+jinja
 
