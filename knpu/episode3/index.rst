@@ -18,6 +18,8 @@ Starting in Symfony2: Episode3
     many-to-many-relationship
     using-many-to-many
     using-many-to-many2
+    json-response
+    content-type-jsonresponse
     attend-event-ajax
     error-pages
     services
