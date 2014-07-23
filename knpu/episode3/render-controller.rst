@@ -119,7 +119,7 @@ also key to using `Symfony's Caching`_.
 Using render in the Error Template
 ----------------------------------
 
-Our goal was to list recent events on the 404 page. Well, that's pretty easy
+Our goal was to list upcoming events on the 404 page. Well, that's pretty easy
 now:
 
     {# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
