@@ -37,9 +37,10 @@ Alright! Refresh again. Mmm, a beautiful ``application/json`` ``Content-Type``.
 The JsonResponse Class
 ----------------------
 
-Yea, so there's an even *lazier* way to do this. So let's be *lazy*. Instead of
-``Response``, use a class called ``JsonResponse`` and pass it the array directly.
-Get rid of the ``Content-Type`` header while you're in there::
+Ok, so there's an even *lazier* way to do this. So throw on your sweat pants, grab
+that bag of chips and let's get *lazy*. Instead of ``Response``, use a class called 
+``JsonResponse`` and pass it the array directly. Oh, and get rid of the ``Content-Type`` 
+header while you're in there::
 
     // src/Yoda/EventBundle/Controller/EventController.php
     // ...
@@ -137,8 +138,8 @@ Copy in the logic that figures out which response to return::
 For the ``attending`` value, why not just use our ``hasAttendee`` method
 to figure this out?
 
-Yea, let's delete some code! Call the new method in ``attendAction`` and
-``unattendAction`` and return its value.
+Sweet, let's do my favorite thing -- delete some code! Call the new method 
+in ``attendAction`` and ``unattendAction`` and return its value.
 
 
 We can use this function to easily generate the JSON response for both controllers::
