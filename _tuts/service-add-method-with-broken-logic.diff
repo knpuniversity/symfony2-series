@@ -1,0 +1,60 @@
+diff --git a/src/Yoda/EventBundle/Controller/ReportController.php b/src/Yoda/EventBundle/Controller/ReportController.php
+index f3fe15a..0c8f517 100644
+--- a/src/Yoda/EventBundle/Controller/ReportController.php
++++ b/src/Yoda/EventBundle/Controller/ReportController.php
+@@ -4,6 +4,7 @@ namespace Yoda\EventBundle\Controller;
+ 
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ use Symfony\Component\HttpFoundation\Response;
++use Yoda\EventBundle\Reporting\EventReportManager;
+ 
+ class ReportController extends Controller
+ {
+@@ -12,19 +13,9 @@ class ReportController extends Controller
+      */
+     public function updatedEventsAction()
+     {
+-        $em = $this->getDoctrine()->getManager();
++        $eventReportManager = new EventReportManager();
++        $content = $eventReportManager->getRecentlyUpdatedReport();
+ 
+-        $events = $em->getRepository('EventBundle:Event')
+-            ->getRecentlyUpdatedEvents();
+-
+-        $rows = array();
+-        foreach ($events as $event) {
+-            $data = array($event->getId(), $event->getName(), $event->getTime()->format('Y-m-d H:i:s'));
+-
+-            $rows[] = implode(',', $data);
+-        }
+-
+-        $content = implode("\n", $rows);
+         $response = new Response($content);
+         $response->headers->set('Content-Type', 'text/csv');
+ 
+diff --git a/src/Yoda/EventBundle/Reporting/EventReportManager.php b/src/Yoda/EventBundle/Reporting/EventReportManager.php
+index 86f58e9..dcf6c8c 100644
+--- a/src/Yoda/EventBundle/Reporting/EventReportManager.php
++++ b/src/Yoda/EventBundle/Reporting/EventReportManager.php
+@@ -4,5 +4,20 @@ namespace Yoda\EventBundle\Reporting;
+ 
+ class EventReportManager
+ {
++    public function getRecentlyUpdatedReport()
++    {
++        $em = $this->getDoctrine()->getManager();
+ 
++        $events = $em->getRepository('EventBundle:Event')
++            ->getRecentlyUpdatedEvents();
++
++        $rows = array();
++        foreach ($events as $event) {
++            $data = array($event->getId(), $event->getName(), $event->getTime()->format('Y-m-d H:i:s'));
++
++            $rows[] = implode(',', $data);
++        }
++
++        return implode("\n", $rows);
++    }
+ } 
+\ No newline at end of file

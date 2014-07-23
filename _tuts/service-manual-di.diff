@@ -1,0 +1,38 @@
+diff --git a/src/Yoda/EventBundle/Controller/ReportController.php b/src/Yoda/EventBundle/Controller/ReportController.php
+index 0c8f517..d8ebabf 100644
+--- a/src/Yoda/EventBundle/Controller/ReportController.php
++++ b/src/Yoda/EventBundle/Controller/ReportController.php
+@@ -13,7 +13,8 @@ class ReportController extends Controller
+      */
+     public function updatedEventsAction()
+     {
+-        $eventReportManager = new EventReportManager();
++        $em = $this->getDoctrine()->getManager();
++        $eventReportManager = new EventReportManager($em);
+         $content = $eventReportManager->getRecentlyUpdatedReport();
+ 
+         $response = new Response($content);
+diff --git a/src/Yoda/EventBundle/Reporting/EventReportManager.php b/src/Yoda/EventBundle/Reporting/EventReportManager.php
+index dcf6c8c..4c4405e 100644
+--- a/src/Yoda/EventBundle/Reporting/EventReportManager.php
++++ b/src/Yoda/EventBundle/Reporting/EventReportManager.php
+@@ -4,11 +4,16 @@ namespace Yoda\EventBundle\Reporting;
+ 
+ class EventReportManager
+ {
+-    public function getRecentlyUpdatedReport()
++    private $em;
++
++    public function __construct($em)
+     {
+-        $em = $this->getDoctrine()->getManager();
++        $this->em = $em;
++    }
+ 
+-        $events = $em->getRepository('EventBundle:Event')
++    public function getRecentlyUpdatedReport()
++    {
++        $events = $this->em->getRepository('EventBundle:Event')
+             ->getRecentlyUpdatedEvents();
+ 
+         $rows = array();

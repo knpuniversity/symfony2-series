@@ -1,0 +1,14 @@
+diff --git a/src/Yoda/EventBundle/Controller/ReportController.php b/src/Yoda/EventBundle/Controller/ReportController.php
+index 4454041..65f408d 100644
+--- a/src/Yoda/EventBundle/Controller/ReportController.php
++++ b/src/Yoda/EventBundle/Controller/ReportController.php
+@@ -13,8 +13,7 @@ class ReportController extends Controller
+      */
+     public function updatedEventsAction()
+     {
+-        $em = $this->container->get('doctrine.orm.entity_manager');
+-        $eventReportManager = new EventReportManager($em);
++        $eventReportManager = $this->container->get('event_report_manager');
+         $content = $eventReportManager->getRecentlyUpdatedReport();
+ 
+         $response = new Response($content);

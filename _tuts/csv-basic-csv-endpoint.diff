@@ -1,0 +1,56 @@
+diff --git a/src/Yoda/EventBundle/Controller/ReportController.php b/src/Yoda/EventBundle/Controller/ReportController.php
+index 5157845..ee33aa6 100644
+--- a/src/Yoda/EventBundle/Controller/ReportController.php
++++ b/src/Yoda/EventBundle/Controller/ReportController.php
+@@ -3,6 +3,7 @@
+ namespace Yoda\EventBundle\Controller;
+ 
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
++use Symfony\Component\HttpFoundation\Response;
+ 
+ class ReportController extends Controller
+ {
+@@ -11,6 +12,21 @@ class ReportController extends Controller
+      */
+     public function updatedEventsAction()
+     {
++        $em = $this->getDoctrine()->getManager();
+ 
++        $events = $em->getRepository('EventBundle:Event')
++            ->getRecentlyUpdatedEvents();
++
++        $rows = array();
++        foreach ($events as $event) {
++            $data = array($event->getId(), $event->getName(), $event->getTime()->format('Y-m-d H:i:s'));
++
++            $rows[] = implode(',', $data);
++        }
++
++        $content = implode("\n", $rows);
++        $response = new Response($content);
++
++        return $response;
+     }
+ }
+diff --git a/src/Yoda/EventBundle/Entity/EventRepository.php b/src/Yoda/EventBundle/Entity/EventRepository.php
+index 806f11d..ca4e1a2 100644
+--- a/src/Yoda/EventBundle/Entity/EventRepository.php
++++ b/src/Yoda/EventBundle/Entity/EventRepository.php
+@@ -33,4 +33,17 @@ class EventRepository extends EntityRepository
+             ->execute()
+         ;
+     }
++
++    /**
++     * @return Event[]
++     */
++    public function getRecentlyUpdatedEvents()
++    {
++        return $this->createQueryBuilder('e')
++            ->andWhere('e.updatedAt > :since')
++            ->setParameter('since', new \DateTime('24 hours ago'))
++            ->getQuery()
++            ->execute()
++        ;
++    }
+ }

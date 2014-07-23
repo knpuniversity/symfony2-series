@@ -1,0 +1,12 @@
+diff --git a/src/Yoda/EventBundle/Controller/ReportController.php b/src/Yoda/EventBundle/Controller/ReportController.php
+index ee33aa6..f3fe15a 100644
+--- a/src/Yoda/EventBundle/Controller/ReportController.php
++++ b/src/Yoda/EventBundle/Controller/ReportController.php
+@@ -26,6 +26,7 @@ class ReportController extends Controller
+ 
+         $content = implode("\n", $rows);
+         $response = new Response($content);
++        $response->headers->set('Content-Type', 'text/csv');
+ 
+         return $response;
+     }

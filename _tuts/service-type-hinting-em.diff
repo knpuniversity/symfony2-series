@@ -1,0 +1,19 @@
+diff --git a/src/Yoda/EventBundle/Reporting/EventReportManager.php b/src/Yoda/EventBundle/Reporting/EventReportManager.php
+index 4c4405e..b1a9c62 100644
+--- a/src/Yoda/EventBundle/Reporting/EventReportManager.php
++++ b/src/Yoda/EventBundle/Reporting/EventReportManager.php
+@@ -2,11 +2,13 @@
+ 
+ namespace Yoda\EventBundle\Reporting;
+ 
++use Doctrine\ORM\EntityManager;
++
+ class EventReportManager
+ {
+     private $em;
+ 
+-    public function __construct($em)
++    public function __construct(EntityManager $em)
+     {
+         $this->em = $em;
+     }

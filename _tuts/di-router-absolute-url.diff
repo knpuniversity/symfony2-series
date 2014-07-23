@@ -1,0 +1,17 @@
+diff --git a/src/Yoda/EventBundle/Reporting/EventReportManager.php b/src/Yoda/EventBundle/Reporting/EventReportManager.php
+index c1c3d5d..e5ab1dd 100644
+--- a/src/Yoda/EventBundle/Reporting/EventReportManager.php
++++ b/src/Yoda/EventBundle/Reporting/EventReportManager.php
+@@ -28,7 +28,11 @@ class EventReportManager
+                 $event->getId(),
+                 $event->getName(),
+                 $event->getTime()->format('Y-m-d H:i:s'),
+-                $this->router->generate('event_show', array('slug' => $event->getSlug()))
++                $this->router->generate(
++                    'event_show',
++                    array('slug' => $event->getSlug()),
++                    true
++                )
+             );
+ 
+             $rows[] = implode(',', $data);

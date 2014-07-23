@@ -1259,7 +1259,92 @@
             "id": "render-controller-arguments",
             "name": "Render: Controller arguments",
             "description": null
+        },
+        {
+            "id": "csv-create-reportcontroller",
+            "name": "CSV: Create ReportController",
+            "description": null
+        },
+        {
+            "id": "csv-create-empty-method-and-route",
+            "name": "CSV: Create empty method and route",
+            "description": null
+        },
+        {
+            "id": "csv-basic-csv-endpoint",
+            "name": "CSV: Basic CSV endpoint",
+            "description": null
+        },
+        {
+            "id": "csv-content-type",
+            "name": "CSV: content-type",
+            "description": null
+        },
+        {
+            "id": "service-create-class",
+            "name": "Service: Create class",
+            "description": null
+        },
+        {
+            "id": "service-add-method-with-broken-logic",
+            "name": "Service: Add method with broken logic",
+            "description": null
+        },
+        {
+            "id": "service-manual-di",
+            "name": "Service: Manual DI",
+            "description": null
+        },
+        {
+            "id": "service-fetch-em-service",
+            "name": "Service: Fetch em service",
+            "description": null
+        },
+        {
+            "id": "service-starting-services-yml",
+            "name": "Service: Starting services.yml",
+            "description": null
+        },
+        {
+            "id": "service-argument-string-example",
+            "name": "Service: Argument string example",
+            "description": null
+        },
+        {
+            "id": "service-services-yml-inject-service",
+            "name": "Service: services.yml inject service",
+            "description": null
+        },
+        {
+            "id": "service-use-new-service",
+            "name": "Service: Use new service",
+            "description": null
+        },
+        {
+            "id": "die-delete-and-import-manually",
+            "name": "DIE: Delete and import manually",
+            "description": null
+        },
+        {
+            "id": "service-type-hinting-em",
+            "name": "Service: Type-hinting EM",
+            "description": null
+        },
+        {
+            "id": "di-router-copy-in-broken-generateurl",
+            "name": "DI Router: Copy in broken generateUrl",
+            "description": null
+        },
+        {
+            "id": "di-router-inject-router-properly",
+            "name": "DI Router: Inject router properly",
+            "description": null
+        },
+        {
+            "id": "di-router-absolute-url",
+            "name": "DI Router: Absolute URL",
+            "description": null
         }
     ],
-    "sha": "1265ba648b02b0a850f8ad2a77d4d03fc98ab218"
+    "sha": "939d9bc223fdd02dfe2bbfa9d3fa232a5e28afd2"
 }

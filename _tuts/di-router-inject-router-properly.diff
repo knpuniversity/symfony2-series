@@ -1,0 +1,43 @@
+diff --git a/src/Yoda/EventBundle/Reporting/EventReportManager.php b/src/Yoda/EventBundle/Reporting/EventReportManager.php
+index 82ed092..c1c3d5d 100644
+--- a/src/Yoda/EventBundle/Reporting/EventReportManager.php
++++ b/src/Yoda/EventBundle/Reporting/EventReportManager.php
+@@ -3,14 +3,18 @@
+ namespace Yoda\EventBundle\Reporting;
+ 
+ use Doctrine\ORM\EntityManager;
++use Symfony\Component\Routing\Router;
+ 
+ class EventReportManager
+ {
+     private $em;
+ 
+-    public function __construct(EntityManager $em)
++    private $router;
++
++    public function __construct(EntityManager $em, Router $router)
+     {
+         $this->em = $em;
++        $this->router = $router;
+     }
+ 
+     public function getRecentlyUpdatedReport()
+@@ -24,7 +28,7 @@ class EventReportManager
+                 $event->getId(),
+                 $event->getName(),
+                 $event->getTime()->format('Y-m-d H:i:s'),
+-                $this->generateUrl('event_show', array('slug' => $event->getSlug()))
++                $this->router->generate('event_show', array('slug' => $event->getSlug()))
+             );
+ 
+             $rows[] = implode(',', $data);
+diff --git a/src/Yoda/EventBundle/Resources/config/services.yml b/src/Yoda/EventBundle/Resources/config/services.yml
+index 86dfa31..6191295 100644
+--- a/src/Yoda/EventBundle/Resources/config/services.yml
++++ b/src/Yoda/EventBundle/Resources/config/services.yml
+@@ -4,4 +4,4 @@ parameters:
+ services:
+     event_report_manager:
+         class: Yoda\EventBundle\Reporting\EventReportManager
+-        arguments: ["@doctrine.orm.entity_manager"]
++        arguments: ["@doctrine.orm.entity_manager", "@router"]

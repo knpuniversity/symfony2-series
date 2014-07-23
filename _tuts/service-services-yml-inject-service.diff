@@ -1,0 +1,10 @@
+diff --git a/src/Yoda/EventBundle/Resources/config/services.yml b/src/Yoda/EventBundle/Resources/config/services.yml
+index db853e5..86dfa31 100644
+--- a/src/Yoda/EventBundle/Resources/config/services.yml
++++ b/src/Yoda/EventBundle/Resources/config/services.yml
+@@ -4,4 +4,4 @@ parameters:
+ services:
+     event_report_manager:
+         class: Yoda\EventBundle\Reporting\EventReportManager
+-        arguments: [foo]
++        arguments: ["@doctrine.orm.entity_manager"]

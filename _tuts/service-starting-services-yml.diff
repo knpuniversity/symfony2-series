@@ -1,0 +1,14 @@
+diff --git a/src/Yoda/EventBundle/Resources/config/services.yml b/src/Yoda/EventBundle/Resources/config/services.yml
+index 3fccacc..1fa1307 100644
+--- a/src/Yoda/EventBundle/Resources/config/services.yml
++++ b/src/Yoda/EventBundle/Resources/config/services.yml
+@@ -2,6 +2,6 @@ parameters:
+ #    event.example.class: Yoda\EventBundle\Example
+ 
+ services:
+-#    event.example:
+-#        class: %event.example.class%
+-#        arguments: [@service_id, "plain_value", %parameter%]
++    event_report_manager:
++        class: Yoda\EventBundle\Reporting\EventReportManager
++        arguments: []

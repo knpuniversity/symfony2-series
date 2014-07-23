@@ -1,0 +1,20 @@
+diff --git a/src/Yoda/EventBundle/Controller/ReportController.php b/src/Yoda/EventBundle/Controller/ReportController.php
+index 822f57f..5157845 100644
+--- a/src/Yoda/EventBundle/Controller/ReportController.php
++++ b/src/Yoda/EventBundle/Controller/ReportController.php
+@@ -2,7 +2,15 @@
+ 
+ namespace Yoda\EventBundle\Controller;
+ 
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
++
+ class ReportController extends Controller
+ {
++    /**
++     * @Route("/events/report/recentlyUpdated.csv")
++     */
++    public function updatedEventsAction()
++    {
+ 
++    }
+ }
