@@ -1,266 +1,55 @@
+Adding the AJAX Touch: JavaScript
+=================================
 
+Stop. We haven't touched JavaScript yet. And yet, because the attend and unattend
+endpoints can return JSON, our app is fully ready for some AJAX. The attend/unattend
+button will be a lot cooler with it anyways, so let's add some JavaScript.
 
-On the index page, we can now fill in the # of attendees:
+Click Event to Send AJAX
+------------------------
 
-.. code-block:: html+jinja
-
-    {# src/Yoda/EventBundle/Resources/views/Event/index.html.twig #}
-    {# ... #}
-
-    {% for entity in entities %}
-        {# ... #}
-
-        <dt>who:</dt>
-        <dd>{{ entity.attendees|length }} attending!</dd>
-
-        {# ... #}
-    {% endfor %}
-
-Creating JSON-returning Actions for AJAX
-----------------------------------------
-
-Since that's easy enough, let's make things better with some AJAX. Right now,
-the attend and unattend pages return HTML. Ok, it's a redirect, but redirects
-are inherently meant for browsers and Symfony's redirects actually contain
-some HTML that a normal browser never displays.
-
-Of course, instead of returning HTML, we could also return content in another
-format like JSON. JSON is great because it's easy to create in PHP and easy
-for JavaScript to understand. Start by adding a ``_format`` wildcard to each
-of our routes and giving it a default value of ``html``:
-
-.. code-block:: yaml
-
-    # src/Yoda/EventBundle/Resources/config/routing/event.yml
-    # ...
-
-    event_attend:
-        pattern:  /{id}/attend.{_format}
-        defaults: { _controller: "EventBundle:Event:attend", _format: html }
-
-    event_unattend:
-        pattern:  /{id}/unattend.{_format}
-        defaults: { _controller: "EventBundle:Event:unattend", _format: html }
-
-By giving this wildcard a default value it means that the route still matches
-``/{id}/attend``, but that we could also create other URLs like ``/{id}/attend.json``.
-
-.. tip::
-
-    In a truly RESTful API, it's probably more correct to rely on reading
-    the ``Accept`` header of the request rather than specify a format in
-    the URL like we're doing here (e.g. ``/5/attend.json``).
-
-For now, all of these URLs still do the same thing. Since we're not going
-to support any other formats like XML, we can add a requirements key:
-
-.. code-block:: yaml
-
-    # src/Yoda/EventBundle/Resources/config/routing/event.yml
-    # ...
-
-    event_attend:
-        pattern:  /{id}/attend.{_format}
-        defaults: { _controller: "EventBundle:Event:attend", _format: html }
-        requirements:
-            _format: html|json
-
-    event_unattend:
-        pattern:  /{id}/unattend.{_format}
-        defaults: { _controller: "EventBundle:Event:unattend", _format: html }
-        requirements:
-            _format: html|json
-
-.. tip::
-
-    Requirements are regular expressions that can be applied to any of your
-    routing wildcards (e.g. ``{id}``, ``{_format}``).
-
-Now, when we try a different ending (e.g. ``/1/attend.xml``), the route
-won't match.
-
-Returning JSON from a Controller
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Create a ``$_format`` variable in your controller to go with the new wildcard.
-If the format is JSON, let's return a JSON string instead of the redirect::
-
-    // src/Yoda/EventBundle/Controller/EventController.php
-    // ...
-
-    public function attendAction($id, $_format)
-    {
-        // ...
-
-        if ($_format == 'json') {
-            $data = array(
-                'attending' => 1
-            );
-
-            $response = new Response(json_encode($data));
-            $response->headers->set('Content-Type', 'application/json');
-
-            return $response;
-        }
-
-        return $this->redirect($this->generateUrl('event_show', array(
-            'slug' => $event->getSlug()
-        )));
-    }
-
-Doing this is easy: create your data array, convert it to a string with ``json_encode``,
-and put it into a raw Symfony Response object. We also need to think about
-the ``Content-Type`` header that's returned in the response. By default, Symfony
-sets the ``Content-Type`` header to `text/html`. But if we're returning JSON,
-this needs to be changed to ``application/json``. If we don't set this, JavaScript
-might have problems understanding the data it's getting back.
-
-.. tip::
-
-    There is also a :symfonyclass:`Symfony\\Component\\HttpFoundation\\JsonResponse`
-    class that's even easier. Just pass the array of data into its constructor.
-    Internally, it will call ``json_encode`` for you and set the ``Content-Type``
-    header::
-
-        use Symfony\Component\HttpFoundation\JsonResponse;
-        // ...
-
-        return new JsonResponse($data);
-
-Let's try it directly in the browser first. As expected, we see the JSON string.
-If we open up the inspector, and refresh, we can see that the ``Content-Type``
-on the response is set correctly.
-
-The Request Format and _format
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-But before we roll this out to the unattend action, let's simplify. First,
-remove the ``Content-Type`` header and refresh again. Mysteriously, the ``Content-Type``
-is *still* ``application/json``. But didn't I just tell you that it defaults
-to ``text/html``? The answer to this riddle is that the ``_format`` routing
-parameter is special, and is used by Symfony in a very specific way. To see
-this, remove the ``$_format`` argument from your controller and replace it
-with a call to the ``getRequestFormat`` on the Request object::
-
-    // src/Yoda/EventBundle/Controller/EventController.php
-    use Symfony\Component\HttpFoundation\Request;
-    // ...
-
-    public function attendAction(Request $request, $id)
-    {
-        // ...
-
-        if ($request->getRequestFormat() == 'json') {
-            // create and return the json response
-        }
-
-        // ...
-    }
-
-When we refresh, everything still works. Internally, every request has a
-"format", which is a simple string like ``html`` or ``json``. By using the
-``_format`` routing parameter, the request format is automatically set to
-that value. The request format is important for one big reason: its value
-is used to set the ``Content-Type`` response header automatically for you.
-So if the request format is json, xml, css, or js, for example, then the
-right ``Content-Type`` header will take care of itself.
-
-Finishing up the Controller
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Let's finish things up by abstracting a bit of our logic to a new private
-function::
-
-    // src/Yoda/EventBundle/Controller/EventController.php
-    // ...
-
-    /**
-     * @param bool $attending
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    private function createAttendingJson($attending)
-    {
-        $data = array(
-            'attending' => $attending
-        );
-
-        $response = new Response(json_encode($data));
-
-        return $response;
-    }
-
-We can use this function to easily generate the JSON response for both controllers::
-
-    // src/Yoda/EventBundle/Controller/EventController.php
-    use Symfony\Component\HttpFoundation\Request;
-    // ...
-
-    public function attendAction(Request $request, $id)
-    {
-        // ...
-
-        if ($request->getRequestFormat() == 'json') {
-            return $this->createAttendingJson(true);
-        }
-
-        // ...
-    }
-
-    public function unattendAction(Request $request, $id)
-    {
-        // ...
-
-        if ($request->getRequestFormat() == 'json') {
-            return $this->createAttendingJson(false);
-        }
-
-        // ...
-    }
-
-Hooking up the JavaScript for AJAX
-----------------------------------
-
-These two controllers are now fully capable of returning either a proper HTML
-or JSON response. This is perfect for JavaScript, so let's hook some
-up! Since most people know it, I'll use jQuery. Since I'm going to attach
-a jQuery click event to each of the links, let's add a class we can query
-for. Let's actually display both links, but use some logic to hide the link
-that we don't initially need::
+Let's give both links a ``js-attend-toggle`` class that we can look for in
+jQuery:
 
     {# src/Yoda/EventBundle/Resources/views/Event/show.html.twig #}
     {# ... #}
 
-    <dt>who:</dt>
-    <dd>
-        {# ... #}
-
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {% if entity.hasAttendee(app.user) %}
             <a href="{{ path('event_unattend', {'id': entity.id}) }}"
-               class="attend-toggle{{ entity.hasAttendee(app.user) ? '' : ' hidden' }}">
-               Oh no! I can't go anymore!
-            </a>
+                class="btn btn-warning btn-xs js-attend-toggle">
 
+                Oh no! I can't go anymore!
+            </a>
+        {% else %}
             <a href="{{ path('event_attend', {'id': entity.id}) }}"
-                class="attend-toggle{{ entity.hasAttendee(app.user) ? ' hidden' : '' }}">
+                class="btn btn-success btn-xs js-attend-toggle">
+
                 I totally want to go!
             </a>
         {% endif %}
-    </dd>
+    {% endif %}
 
-For the JavaScript, create a ``javascripts`` block and add the ``parent()``
-function:
+Adding the JavaScript
+---------------------
+
+Wait! We can't write jQuery without, ya know, including jQuery. So let's
+ppen up our base template add it inside the ``javascripts`` block. I'm just
+going to use a CDN:
 
 .. code-block:: html+jinja
 
-    {# src/Yoda/EventBundle/Resources/views/Event/show.html.twig #}
+    {# app/Resources/views/base.html.twig #}
     {# ... #}
-
+    
     {% block javascripts %}
-        {{ parent() }}
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     {% endblock %}
 
-This lets us add JavaScript to the ``javascripts`` block that lives in our base
-template. For ease I'll just paste in the logic:
+To add JavaScript on just this page, we can override this block and call
+the ``parent()`` function. I'll paste in some jQuery magic that makes an
+AJAX call when the links are clicked. You can get this magic from the ``attend-javascript.js``
+file in the code download:
 
 .. code-block:: html+jinja
 
@@ -268,44 +57,40 @@ template. For ease I'll just paste in the logic:
     {# ... #}
 
     {% block javascripts %}
-        {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('.js-attend-toggle').on('click', function(e) {
+                // prevents the browser from "following" the link
+                e.preventDefault();
 
-        <script type="text/javascript">
-            jQuery(document).ready(function() {
-                jQuery('.attend-toggle').click(function() {
+                var $anchor = $(this);
+                var url = $(this).attr('href')+'.json';
 
-                    $(this).siblings().show();
-                    $(this).hide();
+                $.post(url, null, function(data) {
+                    if (data.attending) {
+                        var message = 'See you there!';
+                    } else {
+                        var message = 'We\'ll miss you!';
+                    }
 
-                    var url = $(this).attr('href')+'.json';
-
-                    $.post(url, null, function(data) {
-                        if (data.attending) {
-                            $.growlUI('Awesome!', 'See you there!');
-                        } else {
-                            $.growlUI('Ah darn', 'We\'ll miss you!');
-                        }
-                    });
-
-                    return false;
+                    $anchor.after('<span class="label label-default">&#10004; '+message+'</span>');
+                    $anchor.hide();
                 });
             });
-        </script>
+        });
     {% endblock %}
 
-In an ideal world, this would live in an external JavaScript file, but we'll
-let that be for now. The JavaScript is pretty straight-forward: we listen
-on a click of either link, toggle which link is displayed, then make an AJAX
-post to the server. Notice that I've appended the ``.json`` to the URL so
-that we get the JSON response, not the HTML response. Since the JSON we return
-says whether or not we're attending, we can use that to show a super cool
-message. Try out these cool jedi powers.
+I know. In a perfect world, this should live in an external JavaScript file.
+I'll leave that to you.
 
-So that's really it! Doing AJAX with Symfony is more about turning your application
-into something that can serve multiple formats of content. Since JavaScript
-loves JSON, it's a natural fit. To take this idea to the next level, check
-out the `FOSRestBundle`_. This bundle is designed to make it really natural to
-create controllers that can serve content in many different formats. If you're
-creating a rich API for your app, it's definitely worth looking into.
+Let's try it! Ooh, fancy. The link disappears and we get a cute message.
 
-.. _`FOSRestBundle`: https://github.com/FriendsOfSymfony/FOSRestBundle
+The code is simple enough: we listen on a click of either link, send an AJAX
+request, then hide the link and show a message. To get the URL, I'm using
+the href then adding ``.json`` to the end of it. That's actually kinda hacky.
+There's a sweet bundle called `FOSJsRoutingBundle`_ that can do this much
+better. It let's you actually generate Symfony routes right in JavaScript.
+
+It's easy to use, so include it in your projects!
+
+.. _`FOSJsRoutingBundle`: https://github.com/FriendsOfSymfony/FOSJsRoutingBundle

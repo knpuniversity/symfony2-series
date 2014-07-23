@@ -1,3 +1,5 @@
 - need a more-security.rst file
 - talk about cascade and orphanRemoval?
 - doctrine-extensions beginning needs to be actually tested and code built
+- I removed the section on doing something different on different errors
+- need event listener cast
