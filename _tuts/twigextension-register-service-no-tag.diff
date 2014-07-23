@@ -1,0 +1,12 @@
+diff --git a/src/Yoda/EventBundle/Resources/config/services.yml b/src/Yoda/EventBundle/Resources/config/services.yml
+index 6191295..01d619d 100644
+--- a/src/Yoda/EventBundle/Resources/config/services.yml
++++ b/src/Yoda/EventBundle/Resources/config/services.yml
+@@ -5,3 +5,7 @@ services:
+     event_report_manager:
+         class: Yoda\EventBundle\Reporting\EventReportManager
+         arguments: ["@doctrine.orm.entity_manager", "@router"]
++
++    twig.event_extension:
++        class: Yoda\EventBundle\Twig\EventExtension
++        arguments: []

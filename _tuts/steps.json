@@ -1344,7 +1344,42 @@
             "id": "di-router-absolute-url",
             "name": "DI Router: Absolute URL",
             "description": null
+        },
+        {
+            "id": "twigextension-create-class",
+            "name": "TwigExtension: Create class",
+            "description": null
+        },
+        {
+            "id": "twigextension-extend-twig-extension",
+            "name": "TwigExtension: Extend \\Twig_Extension",
+            "description": null
+        },
+        {
+            "id": "twigextension-using-the-filter",
+            "name": "TwigExtension: Using the filter",
+            "description": null
+        },
+        {
+            "id": "twigextension-adding-the-filter",
+            "name": "TwigExtension: Adding the filter",
+            "description": null
+        },
+        {
+            "id": "twigextension-filling-in-filter-logic",
+            "name": "TwigExtension: Filling in filter logic",
+            "description": null
+        },
+        {
+            "id": "twigextension-register-service-no-tag",
+            "name": "TwigExtension: Register service, no tag",
+            "description": null
+        },
+        {
+            "id": "twigextension-add-tag",
+            "name": "TwigExtension: Add tag",
+            "description": null
         }
     ],
-    "sha": "939d9bc223fdd02dfe2bbfa9d3fa232a5e28afd2"
+    "sha": "939a49346abc0146187674c73cdc18f48c159106"
 }

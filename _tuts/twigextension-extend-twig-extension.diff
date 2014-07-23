@@ -1,0 +1,23 @@
+diff --git a/src/Yoda/EventBundle/Twig/EventExtension.php b/src/Yoda/EventBundle/Twig/EventExtension.php
+index 4ad25a3..35486a9 100644
+--- a/src/Yoda/EventBundle/Twig/EventExtension.php
++++ b/src/Yoda/EventBundle/Twig/EventExtension.php
+@@ -2,7 +2,15 @@
+ 
+ namespace Yoda\EventBundle\Twig;
+ 
+-class EventExtension
++class EventExtension extends \Twig_Extension
+ {
+-
++    /**
++     * Returns the name of the extension.
++     *
++     * @return string The extension name
++     */
++    public function getName()
++    {
++        return 'event';
++    }
+ } 
+\ No newline at end of file

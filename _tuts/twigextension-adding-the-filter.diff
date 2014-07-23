@@ -1,0 +1,22 @@
+diff --git a/src/Yoda/EventBundle/Twig/EventExtension.php b/src/Yoda/EventBundle/Twig/EventExtension.php
+index 35486a9..a936e6b 100644
+--- a/src/Yoda/EventBundle/Twig/EventExtension.php
++++ b/src/Yoda/EventBundle/Twig/EventExtension.php
+@@ -13,4 +13,16 @@ class EventExtension extends \Twig_Extension
+     {
+         return 'event';
+     }
++
++    public function getFilters()
++    {
++        return array(
++            new \Twig_SimpleFilter('ago', array($this, 'calculateAgo')),
++        );
++    }
++
++    public function calculateAgo(\DateTime $dt)
++    {
++        // todo
++    }
+ } 
+\ No newline at end of file

@@ -1,0 +1,14 @@
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/_upcomingEvents.html.twig b/src/Yoda/EventBundle/Resources/views/Event/_upcomingEvents.html.twig
+index 07f6444..f5dc302 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/_upcomingEvents.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/_upcomingEvents.html.twig
+@@ -17,6 +17,9 @@
+ 
+                 <dt>who:</dt>
+                 <dd>{{ event.attendees|length }} attending!</dd>
++
++                <dt>posted:</dt>
++                <dd>{{ event.createdAt|ago }}</dd>
+             </dl>
+         </section>
+     </article>

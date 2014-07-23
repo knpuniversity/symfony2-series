@@ -1,0 +1,10 @@
+diff --git a/src/Yoda/EventBundle/Resources/config/services.yml b/src/Yoda/EventBundle/Resources/config/services.yml
+index 01d619d..d01f6aa 100644
+--- a/src/Yoda/EventBundle/Resources/config/services.yml
++++ b/src/Yoda/EventBundle/Resources/config/services.yml
+@@ -9,3 +9,5 @@ services:
+     twig.event_extension:
+         class: Yoda\EventBundle\Twig\EventExtension
+         arguments: []
++        tags:
++            - { name: twig.extension }

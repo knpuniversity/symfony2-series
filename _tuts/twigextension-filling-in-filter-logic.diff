@@ -1,0 +1,69 @@
+diff --git a/src/Yoda/EventBundle/Twig/EventExtension.php b/src/Yoda/EventBundle/Twig/EventExtension.php
+index a936e6b..55eb3ec 100644
+--- a/src/Yoda/EventBundle/Twig/EventExtension.php
++++ b/src/Yoda/EventBundle/Twig/EventExtension.php
+@@ -2,6 +2,8 @@
+ 
+ namespace Yoda\EventBundle\Twig;
+ 
++use Yoda\EventBundle\Util\DateUtil;
++
+ class EventExtension extends \Twig_Extension
+ {
+     /**
+@@ -23,6 +25,6 @@ class EventExtension extends \Twig_Extension
+ 
+     public function calculateAgo(\DateTime $dt)
+     {
+-        // todo
++        return DateUtil::ago($dt);
+     }
+ } 
+\ No newline at end of file
+diff --git a/src/Yoda/EventBundle/Util/DateUtil.php b/src/Yoda/EventBundle/Util/DateUtil.php
+new file mode 100755
+index 0000000..f8a129d
+--- /dev/null
++++ b/src/Yoda/EventBundle/Util/DateUtil.php
+@@ -0,0 +1,40 @@
++<?php
++
++namespace Yoda\EventBundle\Util;
++
++use DateTime;
++
++class DateUtil
++{
++    /**
++     * Returns the "ago" version of a date time
++     *
++     * @static
++     * @param \DateTime $dt
++     * @return string
++     */
++    static public function ago(DateTime $dt)
++    {
++        $time = $dt->format('U');
++
++        $periods = array('second', 'minute', 'hour', 'day', 'week', 'month', 'year', 'decade');
++        $lengths = array('60','60','24','7','4.35','12','10');
++
++        $now = time();
++
++        $difference     = $now - $time;
++        $tense         = 'ago';
++
++        for($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
++            $difference /= $lengths[$j];
++        }
++
++        $difference = round($difference);
++
++        if($difference != 1) {
++            $periods[$j].= 's';
++        }
++
++        return sprintf('%s %s %s ', $difference, $periods[$j], $tense);
++    }
++}
+\ No newline at end of file

@@ -1,0 +1,15 @@
+diff --git a/src/Yoda/EventBundle/Twig/EventExtension.php b/src/Yoda/EventBundle/Twig/EventExtension.php
+new file mode 100644
+index 0000000..4ad25a3
+--- /dev/null
++++ b/src/Yoda/EventBundle/Twig/EventExtension.php
+@@ -0,0 +1,8 @@
++<?php
++
++namespace Yoda\EventBundle\Twig;
++
++class EventExtension
++{
++
++} 
+\ No newline at end of file
