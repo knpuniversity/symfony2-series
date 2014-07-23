@@ -1,0 +1,62 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 86460f4..8e507c5 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -19,22 +19,12 @@ class EventController extends Controller
+ {
+ 
+     /**
+-     * Lists all Event entities.
+      * @Template()
+      * @Route("/", name="event")
+      */
+     public function indexAction()
+     {
+-        $em = $this->getDoctrine()->getManager();
+-
+-        $entities = $em
+-            ->getRepository('EventBundle:Event')
+-            ->getUpcomingEvents()
+-        ;
+-
+-        return array(
+-            'entities' => $entities,
+-        );
++        return array();
+     }
+ 
+     public function _upcomingEventsAction()
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+index f4627f3..d71e83a 100644
+--- a/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
++++ b/src/Yoda/EventBundle/Resources/views/Event/index.html.twig
+@@ -15,28 +15,6 @@
+             {% endif %}
+         </header>
+ 
+-        {% for entity in entities %}
+-            <article>
+-                <header class="map-container">
+-                    <img src="http://maps.googleapis.com/maps/api/staticmap?center={{ entity.location | url_encode }}&markers=color:red%7Ccolor:red%7C{{ entity.location | url_encode }}&zoom=14&size=150x150&maptype=roadmap&sensor=false" />
+-                </header>
+-                <section>
+-                    <h3>
+-                        <a href="{{ path('event_show', {'slug': entity.slug}) }}">{{ entity.name }}</a>
+-                    </h3>
+-
+-                    <dl>
+-                        <dt>where:</dt>
+-                        <dd>{{ entity.location }}</dd>
+-
+-                        <dt>when:</dt>
+-                        <dd>{{ entity.time | date('g:ia / l M j, Y') }}</dd>
+-
+-                        <dt>who:</dt>
+-                        <dd>{{ entity.attendees|length }} attending!</dd>
+-                    </dl>
+-                </section>
+-            </article>
+-        {% endfor %}
++        {{ render(controller('EventBundle:Event:_upcomingEvents')) }}
+     </section>
+ {% endblock %}

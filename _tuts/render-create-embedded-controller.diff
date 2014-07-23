@@ -1,0 +1,55 @@
+diff --git a/src/Yoda/EventBundle/Controller/EventController.php b/src/Yoda/EventBundle/Controller/EventController.php
+index 6f631ac..86460f4 100644
+--- a/src/Yoda/EventBundle/Controller/EventController.php
++++ b/src/Yoda/EventBundle/Controller/EventController.php
+@@ -36,6 +36,20 @@ class EventController extends Controller
+             'entities' => $entities,
+         );
+     }
++
++    public function _upcomingEventsAction()
++    {
++        $em = $this->getDoctrine()->getManager();
++
++        $events = $em->getRepository('EventBundle:Event')
++            ->getUpcomingEvents()
++        ;
++
++        return $this->render('EventBundle:Event:_upcomingEvents.html.twig', array(
++            'events' => $events,
++        ));
++    }
++
+     /**
+      * Creates a new Event entity.
+      *
+diff --git a/src/Yoda/EventBundle/Resources/views/Event/_upcomingEvents.html.twig b/src/Yoda/EventBundle/Resources/views/Event/_upcomingEvents.html.twig
+new file mode 100644
+index 0000000..07f6444
+--- /dev/null
++++ b/src/Yoda/EventBundle/Resources/views/Event/_upcomingEvents.html.twig
+@@ -0,0 +1,23 @@
++{% for event in events %}
++    <article>
++        <header class="map-container">
++            <img src="http://maps.googleapis.com/maps/api/staticmap?center={{ event.location | url_encode }}&markers=color:red%7Ccolor:red%7C{{ event.location | url_encode }}&zoom=14&size=150x150&maptype=roadmap&sensor=false" />
++        </header>
++        <section>
++            <h3>
++                <a href="{{ path('event_show', {'slug': event.slug}) }}">{{ event.name }}</a>
++            </h3>
++
++            <dl>
++                <dt>where:</dt>
++                <dd>{{ event.location }}</dd>
++
++                <dt>when:</dt>
++                <dd>{{ event.time | date('g:ia / l M j, Y') }}</dd>
++
++                <dt>who:</dt>
++                <dd>{{ event.attendees|length }} attending!</dd>
++            </dl>
++        </section>
++    </article>
++{% endfor %}
+\ No newline at end of file

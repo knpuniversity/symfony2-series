@@ -1239,7 +1239,27 @@
             "id": "error-remove-testing-exception",
             "name": "Error: Remove testing exception",
             "description": null
+        },
+        {
+            "id": "render-create-embedded-controller",
+            "name": "Render: Create embedded controller",
+            "description": null
+        },
+        {
+            "id": "render-using-render-from-index",
+            "name": "Render: Using render from index",
+            "description": null
+        },
+        {
+            "id": "render-using-from-error404",
+            "name": "Render: Using from error404",
+            "description": null
+        },
+        {
+            "id": "render-controller-arguments",
+            "name": "Render: Controller arguments",
+            "description": null
         }
     ],
-    "sha": "d75e543ae4770a9a4807be006c8ccbb01bfe5eeb"
+    "sha": "1265ba648b02b0a850f8ad2a77d4d03fc98ab218"
 }

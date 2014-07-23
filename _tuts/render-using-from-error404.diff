@@ -1,0 +1,14 @@
+diff --git a/app/Resources/TwigBundle/views/Exception/error404.html.twig b/app/Resources/TwigBundle/views/Exception/error404.html.twig
+index ebb326a..11be727 100644
+--- a/app/Resources/TwigBundle/views/Exception/error404.html.twig
++++ b/app/Resources/TwigBundle/views/Exception/error404.html.twig
+@@ -14,4 +14,8 @@
+             <div>These are not the droids you're looking for...</div>
+         </article>
+     </section>
++
++    <section class="events">
++        {{ render(controller('EventBundle:Event:_upcomingEvents')) }}
++    </section>
+ {% endblock %}
+\ No newline at end of file
