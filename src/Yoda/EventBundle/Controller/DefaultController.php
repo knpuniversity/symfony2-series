@@ -15,5 +15,7 @@ class DefaultController extends Controller
             'EventBundle:Default:index.html.twig',
             array('name' => $firstName)
         );
+
+        return new Response($content);
     }
 }
