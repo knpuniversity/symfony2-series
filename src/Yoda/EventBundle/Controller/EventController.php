@@ -18,7 +18,7 @@ class EventController extends Controller
 
     /**
      * Lists all Event entities.
-     * @Template("EventBundle:Event:index.html.twig")
+     * @Template()
      */
     public function indexAction()
     {
