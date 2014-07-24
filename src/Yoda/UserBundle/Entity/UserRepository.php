@@ -12,4 +12,8 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    public function findOneByUsernameOrEmail($username)
+    {
+        // ... todo - get your query on
+    }
 }
