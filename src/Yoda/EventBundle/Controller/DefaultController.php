@@ -9,15 +9,11 @@ class DefaultController extends Controller
 {
     public function indexAction($count, $firstName)
     {
-        $arr = array(
-            'firstName' => $firstName,
-            'count'     => $count,
-            'status'    => 'It\'s a traaaaaaaap!',
+        $templating = $this->container->get('templating');
+
+        $content = $templating->render(
+            'EventBundle:Default:index.html.twig',
+            array('name' => $firstName)
         );
-
-        $response = new Response(json_encode($arr));
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
     }
 }
