@@ -244,4 +244,13 @@ class Event
     {
         return $this->attendees;
     }
+
+    /**
+     * @param \Yoda\UserBundle\Entity\User $user
+     * @return bool
+     */
+    public function hasAttendee(User $user)
+    {
+        return $this->getAttendees()->contains($user);
+    }
 }
