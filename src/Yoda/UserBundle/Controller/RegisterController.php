@@ -12,6 +12,11 @@ class RegisterController extends Controller
      */
     public function registerAction()
     {
-        // todo
+        $form = $this->createFormBuilder()
+            ->add('username', 'text')
+            ->add('email', 'text')
+            ->add('password', 'password')
+            ->getForm()
+        ;
     }
 }
