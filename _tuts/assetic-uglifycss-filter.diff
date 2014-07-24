@@ -1,0 +1,45 @@
+diff --git a/.gitignore b/.gitignore
+index f950484..10cd802 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -11,3 +11,4 @@
+ /composer.phar
+ /web/css/built
+ /web/js/built
++/node_modules
+diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
+index d674481..c1bcff1 100644
+--- a/app/Resources/views/base.html.twig
++++ b/app/Resources/views/base.html.twig
+@@ -18,6 +18,7 @@
+                 'bundles/event/css/events.css'
+                 'bundles/event/css/main.css'
+                 filter='cssrewrite'
++                filter='uglifycss'
+                 output='css/built/layout.css'
+             %}
+                 <link rel="stylesheet" href="{{ asset_url }}" />
+diff --git a/app/config/config.yml b/app/config/config.yml
+index 45be448..b8f477f 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -44,6 +44,8 @@ assetic:
+     #java: /usr/bin/java
+     filters:
+         cssrewrite: ~
++        uglifycss:
++            bin: %kernel.root_dir%/../node_modules/.bin/uglifycss
+         #closure:
+         #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
+         #yui_css:
+diff --git a/package.json b/package.json
+new file mode 100644
+index 0000000..b5557b7
+--- /dev/null
++++ b/package.json
+@@ -0,0 +1,5 @@
++{
++  "dependencies": {
++    "uglifycss": "0.0.9"
++  }
++}
