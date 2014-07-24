@@ -9,6 +9,7 @@ class RegisterController extends Controller
 {
     /**
      * @Route("/register", name="user_register")
+     * @Template
      */
     public function registerAction()
     {
@@ -18,5 +19,7 @@ class RegisterController extends Controller
             ->add('password', 'password')
             ->getForm()
         ;
+
+        return array('form' => $form);
     }
 }
