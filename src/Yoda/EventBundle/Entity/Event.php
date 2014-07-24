@@ -60,6 +60,11 @@ class Event
     protected $owner;
 
     /**
+     * @ORM\Column(length=255, unique=true)
+     */
+    protected $slug;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -175,5 +180,15 @@ class Event
     public function setOwner(User $owner)
     {
         $this->owner = $owner;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
     }
 }

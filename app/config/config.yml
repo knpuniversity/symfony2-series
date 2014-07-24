@@ -73,4 +73,5 @@ swiftmailer:
 
 stof_doctrine_extensions:
     orm:
-        default:    ~
+        default:
+            sluggable:   true
