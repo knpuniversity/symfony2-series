@@ -1,3 +1,5 @@
+{% use 'form_div_layout.html.twig' with form_label as base_form_label %}
+
 {% block form_row %}
     <div class="form-group {{ errors|length > 0 ? 'has-error' : '' }}">
         {{ form_label(form) }}
@@ -24,4 +26,5 @@
 {% endblock form_widget_simple %}
 
 {% block form_label %}
+    {{ block('base_form_label') }}
 {% endblock form_label %}
