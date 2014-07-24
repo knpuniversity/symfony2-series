@@ -30,6 +30,6 @@ $user = $em
     ->findOneBy(array('username' => 'wayne'))
 ;
 
-foreach ($user->getEvents() as $event) {
-    var_dump($event->getName());
-}
+$user->setPlainPassword('newpass');
+$em->persist($user);
+$em->flush();
