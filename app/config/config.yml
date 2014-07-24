@@ -18,6 +18,7 @@ framework:
         engines: ['twig']
         assets_version: 5-return-of-the-jedi
         assets_version_format: "%%s?v=%%s"
+        assets_base_url: http://myfancycdn.com
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
