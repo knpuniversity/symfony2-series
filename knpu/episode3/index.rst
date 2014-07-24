@@ -23,8 +23,14 @@ Starting in Symfony2: Episode3
     attend-event-ajax
     error-pages
     render-controller
+    csv-download
     services
+    service-container
+    config-imports-type-hinting
+    more-dependency-injection
     twig-extension-listener
+    doctrine-lifecycle-callback
     doctrine-listener
+    doctrine-listener-update
     outro
 
