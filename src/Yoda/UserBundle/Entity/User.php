@@ -30,6 +30,7 @@ class User implements AdvancedUserInterface, Serializable
      *
      * @ORM\Column(name="username", type="string", length=255)
      * @Assert\NotBlank(message="Give us at least 3 characters")
+     * @Assert\Length(min=3, minMessage="Give us at least 3 characters!")
      */
     private $username;
 
@@ -42,6 +43,8 @@ class User implements AdvancedUserInterface, Serializable
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Email
      */
     private $email;
 
@@ -57,6 +60,13 @@ class User implements AdvancedUserInterface, Serializable
      */
     private $isActive = true;
 
+    /**
+     * @Assert\NotBlank
+     * @Assert\Regex(
+     *      pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/",
+     *      message="Use 1 upper case letter, 1 lower case letter, and 1 number"
+     * )
+     */
     private $plainPassword;
 
     /**
