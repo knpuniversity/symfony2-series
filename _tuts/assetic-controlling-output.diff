@@ -1,0 +1,22 @@
+diff --git a/.gitignore b/.gitignore
+index fa563fa..f950484 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -9,3 +9,5 @@
+ /vendor/
+ /bin/
+ /composer.phar
++/web/css/built
++/web/js/built
+diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
+index 4120e2b..d674481 100644
+--- a/app/Resources/views/base.html.twig
++++ b/app/Resources/views/base.html.twig
+@@ -18,6 +18,7 @@
+                 'bundles/event/css/events.css'
+                 'bundles/event/css/main.css'
+                 filter='cssrewrite'
++                output='css/built/layout.css'
+             %}
+                 <link rel="stylesheet" href="{{ asset_url }}" />
+             {% endstylesheets %}
