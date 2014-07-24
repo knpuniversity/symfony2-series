@@ -32,8 +32,22 @@ class RegisterController extends Controller
             $user = new User();
             $user->setUsername($data['username']);
             $user->setEmail($data['email']);
+            $user->setPassword($this->encodePassword($user, $data['password']));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
         }
 
         return array('form' => $form->createView());
+    }
+
+    private function encodePassword(User $user, $plainPassword)
+    {
+        $encoder = $this->container->get('security.encoder_factory')
+            ->getEncoder($user)
+        ;
+
+        return $encoder->encodePassword($plainPassword, $user->getSalt());
     }
 }
