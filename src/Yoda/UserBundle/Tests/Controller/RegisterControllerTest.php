@@ -10,10 +10,16 @@ class RegisterControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', '/register');
+        $crawler = $client->request('GET', '/register');
         $response = $client->getResponse();
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('Register', $response->getContent());
+
+        $usernameVal = $crawler
+            ->filter('#user_register_username')
+            ->attr('value')
+        ;
+        $this->assertEquals('Leia', $usernameVal);
     }
 }
