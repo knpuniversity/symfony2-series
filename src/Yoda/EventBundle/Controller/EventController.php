@@ -3,7 +3,7 @@
 namespace Yoda\EventBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Yoda\EventBundle\Controller\Controller;
 
 use Yoda\EventBundle\Entity\Event;
 use Yoda\EventBundle\Form\EventType;
