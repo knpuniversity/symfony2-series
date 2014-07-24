@@ -236,7 +236,22 @@ class EventController extends Controller
 
     public function attendAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        /** @var $event \Yoda\EventBundle\Entity\Event */
+        $event = $em->getRepository('EventBundle:Event')->find($id);
 
+        if (!$event) {
+            throw $this->createNotFoundException('No event found for id '.$id);
+        }
+
+        $event->getAttendees()->add($this->getUser());
+
+        $em->persist($event);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('event_show', array(
+            'slug' => $event->getSlug()
+        )));
     }
 
     public function unattendAction($id)
