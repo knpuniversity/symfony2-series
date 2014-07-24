@@ -38,7 +38,7 @@ Let's try it. Ah, no download - just an ugly error:
     Call to undefined method Yoda\EventBundle\Reporting\EventReportManager::generateUrl()
 
 We made this mistake before - ``generateUrl`` lives in Symfony's ``Controller``,
-and we don't have access to it here. Open up that function remember what
+and we don't have access to it here. Open up that function to remember what
 it *actually* does::
 
     // vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php
@@ -101,7 +101,7 @@ we have the ``router``, just use it in the function::
         return implode("\n", $rows);
     }
 
-Ok, let's test it. Now we get a different error:
+Ok, let's test it. Great, now we get a different error:
 
     Catchable Fatal Error: Argument 2 passed to
     Yoda\EventBundle\Reporting\EventReportManager::__construct() must be
@@ -112,7 +112,7 @@ class but passing it nothing for the second argument. Of course: we forgot
 to tell the container about this new argument. Open the ``services.yml``
 file and add a second item to ``arguments``:
 
-.. cdoe-block:: yaml
+.. code-block:: yaml
 
     services:
         event_report_manager:
@@ -145,7 +145,7 @@ the third argument to ``generate`` to make this happen::
 
 Download another file and open it up. Perfect!
 
-Here's the *huge* takeaways. When you're in a service and you need to do
+Here are the *huge* takeaways. When you're in a service and you need to do
 some work, just find out which service does that work, inject it through
 the constructor, then use it. You'll use this pattern over and over again.
 Understand this, and you've mastered the most important concept in Symfony.

@@ -1,8 +1,8 @@
 Doctrine Listeners on Update
 ============================
 
-But what if a user's *updates* their password? Hmm, our listener isn't called
-on updates, so the encoded password can *never* be updated. Lame!
+But what if a user *updates* their password? Hmm, our listener isn't called
+on updates, so the encoded password can *never* be updated. Crap!
 
 Add a second tag to ``services.yml`` to listen on the ``preUpdate`` event
 and create the ``preUpdate`` method by copying from ``prePersist``:
@@ -50,7 +50,7 @@ happen if a ``User`` is being saved, but their password isn't being changed::
 Testing the Update
 ------------------
 
-We can't test this easily because we don't have way to update users yet.
+We can't test this easily because we don't have a way to update users yet.
 No worries. Just open up the play script from episode 1. We already have
 a user here - just change his plain password and save:
 
@@ -110,44 +110,7 @@ to the encoded value, and not left blank.
 Now run the play script again. Great, it hits the ``die`` statement. Remove
 that and try it again.
 
-Gotcha 2: Forcing Doctrine to Persist Updates
----------------------------------------------
-
-No errors, so let's try to login. Huh, I can't.
-
-Ok, so this is gotcha number 2, and it's a special problem on ``preUpdate``
-only. Even though we updated the ``User`` in the listener, Doctrine ignores
-those. How rude!
-
-Yep, so the fix is weird. Just remember to do this whenever you need to update
-something in ``preUpdate``::
-
-    // src/Yoda/UserBundle/Doctrine/UserListener.php
-    // ...
-    
-    public function preUpdate(LifecycleEventArgs $args)
-    {
-        $entity = $args->getEntity();
-        if ($entity instanceof User) {
-            $this->handleEvent($entity);
-
-            $em = $args->getEntityManager();
-            $classMetadata = $em->getClassMetadata(get_class($entity));
-            $em->getUnitOfWork()->recomputeSingleEntityChangeSet($classMetadata, $entity);
-        }
-    }
-
-This basically *reminds* Doctrine to re-check the entity for changes so that
-the ``password`` change is noticed and included in the update statement.
-This is *not* needed in ``prePersist``: it's a special hack just for ``preUpdate``.
-
-Ok, try running the play script one more time:
-
-.. code-block:: bash
-
-    php play.php
-
-Hey, logging in works! Nice work!
+No errors, so let's try to login. Yes!
 
 We just saw prePersist and preUpdate and Doctrine has several other events
 you can find on their website. Symfony also has events, which are fired at

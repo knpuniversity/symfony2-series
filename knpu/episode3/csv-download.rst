@@ -1,7 +1,7 @@
 Creating a Pretty CSV Download 
 ==============================
 
-Buzz word time! Services! Dependency Injection! Dependency Injection Container!
+Buzzword time! Services! Dependency Injection! Dependency Injection Container!
 
 Hold on, because we're about to discover what these terms mean, how *core*
 they are to Symfony, and just how simple these things really are.
@@ -19,8 +19,9 @@ is getting a bit big::
 
     }
 
-Let's create an ``updatedEventsAction`` and use those handy annotations routes.
-Don't forget to copy in the ``Route`` ``use`` statement for the annotation::
+Let's create an ``updatedEventsAction`` and use those handy annotation routes.
+And of course don't forget to copy in the ``Route`` ``use`` statement for the 
+annotation::
 
     /**
      * @Route("/events/report/recentlyUpdated.csv")
@@ -38,8 +39,8 @@ Creating a CSV Response
 -----------------------
 
 First we need a custom query to find recently updated events. Should we just
-put this in our controller? I *hope* you're screaming no. We're good enough
-now to put these directly in our repository class. Create a new ``getRecentlyUpdatedEvents``
+put this in our controller? I *hope* you're screaming no. The force is strong enough
+in us to now put these directly in our repository class. Create a new ``getRecentlyUpdatedEvents``
 method in ``EventRepository`` and build a query that *only* returns events
 updated within the last 24 hours::
 
@@ -56,8 +57,9 @@ updated within the last 24 hours::
         ;
     }
 
-Let's call this in the controller. We always query the same way: get the
-entity manager, get the repository, then call a method on it::
+Let's call this in the controller. This should be getting boring
+because, we always query the same way: get the entity manager, get 
+the repository, then call a method on it::
 
     // src/Yoda/EventBundle/Controller/ReportController.php
     // ...

@@ -43,8 +43,8 @@ method::
 This isn't important - just make sure ``getName`` returns something unique
 to your project.
 
-Our missing, if you choose to accept it, is to create an ``ago`` filter:
-something that'll turn a date into something friendlier like "5 minutes ago".
+The mission, if you choose to accept it, is to create an ``ago`` filter:
+something that'll turn a date into a friendlier phrase like "5 minutes ago".
 
 Use the Non-Existent Filter
 ---------------------------

@@ -18,7 +18,9 @@ it out of the container.
 We also saw a few "tags", and how you can use them to tell Symfony that your
 service should be used in some special way.
 
-So what's next? There's always more to learn about with Symfony, but we've
+So what's next? There's always more to learn with Symfony, but we've
 touched on almost all the most important things by now. In the next, and
 final screencast in this series, we'll talk about assets, assetic, form customizations
-and finally deployment and some performance notes. Seeya next time!
+and finally deployment and some performance notes. 
+
+Seeya next time!

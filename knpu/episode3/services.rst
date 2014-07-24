@@ -89,7 +89,7 @@ The code inside ``EventReportManager`` is *dependent* on this "doctrine"
 object. Well, more specifically, it's dependent on Doctrine's entity manager.
 
 The fix for our puzzle is to "inject the dependency", or to use "dependency injection".
-That's a fancy term for a really simple idea.
+That's a very scary term for a really simple idea.
 
 First, add a constructor method with a single ``$em`` argument. Set that on
 a new ``$em`` class property::
@@ -143,13 +143,13 @@ pass it as the first argument when creating a new ``EventReportManager``::
         // ...
     }
 
-Refresh! Yes! The CSV downloaded!
+Refresh! Yes! The CSV has downloaded!
 
 You deserve some congrats. You've just done "dependency injection". It's
-no some new programming practice or magic trick, it's just the idea of passing
+not some new programming practice or magic trick, it's just the idea of passing
 dependencies into objects that need them. For us, ``EventReportManager``
 needs the entity manager object. So when we create the manager, we just "inject"
-it by passing it to the manager's constructor. Now that the manager has everything
+it by passing it to the constructor. Now that the manager has everything
 it needs, it can get its work done.
 
 .. tip::
@@ -161,7 +161,7 @@ So What's a Service?
 --------------------
 
 And you know what else? We also just created our first "service". Yes, we're
-hitting multiple buzz words at once!
+hitting multiple buzzwords at once!
 
 A "service" is a term that basically refers to any object that does some
 work for us. ``EventReportManager`` generates a CSV, so it's a "service".

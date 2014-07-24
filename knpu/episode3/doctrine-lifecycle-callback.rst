@@ -2,7 +2,7 @@ Doctrine is in your Lifecycle (with Callbacks)
 ==============================================
 
 Remember when we used StofDoctrineExtensions to set the Event's ``slug``
-for us? That magic works by leverage one of the most powerful features of
+for us? That magic works by leveraging one of the most powerful features of
 Doctrine: events. Doctrine gives us the flexibility to have hooks that are
 called whenever certain things are done, like when an entity is first persisted,
 updated, or deleted.
