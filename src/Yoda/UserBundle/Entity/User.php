@@ -5,6 +5,7 @@ namespace Yoda\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Serializable;
 
 /**
  * User
@@ -12,7 +13,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  * @ORM\Table(name="yoda_user")
  * @ORM\Entity(repositoryClass="Yoda\UserBundle\Entity\UserRepository")
  */
-class User implements AdvancedUserInterface
+class User implements AdvancedUserInterface, Serializable
 {
     /**
      * @var integer
@@ -196,5 +197,13 @@ class User implements AdvancedUserInterface
         return $this->getIsActive();
     }
 
+    public function serialize()
+    {
+        // todo - do some mad serialization
+    }
 
+    public function unserialize($serialized)
+    {
+        // todo - and some equally angry de-serialization
+    }
 }
