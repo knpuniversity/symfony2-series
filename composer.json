@@ -47,6 +47,7 @@
         },
         "branch-alias": {
             "dev-master": "2.4-dev"
-        }
+        },
+        "symfony-assets-install": "symlink"
     }
 }
