@@ -84,6 +84,8 @@ class EventController extends Controller
     {
         $securityContext = $this->container->get('security.context');
         if (!$securityContext->isGranted('ROLE_ADMIN')) {
+            // in Symfony 2.5
+            // throw $this->createAccessDeniedException('message!');
             throw new AccessDeniedException('Only an admin can do this!!!!');
         }
 
