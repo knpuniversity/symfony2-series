@@ -3,10 +3,11 @@
 namespace Yoda\EventBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Yoda\EventBundle\Entity\Event;
 
-class LoadEvents implements FixtureInterface
+class LoadEvents implements FixtureInterface, OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -26,5 +27,10 @@ class LoadEvents implements FixtureInterface
 
         // the queries aren't done until now
         $manager->flush();
+    }
+
+    public function getOrder()
+    {
+        return 20;
     }
 }
