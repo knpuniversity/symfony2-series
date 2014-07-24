@@ -56,7 +56,7 @@ and configure the service there.
         doctrine.user_listener:
             class: Yoda\UserBundle\Doctrine\UserListener
 
-But if you think Symfony is going to automatically find this file, you're
+If you think Symfony is going to automatically find this file, you're
 nuts! Import it manually from your main ``config.yml`` file:
 
 .. code-block:: yaml
@@ -156,7 +156,7 @@ We're *almost* done. You've probably already noticed that the ``$this->container
 line won't work here. We don't have a ``$container`` property - that's something
 special to controllers and a few other places.
 
-Again *not* a problem! The listener service ultimately need the ``security.encoder_factory``
+Again *not* a problem! The listener ultimately needs the ``security.encoder_factory``
 service. So let's just inject it. Add a constructor with this as the first
 argument::
 
@@ -222,7 +222,7 @@ the plain password instead.
         $user->setPlainPassword('waynepass');
     }
 
-Realod the fixtures again!
+Reload the fixtures again!
 
 .. code-block:: bash
 
