@@ -24,5 +24,12 @@ class RegisterControllerTest extends WebTestCase
 
         // the name of our button is "Register!"
         $form = $crawler->selectButton('Register!')->form();
+
+        $crawler = $client->submit($form);
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $this->assertRegexp(
+            '/This value should not be blank/',
+            $client->getResponse()->getContent()
+        );
     }
 }
