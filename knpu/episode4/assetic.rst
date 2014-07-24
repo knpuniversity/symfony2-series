@@ -1,5 +1,5 @@
-Assetic
-=======
+Filtering, Combining and other Craziness with Assetic
+=====================================================
 
 If you're building an application that relies on a number of CSS or JavaScript
 files, then you'll probably love Assetic. It's a third-party library that
