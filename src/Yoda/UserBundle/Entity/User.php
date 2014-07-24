@@ -199,11 +199,19 @@ class User implements AdvancedUserInterface, Serializable
 
     public function serialize()
     {
-        // todo - do some mad serialization
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+        ));
     }
 
     public function unserialize($serialized)
     {
-        // todo - and some equally angry de-serialization
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+        ) = unserialize($serialized);
     }
 }
