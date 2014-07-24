@@ -25,6 +25,8 @@ class EventController extends Controller
      */
     public function indexAction()
     {
+        throw new \Exception('Ahhhhahahhhah');
+
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em
