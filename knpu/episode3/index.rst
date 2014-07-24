@@ -29,6 +29,8 @@ Starting in Symfony2: Episode3
     config-imports-type-hinting
     more-dependency-injection
     twig-extension-listener
+    doctrine-lifecycle-callback
     doctrine-listener
+    doctrine-listener-update
     outro
 
