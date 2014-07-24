@@ -30,7 +30,7 @@ index 3e9c5ec..535c4ed 100644
      {
          $providerKey = 'secured_area'; // your firewall name
 diff --git a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
-index 142aa8e..5796c12 100644
+index 142aa8e..9b55ad9 100644
 --- a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
 +++ b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
 @@ -20,13 +20,15 @@ class LoadUsers implements FixtureInterface, ContainerAwareInterface, OrderedFix
@@ -47,7 +47,7 @@ index 142aa8e..5796c12 100644
          $admin->setUsername('wayne');
 -        $admin->setPassword($this->encodePassword($admin, 'waynepass'));
 +        // $admin->setPassword($this->encodePassword($admin, 'waynepass'));
-+        $user->setPlainPassword('waynepass');
++        $admin->setPlainPassword('waynepass');
          $admin->setRoles(array('ROLE_ADMIN'));
          $admin->setEmail('wayne@deathstar.com');
          $manager->persist($admin);
