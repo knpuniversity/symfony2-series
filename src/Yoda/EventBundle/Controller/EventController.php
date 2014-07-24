@@ -28,12 +28,7 @@ class EventController extends Controller
 
         $entities = $em
             ->getRepository('EventBundle:Event')
-            ->createQueryBuilder('e')
-            ->addOrderBy('e.time', 'ASC')
-            ->andWhere('e.time > :now')
-            ->setParameter('now', new \DateTime())
-            ->getQuery()
-            ->execute()
+            ->getUpcomingEvents()
         ;
 
         return array(
