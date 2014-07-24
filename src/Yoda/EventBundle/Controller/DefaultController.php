@@ -9,6 +9,12 @@ class DefaultController extends Controller
 {
     public function indexAction($count, $firstName)
     {
-        return new Response('It\'s a traaaaaaaap!');
+        $arr = array(
+            'firstName' => $firstName,
+            'count'     => $count,
+            'status'    => 'It\'s a traaaaaaaap!',
+        );
+
+        return new Response(json_encode($arr));
     }
 }
