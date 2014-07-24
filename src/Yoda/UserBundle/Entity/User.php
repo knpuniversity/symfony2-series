@@ -183,7 +183,7 @@ class User implements AdvancedUserInterface
 
     public function isAccountNonLocked()
     {
-        return false;
+        return true;
     }
 
     public function isCredentialsNonExpired()
@@ -193,7 +193,7 @@ class User implements AdvancedUserInterface
 
     public function isEnabled()
     {
-        return true;
+        return $this->getIsActive();
     }
 
 
