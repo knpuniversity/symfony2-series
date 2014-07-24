@@ -15,6 +15,9 @@ class DefaultController extends Controller
             'status'    => 'It\'s a traaaaaaaap!',
         );
 
-        return new Response(json_encode($arr));
+        $response = new Response(json_encode($arr));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 }
