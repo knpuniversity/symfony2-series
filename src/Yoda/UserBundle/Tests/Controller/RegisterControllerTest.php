@@ -14,6 +14,6 @@ class RegisterControllerTest extends WebTestCase
         $response = $client->getResponse();
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('Register', $response->getContent());
+        $this->assertContains('Registerxxxx', $response->getContent());
     }
 }
