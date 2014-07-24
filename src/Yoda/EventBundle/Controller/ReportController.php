@@ -26,6 +26,7 @@ class ReportController extends Controller
 
         $content = implode("\n", $rows);
         $response = new Response($content);
+        $response->headers->set('Content-Type', 'text/csv');
 
         return $response;
     }
