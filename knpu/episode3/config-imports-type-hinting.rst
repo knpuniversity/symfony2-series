@@ -49,7 +49,7 @@ Type-Hinting
 There's one more thing in our service that's bothering me. The first argument
 to the constructor is the entity manager object, but we're not type-hinting
 it. Type-hinting is optional, but I like doing it because it gives me better
-errors and gives me better auto-completion in PhpStorm.
+errors and gives me auto-completion in PhpStorm.
 
 So what *is* the class for the entity manager service? One way to find out
 is to use ``container:debug`` but pass it the service name:
@@ -66,8 +66,8 @@ up that one:
     php app/console container:debug doctrine.orm.default_entity_manager
 
 Great! Now we can add a type-hint for the argument. And by the way, a lot
-of times I just guess the class name and let PhpStorm auto-complete the ``use``
-statement for me. It's lazy, but it almost always works::
+of times I just guess the class name and let PhpStorm mind trick ... I mean 
+auto-complete the ``use`` statement for me. It's lazy, but it almost always works::
 
     // src/Yoda/EventBundle/Reporting/EventReportManager.php
     // ...
