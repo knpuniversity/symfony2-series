@@ -2,9 +2,6 @@
 
 {% block body %}
 
-    {{ app.session.get('some_session_key') }}
-    {{ app.request.host }}
-
     <section class="events">
         <header id="menu">
             <a class="button" href="{{ path('event_new') }}">Create new event</a>
