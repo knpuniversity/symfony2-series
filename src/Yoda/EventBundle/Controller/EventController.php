@@ -26,7 +26,13 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EventBundle:Event')->findAll();
+        $entities = $em
+            ->getRepository('EventBundle:Event')
+            ->createQueryBuilder('e')
+            ->addOrderBy('e.time', 'ASC')
+            ->getQuery()
+            ->execute()
+        ;
 
         return array(
             'entities' => $entities,
