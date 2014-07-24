@@ -14,4 +14,8 @@
             <div>These are not the droids you're looking for...</div>
         </article>
     </section>
+
+    <section class="events">
+        {{ render(controller('EventBundle:Event:_upcomingEvents')) }}
+    </section>
 {% endblock %}
