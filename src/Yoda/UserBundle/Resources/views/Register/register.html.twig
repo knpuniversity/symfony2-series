@@ -16,8 +16,14 @@
 
             {{ form_row(form.username) }}
             {{ form_row(form.email) }}
-            {{ form_row(form.password.first) }}
-            {{ form_row(form.password.second) }}
+
+            {{ form_row(form.password.first, {
+                label: 'Password'
+            }) }}
+
+            {{ form_row(form.password.second, {
+                label: 'Repeat Password'
+            }) }}
 
             {{ form_rest(form) }}
 
