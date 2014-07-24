@@ -1,0 +1,15 @@
+diff --git a/src/Yoda/UserBundle/Doctrine/UserListener.php b/src/Yoda/UserBundle/Doctrine/UserListener.php
+index de15d2c..018e7c9 100644
+--- a/src/Yoda/UserBundle/Doctrine/UserListener.php
++++ b/src/Yoda/UserBundle/Doctrine/UserListener.php
+@@ -28,6 +28,10 @@ class UserListener
+         $entity = $args->getEntity();
+         if ($entity instanceof User) {
+             $this->handleEvent($entity);
++
++            $em = $args->getEntityManager();
++            $classMetadata = $em->getClassMetadata(get_class($entity));
++            $em->getUnitOfWork()->recomputeSingleEntityChangeSet($classMetadata, $entity);
+         }
+     }
+ 

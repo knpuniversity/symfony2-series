@@ -1,0 +1,24 @@
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index aac7b73..4a842be 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -68,7 +68,6 @@ class Event
+     protected $slug;
+ 
+     /**
+-     * @Gedmo\Timestampable(on="create")
+      * @ORM\Column(type="datetime")
+      */
+     private $createdAt;
+@@ -253,4 +252,11 @@ class Event
+     {
+         return $this->getAttendees()->contains($user);
+     }
++
++    public function prePersist()
++    {
++        if (!$this->getCreatedAt()) {
++            $this->createdAt = new \DateTime();
++        }
++    }
+ }

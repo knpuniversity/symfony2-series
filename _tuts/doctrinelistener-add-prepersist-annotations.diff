@@ -1,0 +1,22 @@
+diff --git a/src/Yoda/EventBundle/Entity/Event.php b/src/Yoda/EventBundle/Entity/Event.php
+index 4a842be..25ca34a 100644
+--- a/src/Yoda/EventBundle/Entity/Event.php
++++ b/src/Yoda/EventBundle/Entity/Event.php
+@@ -12,6 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
+  *
+  * @ORM\Table(name="yoda_event")
+  * @ORM\Entity(repositoryClass="Yoda\EventBundle\Entity\EventRepository")
++ * @ORM\HasLifecycleCallbacks
+  */
+ class Event
+ {
+@@ -253,6 +254,9 @@ class Event
+         return $this->getAttendees()->contains($user);
+     }
+ 
++    /**
++     * @ORM\PrePersist
++     */
+     public function prePersist()
+     {
+         if (!$this->getCreatedAt()) {

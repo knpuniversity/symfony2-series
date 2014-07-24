@@ -1,0 +1,44 @@
+diff --git a/play.php b/play.php
+index 1067b0d..10b0c13 100644
+--- a/play.php
++++ b/play.php
+@@ -30,6 +30,6 @@ $user = $em
+     ->findOneBy(array('username' => 'wayne'))
+ ;
+ 
+-foreach ($user->getEvents() as $event) {
+-    var_dump($event->getName());
+-}
++$user->setPlainPassword('newpass');
++$em->persist($user);
++$em->flush();
+diff --git a/src/Yoda/UserBundle/Doctrine/UserListener.php b/src/Yoda/UserBundle/Doctrine/UserListener.php
+index 87996cc..a44b719 100644
+--- a/src/Yoda/UserBundle/Doctrine/UserListener.php
++++ b/src/Yoda/UserBundle/Doctrine/UserListener.php
+@@ -23,6 +23,16 @@ class UserListener
+         }
+     }
+ 
++    public function preUpdate(LifecycleEventArgs $args)
++    {
++        die('UPDATE');
++
++        $entity = $args->getEntity();
++        if ($entity instanceof User) {
++            $this->handleEvent($entity);
++        }
++    }
++
+     private function handleEvent(User $user)
+     {
+         $plainPassword = $user->getPlainPassword();
+diff --git a/src/Yoda/UserBundle/Resources/config/services.yml b/src/Yoda/UserBundle/Resources/config/services.yml
+index 2ac0129..8b38d4c 100644
+--- a/src/Yoda/UserBundle/Resources/config/services.yml
++++ b/src/Yoda/UserBundle/Resources/config/services.yml
+@@ -4,3 +4,4 @@ services:
+         arguments: ["@security.encoder_factory"]
+         tags:
+             - { name: doctrine.event_listener, event: prePersist }
++            - { name: doctrine.event_listener, event: preUpdate }

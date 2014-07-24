@@ -1,0 +1,16 @@
+diff --git a/src/Yoda/UserBundle/Doctrine/UserListener.php b/src/Yoda/UserBundle/Doctrine/UserListener.php
+index 93c6563..04e2ef8 100644
+--- a/src/Yoda/UserBundle/Doctrine/UserListener.php
++++ b/src/Yoda/UserBundle/Doctrine/UserListener.php
+@@ -9,7 +9,10 @@ class UserListener
+ {
+     public function prePersist(LifecycleEventArgs $args)
+     {
+-        die('Something is being inserted!');
++        $entity = $args->getEntity();
++        if ($entity instanceof User) {
++            $this->handleEvent($entity);
++        }
+     }
+ 
+     private function handleEvent(User $user)

@@ -1,0 +1,14 @@
+diff --git a/src/Yoda/UserBundle/Doctrine/UserListener.php b/src/Yoda/UserBundle/Doctrine/UserListener.php
+new file mode 100644
+index 0000000..597f86a
+--- /dev/null
++++ b/src/Yoda/UserBundle/Doctrine/UserListener.php
+@@ -0,0 +1,8 @@
++<?php
++
++namespace Yoda\UserBundle\Doctrine;
++
++class UserListener
++{
++
++}

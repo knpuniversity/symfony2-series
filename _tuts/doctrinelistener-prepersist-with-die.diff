@@ -1,0 +1,14 @@
+diff --git a/src/Yoda/UserBundle/Doctrine/UserListener.php b/src/Yoda/UserBundle/Doctrine/UserListener.php
+index 597f86a..93489dc 100644
+--- a/src/Yoda/UserBundle/Doctrine/UserListener.php
++++ b/src/Yoda/UserBundle/Doctrine/UserListener.php
+@@ -4,5 +4,8 @@ namespace Yoda\UserBundle\Doctrine;
+ 
+ class UserListener
+ {
+-
++    public function prePersist()
++    {
++        die('Something is being inserted!');
++    }
+ }

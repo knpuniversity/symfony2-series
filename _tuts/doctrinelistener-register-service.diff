@@ -1,0 +1,23 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index 464557e..00efdfe 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -2,6 +2,7 @@ imports:
+     - { resource: parameters.yml }
+     - { resource: security.yml }
+     - { resource: "@EventBundle/Resources/config/services.yml" }
++    - { resource: "@UserBundle/Resources/config/services.yml" }
+ 
+ framework:
+     #esi:             ~
+diff --git a/src/Yoda/UserBundle/Resources/config/services.yml b/src/Yoda/UserBundle/Resources/config/services.yml
+new file mode 100644
+index 0000000..147963c
+--- /dev/null
++++ b/src/Yoda/UserBundle/Resources/config/services.yml
+@@ -0,0 +1,4 @@
++services:
++    doctrine.user_listener:
++        class: Yoda\UserBundle\Doctrine\UserListener
++        arguments: []
+\ No newline at end of file

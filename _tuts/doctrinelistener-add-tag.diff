@@ -1,0 +1,13 @@
+diff --git a/src/Yoda/UserBundle/Resources/config/services.yml b/src/Yoda/UserBundle/Resources/config/services.yml
+index 147963c..870be92 100644
+--- a/src/Yoda/UserBundle/Resources/config/services.yml
++++ b/src/Yoda/UserBundle/Resources/config/services.yml
+@@ -1,4 +1,6 @@
+ services:
+     doctrine.user_listener:
+         class: Yoda\UserBundle\Doctrine\UserListener
+-        arguments: []
+\ No newline at end of file
++        arguments: []
++        tags:
++            - { name: doctrine.event_listener, event: prePersist }

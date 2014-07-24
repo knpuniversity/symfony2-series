@@ -1379,7 +1379,82 @@
             "id": "twigextension-add-tag",
             "name": "TwigExtension: Add tag",
             "description": null
+        },
+        {
+            "id": "doctrinelistener-prepersist-lifecycle-callback",
+            "name": "DoctrineListener: PrePersist Lifecycle Callback",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-add-prepersist-annotations",
+            "name": "DoctrineListener: Add PrePersist Annotations",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-create-listener-class",
+            "name": "DoctrineListener: Create listener class",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-prepersist-with-die",
+            "name": "DoctrineListener: prePersist with die",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-register-service",
+            "name": "DoctrineListener: Register service",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-add-tag",
+            "name": "DoctrineListener: Add tag",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-add-handleevent-function",
+            "name": "DoctrineListener: Add handleEvent function",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-add-args-argument",
+            "name": "DoctrineListener: Add args argument",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-fill-in-prepersist",
+            "name": "DoctrineListener: Fill in prePersist",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-injecting-the-encoder-factory",
+            "name": "DoctrineListener: Injecting the encoder factory",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-removing-old-encoding-logic",
+            "name": "DoctrineListener: Removing old encoding logic",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-preupdate-setup",
+            "name": "DoctrineListener: PreUpdate setup",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-preupdate-clearing-password-on-plain-set",
+            "name": "DoctrineListener: PreUpdate clearing password on plain set",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-removing-preupdate-die",
+            "name": "DoctrineListener: Removing preUpdate die",
+            "description": null
+        },
+        {
+            "id": "doctrinelistener-adding-recomputesingleentitychangeset",
+            "name": "DoctrineListener: Adding recomputeSingleEntityChangeSet",
+            "description": null
         }
     ],
-    "sha": "939a49346abc0146187674c73cdc18f48c159106"
+    "sha": "aedcb1a44508fffc9d63cc65661591f983fdfea1"
 }

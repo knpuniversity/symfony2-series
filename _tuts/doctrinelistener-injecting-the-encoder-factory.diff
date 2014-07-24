@@ -1,0 +1,43 @@
+diff --git a/src/Yoda/UserBundle/Doctrine/UserListener.php b/src/Yoda/UserBundle/Doctrine/UserListener.php
+index 04e2ef8..87996cc 100644
+--- a/src/Yoda/UserBundle/Doctrine/UserListener.php
++++ b/src/Yoda/UserBundle/Doctrine/UserListener.php
+@@ -4,9 +4,17 @@ namespace Yoda\UserBundle\Doctrine;
+ 
+ use Yoda\UserBundle\Entity\User;
+ use Doctrine\ORM\Event\LifecycleEventArgs;
++use Symfony\Component\Security\Core\Encoder\EncoderFactory;
+ 
+ class UserListener
+ {
++    private $encoderFactory;
++
++    public function __construct(EncoderFactory $encoderFactory)
++    {
++        $this->encoderFactory = $encoderFactory;
++    }
++
+     public function prePersist(LifecycleEventArgs $args)
+     {
+         $entity = $args->getEntity();
+@@ -19,7 +27,7 @@ class UserListener
+     {
+         $plainPassword = $user->getPlainPassword();
+ 
+-        $encoder = $this->container->get('security.encoder_factory')
++        $encoder = $this->encoderFactory
+             ->getEncoder($user)
+         ;
+ 
+diff --git a/src/Yoda/UserBundle/Resources/config/services.yml b/src/Yoda/UserBundle/Resources/config/services.yml
+index 870be92..2ac0129 100644
+--- a/src/Yoda/UserBundle/Resources/config/services.yml
++++ b/src/Yoda/UserBundle/Resources/config/services.yml
+@@ -1,6 +1,6 @@
+ services:
+     doctrine.user_listener:
+         class: Yoda\UserBundle\Doctrine\UserListener
+-        arguments: []
++        arguments: ["@security.encoder_factory"]
+         tags:
+             - { name: doctrine.event_listener, event: prePersist }

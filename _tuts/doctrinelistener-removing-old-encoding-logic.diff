@@ -1,0 +1,69 @@
+diff --git a/src/Yoda/UserBundle/Controller/RegisterController.php b/src/Yoda/UserBundle/Controller/RegisterController.php
+index 3e9c5ec..535c4ed 100644
+--- a/src/Yoda/UserBundle/Controller/RegisterController.php
++++ b/src/Yoda/UserBundle/Controller/RegisterController.php
+@@ -27,10 +27,6 @@ class RegisterController extends Controller
+         if ($form->isValid()) {
+             $user = $form->getData();
+ 
+-            $user->setPassword(
+-                $this->encodePassword($user, $user->getPlainPassword())
+-            );
+-
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($user);
+             $em->flush();
+@@ -50,15 +46,6 @@ class RegisterController extends Controller
+         return array('form' => $form->createView());
+     }
+ 
+-    private function encodePassword(User $user, $plainPassword)
+-    {
+-        $encoder = $this->container->get('security.encoder_factory')
+-            ->getEncoder($user)
+-        ;
+-
+-        return $encoder->encodePassword($plainPassword, $user->getSalt());
+-    }
+-
+     private function authenticateUser(User $user)
+     {
+         $providerKey = 'secured_area'; // your firewall name
+diff --git a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
+index 142aa8e..5796c12 100644
+--- a/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
++++ b/src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
+@@ -20,13 +20,15 @@ class LoadUsers implements FixtureInterface, ContainerAwareInterface, OrderedFix
+     {
+         $user = new User();
+         $user->setUsername('darth');
+-        $user->setPassword($this->encodePassword($user, 'darthpass'));
++        // $user->setPassword($this->encodePassword($user, 'darthpass'));
++        $user->setPlainPassword('darthpass');
+         $user->setEmail('darth@deathstar.com');
+         $manager->persist($user);
+ 
+         $admin = new User();
+         $admin->setUsername('wayne');
+-        $admin->setPassword($this->encodePassword($admin, 'waynepass'));
++        // $admin->setPassword($this->encodePassword($admin, 'waynepass'));
++        $user->setPlainPassword('waynepass');
+         $admin->setRoles(array('ROLE_ADMIN'));
+         $admin->setEmail('wayne@deathstar.com');
+         $manager->persist($admin);
+@@ -35,15 +37,6 @@ class LoadUsers implements FixtureInterface, ContainerAwareInterface, OrderedFix
+         $manager->flush();
+     }
+ 
+-    private function encodePassword(User $user, $plainPassword)
+-    {
+-        $encoder = $this->container->get('security.encoder_factory')
+-            ->getEncoder($user)
+-        ;
+-
+-        return $encoder->encodePassword($plainPassword, $user->getSalt());
+-    }
+-
+     public function setContainer(ContainerInterface $container = null)
+     {
+         $this->container = $container;
