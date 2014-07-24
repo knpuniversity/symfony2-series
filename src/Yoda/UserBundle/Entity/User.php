@@ -45,7 +45,9 @@ class User implements AdvancedUserInterface, Serializable
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Email
      */
     private $email;
 
