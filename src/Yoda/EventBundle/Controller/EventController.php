@@ -29,7 +29,7 @@ class EventController extends Controller
 
         // temporarily abuse this controller to see if this all works
         $userRepo = $em->getRepository('UserBundle:User');
-        var_dump($userRepo->findOneByUsernameOrEmail('user'));die;
+        var_dump($userRepo->findOneByUsernameOrEmail('user@user.com'));die;
 
         $entities = $em->getRepository('EventBundle:Event')->findAll();
 
