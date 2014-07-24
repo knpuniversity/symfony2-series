@@ -81,7 +81,7 @@ events:
 
 The ``createdAt`` column is set so this must be working.
 
-Lifectycle callbacks are brilliant because they're just so easy to setup.
+Lifecycle callbacks are brilliant because they're just so easy to setup.
 
 But they have one big limitation. Because the callback is inside an entity,
 we don't have access to the container or any services. This wasn't a problem
