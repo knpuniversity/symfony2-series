@@ -1,0 +1,22 @@
+diff --git a/app/Resources/views/base.html.twig b/app/Resources/views/base.html.twig
+index bb8f048..4120e2b 100644
+--- a/app/Resources/views/base.html.twig
++++ b/app/Resources/views/base.html.twig
+@@ -13,9 +13,14 @@
+         {% block stylesheets %}
+             <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+ 
+-            <link rel="stylesheet" href="{{ asset('bundles/event/css/event.css') }}" />
+-            <link rel="stylesheet" href="{{ asset('bundles/event/css/events.css') }}" />
+-            <link rel="stylesheet" href="{{ asset('bundles/event/css/main.css') }}" />
++            {% stylesheets
++                'bundles/event/css/event.css'
++                'bundles/event/css/events.css'
++                'bundles/event/css/main.css'
++                filter='cssrewrite'
++            %}
++                <link rel="stylesheet" href="{{ asset_url }}" />
++            {% endstylesheets %}
+         {% endblock %}
+         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+     </head>
