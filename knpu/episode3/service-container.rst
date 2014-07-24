@@ -38,12 +38,12 @@ Refresh! The download still works: this is just a more direct way to access
 the same object. But stop! This is *hugely* powerful! Symfony's container
 holds over 200 services, and you can get *any* of these in a controller and
 use them. It's like someone just gave you 200 new power tools! You may not
-know how to use them yet, but you're dangerous!
+know how to use them yet, but you're about to look like Edward Sciccor hands!
 
 Adding a Service
 ----------------
 
-But I want to go further by adding our own service to the container.
+I want to go further by adding our own service to the container.
 
 Find and open a ``services.yml`` file that was generated automatically in
 ``EventBundle``. When you add a new service, you're "teaching" the container
@@ -85,7 +85,7 @@ here and prefix it with the magic ``@`` symbol::
 
 The ``@`` symbol tells the container that ``doctrine.orm.entity_manager``
 isn't a string: it's another object inside the container. When the container
-creates a new instance of ``EventReportManager``, it'' pass the entity manager
+creates a new instance of ``EventReportManager``, it passes the entity manager
 to it.
 
 Re-run the ``container:debug`` console command:
@@ -94,12 +94,12 @@ Re-run the ``container:debug`` console command:
 
     php app/console container:debug
 
-Fancy! Our new service is in the container.
+Ooo la la! Our new service is in the container.
 
 Using the New Service
 ~~~~~~~~~~~~~~~~~~~~~
 
-Get the new service in our controller. You already know how to get objects
+Get this new service in our controller. You already know how to get objects
 out of the container - we just did it a minute ago with the entity manager.
 It's exactly the same with *our* service::
 
@@ -125,13 +125,9 @@ instead of creating a new one. That's nice for performance.
 
 Back up and look at what we've accomplished. By creating ``EventReportManager``
 and moving logic there, we made some of our code more organized and reusable.
-By going a step further and registering at a service, we made it *even* easier
+By going a step further and registering a service, we made it *even* easier
 to get and use this object. The services on the container are your application's
 *tools*, and you'll add more and more.
-
-Let's go back to the browser to try it out, again our file downloads! We've just
-put our first service into the service container. We can re-use it anywhere
-in our application by getting it out of the container.
 
 Hey Look at this Dumped Container!
 ----------------------------------
