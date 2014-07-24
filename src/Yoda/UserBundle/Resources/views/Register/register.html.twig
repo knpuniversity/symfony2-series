@@ -14,7 +14,10 @@
         <form action="{{ path('user_register') }}" method="POST" class="form">
             {{ form_errors(form) }}
 
-            {{ form_row(form.username) }}
+            {{ form_row(form.username, {
+                'attr': { 'class': 'the-username-field' }
+            }) }}
+
             {{ form_row(form.email) }}
 
             {{ form_row(form.plainPassword.first, {
