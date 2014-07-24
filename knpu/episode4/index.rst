@@ -8,6 +8,8 @@ Starting in Symfony2: Episode4
     assets
     bust-browser-cache-and-cdns
     assetic
+    assetic-combination
+    minify-css-uglify
     form-customizations
     more-form-customizations
     deployment

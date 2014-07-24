@@ -1,14 +1,35 @@
 Filtering, Combining and other Craziness with Assetic
 =====================================================
 
-If you're building an application that relies on a number of CSS or JavaScript
-files, then you'll probably love Assetic. It's a third-party library that
-integrates well with Symfony and to learn what it does, let's see it in action.
+Life is simple, but things can get crazy with CSS and JS. If you use LESS
+or SASS, you'll need to process those into CSS before seeing your changes.
+On deploy, you'll probably also want to combine your CSS into a single file
+and remove all the extra whitespace to speed up your user's experience.
+There are also tools like RequireJS, and the list goes on and on.
 
-Using the stylesheets tag
+Frontend Tools: Grunt
+---------------------
+
+These days, tools exist outside of PHP to help solve these problems. For
+example, `Grunt`_ is a tool to help you build your assets, like processing
+through SASS, minifiying and combining. If you're a frontend developer or
+have one on your team and are comfortable using these tools, go for it. We
+even have a blog post `Evolving RequireJS, Bower and Grunt`_ with code that
+shows you an approach of using some of this with Symfony.
+
+Assetic: For the Backend Guy
+----------------------------
+
+But if you're more of a backend guy and just want some help with minifying
+and combining files, it's all good. Symfony uses a tool called Assetic which
+makes this *almost* painless :).
+
+Using the stylesheets Tag
 -------------------------
 
-Replace the 3 ``link`` tags we just added with a Twig ``stylesheets`` tag:
+Open up your base template and add a new ``stylesheets``. This has the strangest
+syntax, but should include the path to our 3 CSS files, a filter called ``cssrewrite``,
+and an actual ``link`` tag. Remove the 3 hard-coded link tags we just added:
 
 .. code-block:: html+jinja
 
@@ -28,41 +49,55 @@ Replace the 3 ``link`` tags we just added with a Twig ``stylesheets`` tag:
         {% endstylesheets %}
     {% endblock %}
 
-This tag allows us to list each CSS file we need and even a "filter", which
-we'll learn about in a second. Instead of 3 ``link`` tags, we just write 1,
-which assetic will use to render each CSS file.
-
-Refresh the page and view the source:
+Refresh the page. Ok, things still work. Now view the source.
 
 .. code-block:: html
 
-    <link rel="stylesheet" href="/app_dev.php/css/8e49901_event_1.css" />
-    <link rel="stylesheet" href="/app_dev.php/css/8e49901_events_2.css" />
-    <link rel="stylesheet" href="/app_dev.php/css/8e49901_main_3.css" />    
+    <link rel="stylesheet" href="/css/8e49901_event_1.css" />
+    <link rel="stylesheet" href="/css/8e49901_events_2.css" />
+    <link rel="stylesheet" href="/css/8e49901_main_3.css" />
 
-Things look similar to before, except that the paths to each CSS file have
-changed. What's strange is that the files don't actually exist in our project.
-When we request these files, they actually hit our Symfony application where
-Assetic processes them and renders the correct CSS code.
+Hmm. So we still have 3 link tags, but the location has changed. What's even
+stranger is that these 3 files don't exist - we don't even have a ``css/``
+directory inside ``web/``.
 
-.. tip::
+When the browser requests these files, they actually hit our Symfony app
+and are processed by an internal Assetic controller that renders the CSS
+code. And I can prove it!
 
-    The URL ``/app_dev.php/css/8e49901_event_1.css`` hits an internal Symfony
-    route and controller (provided by Assetic), which dynamically returns
-    the CSS content for that file.
+Run the ``router:debug`` console task:
 
-By running ``router:debug``, you can see that Assetic has added some routes
-to support this. This all happens automatically, just by adding the ``stylesheets``
-tag in our base template. This means that if we make a change to one of our
-original CSS files and refresh it updates automatically with the changes.
+.. code-block:: bash
 
-The cssrewrite filter
-~~~~~~~~~~~~~~~~~~~~~
+    php app/console router:debug
 
-Now, let's look at what the ``cssrewrite`` filter is doing. Open up the generated
-``event.css`` file in your browser as well as the original one in your editor.
-In the original file, we're referencing our images using a relative path.
-In the generated version, it's also relative, but the path has changed:
+At the top, you'll see actual routes that match the CSS files:
+
+    Name                        Path
+    _assetic_8e49901_0          /css/8e49901_event_1.css           
+    _assetic_8e49901_1          /css/8e49901_events_2.css          
+    _assetic_8e49901_2          /css/8e49901_main_3.css  
+
+
+These routes showed up automatically, just by adding the ``stylesheets``
+tag. And if we change any of these CSS files and refresh, these routes will
+return the updated file.
+
+On the surface, nothing has changed. But the magic is coming...
+
+The cssrewrite Filter
+---------------------
+
+Assetic exists for 2 reasons, and the first is to apply filters to your CSS
+and JS. For example, Assetic has a ``less`` filter that processes your less
+files into CSS before returning them.
+
+If you look back at the ``stylesheets`` tag, you can see that we *do* have
+one filter called ``cssrewrite``.
+
+Open up the generated ``event_1.css`` file in your browser *and* the original
+``event.css`` in your editor. Now, find the background image for ``pinpoint.png``
+in each. Huh, the paths are a bit different!
 
 .. code-block:: text
 
@@ -74,327 +109,16 @@ In the generated version, it's also relative, but the path has changed:
 
         background: url(../../bundles/event/images/pinpoint.png) no-repeat -5px -7px;
 
-But why? Remember that the generated version of the file is not in the same
-directory as the original. This means that if the generated file tried to
-use the same relative path, the path to the image would be broken. The ``cssrewrite``
-filter fixes this by modifying these so that they still work.
-
-Combining Assets into a single File
------------------------------------
-
-So far, we've used assetic to handle our CSS files, but we haven't really
-seen a real benefit from it. To see the first great thing about assetic,
-clear your cache, run a command called ``assetic:dump``, and refresh in the
-``prod`` environment:
-
-.. code-block:: bash
-
-    php app/console cache:clear --env=prod
-    php app/console assetic:dump --env=prod
-
-When we view the source, we only have 1 CSS file:
-
-.. code-block:: html
-
-    <link rel="stylesheet" href="/css/8e49901.css?v=1" />
-
-Open it up to see that Assetic has automatically combined all of our CSS into
-a single file. And the less files we make the user download, the faster the
-experience!
-
-But unlike the ``dev`` environment where the files are dynamically generated,
-the compiled CSS is a real physical file inside our project. Delete the file
-and refresh. The broken-looking page proves that the CSS file isn't dynamically
-generated by Symfony. That's important for production, since dynamically generating
-the file would be pretty darn slow.
-
-.. note::
-
-    In the ``dev`` environment, the assets aren't real files, they're dynamically
-    rendered via Symfony. But in the ``prod`` environment, Assetic points
-    to real physical files and it's your responsibility to "dump" those assets
-    (``assetic:dump``).
-
-Instead, when we deploy our application, we'll ask assetic to compile and
-create all the files that we need. To do this, run the ``assetic:dump`` command
-and pass it the same environment argument that we use in the ``cache:clear``
-command:
-
-.. code-block:: bash
-
-    php app/console assetic:dump --env=prod
-
-When we refresh, the page is back to normal.
-
-To control the name of the generated file, add an ``output`` option to the
-``stylesheets`` tag:
-
-.. code-block:: html+jinja
-
-    {# app/Resources/views/base.html.twig #}
-    {# ... #}
-    
-    {% stylesheets
-        'bundles/event/css/event.css'
-        'bundles/event/css/events.css'
-        'bundles/event/css/main.css'
-        filter='cssrewrite'
-        output='css/generated/layout.css'
-    %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-
-Without this, Assetic generates a unique, but obscure filename in the ``web/css``
-directory. Clear your cache and refresh the page to see the new file location.
-Since Assetic files are generated files, we don't want to commit them to our
-repository. I like to follow a standard where I set the ``output`` for all
-of my Assetic files to be in either the ``css/generated`` or ``js/generated``
-directories. Add both of these directories to your ``.gitignore`` file to
-prevent them from being committed:
-
-.. code-block:: text
-
-    # .gitignore
-    # ...
-    
-    /web/css/generated/*
-    /web/js/generated/*
-
-Applying a Minification Filter
-------------------------------
-
-One of the biggest benefits of using Assetic is that your final CSS and JS
-files are compiled into a single file. But another major benefit is "filters".
-Like we saw earlier with ``cssrewrite``, filters allow you to process your
-CSS or JavaScript files in some way. This can be really useful if you're
-using something like LESS, SASS or CoffeeScript for your CSS or JS files.
-Another really cool thing to do is to minify your CSS or JS files so that
-they're smaller.
-
-.. note::
-
-    We'll use the cssmin library, but assetic also has support for `UglifyJs`_:
-    and other libraries.
-
-Let's try it! Download the `cssmin library`_ into the ``vendor`` directory of
-your project. Usually we use the ``composer.json`` file to get stuff into
-our vendor directory, but since this project isn't available on packagist,
-we'll just download it and add it to our repository. This isn't an ideal way
-to handle vendor code, but it's good enough for such a small library.
-
-.. tip::
-
-    Download the ``cssmin-vX.X.X.php`` file into a new ``vendor/cssmin`` directory
-    in your project. You can forcefully add the file to git (even though
-    the ``vendor/`` directory is ignored) by force-adding:
-    
-    .. code-block:: bash
-    
-        git add vendor/cssmin -f
-
-Next, configure the filter in ``app/config/config.yml``:
-
-.. code-block:: yaml
-
-    # app/config/config.yml
-    # ...
-    
-    assetic:
-        # ...
-        filters:
-            cssrewrite: ~
-            cssmin:
-                file: %kernel.root_dir%/../vendor/cssmin/cssmin-v3.0.1.php
-
-Assetic comes ready to work with a bunch of filters, including ``cssmin``.
-With this configuration, the ``cssmin`` filter is *ready* to work. But to
-actually use it, add the ``filter`` to our ``stylesheets`` block:
-
-.. code-block:: html+jinja
-
-    {# app/Resources/views/base.html.twig #}
-    {# ... #}
-    
-    {% stylesheets
-        'bundles/event/css/event.css'
-        'bundles/event/css/events.css'
-        'bundles/event/css/main.css'
-        filter='cssrewrite'
-        filter='cssmin'
-        output='css/generated/layout.css'
-    %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-
-Refresh the page in the ``dev`` environment and check out the result. Great!
-The css files are being minified.
-
-Applying a Filter only "non-debug" Mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The only problem is that having minified CSS when we're developing makes
-it much tougher to debug and fix styling issues. To fix this, add a ``?``
-before the filter name:
-
-.. code-block:: html+jinja
-
-    {# app/Resources/views/base.html.twig #}
-    {# ... #}
-    
-    {% stylesheets
-        'bundles/event/css/event.css'
-        'bundles/event/css/events.css'
-        'bundles/event/css/main.css'
-        filter='cssrewrite'
-        filter='?cssmin'
-        output='css/generated/layout.css'
-    %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-
-This tells Assetic to *only* apply this filter when we're *not* in debug
-mode. Basically, this means that the filter will only be applied in the ``prod``
-environment. We can develop with normal CSS files but deploy minified versions.
-
-Applying Filters based on File Extension
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Head back to the ``config.yml`` file and add an ``apply_to`` option under
-the ``cssrewrite`` filter:
-
-.. code-block:: yaml
-
-    # app/config/config.yml
-    # ...
-    
-    assetic:
-        # ...
-        filters:
-            cssrewrite:
-                apply_to: \.css$
-            cssmin:
-                file: %kernel.root_dir%/../vendor/cssmin/cssmin-v3.0.1.php
-
-Normally, adding a filter here means that it's ready to be used, but it's
-not automatically applied to any of your CSS or JS files. But by adding the
-``apply_to`` option, you're telling Assetic that this filter should be applied
-to every file that assetic processes that matches this pattern. Remove the
-``cssrewrite`` filter from ``base.html.twig`` and refresh the page:
-
-.. code-block:: html+jinja
-
-    {# app/Resources/views/base.html.twig #}
-    {# ... #}
-    
-    {% stylesheets
-        'bundles/event/css/event.css'
-        'bundles/event/css/events.css'
-        'bundles/event/css/main.css'
-        filter='?cssmin'
-        output='css/generated/layout.css'
-    %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-
-The fact that the images still show up proves that the
-``cssrewrite`` filter is being applied even without being mentioned in the
-``stylesheets`` tag.
-
-Assetic with JavaScript Files
------------------------------
-
-Of course Assetic can do all of this same magic with your JavaScript files
-as well. Replace some of the ``script`` tags at the bottom of our layout with
-a new ``javascripts`` tag:
-
-.. code-block:: html+jinja
-
-    {# app/Resources/views/base.html.twig #}
-    {# ... #}
-    
-    {% block javascripts %}
-        {# ... script tag for jQuery from a CDN #}
-        
-        {% javascripts
-            'bundles/event/js/jquery.blockUI.js'
-            output='js/generated/main.js'
-        %}
-            <script type="text/javascript" src="{{ asset_url }}"></script>
-        {% endjavascripts %}
-    {% endblock %}
-
-This works exactly like the ``stylesheets`` tag. Notice that if you're using
-some external CDN for something like jQuery, it can't be processed by Assetic.
-
-And that's just about it! Assetic is a really great way to combine and add
-filters to your CSS and JavaScript files. During development, your CSS and
-JavaScript files are rendered individually and generated dynamically by Assetic.
-In the ``prod`` environment, we run the ``assetic:dump`` task which creates
-the actual compiled CSS and JS files.
-
-Speeding up the dev Environment
--------------------------------
-
-If you have a lot of CSS and JavaScript files, or if you're using some complex
-filters, your pages might start to load slowly while developing. Since all
-of the CSS and JavaScript files are being generated dynamically, this can
-eventually be a lot of work. Fortunately, there's a great way to fix this.
-
-First, head to ``config_dev.yml``, find the ``assetic`` configuration, and
-set ``use_controller`` to false:
-
-.. code-block:: yaml
-
-    # app/config/config_dev.yml
-    # ...
-
-    assetic:
-        use_controller: false
-
-This tells Assetic to stop trying to generate our assets dynamically in the
-dev environment.
-
-When we refresh the page, things are ugly! The site still works, but the
-CSS and JavaScript files are 404'ing: Assetic is no longer generating these
-for us automatically. To fix this, we can run the ``assetic:dump`` command:
-
-.. code-block:: bash
-
-    $ php app/console assetic:dump
-
-Because we're in the ``dev`` environment, we can skip the ``env`` option.
-Not surprisingly, this dumps out all the CSS and JavaScript files we need.
-When we refresh this time, everything should work again. If you have any
-issues, clear out your cache directory and try again.
-
-But the problem now is that each time we modify a CSS or JS file, we'd need
-to re-run the dump task. That would be pretty bad for development. To fix
-this, run the same ``assetic:dump`` task, but pass it two new options: ``watch``
-and ``force``:
-
-.. code-block:: bash
-
-    $ php app/console assetic:dump --watch --force
-
-The ``force`` tells the task to compile the files immediately and the ``watch``
-tells it to run like a daemon. Instead of "finishing", it just sits there
-and waits. I'll clear the screen and then update a CSS file to see it in
-action. When we look back at the terminal, it's noticed that we modified a
-file and re-dumped the assets automatically. This is *really* cool - it lets
-us change our CSS and JS files and not worry about re-dumping the assets.
-By the time we refresh the page, everything has already been updated. When
-I develop, this is how I work with Assetic.
-
-I do have one last word of advice. Under certain conditions - like when you're
-adding new CSS files or moving a lot of things around, things might break
-temporarily. It might be that you see an error in the ``assetic:dump`` task
-or even a really strange ``assetic`` route not found error. If you get anything
-weird like this, just re-dump your assets. If you still get it, clear your
-cache and then dump again. This type of thing is pretty rare, but just watch
-out for it!
-
-Now that you've got Assetic up and running, you can experiment with more interesting
-things, like using LESS or SASS for your CSS!
-
-.. _`cssmin library`: http://code.google.com/p/cssmin/
-.. _`UglifyJs`: http://bit.ly/sf2-uglify
+Why? In the browser's eyes, the file lives in ``/css``, but the original
+lived in ``/bundles/event/css``. If the generated file used the original
+url, it would point to ``/images/pinpoint.png`` instead of ``/bundles/event/images/pinpoint.png``.
+The ``cssrewrite`` filter dynamically changes the url so that things still
+work. Crazy, right?
+
+This filter is less of a cool feature and more of a necessity. But Assetic
+supports a lot of `other filters`_. As a fair warning, a lot of them aren't
+documented.
+
+.. _`Grunt`: http://gruntjs.com/
+.. _`Evolving RequireJS, Bower and Grunt`: http://knpuniversity.com/blog/requirejs-bower-grunt
+.. _`other filters`: https://github.com/kriswallsmith/assetic#filters

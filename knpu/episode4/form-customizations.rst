@@ -1,18 +1,13 @@
-Form Customizations
-===================
-
-In part 2 of the series, we built a registration form, handled the form submit,
-and even customized the way some of our fields look. The form component is
-one of the most powerful parts of Symfony, and we'll see some of that now
-as we learn how to customize how our forms are rendered.
+Form Theming: Making Forms Pretty(ish)
+======================================
 
 Where Form Markup comes from
 ----------------------------
 
-Open up the ``register.html.twig`` template that renders the registration
-form. Twig's ``form_row`` function is responsible for rendering the label,
-input widget and any errors. And with a few other Twig functions, we can render
-each part individually. But where does the markup come from? How does Symfony
+In episode 2, we built a registration form. Cool! Open up the ``register.html.twig``
+template for that page. Twig's ``form_row`` function renders the label, input
+widget and any errors for each field. And with a few other Twig functions,
+we can render each part individually. But where does the markup come from? How does Symfony
 know what an input text field looks like or that it should render errors in
 a ``ul`` element?
 
