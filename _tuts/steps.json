@@ -1454,7 +1454,62 @@
             "id": "doctrinelistener-adding-recomputesingleentitychangeset",
             "name": "DoctrineListener: Adding recomputeSingleEntityChangeSet",
             "description": null
+        },
+        {
+            "id": "assets-hardcoded-link-tags",
+            "name": "Assets: Hardcoded link tags",
+            "description": null
+        },
+        {
+            "id": "assets-using-asset-function",
+            "name": "Assets: Using asset function",
+            "description": null
+        },
+        {
+            "id": "assets-asset-version",
+            "name": "Assets: asset_version",
+            "description": null
+        },
+        {
+            "id": "assets-assets-version-format",
+            "name": "Assets: assets_version_format",
+            "description": null
+        },
+        {
+            "id": "assets-cdn",
+            "name": "Assets: CDN",
+            "description": null
+        },
+        {
+            "id": "assets-cdn-no-protocol",
+            "name": "Assets: CDN no protocol",
+            "description": null
+        },
+        {
+            "id": "assets-no-cdn",
+            "name": "Assets: No CDN",
+            "description": null
+        },
+        {
+            "id": "assetic-basic-stylesheets-tag",
+            "name": "Assetic: Basic stylesheets tag",
+            "description": null
+        },
+        {
+            "id": "assetic-controlling-output",
+            "name": "Assetic: Controlling output",
+            "description": null
+        },
+        {
+            "id": "assetic-uglifycss-filter",
+            "name": "Assetic: uglifycss filter",
+            "description": null
+        },
+        {
+            "id": "assetic-no-uglifycss-in-dev",
+            "name": "Assetic: No uglifycss in dev",
+            "description": null
         }
     ],
-    "sha": "4ba931b72cb89eb78191a543f381d6a2d4350c8e"
+    "sha": "6fc84bfac9da6f0de7725a21296fabd091c18fc1"
 }
