@@ -1,0 +1,23 @@
+{% for event in events %}
+    <article>
+        <header class="map-container">
+            <img src="http://maps.googleapis.com/maps/api/staticmap?center={{ event.location | url_encode }}&markers=color:red%7Ccolor:red%7C{{ event.location | url_encode }}&zoom=14&size=150x150&maptype=roadmap&sensor=false" />
+        </header>
+        <section>
+            <h3>
+                <a href="{{ path('event_show', {'slug': event.slug}) }}">{{ event.name }}</a>
+            </h3>
+
+            <dl>
+                <dt>where:</dt>
+                <dd>{{ event.location }}</dd>
+
+                <dt>when:</dt>
+                <dd>{{ event.time | date('g:ia / l M j, Y') }}</dd>
+
+                <dt>who:</dt>
+                <dd>{{ event.attendees|length }} attending!</dd>
+            </dl>
+        </section>
+    </article>
+{% endfor %}

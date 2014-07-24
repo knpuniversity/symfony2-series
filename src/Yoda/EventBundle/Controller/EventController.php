@@ -36,6 +36,20 @@ class EventController extends Controller
             'entities' => $entities,
         );
     }
+
+    public function _upcomingEventsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $events = $em->getRepository('EventBundle:Event')
+            ->getUpcomingEvents()
+        ;
+
+        return $this->render('EventBundle:Event:_upcomingEvents.html.twig', array(
+            'events' => $events,
+        ));
+    }
+
     /**
      * Creates a new Event entity.
      *
