@@ -1,8 +1,8 @@
 Doctrine Listeners on Update
 ============================
 
-But what if a user's *updates* their password? Hmm, our listener isn't called
-on updates, so the encoded password can *never* be updated. Lame!
+But what if a user *updates* their password? Hmm, our listener isn't called
+on updates, so the encoded password can *never* be updated. Crap!
 
 Add a second tag to ``services.yml`` to listen on the ``preUpdate`` event
 and create the ``preUpdate`` method by copying from ``prePersist``:
@@ -50,7 +50,7 @@ happen if a ``User`` is being saved, but their password isn't being changed::
 Testing the Update
 ------------------
 
-We can't test this easily because we don't have way to update users yet.
+We can't test this easily because we don't have a way to update users yet.
 No worries. Just open up the play script from episode 1. We already have
 a user here - just change his plain password and save:
 
