@@ -34,4 +34,11 @@ class SecurityController extends Controller
             'error'         => $error,
         );
     }
+
+    /**
+     * @Route("/login_check", name="login_check")
+     */
+    public function loginCheckAction()
+    {
+    }
 }
