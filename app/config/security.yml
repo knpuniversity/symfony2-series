@@ -20,8 +20,8 @@ security:
                 check_path: login_check
                 login_path: login_form
             logout:
-                path:   _demo_logout
-                target: _demo
+                path:   logout
+                target: event
             anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
