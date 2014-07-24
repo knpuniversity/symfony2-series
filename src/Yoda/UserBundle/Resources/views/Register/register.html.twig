@@ -17,11 +17,11 @@
             {{ form_row(form.username) }}
             {{ form_row(form.email) }}
 
-            {{ form_row(form.password.first, {
+            {{ form_row(form.plainPassword.first, {
                 label: 'Password'
             }) }}
 
-            {{ form_row(form.password.second, {
+            {{ form_row(form.plainPassword.second, {
                 label: 'Repeat Password'
             }) }}
 
