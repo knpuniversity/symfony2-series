@@ -38,7 +38,7 @@
 
                         <ul class="users">
                             {% for attendee in entity.attendees %}
-                                <li>{{ attendee.username }}</li>
+                                <li>{{ attendee }}</li>
                             {% else %}
                                 <li>nobody yet!</li>
                             {% endfor %}
