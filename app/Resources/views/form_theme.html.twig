@@ -1,5 +1,5 @@
 {% block form_row %}
-    <div class="form-group has-error">
+    <div class="form-group {{ errors|length > 0 ? 'has-error' : '' }}">
         {{ form_label(form) }}
         {{ form_errors(form) }}
         {{ form_widget(form) }}
@@ -7,7 +7,6 @@
 {% endblock form_row %}
 
 {% block form_errors %}
-    {{ dump(_context|keys) }}
 
     {% if errors|length > 0 %}
     <ul class="help-block">
@@ -17,3 +16,9 @@
     </ul>
     {% endif %}
 {% endblock form_errors %}
+
+{% block form_widget_simple %}
+    {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' form-control')|trim }) %}
+    {% set type = type|default('text') %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endblock form_widget_simple %}
