@@ -12,7 +12,12 @@
         <h1>Register</h1>
 
         <form action="{{ path('user_register') }}" method="POST">
-            {{ form_row(form.username) }}
+            <div class="awesome-username-wrapper">
+                {{ form_errors(form.username) }}
+                {{ form_label(form.username) }}
+                {{ form_widget(form.username) }}
+            </div>
+
             {{ form_row(form.email) }}
             {{ form_row(form.password) }}
 
