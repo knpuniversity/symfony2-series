@@ -1,0 +1,12 @@
+diff --git a/app/config/config.yml b/app/config/config.yml
+index ae2963c..a4b7a84 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -17,6 +17,7 @@ framework:
+     templating:
+         engines: ['twig']
+         assets_version: 5-return-of-the-jedi
++        assets_version_format: "%%s?v=%%s"
+     default_locale:  "%locale%"
+     trusted_hosts:   ~
+     trusted_proxies: ~
