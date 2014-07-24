@@ -20,3 +20,13 @@ $container->enterScope('request');
 $container->set('request', $request);
 
 // all our setup is done!!!!!!
+
+$templating = $container->get('templating');
+
+echo $templating->render(
+    'EventBundle:Default:index.html.twig',
+    array(
+        'name' => 'Yoda',
+        'count' => 5,
+    )
+);
