@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Yoda\UserBundle\Entity\User;
 
 class RegisterController extends Controller
 {
@@ -26,8 +27,11 @@ class RegisterController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
 
-            var_dump($form->getData());die;
+            $user = new User();
+            $user->setUsername($data['username']);
+            $user->setEmail($data['email']);
         }
 
         return array('form' => $form->createView());
