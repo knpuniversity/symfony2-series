@@ -12,8 +12,4 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventRepository extends EntityRepository
 {
-    public function findAll()
-    {
-        die('NOOOOOOOOO!!!!!!!!!!');
-    }
 }
