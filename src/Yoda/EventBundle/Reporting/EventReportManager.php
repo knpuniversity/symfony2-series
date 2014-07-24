@@ -20,7 +20,12 @@ class EventReportManager
 
         $rows = array();
         foreach ($events as $event) {
-            $data = array($event->getId(), $event->getName(), $event->getTime()->format('Y-m-d H:i:s'));
+            $data = array(
+                $event->getId(),
+                $event->getName(),
+                $event->getTime()->format('Y-m-d H:i:s'),
+                $this->generateUrl('event_show', array('slug' => $event->getSlug()))
+            );
 
             $rows[] = implode(',', $data);
         }
