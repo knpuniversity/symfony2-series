@@ -21,14 +21,15 @@ $container->set('request', $request);
 
 // all our setup is done!!!!!!
 
-use Yoda\EventBundle\Entity\Event;
+$em = $container->get('doctrine')
+    ->getManager()
+;
 
-$event = new Event();
-$event->setName('Darth\'s surprise birthday party');
-$event->setLocation('Deathstar');
-$event->setTime(new \DateTime('tomorrow noon'));
-//$event->setDetails('Ha! Darth HATES surprises!!!!');
+$user = $em
+    ->getRepository('UserBundle:User')
+    ->findOneBy(array('username' => 'wayne'))
+;
 
-$em = $container->get('doctrine')->getManager();
-$em->persist($event);
-$em->flush();
+foreach ($user->getEvents() as $event) {
+    var_dump($event->getName());
+}
