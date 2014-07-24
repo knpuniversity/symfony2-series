@@ -39,6 +39,8 @@ class EventController extends Controller
      */
     public function createAction(Request $request)
     {
+        $this->enforceUserSecurity();
+
         $entity = new Event();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -82,12 +84,7 @@ class EventController extends Controller
      */
     public function newAction()
     {
-        $securityContext = $this->container->get('security.context');
-        if (!$securityContext->isGranted('ROLE_ADMIN')) {
-            // in Symfony 2.5
-            // throw $this->createAccessDeniedException('message!');
-            throw new AccessDeniedException('Only an admin can do this!!!!');
-        }
+        $this->enforceUserSecurity();
 
         $entity = new Event();
         $form   = $this->createCreateForm($entity);
@@ -125,6 +122,7 @@ class EventController extends Controller
      */
     public function editAction($id)
     {
+        $this->enforceUserSecurity();
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('EventBundle:Event')->find($id);
@@ -167,6 +165,7 @@ class EventController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $this->enforceUserSecurity();
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('EventBundle:Event')->find($id);
@@ -197,6 +196,7 @@ class EventController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        $this->enforceUserSecurity();
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -230,5 +230,15 @@ class EventController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+
+    private function enforceUserSecurity()
+    {
+        $securityContext = $this->container->get('security.context');
+        if (!$securityContext->isGranted('ROLE_USER')) {
+            // in Symfony 2.5
+            // throw $this->createAccessDeniedException('message!');
+            throw new AccessDeniedException('Need ROLE_USER');
+        }
     }
 }
