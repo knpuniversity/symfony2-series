@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction($firstName, $count)
+    public function indexAction($count, $firstName)
     {
         var_dump($firstName, $count);die;
 
