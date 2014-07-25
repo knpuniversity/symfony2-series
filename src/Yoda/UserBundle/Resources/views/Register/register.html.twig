@@ -15,7 +15,8 @@
             {{ form_errors(form) }}
 
             {{ form_row(form.username, {
-                'attr': { 'class': 'the-username-field' }
+                'attr': { 'class': 'the-username-field' },
+                'help': 'Choose something unique and clever'
             }) }}
 
             {{ form_row(form.email) }}
