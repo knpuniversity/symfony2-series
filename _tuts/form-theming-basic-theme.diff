@@ -1,0 +1,29 @@
+diff --git a/app/Resources/views/form_theme.html.twig b/app/Resources/views/form_theme.html.twig
+new file mode 100644
+index 0000000..1ecb5b0
+--- /dev/null
++++ b/app/Resources/views/form_theme.html.twig
+@@ -0,0 +1,8 @@
++{% block form_row %}
++    <marquee>It looks like it's working</marquee>
++    <div>
++        {{ form_label(form) }}
++        {{ form_errors(form) }}
++        {{ form_widget(form) }}
++    </div>
++{% endblock form_row %}
+\ No newline at end of file
+diff --git a/app/config/config.yml b/app/config/config.yml
+index b8f477f..a7acdd1 100644
+--- a/app/config/config.yml
++++ b/app/config/config.yml
+@@ -35,6 +35,9 @@ framework:
+ twig:
+     debug:            "%kernel.debug%"
+     strict_variables: "%kernel.debug%"
++    form:
++        resources:
++            - "::form_theme.html.twig"
+ 
+ # Assetic Configuration
+ assetic:
