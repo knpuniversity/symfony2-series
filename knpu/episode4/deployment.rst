@@ -96,7 +96,7 @@ First, `download Composer`_ and use it to install our vendor files:
     php composer.phar install
 
 At the end, it'll ask you for values to fill into your ``parameters.yml``
-file. You'll need to already have a database user and password ready.
+file. You'll need to have a database user and password ready.
 
 Speaking of, let's create the database and insert the schema. I'll even run
 the fixtures to give our site some starting data:
