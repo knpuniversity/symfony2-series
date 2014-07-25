@@ -12,7 +12,7 @@ Intalling uglifycss with npm
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We're also going to get a crash-course in ``npm``, the Composer for node.js.
-Yep, we're about ot use some Node. *Very* hipster of us.
+*Very* Rebel hipster of us.
 
 First, create a nearly empty ``package.json`` file - this is like the ``composer.json``
 for node libraries:
@@ -61,7 +61,7 @@ executable lives:
                 bin: %kernel.root_dir%/../node_modules/.bin/uglifycss
 
 That ``node_modules.bin/uglifycss`` is a physical binary that was downloaded.
-That ``%kernel.root_dir%`` is a parameter that points to ``app/``. We'll
+The ``%kernel.root_dir%`` is a parameter that points to ``app/``. We'll
 talk about parameters in a second.
 
 To actually use uglify, add it to the ``stylesheets`` block:
@@ -130,8 +130,8 @@ the same. Symfony has a `cookbook`_ entry about this, but seriously, it's
 no different at all. Even the minification is the same, except that the
 library is called ``uglify-js``.
 
-In other words, you now know pretty much everything you need about Assetic.
-If you start using Assetic a lot and notice your pages loading slower and
+In other words, you now know pretty much everything you need to about Assetic.
+If you start using it a lot and notice your pages loading slower and
 slower, check out the ``use_controller`` option that's mentioned on that
 same page.
 
