@@ -18,8 +18,8 @@ the block we want is called ``form_widget``:
     {% endspaceless %}
     {% endblock form_widget %}
 
-Compound fields are when a field is actually several fields, like the repeated
-password field we're using on this form. When each individual field is actually
+A compound field is one that is actually several fields, like the repeated
+password one we're using on this form. When each individual field is actually
 rendered, ``form_widget_simple`` is used.
 
 Copy the block into ``form_theme.html.twig``. But before you do anything,
