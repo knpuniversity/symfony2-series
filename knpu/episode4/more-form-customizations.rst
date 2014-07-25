@@ -148,7 +148,7 @@ a help message to the email field::
 
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
-        $view['email']->vars['help'] = 'It will have an @ symbol in it';
+        $view['email']->vars['help'] = 'Hint: it will have an @ symbol';
     }
 
 Refresh! Yep, you're one dangerous form customizer.
