@@ -5,7 +5,7 @@ Life is simple, but things can get crazy with CSS and JS. If you use LESS
 or SASS, you'll need to process those into CSS before seeing your changes.
 On deploy, you'll probably also want to combine your CSS into a single file
 and remove all the extra whitespace to speed up your user's experience.
-There are also tools like RequireJS, and the list goes on and on.
+There are also tools like RequireJS, really the list goes on and on.
 
 Frontend Tools: Grunt
 ---------------------
@@ -27,7 +27,7 @@ makes this *almost* painless :).
 Using the stylesheets Tag
 -------------------------
 
-Open up your base template and add a new ``stylesheets``. This has the strangest
+Open up your base template and add a new ``stylesheets`` tag. This has the strangest
 syntax, but should include the path to our 3 CSS files, a filter called ``cssrewrite``,
 and an actual ``link`` tag. Remove the 3 hard-coded link tags we just added:
 
@@ -58,12 +58,12 @@ Refresh the page. Ok, things still work. Now view the source.
     <link rel="stylesheet" href="/css/8e49901_main_3.css" />
 
 Hmm. So we still have 3 link tags, but the location has changed. What's even
-stranger is that these 3 files don't exist - we don't even have a ``css/``
-directory inside ``web/``.
+stranger is that these 3 files don't exist - we don't even have a ``web/css``
+directory.
 
 When the browser requests these files, they actually hit our Symfony app
 and are processed by an internal Assetic controller that renders the CSS
-code. And I can prove it!
+code. And I can even prove it!
 
 Run the ``router:debug`` console task:
 
@@ -116,7 +116,7 @@ The ``cssrewrite`` filter dynamically changes the url so that things still
 work. Crazy, right?
 
 This filter is less of a cool feature and more of a necessity. But Assetic
-supports a lot of `other filters`_. As a fair warning, a lot of them aren't
+supports a number of `other filters`_. As a fair warning, a lot of them aren't
 documented.
 
 .. _`Grunt`: http://gruntjs.com/
