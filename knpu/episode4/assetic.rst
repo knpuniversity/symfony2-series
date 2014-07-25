@@ -20,7 +20,7 @@ shows you an approach of using some of this with Symfony.
 Assetic: For the Backend Guy
 ----------------------------
 
-But if you're more of a backend guy and just want some help with minifying
+But if you're more of a backend dev and just want some help with minifying
 and combining files, it's all good. Symfony uses a tool called Assetic which
 makes this *almost* painless :).
 
