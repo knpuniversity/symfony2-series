@@ -48,7 +48,7 @@ Adding More Parameters
 ----------------------
 
 But technically, we can add parameters to *any* configuration file. Go back
-to ``config.yml`` and add a new ``parameters`` anywhere in the file. Below
+to ``config.yml`` and add a new ``parameters`` key anywhere in the file. Below
 it, create a new parameter called ``our_assets_version``, and set it to the
 ``assets_version`` value we're using below:
 
@@ -85,8 +85,8 @@ Now, just use it under the ``framework`` key:
 See, they work just like variables. Refresh to make sure we didn't break
 anything.
 
-So now you know what these percent signs are all about. You can also access
-parameters from a controller using ``$this->container->getParameter``, which
-might come in handy.
+So now you know what these percent signs are all about. Spoiler alert! You can 
+also access parameters from a controller using ``$this->container->getParameter``, 
+which might come in handy.
 
 .. _`episode 1`: http://knpuniversity.com/screencast/symfony2-ep1/installation#setting-up-git
