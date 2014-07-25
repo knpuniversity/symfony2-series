@@ -13,7 +13,7 @@ environment:
 
     http://localhost:8000/app.php
 
-Things still look nice. But view the source. But woh! Our 3 CSS files are
+Things still look nice. But view the source. Woh! Our 3 CSS files are
 now one:
 
     <link rel="stylesheet" href="/css/8e49901.css?v=5-return-of-the-jedi" />
@@ -41,7 +41,7 @@ environment.
     php app/console assetic:dump --env=prod
 
 This wrote a physical file to the ``web/css`` directory. And when we refresh,
-the web server loads this physical file instead of going through Symfony.
+the web server loads this file instead of going through Symfony.
 
 When we deploy our application, this command will be part of our deploy process.
 
@@ -81,7 +81,7 @@ Now the link tag points to this exact spot:
     <link rel="stylesheet"
         href="/css/built/layout.css?v=5-return-of-the-jedi" />
 
-And of course, if we dump assetic, it writes this files instead of the one
+And of course, if we dump assetic, it writes this file instead of the one
 with the funny name:
 
 .. code-block:: bash
@@ -89,7 +89,7 @@ with the funny name:
     php app/console assetic:dump --env=prod
 
 I also like to put all my built files into ``css/built`` and ``js/built``
-directories. Add both of these directories to your ``.gitignore`` file. There's
+directories. Add both of these to your ``.gitignore`` file. There's
 no need to commit these - we can build them at any time:
 
 .. code-block:: text
