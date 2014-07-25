@@ -123,11 +123,19 @@ We need to do a one-time ``chmod`` on it and the ``logs`` dir:
 Let's try again. Ok, we have a site, and we can even login as Wayne.
 But it's missing all the styles. Ah, right, dump the assetic assets:
 
-.. code-block:: bahs
+.. code-block:: bash
 
     php app/console assetic:dump --env=prod
 
-Now it looks great!
+Crap! Scroll up. This failed when trying to run uglifycss. Ah, I don't
+have Uglifycss installed on this machine yet. Just run ``npm install``
+to fix this.
+
+.. code-block:: bash
+
+    php app/console assetic:dump --env=prod
+
+Now, the dump works, AND the site looks great!
 
 Things to do on each Deploy
 ---------------------------
@@ -140,7 +148,13 @@ On your next deploy, things will be even easier. Here's a simple guide:
 
     git pull origin
 
-2. Update your database schema. The easy, but maybe dangerous way is with
+2. Just in case we added any new libraries to Composer, run the install command:
+
+.. code-block:: bash
+
+    php composer.phar install
+
+3. Update your database schema. The easy, but maybe dangerous way is with
    the schema update console command:
 
 .. code-block:: bash
@@ -153,13 +167,13 @@ Instead of renaming the column, this task may just ``drop`` name and add
 
 There's a library called `Doctrine Migrations`_ that helps do this safely.
 
-3. Clear your production:
+4. Clear your production:
 
 .. code-block:: bash
 
     php app/console cache:clear --env=prod
 
-4. Dump your Assetic assets:
+5. Dump your Assetic assets:
 
 .. code-block:: bash
 
