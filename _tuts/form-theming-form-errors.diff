@@ -1,0 +1,18 @@
+diff --git a/app/Resources/views/form_theme.html.twig b/app/Resources/views/form_theme.html.twig
+index 77bee9e..e4740aa 100644
+--- a/app/Resources/views/form_theme.html.twig
++++ b/app/Resources/views/form_theme.html.twig
+@@ -5,3 +5,13 @@
+         {{ form_widget(form) }}
+     </div>
+ {% endblock form_row %}
++
++{% block form_errors %}
++    {% if errors|length > 0 %}
++    <ul class="help-block">
++        {% for error in errors %}
++            <li>{{ error.message }}</li>
++        {% endfor %}
++    </ul>
++    {% endif %}
++{% endblock form_errors %}
