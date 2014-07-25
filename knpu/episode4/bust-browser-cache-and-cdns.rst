@@ -47,7 +47,7 @@ If you want to get fancy, add an ``assets_version_format`` configuration option:
 
 This looks a little funny, but has 2 ``%s`` placeholders. The first will
 be filled in with the path to the asset and the second will get the version.
-Refresh again and check it out the path in the source code now:
+Refresh again and check out the path in the source code now:
 
     <link href="/bundles/event/css/main.css?1" rel="stylesheet" />
 
@@ -78,7 +78,7 @@ new ``assets_base_url`` key and give it some imaginary domain:
             engines: ['twig']
             assets_version: 5-return-of-the-jedi
             assets_version_format: "%%s?v=%%s"
-            assets_base_url: http://myfancycdn.com
+            assets_base_url: http://evilempireassets.com
 
 Refresh! All the styling is gone, that's great! All the CSS files are prefixed
 with my make-believe hostname.
@@ -88,8 +88,8 @@ with my make-believe hostname.
     <link rel="stylesheet"
         href="http://myfancycdn.com/bundles/event/css/event.css?v=5-return-of-the-jedi" />
 
-All I'd need to do to make this work is upload my files there to this CDN
-host. And actually, most CDN's support an "origin pull" configuration, where
+All I'd need to do to make this work is upload my files to this CDN host. 
+And actually, most CDN's support an "origin pull" configuration, where
 it automatically downloads the files from your real server. There's no uploading
 involved at all. Super easy.
 
@@ -113,8 +113,8 @@ Take the ``http:`` part off of the host name and view the source:
     <link rel="stylesheet"
         href="//myfancycdn.com/bundles/event/css/event.css?v=5-return-of-the-jedi" />
 
-This is valid URL and makes sure that if the user is on an ``https`` page
-on your site, that the CSS file is downloaded via ``https``. This avoids
+This is a valid URL and makes sure that if the user is on an ``https`` page
+on your site, that the CSS file is also downloaded via ``https``. This avoids
 the annoying warnings about "non-secure" assets.
 
 Ok, unbreak the site by commenting out this option:
