@@ -11,8 +11,8 @@ Starting in Symfony2: Episode4
     assetic-combination
     minify-css-uglify
     form-customizations
+    form-input-label-customizations
     more-form-customizations
+    service-parameters
     deployment
     goodbye
-    
-    service-parameters

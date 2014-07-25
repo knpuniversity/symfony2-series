@@ -1,294 +1,159 @@
-More Form Customizations
-========================
+Changing and Using Form Variables 
+=================================
 
-Our registration form looks great, except for the ``plainPassword`` field.
-The error shows up nicely, but if the 2 values don't match, it only highlights
-the first field red. This is fine, but it would be better if both fields were
-highlighted.
+So we know that we have access to a bunch of variables from within the form
+blocks. Awesome.
 
-We know enough about forms now that we can just fix this right in our template.
-Surround everything with a ``control-group`` div. Next, give it a conditional
-``error`` class just like we did in our form template:
+Overriding Form Variables
+-------------------------
 
-.. code-block:: html+jinja
-
-    {# src/Yoda/UserBundle/Resources/views/Register/register.html.twig #}
-    {# ... #}
-    
-    <div class="control-group{{ form.plainPassword.first.vars.errors|length > 0 ? ' error' : '' }}">
-        {{ form_row(form.plainPassword.first, {
-            'label': 'Password'
-        }) }}
-        {{ form_row(form.plainPassword.second, {
-            'label': 'Repeat Password'
-        }) }}
-    </div>
-
-To get the same ``errors`` variable that's available to us when we're customizing
-a form theme block, we access a ``vars`` array property on the field itself.
-This is somewhat advanced, but the idea is simple: each field in a form has
-a number of variables attached to them. You can get these variables at any
-time via the ``vars`` property. When you're customizing a form block, all
-of these variables are just automatically made available.
-
-Also notice that the error itself is attached to the ``first`` sub-field.
-This is just the way the ``repeated`` field type works - every error is attached
-to exactly one field, and for ``repeated`` fields, the first field makes the
-most sense.
-
-Now refresh. It looks better already!
-
-Customizing the form_row for repeated Fields
---------------------------------------------
-
-This is a great solution because it works and was quick. But if we had a lot
-of repeated fields on our site, we might want to fix this globally. Change
-the template back to simply call ``form_row`` on the entire ``plainPassword``
-field:
+Open up ``register.html.twig``. Remember that ``attr`` variable we have access
+to in our form theme blocks? We can override that variable, or any other,
+right when we render the field. Give the username field a special class:
 
 .. code-block:: html+jinja
 
     {# src/Yoda/UserBundle/Resources/views/Register/register.html.twig #}
     {# ... #}
-    
-    {{ form_row(form.plainPassword) }}
 
-When we refresh, it looks bad again, Let's fix that!
-
-In this case, we want to customize the ``row`` part of a ``repeated`` field.
-To do that, our target block is ``repeated_row``.
-
-    +------------+------------+-----------------+
-    | Field type | Which part | Block name      |
-    +------------+------------+-----------------+
-    | textarea   | widget     | textarea_widget |
-    +------------+------------+-----------------+
-    | textarea   | errors     | form_errors     |
-    +------------+------------+-----------------+
-    | repeated   | row        | repeated_row    |
-    +------------+------------+-----------------+
-
-If we search in Symfony's base template, we find it, and it actually just
-renders another block called ``form_rows``. This is used whenever you render
-a group of fields at once.
-
-Like always, start by copying the ``repeated_row`` block into our custom template:
-
-.. code-block:: html+jinja
-
-    {# app/Resources/views/forms.html.twig #}
-    {# ... #}
-
-    {% block repeated_row %}
-    {% spaceless %}
-        {{ block('form_rows') }}
-    {% endspaceless %}
-    {% endblock repeated_row %}
-
-I'll paste the code we need in here, which should mostly look familiar:
-
-.. code-block:: html+jinja
-
-    {# app/Resources/views/forms.html.twig #}
-    {# ... #}
-
-    {% block repeated_row %}
-        <div class="control-group{{ form.first.vars.errors|length > 0 ? ' error' : '' }}">
-            {{ form_row(form.first) }}
-            {{ form_row(form.second) }}
-        </div>
-    {% endblock repeated_row %}
-
-Like before, we surround everything with a ``control-group`` div with an
-optional error class.
-
-Using new Form Variables to Extend the repeated Functionality
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Try it out! When the repeated field renders, it uses our new block, which
-wraps it in the markup we want and with the error class when validation fails.
-The only problem is that we've lost the custom labels we were using for each
-of the individual fields.
-
-To fix this temporarily, remember that you can pass a ``label`` option to
-``form_row``. Do this to customize each of the underlying fields:
-
-.. code-block:: html+jinja
-
-    {# app/Resources/views/forms.html.twig #}
-    {# ... #}
-
-    {% block repeated_row %}
-        <div class="control-group{{ form.first.vars.errors|length > 0 ? ' error' : '' }}">
-            {{ form_row(form.first, {'label': 'Password'}) }}
-            {{ form_row(form.second, {'label': 'Repeat Password') }}
-        </div>
-    {% endblock repeated_row %}
-
-This works, of course, but hardcoding these labels here won't work later if
-we use the ``repeated`` field type for something else, like an email address.
-
-Instead, let's invent our own solution! In our registration template, it would
-be really nice if we could pass a ``firstLabel`` and ``secondLabel`` option
-to the repeated field's ``form_row`` function:
-
-.. code-block:: html+jinja
-
-    {# src/Yoda/UserBundle/Resources/views/Register/register.html.twig #}
-    {# ... #}
-    
-    {{ form_row(form.plainPassword, {
-        'firstLabel': 'Password',
-        'secondLabel': 'Repeat Password
+    {{ form_row(form.username, {
+        'attr': { 'class': 'the-username-field' }
     }) }}
 
-Unfortunately, there's no functionality inside the ``repeated`` field type
-for this. But, now that we're passing in these variables, they're actually
-available inside the ``repeated_row`` block. We can see this by echoing each
-of them:
+Refresh and inspect the field to see the class. In addition to the trick
+I showed you earlier, Symfony has a reference page called
+`Twig Template Form Function and Variable Reference`_ that lists *most*
+of these variables. So you can customize almost anything when rendering
+a field.
+
+Adding a Help Feature
+---------------------
+
+I want to be able to add a little bit of help text beneath any form field.
+I'll open ``form_theme.html.twig`` and just hardcode a message in so you
+can see what I mean:
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
-    {% block repeated_row %}
-        {{ firstLabel}}, {{ secondLabel }}
-    
-        {# ... #}
-    {% endblock repeated_row %}
+    {% block form_row %}
+        <div class="form-group {{ errors|length > 0 ? 'has-error' : '' }}">
+            {{ form_label(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
 
-And now that we have these variables, we can pass each as the ``label`` option
-to the right ``form_row``:
-
-.. code-block:: html+jinja
-
-    {# app/Resources/views/forms.html.twig #}
-    {# ... #}
-
-    {% block repeated_row %}
-        <div class="control-group{{ form.first.vars.errors|length > 0 ? ' error' : '' }}">
-            {{ form_row(form.first, {'label': firstLabel}) }}
-            {{ form_row(form.second, {'label': secondLabel) }}
+            <div class="help-block">This is a field.</div>
         </div>
-    {% endblock repeated_row %}
+    {% endblock form_row %}
 
-And just like that, we've made the ``repeated`` field type more flexible!
-We've also highlighted the fact that you can control and modify all of the
-variables that are passed into these blocks. If you want to modify the ``attr``
-we saw earlier, you can do that easily.
+I know - it's pointless so far. The same message shows up for every field.
+How could we customize this?
 
-Using the default Filter to protect agains undefined Variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Inventing a New Form Variable
+-----------------------------
 
-To make the ``repeated`` field more fault-tolerant, add the ``default`` filter:
+Why not just pass in a new variable? Go back to ``register.html.twig`` and
+add a ``help`` variable to the username field:
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# src/Yoda/UserBundle/Resources/views/Register/register.html.twig #}
     {# ... #}
 
-    {% block repeated_row %}
-        <div class="control-group{{ form.first.vars.errors|length > 0 ? ' error' : '' }}">
-            {{ form_row(form.first, {'label': firstLabel|default}) }}
-            {{ form_row(form.second, {'label': secondLabel|default) }}
-        </div>
-    {% endblock repeated_row %}
+    {{ form_row(form.username, {
+        'attr': { 'class': 'the-username-field' },
+        'help': 'Choose something unique and clever'
+    }) }}
 
-If the ``firstLabel`` or ``secondLabel`` options *aren't* passed in when rendering
-the field, the ``default`` filter prevents an error from being thrown and
-gives these both a default blank value.
+In normal Symfony, there is no ``help`` variable - I totally just made that
+up. But even though it doesn't normally exist, it *is* being passed into
+the form theme blocks. So use it!
+
+.. code-block:: html+jinja
+
+    {# app/Resources/views/form_theme.html.twig #}
+    {# ... #}
+
+    {% block form_row %}
+        <div class="form-group {{ errors|length > 0 ? 'has-error' : '' }}">
+            {{ form_label(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+
+            <div class="help-block">{{ help }}</div>
+        </div>
+    {% endblock form_row %}
+
+Alright, time to try it. Refresh! Woh, BIG error:
+
+    Variable "help" does not exist in
+    kernel.root_dir/Resources/views/form_theme.html.twig at line 9
+
+I promise, I wasn't lying! The problem is that the *other* fields like email
+and password *aren'* passing in this variable, so we need to code defensively
+in the block. Add an ``if`` statement to make sure the variable is defined
+and actually set to some real value:
+
+.. code-block:: html+jinja
+
+    {# app/Resources/views/form_theme.html.twig #}
+    {# ... #}
+
+    {% block form_row %}
+        <div class="form-group {{ errors|length > 0 ? 'has-error' : '' }}">
+            {{ form_label(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+
+            {% if help is defined and help %}
+                <div class="help-block">{{ help }}</div>
+            {% endif %}
+        </div>
+    {% endblock form_row %}
+
+Try it again. It works! We can pass in a ``help`` variable to *any* field
+on *any* form to use this.
 
 FormView: Customizing Form Variables from your Form Type
 --------------------------------------------------------
 
-Quickly, let's learn just a little bit more about these variables that are
-available when rendering a field. Right before we pass a form to a controller,
-we always call ``createView`` on it::
+Ok, but one more challenge. Could we set this help message from inside our
+form class?
 
-    // src/Yoda/UserBundle/Controller/RegisterController.php
-    // ...
-
-    public function registerAction(Request $request)
-    {
-        // ...
-
-        // We're using the @Template annotation to render the template
-        return array('form' => $form->createView());
-    }
-
-This changes the ``Form`` object into a :symfonyclass:``Symfony\\Component\\Form\\FormView``
-object. That's not terribly important, except to realize that you're always
-working with a ``FormView`` object when you're in a template.
-
-Open up the ``RegisterFormType``. We created this class earlier, and it basically
-just defines the fields of our form. But, we can also customize the ``FormView``
-object that's passed into the template
-
-To see what I mean, remove the ``firstLabel`` and ``secondLabel`` options
-when rendering our field:
-
-.. code-block:: html+jinja
-
-    {# src/Yoda/UserBundle/Resources/views/Register/register.html.twig #}
-    {# ... #}
-    
-    {{ form_row(form.plainPassword, {}) }}
-
-As expected, without these, the form just uses the default labels. Next, create
-a ``finishView`` method in your form type::
+Open up ``RegisterFormType``. The ``buildForm`` method adds the fields and
+``setDefaultOptions`` does exactly that. To customize the form variables
+directly, create a third method called ``finishView``. I'll use my IDE to
+generate this for me. Don't forget the ``use`` statements for ``FormView``
+and ``FormInterface``::
 
     // src/Yoda/UserBundle/Form/RegisterFormType.php
     // ...
-    
-    use Symfony\Component\Form\FormView;
     use Symfony\Component\Form\FormInterface;
+    use Symfony\Component\Form\FormView;
     // ...
 
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
-        // todo
+        
     }
 
-
-This method is executed when you call ``createView()`` on your form object,
-and it gives you an opportunity to modify the ``FormView`` that's being created.
-
-In our case, we can add the ``firstLabel`` and ``secondLabel`` variables to
-the ``plainPassword`` field *right* here::
+This method is called right before we start rendering the form. We can use
+the ``FormView`` object to change any variable on any field. Use it to add
+a help message to the email field::
 
     // src/Yoda/UserBundle/Form/RegisterFormType.php
     // ...
 
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
-        $view['plainPassword']->vars['firstLabel'] = 'Password';
-        $view['plainPassword']->vars['secondLabel'] = 'Repeat Password';
+        $view['email']->vars['help'] = 'It will have an @ symbol in it';
     }
 
-This has the same effect as passing them in when rendering the field: both
-become available in the field blocks. This is really handy, because we can
-modify any of the FormView objects here, like customizing the label of the
-"username" field, for example::
-
-    // src/Yoda/UserBundle/Form/RegisterFormType.php
-    // ...
-
-    public function finishView(FormView $view, FormInterface $form, array $options)
-    {
-        $view['username']->vars['firstLabel'] = 'Your Username';
-
-        $view['plainPassword']->vars['firstLabel'] = 'Password';
-        $view['plainPassword']->vars['secondLabel'] = 'Repeat Password';
-    }
-
-Refresh the page to prove it's working. The point is this: when a field is
-rendered, it uses a group of variables like ``label``, ``attr``, ``name``
-and more. These variables can be modified either when you're rendering the
-field *or* directly on the ``FormView`` object when you're building the form.
-The power is yours!
+Refresh! Yep, you're one dangerous form customizer.
 
 .. tip::
 
-    Most of the built-in form view variables come from the ``FormType::buildView``
+    Most of the core built-in form view variables come from a ``FormType::buildView``
     method: http://bit.ly/sf2-form-build-view
