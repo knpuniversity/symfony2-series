@@ -138,7 +138,7 @@ First, there are 4 parts to any field:
 3) errors
 4) row
 
-So when you're customizing part a field, you're always cusotmizing one
+So when you're customizing part of a field, you're always cusotmizing one
 of these four. That's important because each block name *ends* in the
 part being modified. 
 
@@ -146,7 +146,7 @@ The first part of the block name is the "field type" that you used when building
 your form. Field types are the things like ``text``, ``email``, ``repeated``
 and ``password``.
 
-Let's put this teogether. What is the block name to render the "widget" for
+Let's put this together. What is the block name to render the "widget" for
 a "textarea" field type?
 
 Answer? ``textarea_widget``. And if you search in Symfony's base template,
