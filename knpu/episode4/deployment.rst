@@ -112,7 +112,16 @@ to my server. So let's try it:
 
     http://knpevents.com
 
-It's alive! But it's missing all the styles. Ah, right, dump the assetic assets:
+It's alive! And with a big error, which might just show up as the white
+screen of death on your server. Symfony can't write to the cache directory.
+We need to do a one-time ``chmod`` on it and the ``logs`` dir:
+
+.. code-block:: bash
+
+    sudo chmod -R 777 app/cache/ app/logs/
+
+Let's try again. There's the site, but it's missing all the styles. Ah,
+right, dump the assetic assets:
 
 .. code-block:: bahs
 
