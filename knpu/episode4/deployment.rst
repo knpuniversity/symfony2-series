@@ -127,9 +127,9 @@ But it's missing all the styles. Ah, right, dump the assetic assets:
 
     php app/console assetic:dump --env=prod
 
-Crap! Scroll up. This failed when trying to run uglifycss. Ah, I don't
-have Uglifycss installed on this machine yet. Just run ``npm install``
-to fix this.
+Crap! Scroll up. This failed when trying to run uglifycss. I don't
+have Uglifycss installed on this machine yet. To get ugly Just run 
+``npm install`` to fix this.
 
 .. code-block:: bash
 
@@ -167,7 +167,7 @@ Instead of renaming the column, this task may just ``drop`` name and add
 
 There's a library called `Doctrine Migrations`_ that helps do this safely.
 
-4. Clear your production:
+4. Clear your production cache:
 
 .. code-block:: bash
 
@@ -185,7 +185,7 @@ to setup. But for now, it's simple.
 Performance Setup you Need
 --------------------------
 
-One more thing. There are a few really simple things you can do to maximize
+One more thing. There are a few really easy wins to maximize
 Symfony's performance.
 
 First, when you deploy, dump Composer's optimized autoloader:
@@ -210,7 +210,8 @@ In the background, these cache the compiled PHP files, making your site
 these on your server.
 
 And on that note, PHP typically gets faster from version to version. So staying
-on the latest version of PHP is good for more than just security and features.
+on the latest version is good for more than just security and features. Thanks
+PHPeeps!
 
 Ok, that's it! Now google around for some deployment tools to automate this!
 
