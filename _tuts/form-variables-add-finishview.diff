@@ -1,0 +1,25 @@
+diff --git a/src/Yoda/UserBundle/Form/RegisterFormType.php b/src/Yoda/UserBundle/Form/RegisterFormType.php
+index 3acbfaa..7c2a48d 100644
+--- a/src/Yoda/UserBundle/Form/RegisterFormType.php
++++ b/src/Yoda/UserBundle/Form/RegisterFormType.php
+@@ -4,6 +4,8 @@ namespace Yoda\UserBundle\Form;
+ 
+ use Symfony\Component\Form\AbstractType;
+ use Symfony\Component\Form\FormBuilderInterface;
++use Symfony\Component\Form\FormInterface;
++use Symfony\Component\Form\FormView;
+ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+ 
+ class RegisterFormType extends AbstractType
+@@ -29,6 +31,11 @@ class RegisterFormType extends AbstractType
+         ));
+     }
+ 
++    public function finishView(FormView $view, FormInterface $form, array $options)
++    {
++
++    }
++
+     public function getName()
+     {
+         return 'user_register';
