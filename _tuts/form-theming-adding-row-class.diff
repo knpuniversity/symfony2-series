@@ -1,0 +1,29 @@
+diff --git a/app/Resources/views/form_theme.html.twig b/app/Resources/views/form_theme.html.twig
+index 1ecb5b0..77bee9e 100644
+--- a/app/Resources/views/form_theme.html.twig
++++ b/app/Resources/views/form_theme.html.twig
+@@ -1,8 +1,7 @@
+ {% block form_row %}
+-    <marquee>It looks like it's working</marquee>
+-    <div>
++    <div class="form-group">
+         {{ form_label(form) }}
+         {{ form_errors(form) }}
+         {{ form_widget(form) }}
+     </div>
+-{% endblock form_row %}
+\ No newline at end of file
++{% endblock form_row %}
+diff --git a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+index 4409ce8..3bc55c8 100644
+--- a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
++++ b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+@@ -11,7 +11,7 @@
+     <article>
+         <h1>Register</h1>
+ 
+-        <form action="{{ path('user_register') }}" method="POST">
++        <form action="{{ path('user_register') }}" method="POST" class="form">
+             {{ form_errors(form) }}
+ 
+             {{ form_row(form.username) }}
