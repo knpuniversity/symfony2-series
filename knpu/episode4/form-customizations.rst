@@ -77,16 +77,9 @@ Let's do something useful. A few bundles exist that can help you style your
 forms for Twitter Bootstrap. Just go to KnpBundles.com and look for them.
 
 To learn a few things, we'll do some of this by hand. Find the `Bootstrap Form Docs`_.
-First, every form should have a ``form`` class. Add that in ``register.html.twig``:
 
-.. code-block:: html+jinja
-
-    {# src/Yoda/UserBundle/Resources/views/Register/register.html.twig #}
-
-    <form action="{{ path('user_register') }}" method="POST" class="form">
-
-Check! Next, every field should have a ``form-group`` div around it. Let's
-take out the marquee and give the div this class in ``form_theme.html.twig``:
+Every field should have a ``form-group`` div around it. As cool as it is, let's
+take out the marquee and give the div this class:
 
     {# app/Resources/views/form_theme.html.twig #}
 
