@@ -1,0 +1,11 @@
+diff --git a/app/Resources/views/form_theme.html.twig b/app/Resources/views/form_theme.html.twig
+index e4740aa..13a95f8 100644
+--- a/app/Resources/views/form_theme.html.twig
++++ b/app/Resources/views/form_theme.html.twig
+@@ -1,5 +1,5 @@
+ {% block form_row %}
+-    <div class="form-group">
++    <div class="form-group has-error">
+         {{ form_label(form) }}
+         {{ form_errors(form) }}
+         {{ form_widget(form) }}
