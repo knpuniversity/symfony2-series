@@ -19,11 +19,10 @@ the block we want is called ``form_widget``:
     {% endblock form_widget %}
 
 A compound field is one that is actually several fields, like the repeated
-password one we're using on this form. When each individual field is actually
+password we're using on this form. When each individual field is actually
 rendered, ``form_widget_simple`` is used.
 
-Copy the block into ``form_theme.html.twig``. But before you do anything,
-dump out an ``attr`` variable and refresh:
+Copy the block into ``form_theme.html.twig``.
 
     {# app/Resources/views/forms.html.twig #}
     {# ... #}
@@ -48,7 +47,7 @@ out of Twig. I know it looks strange:
     {% endblock form_widget_simple %}
 
 Before we try this, open up the ``login.css`` file in ``UserBundle`` and
-remove the styles form-related styles:
+remove the form-related styles:
 
 .. code-block:: css
 
@@ -124,7 +123,7 @@ just like we did with ``attr``:
 Hey! Now the labels are red, and they will be for *every* form on the site.
 
 Want to know more? You're crazy! Ok, we'll see more cool stuff next. But
-there's also a `cookbook article`_ on some of this stuff.
+there's also a `cookbook article`_.
 
 The Block Names (e.g. form_row versus textarea_widget)
 ------------------------------------------------------
