@@ -33,7 +33,7 @@ class RegisterFormType extends AbstractType
 
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
-
+        $view['email']->vars['help'] = 'It will have an @ symbol in it';
     }
 
     public function getName()
