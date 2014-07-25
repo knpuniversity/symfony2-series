@@ -9,7 +9,7 @@ Overriding Form Variables
 
 Open up ``register.html.twig``. Remember that ``attr`` variable we have access
 to in our form theme blocks? We can override that variable, or any other,
-right when we render the field. Give the username field a special class:
+right when we render the field. Give the username field a clever class:
 
 .. code-block:: html+jinja
 
@@ -17,13 +17,13 @@ right when we render the field. Give the username field a special class:
     {# ... #}
 
     {{ form_row(form.username, {
-        'attr': { 'class': 'the-username-field' }
+        'attr': { 'class': 'a-clever-class' }
     }) }}
 
 Refresh and inspect the field to see the class. In addition to the trick
 I showed you earlier, Symfony has a reference page called
 `Twig Template Form Function and Variable Reference`_ that lists *most*
-of these variables. So you can customize almost anything when rendering
+of these variables. Really you can customize almost anything when rendering
 a field.
 
 Adding a Help Feature
@@ -44,12 +44,12 @@ can see what I mean:
             {{ form_errors(form) }}
             {{ form_widget(form) }}
 
-            <div class="help-block">This is a field.</div>
+            <div class="help-block">This is the field you're looking for.</div>
         </div>
     {% endblock form_row %}
 
 I know - it's pointless so far. The same message shows up for every field.
-How could we customize this?
+How can we customize this?
 
 Inventing a New Form Variable
 -----------------------------
@@ -86,13 +86,13 @@ the form theme blocks. So use it!
         </div>
     {% endblock form_row %}
 
-Alright, time to try it. Refresh! Woh, BIG error:
+Alright, time to try it. Woh, BIG error:
 
     Variable "help" does not exist in
     kernel.root_dir/Resources/views/form_theme.html.twig at line 9
 
 I promise, I wasn't lying! The problem is that the *other* fields like email
-and password *aren'* passing in this variable, so we need to code defensively
+and password *aren't* passing in this variable, so we need to code defensively
 in the block. Add an ``if`` statement to make sure the variable is defined
 and actually set to some real value:
 
