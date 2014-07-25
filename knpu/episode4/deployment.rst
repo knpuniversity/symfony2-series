@@ -120,8 +120,8 @@ We need to do a one-time ``chmod`` on it and the ``logs`` dir:
 
     sudo chmod -R 777 app/cache/ app/logs/
 
-Let's try again. There's the site, but it's missing all the styles. Ah,
-right, dump the assetic assets:
+Let's try again. Ok, we have a site, and we can even login as Wayne.
+But it's missing all the styles. Ah, right, dump the assetic assets:
 
 .. code-block:: bahs
 
