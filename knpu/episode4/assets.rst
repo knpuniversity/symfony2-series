@@ -40,18 +40,18 @@ For now, just remove this whole block and replace it with 3 good, old-fashioned
         <link rel="stylesheet" href="/bundles/event/css/main.css" />
     {% endblock %}
 
-Refresh and open up the HTML source.
+Login with Wayne and password waynepass (party on) and then open up the HTML
+source on the homepage.
 
-There's no Symfony magic making this happen - it's just pure frontend
-code that points to real files in the ``web/bundles/event/css`` directory.
-And since the ``web/`` directory is the document root, we don't include that
-part.
+No Symfony magic here - this is just pure frontend code that points to real 
+files in the ``web/bundles/event/css`` directory. And since the ``web/`` 
+directory is the document root, we don't include that part.
 
 Making Bundle Assets Public
 ---------------------------
 
-The only Symfony magic comess from the fact that these files *originally*
-live inside EventBundle's ``Resources/public`` directory. But remember from
+The only thing Symfony is doing is helping move these files from their original
+location inside EventBundle's ``Resources/public`` directory. But remember from
 `episode 1`_ that Symfony has an ``assets:install`` console command. Run
 this again with a ``symlink`` option:
 
@@ -96,7 +96,7 @@ Take your simple link tag ``href`` and wrap it in a Twig ``asset`` function:
 
 I want you to notice that the path isn't changing, except that we don't need
 the first ``/`` anymore. When you've got this, refresh. The site still looks
-great, so let's look at the HTML source. Well, it's just the same as before.
-So it looks like ``asset`` isn't doing anything.
+great and the HTML source looks exactly as it did before, so ``asset`` 
+isn't doing anything . . . yet.
 
 .. _`episode 1`: http://knpuniversity.com/screencast/symfony2-ep1/assets#the-assets-install-command
