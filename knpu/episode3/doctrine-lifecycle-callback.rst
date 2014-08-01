@@ -31,7 +31,7 @@ Replace this with a new function called ``prePersist`` that sets the value::
     }
 
 Hey, don't get too excited! This won't work yet, but if we could tell Doctrine
-to call this before inserting an Event, we'd be gold!
+to call this before inserting an Event, we'd be golden!
 
 The secret is a called `lifecycle callbacks`_: a fancy word for a function
 that Doctrine will call when something happens, like when an entity is first
@@ -81,7 +81,7 @@ events:
 
 The ``createdAt`` column is set so this must be working.
 
-Lifectycle callbacks are brilliant because they're just so easy to setup.
+Lifecycle callbacks are brilliant because they're just so easy to setup.
 
 But they have one big limitation. Because the callback is inside an entity,
 we don't have access to the container or any services. This wasn't a problem
