@@ -8,6 +8,8 @@
 
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <a class="link" href="{{ path('logout') }}">Logout</a>
+            {% else %}
+                <a class="link" href="{{ path('login_form') }}">Login</a>
             {% endif %}
         </header>
 
