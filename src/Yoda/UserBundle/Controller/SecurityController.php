@@ -6,11 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class SecurityController extends Controller
 {
     /**
      * @Route("/login", name="login_form")
+     * @Template()
      */
     public function loginAction(Request $request)
     {
@@ -26,13 +28,10 @@ class SecurityController extends Controller
             $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
         }
 
-        return $this->render(
-            'AcmeSecurityBundle:Security:login.html.twig',
-            array(
-                // last username entered by the user
-                'last_username' => $session->get(SecurityContextInterface::LAST_USERNAME),
-                'error'         => $error,
-            )
+        return array(
+            // last username entered by the user
+            'last_username' => $session->get(SecurityContextInterface::LAST_USERNAME),
+            'error'         => $error,
         );
     }
 }
