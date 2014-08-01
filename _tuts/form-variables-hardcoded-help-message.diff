@@ -1,0 +1,13 @@
+diff --git a/app/Resources/views/form_theme.html.twig b/app/Resources/views/form_theme.html.twig
+index 49bb9ab..daa71fd 100644
+--- a/app/Resources/views/form_theme.html.twig
++++ b/app/Resources/views/form_theme.html.twig
+@@ -5,6 +5,8 @@
+         {{ form_label(form) }}
+         {{ form_errors(form) }}
+         {{ form_widget(form) }}
++
++        <div class="help-block">This is a field.</div>
+     </div>
+ {% endblock form_row %}
+ 
