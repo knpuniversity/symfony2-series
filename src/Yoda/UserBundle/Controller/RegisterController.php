@@ -29,13 +29,11 @@ class RegisterController extends Controller
 
         $form->handleRequest($request);
         if ($form->isValid()) {
-            $data = $form->getData();
-            var_dump($data);die;
+            $user = $form->getData();
 
-            $user = new User();
-            $user->setUsername($data['username']);
-            $user->setEmail($data['email']);
-            $user->setPassword($this->encodePassword($user, $data['password']));
+            $user->setPassword(
+                $this->encodePassword($user, $user->getPassword())
+            );
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
