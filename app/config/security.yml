@@ -17,8 +17,8 @@ security:
         secured_area:
             pattern:    ^/
             form_login:
-                check_path: _security_check
-                login_path: /my-login-url
+                check_path: login_check
+                login_path: login_form
             logout:
                 path:   _demo_logout
                 target: _demo
