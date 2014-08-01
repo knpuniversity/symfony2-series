@@ -10,7 +10,7 @@ class DefaultController extends Controller
     {
         return $this->render(
             'EventBundle:Default:index.html.twig',
-            array('name' => $firstName)
+            array('name' => $firstName, 'count' => $count)
         );
     }
 }
