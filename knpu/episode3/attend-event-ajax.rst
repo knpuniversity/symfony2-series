@@ -11,6 +11,8 @@ Click Event to Send AJAX
 I'll give both links a ``js-attend-toggle`` class that we can look for in
 jQuery:
 
+.. code-block:: html+jinja
+
     {# src/Yoda/EventBundle/Resources/views/Event/show.html.twig #}
     {# ... #}
 
