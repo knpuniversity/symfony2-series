@@ -84,7 +84,7 @@ the ``removeElement`` method::
 
 In our show template, let's show only the "attend" or "unattend" link based
 on whether we're attending the event or not. That's easy with the ``hasAttendee``
-method::
+method:
 
 .. code-block:: html+jinja
 
@@ -117,7 +117,7 @@ What's really going on in the Base Controller
 Quickly, look back at the ``redirect`` and ``generateUrl`` methods we're
 using in our controller. Let's see what these really do by opening up
 :symfonyclass:`Symfony's base controller<Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller>`
-class.
+class::
 
     // vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php
     // ...
