@@ -231,14 +231,16 @@ For example, there's a core bundle called FrameworkBundle. It controls a lot
 of things, including the session timeout length. So if we needed to tweak
 this, we'd do it under the ``framework`` config key:
 
-{{ get_code({
-    step: 'installation-playing-with-cookie-lifetime-config',
-    path: 'app/config/config.yml',
-    blocks: [
-        { start: 'framework' },
-        { start: 'session:', end: 'cookie_lifetime' }
-    ]
-}) }}
+.. raw:: html
+
+    {{ get_code({
+        step: 'installation-playing-with-cookie-lifetime-config',
+        path: 'app/config/config.yml',
+        blocks: [
+            { start: 'framework' },
+            { start: 'session:', end: 'cookie_lifetime' }
+        ]
+    }) }}
 
 Routes are the URLs of your app, and they also live in this directory in
 the ``routing.yml`` file. We'll master routes in a few minutes.

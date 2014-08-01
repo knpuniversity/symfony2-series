@@ -23,10 +23,12 @@ Route Importing
 Surprise! It's not here. But there *is* an ``event`` entry that was added when
 we generated the bundle:
 
-{{ get_code({
-    step: 'bundles-generate-bundle',
-    path: 'app/config/routing.yml'
-}) }}
+.. raw:: html
+
+    {{ get_code({
+        step: 'bundles-generate-bundle',
+        path: 'app/config/routing.yml'
+    }) }}
 
 The ``resource`` key works like a PHP include: point it at another routing
 file Symfony will pull it in. So, even though Symfony only reads this one
@@ -53,20 +55,24 @@ Basic Routing
 Ah hah! We found the missing route, which makes the ``/hello/skywalker``
 page work:
 
-{{ get_code({
-    step: 'bundles-generate-bundle',
-    path: 'src/Yoda/EventBundle/Resources/config/routing.yml'
-}) }}
+.. raw:: html
+
+    {{ get_code({
+        step: 'bundles-generate-bundle',
+        path: 'src/Yoda/EventBundle/Resources/config/routing.yml'
+    }) }}
 
 The ``pattern`` is the URL and the ``{name}`` of the pattern acts like a
 wildcard. It means that any URL that looks like ``/hello/*`` will match this
 route. If we change ``hello`` to ``there-is-another``, the URL to the page
 changes:
 
-{{ get_code({
-    step: 'routing-change-routing-pattern-temporarily',
-    path: 'src/Yoda/EventBundle/Resources/config/routing.yml'
-}) }}
+.. raw:: html
+
+    {{ get_code({
+        step: 'routing-change-routing-pattern-temporarily',
+        path: 'src/Yoda/EventBundle/Resources/config/routing.yml'
+    }) }}
 
 Update the URL in your browser to see the moved page (and then be cool and
 change the ``pattern`` back to ``/hello/{name}``):
@@ -86,10 +92,12 @@ Sorry, that's about as scandalous as things get around Symfony.
 
 To be with the new, I'll change my routing to use ``path``:
 
-{{ get_code({
-    step: 'routing-pattern-to-path',
-    path: 'src/Yoda/EventBundle/Resources/config/routing.yml'
-}) }}
+.. raw:: html
+
+    {{ get_code({
+        step: 'routing-pattern-to-path',
+        path: 'src/Yoda/EventBundle/Resources/config/routing.yml'
+    }) }}
 
 .. note::
 
@@ -128,12 +136,14 @@ Notice that Symfony adds the word ``Controller`` to the end of the class,
 and ``Action`` to the end of the method name. You'll probably hear the method
 name referred to as an "action".
 
-Open up the controller class and find the ``indexAction`` method::
+Open up the controller class and find the ``indexAction`` method:
 
-{{ get_code({
-    step: 'routing-pattern-to-path',
-    path: 'src/Yoda/EventBundle/Controller/DefaultController.php'
-}) }}
+.. raw:: html
+
+    {{ get_code({
+        step: 'routing-pattern-to-path',
+        path: 'src/Yoda/EventBundle/Controller/DefaultController.php'
+    }) }}
 
 Routing Parameters and Controller Arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
