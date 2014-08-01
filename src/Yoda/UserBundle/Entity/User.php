@@ -29,7 +29,7 @@ class User implements AdvancedUserInterface, Serializable
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Give us at least 3 characters")
      */
     private $username;
 
