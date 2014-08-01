@@ -1,16 +1,50 @@
-{% extends '::base.html.twig' %}
+{% extends 'EventBundle::layout.html.twig' %}
 
-{% block body -%}
-    <h1>Event edit</h1>
+{% block body %}
+    <section class="event-show event-edit">
+        <header id="menu">
+            <a class="link" href="{{ path('event') }}">&larr; back to the event list</a>
+            <a class="link" href="{{ path('event_show', {'id': entity.id}) }}">show event</a>
+        </header>
 
-    {{ form(edit_form) }}
+        <article>
+            <header class="map-container">
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('event') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+            </header>
+            <section>
+                {# the opening <form> tag #}
+                {{ form_start(edit_form) }}
+                    {{ form_errors(edit_form) }}
+                    <h1>
+                        {{ form_errors(edit_form.name) }}
+                        {{ form_widget(edit_form.name) }}
+                    </h1>
+
+                    <dl>
+                        <dt>where:</dt>
+                        <dd>
+                            {{ form_errors(edit_form.location) }}
+                            {{ form_widget(edit_form.location) }}
+                        </dd>
+
+                        <dt>when:</dt>
+                        <dd>
+                            {{ form_errors(edit_form.time) }}
+                            {{ form_widget(edit_form.time) }}
+                        </dd>
+
+                        <dt>what:</dt>
+                        <dd>
+                            {{ form_errors(edit_form.details) }}
+                            {{ form_widget(edit_form.details) }}
+                        </dd>
+                    </dl>
+
+                {# the closing </form> tag #}
+                {{ form_end(edit_form) }}
+
+                {{ form(delete_form) }}
+            </section>
+        </article>
+    </section>
 {% endblock %}
