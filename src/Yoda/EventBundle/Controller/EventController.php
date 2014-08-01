@@ -9,6 +9,7 @@ use Yoda\EventBundle\Entity\Event;
 use Yoda\EventBundle\Form\EventType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Event controller.
@@ -83,7 +84,7 @@ class EventController extends Controller
     {
         $securityContext = $this->container->get('security.context');
         if (!$securityContext->isGranted('ROLE_ADMIN')) {
-            // panic?
+            throw new AccessDeniedException('Only an admin can do this!!!!');
         }
 
         $entity = new Event();
