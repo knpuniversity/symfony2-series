@@ -37,6 +37,10 @@ class RegisterController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
+            $url = $this->generateUrl('event');
+
+            return $this->redirect($url);
         }
 
         return array('form' => $form->createView());
