@@ -1,0 +1,12 @@
+diff --git a/app/Resources/views/form_theme.html.twig b/app/Resources/views/form_theme.html.twig
+index bac7d95..49bb9ab 100644
+--- a/app/Resources/views/form_theme.html.twig
++++ b/app/Resources/views/form_theme.html.twig
+@@ -26,5 +26,7 @@
+ {% endblock form_widget_simple %}
+ 
+ {% block form_label %}
++    {% set label_attr = attr|merge({ 'class': (attr.class|default('') ~ ' control-label')|trim }) %}
++
+     {{ block('base_form_label') }}
+ {% endblock form_label %}
