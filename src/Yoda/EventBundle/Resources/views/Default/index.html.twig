@@ -1,5 +1,5 @@
 {# Hello comments! #}
 
 {% for i in 1..count %}
-    Hello <strong>{{ name }}</strong> # {{ i }}!<br/>
+    Hello <strong>{{ name|upper }}</strong> # {{ i }}!<br/>
 {% endfor %}
