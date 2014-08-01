@@ -38,7 +38,7 @@ Refresh! The download still works: this is just a more direct way to access
 the same object. But stop! This is *hugely* powerful! Symfony's container
 holds over 200 services, and you can get *any* of these in a controller and
 use them. It's like someone just gave you 200 new power tools! You may not
-know how to use them yet, but you're about to look like Edward Sciccor hands!
+know how to use them yet, but you're about to look like Edward Scissorhands!
 
 Adding a Service
 ----------------
