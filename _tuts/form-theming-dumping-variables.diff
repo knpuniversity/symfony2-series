@@ -1,0 +1,13 @@
+diff --git a/app/Resources/views/form_theme.html.twig b/app/Resources/views/form_theme.html.twig
+index 13a95f8..4d3ab18 100644
+--- a/app/Resources/views/form_theme.html.twig
++++ b/app/Resources/views/form_theme.html.twig
+@@ -7,6 +7,8 @@
+ {% endblock form_row %}
+ 
+ {% block form_errors %}
++    {{ dump(_context|keys) }}
++
+     {% if errors|length > 0 %}
+     <ul class="help-block">
+         {% for error in errors %}
