@@ -88,3 +88,5 @@ we don't have access to the container or any services. This wasn't a problem
 here, but what if we needed to access the ``router`` or the ``logger``?
 
 The solution is to use a slight spin on lifecycle callbacks: events.
+
+.. _`lifecycle callbacks`: http://symfony.com/doc/current/book/doctrine.html#lifecycle-callbacks
