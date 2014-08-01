@@ -25,11 +25,7 @@ class EventController extends Controller
      */
     public function indexAction()
     {
-        $user = $this->container
-            ->get('security.context')
-            ->getToken()
-            ->getUser()
-        ;
+        $user = $this->getUser();
         var_dump($user->getUsername());die;
 
         $em = $this->getDoctrine()->getManager();
