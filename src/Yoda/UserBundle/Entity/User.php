@@ -153,7 +153,7 @@ class User implements AdvancedUserInterface, Serializable
      */
     public function eraseCredentials()
     {
-        // blank for now
+        $this->setPlainPassword(null);
     }
 
     /**
