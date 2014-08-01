@@ -1,6 +1,4 @@
-event:
-    pattern:  /
-    defaults: { _controller: "EventBundle:Event:index" }
+# the / route is defined via annotations
 
 event_show:
     pattern:  /{id}/show
