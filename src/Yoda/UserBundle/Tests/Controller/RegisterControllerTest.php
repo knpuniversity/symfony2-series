@@ -21,5 +21,8 @@ class RegisterControllerTest extends WebTestCase
             ->attr('value')
         ;
         $this->assertEquals('Leia', $usernameVal);
+
+        // the name of our button is "Register!"
+        $form = $crawler->selectButton('Register!')->form();
     }
 }
