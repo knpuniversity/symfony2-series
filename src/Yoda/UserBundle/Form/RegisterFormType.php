@@ -12,7 +12,7 @@ class RegisterFormType extends AbstractType
     {
         $builder
             ->add('username', 'text')
-            ->add('email', null, array(
+            ->add('email', 'email', array(
                 'label' => 'Email Address',
                 'attr'    => array('class' => 'C-3PO')
             ))
