@@ -33,36 +33,116 @@ chapters:
     intro:
         title:      Introduction
         is_free:    true
-        length:     1:09
-    "more-security":
-        title:      "More Security"
+        length:     1:00
+    "doctrine-relationship":
+        title:      "Doctrine Relationship"
         is_free:    true
-        length:     16:22
+        length:     04:40
+    "sharing-data-fixtures":
+        title:      Sharing Data Fixtures
+        is_free:    false
+        length:     1:49
+    "event-edit-security":
+        title:      "Event Edit Security"
+        is_free:    false
+        length:     01:53
+    "base-controller":
+        title:      Base Controller
+        is_free:    false
+        length:     02:30
+    "phpdoc-autocomplete":
+        title:      "PHPDoc Autocomplete."
+        is_free:    false
+        length:     01:26
+    "doctrine-inverse-relation":
+        title:      Doctrine Inverse Relation
+        is_free:    false
+        length:     05:37
     "doctrine-extensions":
-        title:      Doctrine Extensions: Sluggable and Timestampable
+        title:      Doctrine Extensions
         is_free:    false
-        length:     8:06
+        length:     04:30
+    "slug-url":
+        title:      Slug URL
+        is_free:    false
+        length:     02:04
+    "timestampable":
+        title:      Timestampable
+        is_free:    false
+        length:     01:41
+    "custom-repository-query":
+        title:      Custom Repository Query
+        is_free:    false
+        length:     02:11
+    "many-to-many-relationship":
+        title:      ManyToMany Relationship
+        is_free:    false
+        length:     02:37
+    "using-many-to-many":
+        title:      Using ManyToMany
+        is_free:    false
+        length:     04:53
+    "using-many-to-many2":
+        title:      Round 2: Using ManyToMany
+        is_free:    false
+        length:     02:51
+    "json-response":
+        title:      JSON Response
+        is_free:    false
+        length:     02:50
+    "content-type-jsonresponse":
+        title:      Content Type JSON Response
+        is_free:    false
+        length:     03:19
     "attend-event-ajax":
-        title:      AJAX and JSON Responses
+        title:      Attend Event AJAX
         is_free:    false
-        length:     15:43
+        length:     02:16
     "error-pages":
-        title:      "Customizing Error Pages and How Errors are Handled"
+        title:      Error Pages
         is_free:    false
-        length:     13:27
+        length:     06:01
+    "render-controller":
+        title:      Render Controller
+        is_free:    false
+        length:     04:28
+    "csv-download":
+        title:      CSV Download
+        is_free:    false
+        length:     04:19
     "services":
-        title:      "Services, Dependency Injection and Service Containers"
+        title:      Services
         is_free:    false
-        length:     14:25
+        length:     04:42
+    "service-container":
+        title:      Service Container
+        is_free:    false
+        length:     04:58
+    "config-imports-type-hinting":
+        title:      Config Imports Type Hinting
+        is_free:    false
+        length:     02:01
+    "more-dependency-injection":
+        title:      Moar Dependency Injection
+        is_free:    false
+        length:     03:14
     "twig-extension-listener":
-        title:      Twig Extensions and Dependency Injection Tags
+        title:      Twig Extension Listener
         is_free:    false
-        length:     4:21
+        length:     04:33
+    "doctrine-lifecycle-callback":
+        title:      doctrine-lifecycle-callback
+        is_free:    false
+        length:     02:08
     "doctrine-listener":
-        title:      Doctrine Listeners
+        title:      Doctrine Listener
         is_free:    false
-        length:     10:49
+        length:     05:59
+    "doctrine-listener-update":
+        title:      Doctrine Listener Update
+        is_free:    false
+        length:     02:48
     "outro":
-        title:      Keep Going!
+        title:      3 down and 1 to go!
         is_free:    false
-        length:     2:58
+        length:     01:19
