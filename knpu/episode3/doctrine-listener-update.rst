@@ -82,7 +82,7 @@ Gotcha 1: Event Listeners don't fire on Unchanged Objects
 ---------------------------------------------------------
 
 It's a gotcha! The ``plainPassword`` property isn't saved to Doctrine,
-but it we do *use* it to set the ``password`` field, which *is* persisted.
+but we do *use* it to set the ``password`` field, which *is* persisted.
 
 The problem is that when we change *only* the ``plainPassword`` field, the
 ``User`` looks "unmodified" to Doctrine. So, instead of calling our listener,
