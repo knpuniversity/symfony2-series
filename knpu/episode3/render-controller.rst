@@ -122,6 +122,8 @@ Using render in the Error Template
 Our goal was to list upcoming events on the 404 page. Well, that's pretty easy
 now:
 
+.. code-block:: html+jinja
+
     {# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
     {# ... #}
 
@@ -151,6 +153,8 @@ Great! Now what if we wanted to show a different number of upcoming
 events on the homepage versus the error page? No problem: ``render`` let's 
 us pass arguments to the controller function. Pass a ``max`` argument
 of ``1`` from the error template:
+
+.. code-block:: html+jinja
 
     {# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
     {# ... #}
