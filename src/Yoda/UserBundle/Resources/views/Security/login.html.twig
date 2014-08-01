@@ -12,7 +12,7 @@
     <article>
 
         {% if error %}
-            <div class="error">{{ error.message }}</div>
+            <div class="error">{{ error.message|trans }}</div>
         {% endif %}
 
         <form action="{{ path('login_check') }}" method="post">
