@@ -15,10 +15,10 @@ security:
 
     firewalls:
         secured_area:
-            pattern:    ^/demo/secured/
+            pattern:    ^/
             form_login:
                 check_path: _security_check
-                login_path: _demo_login
+                login_path: /my-login-url
             logout:
                 path:   _demo_logout
                 target: _demo
