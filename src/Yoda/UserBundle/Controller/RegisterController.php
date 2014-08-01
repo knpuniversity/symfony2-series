@@ -16,11 +16,10 @@ class RegisterController extends Controller
      */
     public function registerAction(Request $request)
     {
-        $defaultData = array(
-            'username' => 'Leia',
-        );
+        $user = new User();
+        $user->setUsername('Leia');
 
-        $form = $this->createFormBuilder($defaultData, array(
+        $form = $this->createFormBuilder($user, array(
             'data_class' => 'Yoda\UserBundle\Entity\User',
         ))
             ->add('username', 'text')
