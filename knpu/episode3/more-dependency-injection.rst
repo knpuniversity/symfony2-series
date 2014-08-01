@@ -121,7 +121,7 @@ file and add a second item to ``arguments``:
 
 *Now*, we get the download again. Open up the CSV. Hey, we have URL's!
 
-.. code-block:: csv
+.. code-block:: text
 
     5,Darth's Birthday Party!,2014-07-24 12:00:00,/darth-s-birthday-party/show
     6,Rebellion Fundraiser Bake Sale!,2014-07-24 12:00:00,/rebellion-fundraiser-bake-sale/show
