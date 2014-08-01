@@ -23,12 +23,10 @@ Route Importing
 Surprise! It's not here. But there *is* an ``event`` entry that was added when
 we generated the bundle:
 
-.. code-block:: yaml
-
-    # app/config/routing.yml
-    event:
-        resource: "@EventBundle/Resources/config/routing.yml"
-        prefix:   /
+{{ get_code({
+    step: 'bundles-generate-bundle',
+    path: 'app/config/routing.yml'
+}) }}
 
 The ``resource`` key works like a PHP include: point it at another routing
 file Symfony will pull it in. So, even though Symfony only reads this one
@@ -55,25 +53,20 @@ Basic Routing
 Ah hah! We found the missing route, which makes the ``/hello/skywalker``
 page work:
 
-.. code-block:: yaml
-
-    # src/Yoda/EventBundle/Resources/config/routing.yml
-    event_homepage:
-        pattern:  /hello/{name}
-        defaults: { _controller: EventBundle:Default:index }
+{{ get_code({
+    step: 'bundles-generate-bundle',
+    path: 'src/Yoda/EventBundle/Resources/config/routing.yml'
+}) }}
 
 The ``pattern`` is the URL and the ``{name}`` of the pattern acts like a
 wildcard. It means that any URL that looks like ``/hello/*`` will match this
 route. If we change ``hello`` to ``there-is-another``, the URL to the page
 changes:
 
-.. code-block:: yaml
-
-    # src/Yoda/EventBundle/Resources/config/routing.yml
-    event_homepage:
-        # you can change the URL (but change it back after trying this!)
-        pattern:  /there-is-another/{name}
-        defaults: { _controller: EventBundle:Default:index }
+{{ get_code({
+    step: 'routing-change-routing-pattern-temporarily',
+    path: 'src/Yoda/EventBundle/Resources/config/routing.yml'
+}) }}
 
 Update the URL in your browser to see the moved page (and then be cool and
 change the ``pattern`` back to ``/hello/{name}``):
@@ -93,12 +86,10 @@ Sorry, that's about as scandalous as things get around Symfony.
 
 To be with the new, I'll change my routing to use ``path``:
 
-.. code-block:: yaml
-
-    # src/Yoda/EventBundle/Resources/config/routing.yml
-    event_homepage:
-        path:  /hello/{name}
-        defaults: { _controller: EventBundle:Default:index }
+{{ get_code({
+    step: 'routing-pattern-to-path',
+    path: 'src/Yoda/EventBundle/Resources/config/routing.yml'
+}) }}
 
 .. note::
 
@@ -139,21 +130,10 @@ name referred to as an "action".
 
 Open up the controller class and find the ``indexAction`` method::
 
-    // src/Yoda/EventBundle/Controller/DefaultController.php
-    namespace Yoda\EventBundle\Controller;
-    
-    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-    
-    class DefaultController extends Controller
-    {
-        public function indexAction($name)
-        {
-            return $this->render(
-                'EventBundle:Default:index.html.twig',
-                array('name' => $name)
-            );
-        }
-    }
+{{ get_code({
+    step: 'routing-pattern-to-path',
+    path: 'src/Yoda/EventBundle/Controller/DefaultController.php'
+}) }}
 
 Routing Parameters and Controller Arguments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
