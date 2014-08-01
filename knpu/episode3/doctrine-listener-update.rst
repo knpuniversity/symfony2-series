@@ -52,7 +52,7 @@ Testing the Update
 
 We can't test this easily because we don't have a way to update users yet.
 No worries. Just open up the play script from episode 1. We already have
-a user here - just change his plain password and save:
+a user here - just change his plain password and save::
 
     // play.php
     // ...
