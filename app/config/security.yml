@@ -25,5 +25,4 @@ security:
             #    realm: "Secured Demo Area"
 
     access_control:
-        # - { path: ^/new, roles: ROLE_USER }
-        # - { path: ^/create, roles: ROLE_USER }
+        - { path: ^/, roles: ROLE_USER }
