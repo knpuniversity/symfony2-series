@@ -21,12 +21,14 @@ $container->set('request', $request);
 
 // all our setup is done!!!!!!
 
-$templating = $container->get('templating');
+use Yoda\EventBundle\Entity\Event;
 
-echo $templating->render(
-    'EventBundle:Default:index.html.twig',
-    array(
-        'name' => 'Yoda',
-        'count' => 5,
-    )
-);
+$event = new Event();
+$event->setName('Darth\'s surprise birthday party');
+$event->setLocation('Deathstar');
+$event->setTime(new \DateTime('tomorrow noon'));
+$event->setDetails('Ha! Darth HATES surprises!!!!');
+
+$em = $container->get('doctrine')->getManager();
+$em->persist($event);
+$em->flush();
