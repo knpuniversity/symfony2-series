@@ -37,6 +37,10 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="json_array")
+     */
+    private $roles = array();
 
     /**
      * Get id
@@ -112,7 +116,15 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return $this->roles;
+    }
+
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
+
+        // allows for chaining
+        return $this;
     }
 
     /**
