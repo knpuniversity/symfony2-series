@@ -101,8 +101,7 @@ Using the New Service
 
 Get this new service in our controller. You already know how to get objects
 out of the container - we just did it a minute ago with the entity manager.
-It's exactly the same with *our* service::
-
+It's exactly the same with *our* service.
 
 In ``ReportController``, remove the new call of the ``EventReportManager``
 and replace it with a call to the ``container`` object::
