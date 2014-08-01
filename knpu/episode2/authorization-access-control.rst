@@ -19,7 +19,7 @@ access these URLs:
         # ...
         access_control:
             - { path: ^/new, roles: ROLE_USER }
-            - { path: ^/create , roles: ROLE_USER }
+            - { path: ^/create, roles: ROLE_USER }
 
 Try it out! When we try to add an event, we're redirected to ``/my-login-url``.
 Hey! I know that URL! That's what we put for the ``login_path`` config key.
