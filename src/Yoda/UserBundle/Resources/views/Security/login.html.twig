@@ -1,6 +1,10 @@
 {# src/Yoda/UserBundle/Resources/views/Security/login.html.twig #}
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/user/css/login.css') }}" />
+{% endblock %}
+
 {% block body %}
 <section class="login">
     <article>
