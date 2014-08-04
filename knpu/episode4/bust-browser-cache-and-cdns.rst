@@ -19,6 +19,11 @@ star wars episode:
             engines: ['twig']
             assets_version: 5-return-of-the-jedi
 
+.. note::
+
+    We realized later that the number 6 (or even better VI) would have made
+    a *little* bit more sense here...
+
 When we view the source code, we've got a ``?5-return-of-the-jedi`` at the
 end of the CSS file paths. That's handy!
 
