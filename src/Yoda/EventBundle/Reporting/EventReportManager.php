@@ -28,7 +28,11 @@ class EventReportManager
                 $event->getId(),
                 $event->getName(),
                 $event->getTime()->format('Y-m-d H:i:s'),
-                $this->router->generate('event_show', array('slug' => $event->getSlug()))
+                $this->router->generate(
+                    'event_show',
+                    array('slug' => $event->getSlug()),
+                    true
+                )
             );
 
             $rows[] = implode(',', $data);
