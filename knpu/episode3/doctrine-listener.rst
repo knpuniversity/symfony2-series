@@ -206,7 +206,7 @@ new constructor arugment in ``services.yml``:
                 - { name: doctrine.event_listener, event: prePersist }
 
 We're ready! Remove all the encoding logic from ``LoadUsers`` and just set
-the plain password instead.
+the plain password instead::
 
     // src/Yoda/UserBundle/DataFixtures/ORM/LoadUsers.php
     // ...
