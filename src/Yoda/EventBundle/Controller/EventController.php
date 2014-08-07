@@ -243,8 +243,7 @@ class EventController extends Controller
 
     private function enforceUserSecurity($role = 'ROLE_USER')
     {
-        $securityContext = $this->container->get('security.context');
-        if (!$securityContext->isGranted($role)) {
+        if (!$this->getSecurityContext()->isGranted($role)) {
             // in Symfony 2.5
             // throw $this->createAccessDeniedException('message!');
             throw new AccessDeniedException('Need '.$role);
