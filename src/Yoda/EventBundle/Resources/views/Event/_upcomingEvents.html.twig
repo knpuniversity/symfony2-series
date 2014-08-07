@@ -17,6 +17,9 @@
 
                 <dt>who:</dt>
                 <dd>{{ event.attendees|length }} attending!</dd>
+
+                <dt>posted:</dt>
+                <dd>{{ event.createdAt|ago }}</dd>
             </dl>
         </section>
     </article>
