@@ -1,0 +1,16 @@
+diff --git a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+index 3bc55c8..80ad2d1 100644
+--- a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
++++ b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+@@ -14,7 +14,10 @@
+         <form action="{{ path('user_register') }}" method="POST" class="form">
+             {{ form_errors(form) }}
+ 
+-            {{ form_row(form.username) }}
++            {{ form_row(form.username, {
++                'attr': { 'class': 'the-username-field' }
++            }) }}
++
+             {{ form_row(form.email) }}
+ 
+             {{ form_row(form.plainPassword.first, {
