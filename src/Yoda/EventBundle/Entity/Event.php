@@ -3,6 +3,7 @@
 namespace Yoda\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Yoda\UserBundle\Entity\User;
 
 /**
  * Event
@@ -49,6 +50,9 @@ class Event
      */
     private $details;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Yoda\UserBundle\Entity\User")
+     */
     protected $owner;
 
     /**
@@ -151,5 +155,21 @@ class Event
     public function getDetails()
     {
         return $this->details;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @param User $owner
+     */
+    public function setOwner(User $owner)
+    {
+        $this->owner = $owner;
     }
 }
