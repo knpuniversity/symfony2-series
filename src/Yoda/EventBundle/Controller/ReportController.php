@@ -13,7 +13,8 @@ class ReportController extends Controller
      */
     public function updatedEventsAction()
     {
-        $eventReportManager = new EventReportManager();
+        $em = $this->getDoctrine()->getManager();
+        $eventReportManager = new EventReportManager($em);
         $content = $eventReportManager->getRecentlyUpdatedReport();
 
         $response = new Response($content);
