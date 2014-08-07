@@ -280,6 +280,8 @@ class User implements AdvancedUserInterface, Serializable
     {
         $this->plainPassword = $plainPassword;
 
+        $this->setPassword(null);
+
         return $this;
     }
 
