@@ -3,10 +3,11 @@
 namespace Yoda\UserBundle\Doctrine;
 
 use Yoda\UserBundle\Entity\User;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 
 class UserListener
 {
-    public function prePersist()
+    public function prePersist(LifecycleEventArgs $args)
     {
         die('Something is being inserted!');
     }
