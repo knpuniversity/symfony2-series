@@ -9,3 +9,5 @@ services:
     twig.event_extension:
         class: Yoda\EventBundle\Twig\EventExtension
         arguments: []
+        tags:
+            - { name: twig.extension }
