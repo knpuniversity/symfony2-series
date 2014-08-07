@@ -52,7 +52,7 @@ Testing the Update
 
 We can't test this easily because we don't have a way to update users yet.
 No worries. Just open up the play script from episode 1. We already have
-a user here - just change his plain password and save:
+a user here - just change his plain password and save::
 
     // play.php
     // ...
@@ -82,7 +82,7 @@ Gotcha 1: Event Listeners don't fire on Unchanged Objects
 ---------------------------------------------------------
 
 It's a gotcha! The ``plainPassword`` property isn't saved to Doctrine,
-but it we do *use* it to set the ``password`` field, which *is* persisted.
+but we do *use* it to set the ``password`` field, which *is* persisted.
 
 The problem is that when we change *only* the ``plainPassword`` field, the
 ``User`` looks "unmodified" to Doctrine. So, instead of calling our listener,
