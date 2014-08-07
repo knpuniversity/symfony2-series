@@ -244,7 +244,9 @@ class EventController extends Controller
             throw $this->createNotFoundException('No event found for id '.$id);
         }
 
-        $event->getAttendees()->add($this->getUser());
+        if (!$event->hasAttendee($this->getUser())) {
+            $event->getAttendees()->add($this->getUser());
+        }
 
         $em->persist($event);
         $em->flush();
