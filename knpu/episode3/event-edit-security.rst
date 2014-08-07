@@ -59,7 +59,7 @@ customize. And in a few minutes, we'll show you :ref:`how <symfony2-ep3-error-te
 
     There is an even cleaner, but more advanced, approach to restricting
     access to specific objects called "voters". You can learn more about
-    these from our :ref:`Question and Answer Day<symfony2-acl-voters>`. An
+    these from our `Question and Answer Day`_. An
     even more advanced approach is available called `ACLs`_.
 
 Now that Darth can only edit an event if he created it, add an ``if`` statement
@@ -78,3 +78,4 @@ Remember that this works because ``app.user`` gives us the ``User`` object
 for whoever is logged in.
 
 .. _`ACLs`: http://symfony.com/doc/current/cookbook/security/acl.html
+.. _`Question and Answer Day`: http://knpuniversity.com/screencast/question-answer-day/symfony2-users-menu-cms
