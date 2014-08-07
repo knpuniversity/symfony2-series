@@ -49,6 +49,7 @@ class Event
      */
     private $details;
 
+    protected $owner;
 
     /**
      * Get id
