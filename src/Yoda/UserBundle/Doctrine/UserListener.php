@@ -4,9 +4,17 @@ namespace Yoda\UserBundle\Doctrine;
 
 use Yoda\UserBundle\Entity\User;
 use Doctrine\ORM\Event\LifecycleEventArgs;
+use Symfony\Component\Security\Core\Encoder\EncoderFactory;
 
 class UserListener
 {
+    private $encoderFactory;
+
+    public function __construct(EncoderFactory $encoderFactory)
+    {
+        $this->encoderFactory = $encoderFactory;
+    }
+
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
@@ -19,7 +27,7 @@ class UserListener
     {
         $plainPassword = $user->getPlainPassword();
 
-        $encoder = $this->container->get('security.encoder_factory')
+        $encoder = $this->encoderFactory
             ->getEncoder($user)
         ;
 
