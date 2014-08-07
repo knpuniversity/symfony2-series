@@ -165,3 +165,5 @@ library has our back and makes sure that these are always unique.
 
 .. _`KnpBundles.com`: http://knpbundles.com/
 .. _`go to its readme`: https://github.com/Atlantic18/DoctrineExtensions/tree/master/doc
+.. _`DoctrineExtensions`: https://github.com/Atlantic18/DoctrineExtensions
+.. _`StofDoctrineExtensionsBundle`: https://github.com/stof/StofDoctrineExtensionsBundle
