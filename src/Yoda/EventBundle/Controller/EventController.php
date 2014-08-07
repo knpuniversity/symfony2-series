@@ -9,7 +9,7 @@ use Yoda\EventBundle\Form\EventType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Event controller.
@@ -257,8 +257,7 @@ class EventController extends Controller
                 'attending' => true
             );
 
-            $response = new Response(json_encode($data));
-            $response->headers->set('Content-Type', 'application/json');
+            $response = new JsonResponse($data);
 
             return $response;
         }
