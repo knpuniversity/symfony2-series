@@ -52,6 +52,7 @@ class Event
 
     /**
      * @ORM\ManyToOne(targetEntity="Yoda\UserBundle\Entity\User")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $owner;
 
