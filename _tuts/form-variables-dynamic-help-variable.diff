@@ -1,0 +1,27 @@
+diff --git a/app/Resources/views/form_theme.html.twig b/app/Resources/views/form_theme.html.twig
+index daa71fd..13fc199 100644
+--- a/app/Resources/views/form_theme.html.twig
++++ b/app/Resources/views/form_theme.html.twig
+@@ -6,7 +6,7 @@
+         {{ form_errors(form) }}
+         {{ form_widget(form) }}
+ 
+-        <div class="help-block">This is a field.</div>
++        <div class="help-block">{{ name }}</div>
+     </div>
+ {% endblock form_row %}
+ 
+diff --git a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+index 80ad2d1..f544288 100644
+--- a/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
++++ b/src/Yoda/UserBundle/Resources/views/Register/register.html.twig
+@@ -15,7 +15,8 @@
+             {{ form_errors(form) }}
+ 
+             {{ form_row(form.username, {
+-                'attr': { 'class': 'the-username-field' }
++                'attr': { 'class': 'the-username-field' },
++                'help': 'Choose something unique and clever'
+             }) }}
+ 
+             {{ form_row(form.email) }}
