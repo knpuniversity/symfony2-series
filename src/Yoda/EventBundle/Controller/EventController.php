@@ -234,6 +234,16 @@ class EventController extends Controller
         return $this->redirect($this->generateUrl('event'));
     }
 
+    public function attendAction($id)
+    {
+
+    }
+
+    public function unattendAction($id)
+    {
+
+    }
+
     /**
      * Creates a form to delete a Event entity by id.
      *
