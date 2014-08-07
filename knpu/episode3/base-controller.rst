@@ -51,7 +51,7 @@ for *our* fancy Controller class::
 
 Now we can access all of Symfony's shortcut methods *and* the new ``getSecurityContext``
 method we created. And actually, we don't even need the ``use`` statement
-because this class lives in the same namespace as the new ``Controller`` class::
+because this class lives in the same namespace as the new ``Controller`` class.
 
 Ok! Let's use the new ``getSecurityContext`` method to shorten things::
 
