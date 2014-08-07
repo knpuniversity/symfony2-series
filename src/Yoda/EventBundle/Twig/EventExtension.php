@@ -13,4 +13,16 @@ class EventExtension extends \Twig_Extension
     {
         return 'event';
     }
+
+    public function getFilters()
+    {
+        return array(
+            new \Twig_SimpleFilter('ago', array($this, 'calculateAgo')),
+        );
+    }
+
+    public function calculateAgo(\DateTime $dt)
+    {
+        // todo
+    }
 } 
