@@ -1,0 +1,4 @@
+services:
+    doctrine.user_listener:
+        class: Yoda\UserBundle\Doctrine\UserListener
+        arguments: []
