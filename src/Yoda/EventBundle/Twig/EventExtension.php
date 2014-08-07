@@ -2,6 +2,8 @@
 
 namespace Yoda\EventBundle\Twig;
 
+use Yoda\EventBundle\Util\DateUtil;
+
 class EventExtension extends \Twig_Extension
 {
     /**
@@ -23,6 +25,6 @@ class EventExtension extends \Twig_Extension
 
     public function calculateAgo(\DateTime $dt)
     {
-        // todo
+        return DateUtil::ago($dt);
     }
 } 
