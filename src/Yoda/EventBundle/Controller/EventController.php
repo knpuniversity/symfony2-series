@@ -19,22 +19,12 @@ class EventController extends Controller
 {
 
     /**
-     * Lists all Event entities.
      * @Template()
      * @Route("/", name="event")
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em
-            ->getRepository('EventBundle:Event')
-            ->getUpcomingEvents()
-        ;
-
-        return array(
-            'entities' => $entities,
-        );
+        return array();
     }
 
     public function _upcomingEventsAction()
