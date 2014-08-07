@@ -1,0 +1,65 @@
+title:  Starting in Symfony2: Episode 4 (2.2)
+price:  6
+length: 0:42:44
+summary: |
+    Welcome back for part 4 of our Starting in Symfony2 series! We've got
+    some really important topics planned and we're going to start with mastering
+    assets and the Assetic library. We'll bust cache, minimize our CSS & JS
+    files and get you ready to do just about anything with your static assets.
+    We'll also dive much deeper into form rendering - customizing our forms
+    to work with Twitter Bootstrap and learning a lot more about the powerful
+    and advanced mechanisms behind form theming. Finally, we'll cover deployment:
+    what steps are always necessary and some options for automating the process.
+    Let's do this!
+
+    Highlights:
+
+    * The Twig asset function
+    * More about Dependency Injection Parameters and the purpose of parameters.yml
+    * Cache busting with assets_version and assets_version_format
+    * Introduction to Assetic
+    * Assetic filters, including cssrewrite, cssmin and the apply_to option
+    * Dumping assets in the prod and dev environments and the secret of turning use_controllers to false
+    * The basics of form customization and theming
+    * FormView "variables" - what they are and how you can use them to do just about anything while customizing how a form renders
+    * Using the finishView to control FormView "variables"
+    * The steps and best practices for deployment with tips on automating the process
+
+illustration: sf2-ep4.png
+priority: 110
+versionNumber: 2.2
+originalVersion: 27
+isActiveVersion: 1
+tags:
+    - { name: symfony }
+    - { name: php }
+
+chapters:
+    intro:
+        title:      Introduction
+        is_free:    true
+        length:     1:36
+    assets:
+        title:      Assets and Cache Busting
+        is_free:    true
+        length:     5:08
+    assetic:
+        title:      "Assetic: Filters, Combination and Minification"
+        is_free:    false
+        length:     10:34
+    "form-customizations":
+        title:      Form Template Customizations
+        is_free:    false
+        length:     9:49
+    "more-form-customizations":
+        title:      More Form Customizations (Form Theming)
+        is_free:    false
+        length:     6:16
+    deployment:
+        title:      Deployment
+        is_free:    false
+        length:     8:26
+    goodbye:
+        title:      Goodbye Friend!
+        is_free:    false
+        length:     0:56
