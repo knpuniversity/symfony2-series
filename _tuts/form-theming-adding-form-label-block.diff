@@ -1,0 +1,11 @@
+diff --git a/app/Resources/views/form_theme.html.twig b/app/Resources/views/form_theme.html.twig
+index f161fbc..b6d314e 100644
+--- a/app/Resources/views/form_theme.html.twig
++++ b/app/Resources/views/form_theme.html.twig
+@@ -22,3 +22,6 @@
+     {% set type = type|default('text') %}
+     <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+ {% endblock form_widget_simple %}
++
++{% block form_label %}
++{% endblock form_label %}
