@@ -249,15 +249,4 @@ class EventController extends Controller
             throw new AccessDeniedException('Need '.$role);
         }
     }
-
-    private function enforceOwnerSecurity(Event $event)
-    {
-        $user = $this->getUser();
-
-        if ($user != $event->getOwner()) {
-            // if you're using 2.5 or higher
-            // throw $this->createAccessDeniedException('You are not the owner!!!');
-            throw new AccessDeniedException('You are not the owner!!!');
-        }
-    }
 }
