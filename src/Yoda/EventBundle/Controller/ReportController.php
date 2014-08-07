@@ -13,7 +13,7 @@ class ReportController extends Controller
      */
     public function updatedEventsAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->container->get('doctrine.orm.entity_manager');
         $eventReportManager = new EventReportManager($em);
         $content = $eventReportManager->getRecentlyUpdatedReport();
 
