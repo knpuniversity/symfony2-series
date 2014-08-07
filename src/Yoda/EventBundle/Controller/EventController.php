@@ -267,7 +267,7 @@ class EventController extends Controller
         )));
     }
 
-    public function unattendAction($id)
+    public function unattendAction($id, $format)
     {
         $em = $this->getDoctrine()->getManager();
         /** @var $event \Yoda\EventBundle\Entity\Event */
@@ -283,6 +283,16 @@ class EventController extends Controller
 
         $em->persist($event);
         $em->flush();
+
+        if ($format == 'json') {
+            $data = array(
+                'attending' => false
+            );
+
+            $response = new JsonResponse($data);
+
+            return $response;
+        }
 
         return $this->redirect($this->generateUrl('event_show', array(
             'slug' => $event->getSlug()
