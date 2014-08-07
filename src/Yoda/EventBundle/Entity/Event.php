@@ -68,7 +68,6 @@ class Event
     protected $slug;
 
     /**
-     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -252,5 +251,12 @@ class Event
     public function hasAttendee(User $user)
     {
         return $this->getAttendees()->contains($user);
+    }
+
+    public function prePersist()
+    {
+        if (!$this->getCreatedAt()) {
+            $this->createdAt = new \DateTime();
+        }
     }
 }
