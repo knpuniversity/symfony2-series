@@ -2,3 +2,5 @@ services:
     doctrine.user_listener:
         class: Yoda\UserBundle\Doctrine\UserListener
         arguments: []
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
