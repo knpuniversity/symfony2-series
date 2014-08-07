@@ -49,6 +49,12 @@ class EventController extends Controller
 
             $entity->setOwner($user);
 
+            // this does nothing
+            // if we *only* had this part, the relationship would not save
+            // $events = $this->getUser()->getEvents();
+            // $events[] = $entity;
+            // $this->getUser()->setEvents($events);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
