@@ -38,7 +38,7 @@ Refresh! The download still works: this is just a more direct way to access
 the same object. But stop! This is *hugely* powerful! Symfony's container
 holds over 200 services, and you can get *any* of these in a controller and
 use them. It's like someone just gave you 200 new power tools! You may not
-know how to use them yet, but you're about to look like Edward Sciccor hands!
+know how to use them yet, but you're about to look like Edward Scissorhands!
 
 Adding a Service
 ----------------
@@ -101,8 +101,7 @@ Using the New Service
 
 Get this new service in our controller. You already know how to get objects
 out of the container - we just did it a minute ago with the entity manager.
-It's exactly the same with *our* service::
-
+It's exactly the same with *our* service.
 
 In ``ReportController``, remove the new call of the ``EventReportManager``
 and replace it with a call to the ``container`` object::
