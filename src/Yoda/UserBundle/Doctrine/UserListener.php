@@ -9,7 +9,10 @@ class UserListener
 {
     public function prePersist(LifecycleEventArgs $args)
     {
-        die('Something is being inserted!');
+        $entity = $args->getEntity();
+        if ($entity instanceof User) {
+            $this->handleEvent($entity);
+        }
     }
 
     private function handleEvent(User $user)
