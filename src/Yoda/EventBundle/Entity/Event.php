@@ -78,6 +78,8 @@ class Event
      */
     private $updatedAt;
 
+    protected $attendees;
+
     /**
      * Get id
      *
