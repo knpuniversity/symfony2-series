@@ -77,9 +77,11 @@ the ``removeElement`` method::
         $em->persist($event);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('event_show', array(
-            'slug' => $event->getSlug()
-        )));
+        $url = $this->generateUrl('event_show', array(
+            'slug' => $event->getSlug(),
+        ));
+
+        return $this->redirect($url);
     }
 
 In our show template, let's show only the "attend" or "unattend" link based
