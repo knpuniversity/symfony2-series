@@ -76,9 +76,11 @@ Finally, redirect when you're finished::
         $em->persist($event);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('event_show', array(
-            'slug' => $event->getSlug()
-        )));
+        $url = $this->generateUrl('event_show', array(
+            'slug' => $event->getSlug(),
+        ));
+        
+        return $this->redirect($url);
     }
 
 Notice that we just added an attendee without needing a ``setAttendees``
