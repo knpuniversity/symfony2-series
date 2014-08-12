@@ -49,7 +49,7 @@ controller:
             </header>
             <section>
                 <h3>
-                    <a href="{{ path('event_show', {'id': event.id}) }}">{{ event.name }}</a>
+                    <a href="{{ path('event_show', {'slug': event.slug}) }}">{{ event.name }}</a>
                 </h3>
 
                 <dl>
