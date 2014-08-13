@@ -5,6 +5,8 @@ Look back at the Bootstrap docs. Every input field should have a ``form-control`
 class. Cool, let's override something else! In ``form_div_layout.html.twig``,
 the block we want is called ``form_widget``:
 
+.. code-block:: html+jinja
+
     {# vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form/form_div_layout.html.twig #}
     {# ... #}
 
@@ -24,6 +26,8 @@ rendered, ``form_widget_simple`` is used.
 
 Copy the block into ``form_theme.html.twig``.
 
+.. code-block:: html+jinja
+
     {# app/Resources/views/forms.html.twig #}
     {# ... #}
 
@@ -36,6 +40,8 @@ One of the variables floating around right now is an array called ``attr``.
 And if it has a ``class`` key, that'll be printed out by the ``widget_attributes``
 block. Let's add our class to this variable. The code leverages the heck
 out of Twig. I know it looks strange:
+
+.. code-block:: html+jinja
 
     {# app/Resources/views/forms.html.twig #}
     {# ... #}
@@ -174,3 +180,5 @@ first. And if it doesn't find it, it falls back to ``form_errors``.
 
 Tweak all the things! Just find the right block, copy it into your template,
 use the variables and customize it.
+
+.. _`cookbook article`: http://symfony.com/doc/current/cookbook/form/form_customization.html
