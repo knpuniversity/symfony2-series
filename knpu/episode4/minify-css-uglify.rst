@@ -139,3 +139,4 @@ Ok, back to work!
 
 .. _`UglifyJs`: http://bit.ly/sf2-uglify
 .. _`node.js`: http://nodejs.org/
+.. _`cookbook`: http://symfony.com/doc/current/cookbook/assetic/asset_management.html
