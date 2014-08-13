@@ -124,6 +124,8 @@ the annoying warnings about "non-secure" assets.
 
 Ok, unbreak the site by commenting out this option:
 
+.. code-block:: yaml
+
     # app/config/config.yml
     # ...
 
