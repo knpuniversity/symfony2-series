@@ -76,9 +76,11 @@ Finally, redirect when you're finished::
         $em->persist($event);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('event_show', array(
-            'slug' => $event->getSlug()
-        )));
+        $url = $this->generateUrl('event_show', array(
+            'slug' => $event->getSlug(),
+        ));
+        
+        return $this->redirect($url);
     }
 
 Notice that we just added an attendee without needing a ``setAttendees``
@@ -138,11 +140,9 @@ Now help me add a link to the new ``event_attend`` route if the user is logged i
     <dd>
         {# ... #}
 
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             <a href="{{ path('event_attend', {'id': entity.id}) }}" class="btn btn-success btn-xs">
                 I totally want to go!
             </a>
-        {% endif %}
     </dd>
 
 Testing out the Relationship
