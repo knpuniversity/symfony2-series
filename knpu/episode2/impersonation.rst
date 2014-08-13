@@ -18,7 +18,7 @@ To activate this feature, add the ``switch_user`` key to your firewall:
                 # ...
                 switch_user: ~
 
-To use it, just add a ``_switch_user=`` query parameter to any page with the
+To use it, just add a ``?_switch_user=`` query parameter to any page with the
 username you want to change to:
 
     http://events.local/app_dev.php/new?_switch_user=darth
