@@ -219,5 +219,5 @@ Ok, that's it! Now google around for some deployment tools to automate this!
 .. _`download composer`: http://getcomposer.org/download/
 .. _`APC ClassLoader`: http://symfony.com/doc/current/book/performance.html#caching-the-autoloader-with-apc
 .. _`cookbook article about using Nginx`: http://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html#nginx
-.. _`download Composer`: https://getcomposer.org/download/
-.. _`Doctrine Migration`: http://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
+.. _`Doctrine Migrations`: http://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
+.. _`GitHub`: https://github.com/knpuniversity/symfony2-series/tree/episode4-finish
