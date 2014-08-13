@@ -97,7 +97,6 @@ method:
     <dd>
         {# ... #}
 
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
             {% if entity.hasAttendee(app.user) %}
                 <a href="{{ path('event_unattend', {'id': entity.id}) }}" class="btn btn-warning btn-xs">
                     Oh no! I can't go anymore!
@@ -107,7 +106,6 @@ method:
                     I totally want to go!
                 </a>
             {% endif %}
-        {% endif %}
     </dd>
 
 When we refresh, the unattend button is showing. Click it and then click the
