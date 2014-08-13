@@ -25,10 +25,6 @@ summary: |
     * The steps and best practices for deployment with tips on automating the process
 
 illustration: sf2-ep4.png
-priority: 110
-versionNumber: 2.4+
-originalVersion: 27
-isActiveVersion: 1
 
 chapters:
     intro:
