@@ -60,11 +60,11 @@ we reference our base template:
     # app/config/config.yml
     # ...
 
-twig:
-    # ...
-    form:
-        resources:
-            - "::form_theme.html.twig"
+    twig:
+        # ...
+        form:
+            resources:
+                - "::form_theme.html.twig"
 
 Refresh! For some reason my Marquee takes its time, but there it is! Now,
 we can override *any* of the blocks from Symfony's core ``form_div_layout.html.twig``
@@ -80,6 +80,8 @@ To learn a few things, we'll do some of this by hand. Find the `Bootstrap Form D
 
 Every field should have a ``form-group`` div around it. As cool as it is, let's
 take out the marquee and give the div this class:
+
+.. code-block:: yaml
 
     {# app/Resources/views/form_theme.html.twig #}
 
