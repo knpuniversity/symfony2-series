@@ -1,6 +1,5 @@
-title:  Starting in Symfony2: Episode 4 (2.2)
-price:  6
-length: 0:42:44
+title:  Starting in Symfony2: Episode 4 (2.4+)
+length: 0:40:25
 summary: |
     Welcome back for part 4 of our Starting in Symfony2 series! We've got
     some really important topics planned and we're going to start with mastering
@@ -27,39 +26,60 @@ summary: |
 
 illustration: sf2-ep4.png
 priority: 110
-versionNumber: 2.2
+versionNumber: 2.4+
 originalVersion: 27
 isActiveVersion: 1
-tags:
-    - { name: symfony }
-    - { name: php }
 
 chapters:
     intro:
         title:      Introduction
         is_free:    true
-        length:     1:36
+        length:     0:50
     assets:
         title:      Assets and Cache Busting
         is_free:    true
-        length:     5:08
+        length:     2:33
+    bust-browser-cache-and-cdns:
+        title:      Busting Browser Cache and Using a CDN
+        is_free:    false
+        length:     3:02
     assetic:
         title:      "Assetic: Filters, Combination and Minification"
         is_free:    false
-        length:     10:34
+        length:     4:17
+    assetic-combination:
+        title:      Combining and Minifying CSS & JS
+        is_free:    false
+        length:     2:24
+    minify-css-uglify:
+        title:      Applying a Minification Filter
+        is_free:    false
+        length:     4:16
     "form-customizations":
         title:      Form Template Customizations
         is_free:    false
-        length:     9:49
+        length:     3:03
+    bootstrap-form-errors:
+        title:      Error Formatting for Twitter Bootstrap
+        is_free:    false
+        length:     2:36
+    form-input-label-customizations:
+        title:      Adding form-control to the input
+        is_free:    false
+        length:     4:41
     "more-form-customizations":
         title:      More Form Customizations (Form Theming)
         is_free:    false
-        length:     6:16
+        length:     3:27
+    service-parameters:
+        title:      An Aside: Dependency Injection Parameters
+        is_free:    false
+        length:     1:41
     deployment:
         title:      Deployment
         is_free:    false
-        length:     8:26
+        length:     6:50
     goodbye:
         title:      Goodbye Friend!
         is_free:    false
-        length:     0:56
+        length:     0:45
