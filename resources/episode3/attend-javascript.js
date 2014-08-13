@@ -16,7 +16,5 @@ $(document).ready(function() {
             $anchor.after('<span class="label label-default">&#10004; '+message+'</span>');
             $anchor.hide();
         });
-
-        return false;
     });
 });
