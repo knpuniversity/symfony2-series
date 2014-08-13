@@ -7,6 +7,8 @@ need a PHP Framework to help you include a JavaScript file.
 
 Open up your base template and find the weird ``stylesheets`` tag there:
 
+.. code-block:: html+jinja
+
     {# app/Resources/views/base.html.twig #}
     {# ... #}
 
