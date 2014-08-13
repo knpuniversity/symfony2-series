@@ -1,5 +1,5 @@
 title:  Starting in Symfony2: Episode 4 (2.4+)
-length: 0:40:25
+length: 40:25
 summary: |
     Welcome back for part 4 of our Starting in Symfony2 series! We've got
     some really important topics planned and we're going to start with mastering
@@ -25,10 +25,6 @@ summary: |
     * The steps and best practices for deployment with tips on automating the process
 
 illustration: sf2-ep4.png
-priority: 110
-versionNumber: 2.4+
-originalVersion: 27
-isActiveVersion: 1
 
 chapters:
     intro:
