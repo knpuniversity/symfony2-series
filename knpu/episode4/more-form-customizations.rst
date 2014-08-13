@@ -157,3 +157,5 @@ Refresh! Yep, you're one dangerous form customizer.
 
     Most of the core built-in form view variables come from a ``FormType::buildView``
     method: http://bit.ly/sf2-form-build-view
+
+.. _`Twig Template Form Function and Variable Reference`: http://symfony.com/doc/current/reference/forms/twig_reference.html
