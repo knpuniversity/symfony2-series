@@ -93,9 +93,11 @@ argument::
             return $response;
         }
 
-        return $this->redirect($this->generateUrl('event_show', array(
+        $url = $this->generateUrl('event_show', array(
             'slug' => $event->getSlug()
-        )));
+        ));
+
+        return $this->redirect($url);
     }
 
 When we try it manually, it seems to work!
@@ -130,9 +132,11 @@ Copy in the logic that figures out which response to return::
             return $response;
         }
 
-        return $this->redirect($this->generateUrl('event_show', array(
+        $url = $this->generateUrl('event_show', array(
             'slug' => $event->getSlug()
-        )));
+        ));
+
+        return $this->redirect($url);
     }
 
 For the ``attending`` value, why not just use our ``hasAttendee`` method
