@@ -16,7 +16,6 @@ jQuery:
     {# src/Yoda/EventBundle/Resources/views/Event/show.html.twig #}
     {# ... #}
 
-    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
         {% if entity.hasAttendee(app.user) %}
             <a href="{{ path('event_unattend', {'id': entity.id}) }}"
                 class="btn btn-warning btn-xs js-attend-toggle">
@@ -30,7 +29,6 @@ jQuery:
                 I totally want to go!
             </a>
         {% endif %}
-    {% endif %}
 
 Adding the JavaScript
 ---------------------
