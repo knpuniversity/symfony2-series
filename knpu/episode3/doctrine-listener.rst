@@ -104,11 +104,11 @@ property and setting the encoded password on the user::
 
     private function handleEvent(User $user)
     {
+        $plainPassword = $user->getPlainPassword();
         $encoder = $this->container->get('security.encoder_factory')
-            ->getEncoder($user)
-        ;
-
-        $password = $encoder->encodePassword($user->getPlainPassword(), $user->getSalt());
+            ->getEncoder($user);
+        
+        $password = $encoder->encodePassword($plainPassword(), $user->getSalt());
         $user->setPassword($password);
     }
 
