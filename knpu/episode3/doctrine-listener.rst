@@ -75,7 +75,7 @@ doesn't automagically know about it. Let's use another tag, this time called
     services:
         doctrine.user_listener:
             class: Yoda\UserBundle\Doctrine\UserListener
-            arugments: []
+            arguments: []
             tags:
                 - { name: doctrine.event_listener, event: prePersist }
 
