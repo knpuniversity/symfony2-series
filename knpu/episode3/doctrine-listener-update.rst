@@ -57,16 +57,17 @@ a user here - just change his plain password and save::
     // play.php
     // ...
 
+    use Doctrine\ORM\EntityManager;
+
     $em = $container->get('doctrine')
         ->getEntityManager()
     ;
 
-    $user = $em
+    $wayne = $em
         ->getRepository('UserBundle:User')
-        ->findOneBy(array('username' => 'user'))
-    ;
+        ->findOneByUsernameOrEmail('wayne');
     
-    $user->setPlainPassword('new');
+    $wayne->setPlainPassword('new');
     $em->persist($user);
     $em->flush();
 
