@@ -28,12 +28,14 @@ Copy the block into ``form_theme.html.twig``.
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_widget_simple %}
-        {% set type = type|default('text') %}
-        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        {% spaceless %}
+            {% set type = type|default('text') %}
+            <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        {% endspaceless %}
     {% endblock form_widget_simple %}
 
 One of the variables floating around right now is an array called ``attr``.
@@ -43,13 +45,15 @@ out of Twig. I know it looks strange:
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_widget_simple %}
-        {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' form-control')|trim }) %}
-        {% set type = type|default('text') %}
-        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        {% spaceless %}
+            {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' form-control')|trim }) %}
+            {% set type = type|default('text') %}
+            <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        {% endspaceless %}
     {% endblock form_widget_simple %}
 
 Before we try this, open up the ``login.css`` file in ``UserBundle`` and
@@ -65,7 +69,7 @@ remove the form-related styles:
         font-family:Arial;
     }
 
-    /* Remove everthing after this */
+    /* Remove everything after this */
 
 Yes, this will make our login page terrible-looking, but we can add some
 Bootstrap classes on *that* form later manually, since it doesn't use the
@@ -80,7 +84,7 @@ Let's do one more thing! The labels *also* need a class: ``control-label``.
 This should be getting easy now. Find the ``form_label`` block in ``form_div_layout.html.twig``
 but *don't* copy it. Instead, add a blank ``form_label`` block to our template:
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_label %}
@@ -93,7 +97,7 @@ block - it's kind of big!
 Instead, we can *call* the parent block from inside our template. First, 
 add a Twig ``use`` tag that points at ``form_div_layout.html.twig``:
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {% use 'form_div_layout.html.twig' with form_label as base_form_label %}
     
     {# ... #}
@@ -102,7 +106,7 @@ Now, we can call the parent block inside ``form_label``:
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_label %}
@@ -117,7 +121,7 @@ just like we did with ``attr``:
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_label %}
