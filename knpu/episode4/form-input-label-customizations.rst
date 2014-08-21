@@ -28,7 +28,7 @@ Copy the block into ``form_theme.html.twig``.
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_widget_simple %}
@@ -43,7 +43,7 @@ out of Twig. I know it looks strange:
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_widget_simple %}
@@ -80,7 +80,7 @@ Let's do one more thing! The labels *also* need a class: ``control-label``.
 This should be getting easy now. Find the ``form_label`` block in ``form_div_layout.html.twig``
 but *don't* copy it. Instead, add a blank ``form_label`` block to our template:
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_label %}
@@ -93,7 +93,7 @@ block - it's kind of big!
 Instead, we can *call* the parent block from inside our template. First, 
 add a Twig ``use`` tag that points at ``form_div_layout.html.twig``:
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {% use 'form_div_layout.html.twig' with form_label as base_form_label %}
     
     {# ... #}
@@ -102,7 +102,7 @@ Now, we can call the parent block inside ``form_label``:
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_label %}
@@ -117,7 +117,7 @@ just like we did with ``attr``:
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_label %}
