@@ -25,6 +25,8 @@ Add a ``die`` statement so we can test things::
 
     public function preUpdate(LifecycleEventArgs $args)
     {
+        die('UUPPPPPDDAAAAAATING!');
+     
         $entity = $args->getEntity();
         if ($entity instanceof User) {
             $this->handleEvent($entity);
@@ -40,7 +42,7 @@ happen if a ``User`` is being saved, but their password isn't being changed::
 
     private function handleEvent(User $user)
     {
-        if (!$user->getPlainPassword()) {
+        if (!$user->getPlainPasword()) {
             return;
         }
 
