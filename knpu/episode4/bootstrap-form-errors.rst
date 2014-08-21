@@ -11,7 +11,7 @@ Copy it into our template:
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}    
 
     {% block form_errors %}
@@ -29,7 +29,7 @@ Twitter Bootstrap:
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_errors %}
@@ -51,7 +51,7 @@ a ``has-error`` field to the div in ``form_row``:
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
 
     {% block form_row %}
         <div class="form-group has-error">
@@ -76,7 +76,7 @@ Let's use a trick to see *all* of the variables we have access to in ``form_erro
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_errors %}
@@ -105,7 +105,7 @@ to *only* print the class if the field has errors:
 
 .. code-block:: html+jinja
 
-    {# app/Resources/views/forms.html.twig #}
+    {# app/Resources/views/form_theme.html.twig #}
     {# ... #}
 
     {% block form_row %}
