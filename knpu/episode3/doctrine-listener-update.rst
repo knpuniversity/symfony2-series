@@ -42,7 +42,7 @@ happen if a ``User`` is being saved, but their password isn't being changed::
 
     private function handleEvent(User $user)
     {
-        if (!$plainPassword) {
+        if (!$user->getPlainPasword()) {
             return;
         }
 
