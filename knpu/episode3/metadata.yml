@@ -22,6 +22,10 @@ summary: |
 
 illustration: sf2-ep3.png
 
+tuts_hero:
+    start_step:  remember-me-setting-it-all-up
+    finish_step: doctrinelistener-adding-recomputesingleentitychangeset
+
 chapters:
     intro:
         title:      Introduction
