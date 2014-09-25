@@ -116,4 +116,5 @@ chapters:
     "mind-tricks":
         title:      Twig Mind Tricks
         is_free:    false
-        length:     1:55video_key:  
+        length:     1:55
+        video_key:  
