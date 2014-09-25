@@ -31,51 +31,64 @@ chapters:
         title:      Introduction
         is_free:    true
         length:     0:50
+        video_key:  
     assets:
         title:      Assets and Cache Busting
         is_free:    true
         length:     2:33
+        video_key:  
     bust-browser-cache-and-cdns:
         title:      Busting Browser Cache and Using a CDN
         is_free:    false
         length:     3:02
+        video_key:  
     assetic:
         title:      "Assetic: Filters, Combination and Minification"
         is_free:    false
         length:     4:17
+        video_key:  
     assetic-combination:
         title:      Combining and Minifying CSS & JS
         is_free:    false
         length:     2:24
+        video_key:  
     minify-css-uglify:
         title:      Applying a Minification Filter
         is_free:    false
         length:     4:16
+        video_key:  
     "form-customizations":
         title:      Form Template Customizations
         is_free:    false
         length:     3:03
+        video_key:  
     bootstrap-form-errors:
         title:      Error Formatting for Twitter Bootstrap
         is_free:    false
         length:     2:36
+        video_key:  
     form-input-label-customizations:
         title:      Adding form-control to the input
         is_free:    false
         length:     4:41
+        video_key:  
     "more-form-customizations":
         title:      More Form Customizations (Form Theming)
         is_free:    false
         length:     3:27
+        video_key:  
     service-parameters:
         title:      An Aside: Dependency Injection Parameters
         is_free:    false
         length:     1:41
+        video_key:  
     deployment:
         title:      Deployment
         is_free:    false
         length:     6:50
+        video_key:  
     goodbye:
         title:      Goodbye Friend!
         is_free:    false
         length:     0:45
+        video_key:  
