@@ -37,67 +37,83 @@ chapters:
         title:      Welcome to Symfony!
         is_free:    true
         length:     2:51
+        video_key:  
     installation:
         title:      "Downloading & Configuration"
         is_free:    true
         length:     10:02
+        video_key:  
     bundles:
         title:      Bundles of Joy!
         is_free:    false
         length:     3:19
+        video_key:  
     routing:
         title:      Routing: The URLs of the World
         is_free:    false
         length:     5:44
+        video_key:  
     controller:
         title:      Controllers: Get to Work
         is_free:    false
         length:     7:34
+        video_key:  
     twig:
         title:      Twig
         is_free:    false
         length:     6:27
+        video_key:  
     doctrine:
         title:      Databases and Doctrine
         is_free:    false
         length:     5:08
+        video_key:  
     doctrine2:
         title:      Inserting and Querying Data
         is_free:    false
         length:     6:57
+        video_key:  
     vhost:
         title:      Virtual Host Setup Extravaganza
         is_free:    false
         length:     4:17
+        video_key:  
     generators:
         title:      Code Generation FTW!
         is_free:    false
         length:     5:25
+        video_key:  
     assets:
         title:      Less Ugly with CSS and JavaScript
         is_free:    false
         length:     3:47
+        video_key:  
     links-dates:
         title:      Friendly Links and Dates in Twig
         is_free:    false
-        length:     1:25;
+        length:     1:25
+        video_key:  
     composer:
         title:      Adding Outside Bundles with Composer
         is_free:    false
         length:     4:36
+        video_key:  
     fixtures:
         title:      Fixtures: For some dumb data
         is_free:    false
         length:     1:54
+        video_key:  
     autoloading:
         title:      Autoloading: Where did require/include go?
         is_free:    false
         length:     2:20
+        video_key:  
     controller-shortcuts:
         title:      Do Less Work in the Controller
         is_free:    false
         length:     4:23
+        video_key:  
     "mind-tricks":
         title:      Twig Mind Tricks
         is_free:    false
-        length:     1:55
+        length:     1:55video_key:  
