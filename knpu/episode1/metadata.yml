@@ -1,5 +1,4 @@
 title:  Starting in Symfony2: Episode 1 (2.4+)
-price:  12
 length: 1:18:03
 summary: |
     Get your first Symfony2 project off on the right foot, with the right
@@ -25,96 +24,76 @@ summary: |
     * And other tips and tricks
 
 illustration: sf2-ep1.png
-priority: 130
 versionNumber: 2.4+
 originalVersion: 22
 isActiveVersion: 1
-tags:
-    - { name: symfony }
 
 chapters:
     intro:
         title:      Welcome to Symfony!
-        is_free:    true
         length:     2:51
         video_key:  ccj53wwcs4
     installation:
         title:      "Downloading & Configuration"
-        is_free:    true
         length:     10:02
         video_key:  8uk5any8c2
     bundles:
         title:      Bundles of Joy!
-        is_free:    false
         length:     3:19
         video_key:  nrhdx9vaws
     routing:
         title:      Routing: The URLs of the World
-        is_free:    false
         length:     5:44
         video_key:  6tedpj4u8o
     controller:
         title:      Controllers: Get to Work
-        is_free:    false
         length:     7:34
         video_key:  dpsi2jleoh
     twig:
         title:      Twig
-        is_free:    false
         length:     6:27
         video_key:  9o8zxj9ett
     doctrine:
         title:      Databases and Doctrine
-        is_free:    false
         length:     5:08
         video_key:  trlwjr8zyp
     doctrine2:
         title:      Inserting and Querying Data
-        is_free:    false
         length:     6:57
         video_key:  fak9kc1ecy
     vhost:
         title:      Virtual Host Setup Extravaganza
-        is_free:    false
         length:     4:17
         video_key:  d8claetw96
     generators:
         title:      Code Generation FTW!
-        is_free:    false
         length:     5:25
         video_key:  d2pi00cc4b
     assets:
         title:      Less Ugly with CSS and JavaScript
-        is_free:    false
         length:     3:47
         video_key:  lk5txx0xse
     links-dates:
         title:      Friendly Links and Dates in Twig
-        is_free:    false
         length:     1:25
         video_key:  6z88o5vl0p
     composer:
         title:      Adding Outside Bundles with Composer
-        is_free:    false
         length:     4:36
         video_key:  007s4mpj1e
     fixtures:
         title:      Fixtures: For some dumb data
-        is_free:    false
         length:     1:54
         video_key:  akiu5wp63f
     autoloading:
         title:      Autoloading: Where did require/include go?
-        is_free:    false
         length:     2:20
         video_key:  h64novs654
     controller-shortcuts:
         title:      Do Less Work in the Controller
-        is_free:    false
         length:     4:23
         video_key:  uwobpcfl5r
     "mind-tricks":
         title:      Twig Mind Tricks
-        is_free:    false
         length:     1:55
         video_key:  gu9itou34n
