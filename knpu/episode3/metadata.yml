@@ -21,6 +21,9 @@ summary: |
     * Doctrine lifecycle callbacks and how to create and leverage your own doctrine event listener service
 
 illustration: sf2-ep3.png
+tuts_hero:
+    start_step:  "Remember Me: Setting it all up"
+    finish_step: "DoctrineListener: Adding recomputeSingleEntityChangeSet"
 
 chapters:
     intro:
