@@ -42,9 +42,11 @@ chapters:
     bundles:
         title:      Bundles of Joy!
         video_key:  nrhdx9vaws
+        is_free:    true
     routing:
         title:      Routing: The URLs of the World
         video_key:  6tedpj4u8o
+        is_free:    true
     controller:
         title:      Controllers: Get to Work
         video_key:  dpsi2jleoh
