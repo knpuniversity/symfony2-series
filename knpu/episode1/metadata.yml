@@ -27,6 +27,8 @@ illustration: sf2-ep1.png
 versionNumber: 2.4+
 originalVersion: 22
 isActiveVersion: 1
+tuts_hero:
+    finish_step: "MindTrick: Twig whitespace control"
 
 chapters:
     intro:
