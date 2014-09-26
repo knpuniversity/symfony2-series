@@ -33,69 +33,54 @@ tuts_hero:
 chapters:
     intro:
         title:      Welcome to Symfony!
-        length:     2:51
         video_key:  ccj53wwcs4
+        is_free:    true
     installation:
         title:      "Downloading & Configuration"
-        length:     10:02
         video_key:  8uk5any8c2
+        is_free:    true
     bundles:
         title:      Bundles of Joy!
-        length:     3:19
         video_key:  nrhdx9vaws
     routing:
         title:      Routing: The URLs of the World
-        length:     5:44
         video_key:  6tedpj4u8o
     controller:
         title:      Controllers: Get to Work
-        length:     7:34
         video_key:  dpsi2jleoh
     twig:
         title:      Twig
-        length:     6:27
         video_key:  9o8zxj9ett
     doctrine:
         title:      Databases and Doctrine
-        length:     5:08
         video_key:  trlwjr8zyp
     doctrine2:
         title:      Inserting and Querying Data
-        length:     6:57
         video_key:  fak9kc1ecy
     vhost:
         title:      Virtual Host Setup Extravaganza
-        length:     4:17
         video_key:  d8claetw96
     generators:
         title:      Code Generation FTW!
-        length:     5:25
         video_key:  d2pi00cc4b
     assets:
         title:      Less Ugly with CSS and JavaScript
-        length:     3:47
         video_key:  lk5txx0xse
     links-dates:
         title:      Friendly Links and Dates in Twig
-        length:     1:25
         video_key:  6z88o5vl0p
     composer:
         title:      Adding Outside Bundles with Composer
-        length:     4:36
         video_key:  007s4mpj1e
     fixtures:
         title:      Fixtures: For some dumb data
-        length:     1:54
         video_key:  akiu5wp63f
     autoloading:
         title:      Autoloading: Where did require/include go?
-        length:     2:20
         video_key:  h64novs654
     controller-shortcuts:
         title:      Do Less Work in the Controller
-        length:     4:23
         video_key:  uwobpcfl5r
     "mind-tricks":
         title:      Twig Mind Tricks
-        length:     1:55
         video_key:  gu9itou34n
