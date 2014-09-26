@@ -26,145 +26,89 @@ chapters:
     intro:
         title:      Introduction
         is_free:    true
-        length:     1:00
         video_key:  n7h5k6yrs1
     "doctrine-relationship":
         title:      "Doctrine Relationship"
         is_free:    true
-        length:     04:40
         video_key:  d1cz6fikw5
     "sharing-data-fixtures":
         title:      Sharing Data Fixtures
-        is_free:    false
-        length:     1:49
         video_key:  1i4b63le45
     "event-edit-security":
         title:      "Event Edit Security"
-        is_free:    false
-        length:     01:53
         video_key:  keog1o9ird
     "base-controller":
         title:      Base Controller
-        is_free:    false
-        length:     02:30
         video_key:  yma94j696r
     "phpdoc-autocomplete":
         title:      "PHPDoc Autocomplete."
-        is_free:    false
-        length:     01:26
         video_key:  z2n5q0v4p8
     "doctrine-inverse-relation":
         title:      Doctrine Inverse Relation
-        is_free:    false
-        length:     05:37
         video_key:  qlwnk98y7f
     "doctrine-extensions":
         title:      Doctrine Extensions
-        is_free:    false
-        length:     04:30
         video_key:  95acyhsc1y
     "slug-url":
         title:      Slug URL
-        is_free:    false
-        length:     02:04
         video_key:  qiot3h145y
     "timestampable":
         title:      Timestampable
-        is_free:    false
-        length:     01:41
         video_key:  w7z3jvoct8
     "custom-repository-query":
         title:      Custom Repository Query
-        is_free:    false
-        length:     02:11
         video_key:  1blaogkk23
     "many-to-many-relationship":
         title:      ManyToMany Relationship
-        is_free:    false
-        length:     02:37
         video_key:  gndrc13e6q
     "using-many-to-many":
         title:      Using ManyToMany
-        is_free:    false
-        length:     04:53
         video_key:  2cfxtphrl2
     "using-many-to-many2":
         title:      Round 2: Using ManyToMany
-        is_free:    false
-        length:     02:51
         video_key:  nq3lm8k1ro
     "json-response":
         title:      JSON Response
-        is_free:    false
-        length:     02:50
         video_key:  ojk6mr86l8
     "content-type-jsonresponse":
         title:      Content Type JSON Response
-        is_free:    false
-        length:     03:19
         video_key:  8svxlg9kui
     "attend-event-ajax":
         title:      Attend Event AJAX
-        is_free:    false
-        length:     02:16
         video_key:  6j4eukpwqt
     "error-pages":
         title:      Error Pages
-        is_free:    false
-        length:     06:01
         video_key:  z5nj0tgffi
     "render-controller":
         title:      Render Controller
-        is_free:    false
-        length:     04:28
         video_key:  tcu2xcmkxa
     "csv-download":
         title:      CSV Download
-        is_free:    false
-        length:     04:19
         video_key:  ik6vmsrwmq
     "services":
         title:      Services
-        is_free:    false
-        length:     04:42
         video_key:  05pm1nilik
     "service-container":
         title:      Service Container
-        is_free:    false
-        length:     04:58
         video_key:  otnelibkg7
     "config-imports-type-hinting":
         title:      Config Imports Type Hinting
-        is_free:    false
-        length:     02:01
         video_key:  3sgtsjxwqs
     "more-dependency-injection":
         title:      Moar Dependency Injection
-        is_free:    false
-        length:     03:14
         video_key:  9blu5mxdtp
     "twig-extension-listener":
         title:      Twig Extension Listener
-        is_free:    false
-        length:     04:33
         video_key:  jnrojispp0
     "doctrine-lifecycle-callback":
         title:      doctrine-lifecycle-callback
-        is_free:    false
-        length:     02:08
         video_key:  kkppl0lben
     "doctrine-listener":
         title:      Doctrine Listener
-        is_free:    false
-        length:     05:59
         video_key:  tt6or8ehe0
     "doctrine-listener-update":
         title:      Doctrine Listener Update
-        is_free:    false
-        length:     02:48
         video_key:  pisnjj30o8
     "outro":
         title:      3 down and 1 to go!
-        is_free:    false
-        length:     01:19
         video_key:  280fnfr34n
