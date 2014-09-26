@@ -25,6 +25,9 @@ summary: |
     * The steps and best practices for deployment with tips on automating the process
 
 illustration: sf2-ep4.png
+tuts_hero:
+    start_step:  "DoctrineListener: Adding recomputeSingleEntityChangeSet"
+    finish_step: "Paramters: Adding a new one"
 
 chapters:
     intro:
