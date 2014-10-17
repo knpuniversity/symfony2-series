@@ -136,7 +136,7 @@ and ``FormInterface``::
 
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
-        
+        parent::finishView($view, $form, $options);
     }
 
 This method is called right before we start rendering the form. We can use
@@ -148,6 +148,8 @@ a help message to the email field::
 
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
+        parent::finishView($view, $form, $options);
+        
         $view['email']->vars['help'] = 'Hint: it will have an @ symbol';
     }
 
