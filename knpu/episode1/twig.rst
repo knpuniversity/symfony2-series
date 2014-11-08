@@ -252,7 +252,7 @@ in a subdirectory.
 Web Debug Toolbar
 -----------------
 
-In the browser, we're now staring at the a killer feature of Symfony2: the
+In the browser, we're now staring at a killer feature of Symfony2: the
 polite little bar on the bottom. This is the web debug toolbar, and you may
 end up loving it even more than the console.
 
