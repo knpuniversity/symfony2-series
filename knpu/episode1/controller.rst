@@ -194,7 +194,7 @@ three parts:
 
     EventBundle:Default:index.html.twig
 
-    src/Yoa/EventBundle/Resources/views/Default/index.html.twig
+    src/Yoda/EventBundle/Resources/views/Default/index.html.twig
 
 This looks like the ``_controller`` syntax we saw in routes, but don't mix
 them up. Seriously, one points to a controller class & method. This one points
