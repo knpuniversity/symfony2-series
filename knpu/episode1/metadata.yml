@@ -25,65 +25,45 @@ summary: |
 
 illustration: sf2-ep1.png
 videoDownloadExtension: mov
-versionNumber: 2.4+
-originalVersion: 22
-isActiveVersion: 1
 tuts_hero:
     finish_step: "MindTrick: Twig whitespace control"
 
 chapters:
     intro:
-        title:      Welcome to Symfony!
         video_key:  ccj53wwcs4
         is_free:    true
     installation:
-        title:      "Downloading & Configuration"
         video_key:  8uk5any8c2
         is_free:    true
     bundles:
-        title:      Bundles of Joy!
         video_key:  nrhdx9vaws
         is_free:    true
     routing:
-        title:      Routing: The URLs of the World
         video_key:  6tedpj4u8o
         is_free:    true
     controller:
-        title:      Controllers: Get to Work
         video_key:  dpsi2jleoh
     twig:
-        title:      Twig
         video_key:  9o8zxj9ett
     doctrine:
-        title:      Databases and Doctrine
         video_key:  trlwjr8zyp
     doctrine2:
-        title:      Inserting and Querying Data
         video_key:  fak9kc1ecy
     vhost:
-        title:      Virtual Host Setup Extravaganza
         video_key:  d8claetw96
     generators:
-        title:      Code Generation FTW!
         video_key:  d2pi00cc4b
     assets:
-        title:      Less Ugly with CSS and JavaScript
         video_key:  lk5txx0xse
     links-dates:
-        title:      Friendly Links and Dates in Twig
         video_key:  6z88o5vl0p
     composer:
-        title:      Adding Outside Bundles with Composer
         video_key:  007s4mpj1e
     fixtures:
-        title:      Fixtures: For some dumb data
         video_key:  akiu5wp63f
     autoloading:
-        title:      Autoloading: Where did require/include go?
         video_key:  h64novs654
     controller-shortcuts:
-        title:      Do Less Work in the Controller
         video_key:  uwobpcfl5r
     "mind-tricks":
-        title:      Twig Mind Tricks
         video_key:  gu9itou34n
