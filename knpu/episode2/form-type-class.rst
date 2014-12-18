@@ -89,7 +89,7 @@ Remove the builder code in our controller. Instead, replace it with a call to
         $defaultUser = new User();
         $defaultUser->setUsername('Foo');
 
-        $form = $this->createForm(new RegisterFormType(), $user);
+        $form = $this->createForm(new RegisterFormType(), $defaultUser);
 
         // ...
     }
