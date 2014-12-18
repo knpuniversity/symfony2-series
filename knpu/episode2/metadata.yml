@@ -1,5 +1,4 @@
 title:  Starting in Symfony2: Episode 2 (2.4+)
-length: 1:50:47
 summary: |
     Over the next hour, we're going to take you through some of the most difficult areas of Symfony learning all about security, forms, and parts of Doctrine. We'll also see testing and learn more about how Symfony's service container works. When you get to the end, you'll be well on your way to mastering Symfony.
 
@@ -22,122 +21,83 @@ summary: |
 
 illustration: sf2-ep2.png
 videoDownloadExtension: mov
-versionNumber: 2.4+
-originalVersion: 25
-isActiveVersion: 1
 tuts_hero:
     start_step:  "MindTrick: Twig whitespace control"
     finish_step: "Remember Me: Setting it all up"
 
 chapters:
     intro:
-        title:      Introduction
         video_key:  xo1tp2mawh
         is_free:    true
     "basic-security":
-        title:      "Security Fundamentals"
         video_key:  ai03qta6rp
         is_free:    true
     "authorization-access-control":
-        title:      Authorization Access Control
         video_key:  q3qcy5v1yu
         is_free:    true
     "login-form":
-        title:      Login Form
         video_key:  05mjpiduu9
     "login-form2":
-        title:      Login Form Revisted
         video_key:  fnntchp1rf
     "logout":
-        title:      Logout
         video_key:  7c11n9r243
     "twig-security-is-authenticated":
-        title:      Twig Security is Authenticated
         video_key:  bx8ayzixqj
     "deny-access-controller":
-        title:      Deny Access Controller
         video_key:  t71z23obgu
     "entity-security":
-        title:      Entity Security
         video_key:  x8fo22bwcr
     "saving-users":
-        title:      Saving Users
         video_key:  rhamzr4t9i
     "roles-disabling-user":
-        title:      Roles Disabling User
         video_key:  0qkxqeigfu
     "repository":
-        title:      Repository
         video_key:  nu4tdjfskm
     "query-builder":
-        title:      Query Builder
         video_key:  4s7eiiiz54
     "user-provider":
-        title:      User Provider
         video_key:  f0wt1ig4vg
     "user-serialization":
-        title:      User Serialization
         video_key:  n1qs1fk455
     "registration-form":
-        title:      Registration Form
         video_key:  u04v4ygnt5
     "form-rendering":
-        title:      Form Rendering
         video_key:  nuiogfdd9h
     "repeated-compound-fields":
-        title:      Repeat Compound Fields
         video_key:  4kp04fqq7u
     "form-submit":
-        title:      Form Submit
         video_key:  bk92l2afci
     "form-data":
-        title:      Form Data
         video_key:  53vkd2jhje
     "plain-password":
-        title:      Plain Password
         video_key:  uilbrzy2oh
     "form-type-class":
-        title:      Form Type Class
         video_key:  0lb5prjmqb
     "field-options-html5":
-        title:      Field Options HTML5
         video_key:  prc1itzavu
     "registration-validation":
-        title:      Registration Validation
         video_key:  cwlscbd6bq
     "flash-message":
-        title:      Flash Message
         video_key:  d9rnh7iax1
     "auto-login":
-        title:      Auto Login
         video_key:  shzhpwb3uc
     "testing":
-        title:      Testing
         video_key:  7u3soik5a6
     "testing-forms":
-        title:      Testing Forms
         video_key:  t77z3o96vz
     "testing-data":
-        title:      Testing Data
         video_key:  5nlnnco5lt
     "container-doctrine":
-        title:      Container Doctrine
         video_key:  nflct61ysv
     "after-dinner-mint":
-        title:      After Dinner Mint
         video_key:  y7edkfcsup
     "role-hierarchies":
-        title:      Role Hierarchies
         video_key:  j5zy6f63ko
     "impersonation":
-        title:      Impersonation
         video_key:  yi50s08q12
     "secure-every-page":
-        title:      Secure Every Page
         video_key:  aqk70qtphe
     "accessing-security-user":
-        title:      Accessing Security User
         video_key:  6y4htox38p
     "remember-me":
-        title:      Remember Me
         video_key:  i8u0nkwv87
