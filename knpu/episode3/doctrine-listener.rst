@@ -201,7 +201,7 @@ new constructor arugment in ``services.yml``:
     services:
         doctrine.user_listener:
             class: Yoda\UserBundle\Doctrine\UserListener
-            arugments: ["@security.encoder_factory"]
+            arguments: ["@security.encoder_factory"]
             tags:
                 - { name: doctrine.event_listener, event: prePersist }
 
@@ -219,7 +219,7 @@ the plain password instead::
 
         // ...
         // $admin->setPassword($this->encodePassword($admin, 'waynepass'));
-        $user->setPlainPassword('waynepass');
+        $admin->setPlainPassword('waynepass');
     }
 
 Reload the fixtures again!
