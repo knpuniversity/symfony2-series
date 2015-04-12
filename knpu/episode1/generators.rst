@@ -215,6 +215,8 @@ Look back at the ``routing.yml`` file in our bundle. You're smart, so you
 probably already saw the ``prefix`` key and guessed that this prefixes all
 the imported route URLs with ``/event``:
 
+.. code-block:: yaml
+
     {# src/Yoda/EventBundle/Resources/config/routing.yml #}
     {# ... #}
 
@@ -223,6 +225,8 @@ the imported route URLs with ``/event``:
         prefix:   /event
 
 This is a nice little feature. Now kill it!
+
+.. code-block:: yaml
 
     {# src/Yoda/EventBundle/Resources/config/routing.yml #}
     {# ... #}
