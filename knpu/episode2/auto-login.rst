@@ -7,6 +7,7 @@ authentication happens automatically, but we can also trigger it manually::
 
     // src/Yoda/UserBundle/Entity/Controller/RegisterController.php
     // ...
+    use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
     private function authenticateUser(User $user)
     {
