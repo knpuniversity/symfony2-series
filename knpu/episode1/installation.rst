@@ -49,7 +49,7 @@ Downloading the Standard Distribution
 -------------------------------------
 
 Go back to the Symfony.com download page and copy the ``create-project``
-Composer command. Change the target directory to say statwarsevents and 
+Composer command. Change the target directory to say starwarsevents and 
 the last part to say ``@stable``. This is the version number and ``@stable`` 
 is a neat way of making sure we get the latest and greatest.
 
