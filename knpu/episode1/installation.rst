@@ -1,7 +1,7 @@
 Downloading & Configuration
 ===========================
 
-Ok, let's get Symfony downloaded and setup. Head over to Symfony.com and
+Ok, let's get Symfony downloaded and setup. Head over to [symfony.com](http://symfony.com/) and
 click "Download Now". If the site looks a little different for you, that's
 because the Internet loves to change things after we record screencasts!
 But no worries, just find the download page - all the steps will be the same.
