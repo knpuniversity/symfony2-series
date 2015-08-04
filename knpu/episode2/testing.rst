@@ -121,7 +121,7 @@ option:
     
     .. code-block:: bash
     
-        php vendor/phpunit/phpunit/phpunit -c app
+        bin\phpunit -c app
 
 This tells PHPUnit to look for a configuration file in the ``app/`` directory.
 And hey! There's a ``phpunit.xml.dist`` file there already for it to read. This
