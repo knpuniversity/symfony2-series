@@ -41,7 +41,7 @@ don't worry. I'll demystify this in a moment::
         $client = static::createClient();
 
         $container = self::$kernel->getContainer();
-        $em = $container->get('doctrine');
+        $em = $container->get('doctrine')->getManager();
 
         // ...
     }
@@ -55,7 +55,7 @@ a query from the repository that deletes all of the users::
     public function testRegister()
     {
         // ...
-        $em = $container->get('doctrine');
+        $em = $container->get('doctrine')->getManager();
         $userRepo = $em->getRepository('UserBundle:User');
         $userRepo->createQueryBuilder('u')
             ->delete()
