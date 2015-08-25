@@ -67,7 +67,7 @@ Using Annotation Routing
 ------------------------
 
 Before we fill in the guts of ``loginAction``, we need a route! After watching
-episode 1, you probably expect me to create a ``routing.yml`` file in ``UserBundle``
+`episode 1`_, you probably expect me to create a ``routing.yml`` file in ``UserBundle``
 and add a route there.
 
 Ha! I'm not so predictable! Instead, we're going to get crazy and build our
@@ -222,3 +222,4 @@ supports the rebel forces.
 .. _`@Template annotation`: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/view.html
 .. _`SensioFrameworkExtraBundle`: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
 .. _`FosUserBundle`: https://github.com/FriendsOfSymfony/FOSUserBundle
+.. _`episode 1`: http://knpuniversity.com/screencast/symfony2-ep1

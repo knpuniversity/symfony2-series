@@ -106,7 +106,7 @@ Let's move it into a ``Resources/public/css`` directory in the ``UserBundle``.
 
     /* for the rest of login.css, see the code download */
 
-Just like in episode 1, run ``app/console assets:install`` and add the ``--symlink``
+Just like in `episode 1`_, run ``app/console assets:install`` and add the ``--symlink``
 option, unless you're on Windows:
 
 .. code-block:: bash
@@ -244,3 +244,4 @@ Now, we just need to activate the translation engine in ``app/config.yml``:
 Ok now, try it! Again, so much better!
 
 .. _`parent() function`: http://twig.sensiolabs.org/doc/functions/parent.html
+.. _`episode 1`: http://knpuniversity.com/screencast/symfony2-ep1
