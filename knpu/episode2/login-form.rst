@@ -116,7 +116,7 @@ Remember that Symfony never automatically finds routing files: we always
 import them manually from here.
 
 Cool - change the URL in your browser to ``/login``. This big ugly error
-about our controller not returning a response is great news! No seriously,
+about our controller not returning a response is great news! No, seriously,
 it means that the route is working. Now let's fill in the controller!
 
 The loginAction Logic
