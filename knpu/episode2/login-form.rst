@@ -218,7 +218,7 @@ supports the rebel forces.
 
 
 .. _`docs for this feature`: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/routing.html
-.. _`login form section`: http://symfony.com/doc/current/book/security.html#using-a-traditional-login-form
+.. _`login form section`: http://symfony.com/doc/current/cookbook/security/form_login_setup.html
 .. _`@Template annotation`: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/view.html
 .. _`SensioFrameworkExtraBundle`: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
 .. _`FosUserBundle`: https://github.com/FriendsOfSymfony/FOSUserBundle
