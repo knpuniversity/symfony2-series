@@ -149,12 +149,12 @@ Let's use the query console task to look at what the user looks like:
 
 .. code-block:: text
 
-array (size=1)
-  0 => 
-    array (size=3)
-      'id' => string '1' (length=1)
-      'username' => string 'user' (length=4)
-      'password' => string '$2y$13$BoVE3I5dmVkBjRp.l6uwyOI8Z8Ngokiaa.OUUuHoDbGDBdMRMUrmC' (length=60)
+    array (size=1)
+      0 => 
+        array (size=3)
+          'id' => string '1' (length=1)
+          'username' => string 'user' (length=4)
+          'password' => string '$2y$13$BoVE3I5dmVkBjRp.l6uwyOI8Z8Ngokiaa.OUUuHoDbGDBdMRMUrmC' (length=60)
 
 Nice! We can see the encoded password, which for ``bcrypt``, also includes
 the randomly-generated ``salt``. You *do* need to store the ``salt`` for each
