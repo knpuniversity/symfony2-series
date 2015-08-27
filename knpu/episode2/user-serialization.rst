@@ -1,7 +1,7 @@
 User Serialization
 ==================
 
-There's a problem 
+There's a problem.
 
 I have to bother you *quickly* with a little issue of serialization. When a
 user logs in, the ``User`` entity is stored in the session. For this to work,
