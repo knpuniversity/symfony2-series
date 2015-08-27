@@ -21,8 +21,7 @@ provider:
 
 Try logging in now! Ah, a great error:
 
->
-The Doctrine repository "Yoda\UserBundle\Entity\UserRepository" must implement UserProviderInterface.
+    The Doctrine repository "Yoda\\UserBundle\\Entity\\UserRepository" must implement UserProviderInterface.
 
 The UserProviderInterface
 -------------------------
