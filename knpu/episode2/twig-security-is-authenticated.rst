@@ -27,7 +27,7 @@ name of the route:
     {# ... #}
 
 It works of course, but we don't want to show it unless the user is *actually*
-logged in. To test for this, use the Twig ``is_granted`` function and pass
+logged in. To test for this, use the Twig `is_granted`_ function and pass
 it a special ``IS_AUTHENTICATED_REMEMBERED`` string:
 
 .. code-block:: html+jinja
@@ -83,3 +83,5 @@ You'll probably want to use ``IS_AUTHENTICATED_REMEMBERED`` almost everywhere
 and save ``IS_AUTHENTICATED_FULLY`` for pages that need to be really secure,
 like checkout. If the user is *only* ``IS_AUTHENTICATED_REMEMBERED`` and
 hits one of those pages, they'll be redirected to login.
+
+.. _`is_granted`: http://symfony.com/doc/current/reference/twig_reference.html#is-granted
