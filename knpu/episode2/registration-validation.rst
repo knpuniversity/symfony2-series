@@ -139,7 +139,9 @@ to figure out if the object is valid. You can even place the errors on exactly
 which field you want. If you have a more difficult validation problem, this
 might be exactly what you need.
 
-We won't show it here, but check it out.
+We won't show it here, but check it out. You can also check `Custom Validation,
+Callback and Constraints`_ page of our "Question and Answer Day" tutorial to learn
+more about custom validation in Symfony with a bunch of examples and use cases.
 
 .. _`validation chapter of the documentation`: http://symfony.com/doc/current/book/validation.html
 .. _`Validation Constraints Reference`: http://symfony.com/doc/current/reference/constraints.html
@@ -147,3 +149,4 @@ We won't show it here, but check it out.
 .. _`Callback`: http://symfony.com/doc/current/reference/constraints/Callback.html
 .. _`Constraint Configuration`: http://bit.ly/sf2-validation-config
 .. _`reference section of the documentation`: http://symfony.com/doc/current/reference/constraints.html
+.. _`Custom Validation, Callback and Constraints`: http://knpuniversity.com/screencast/question-answer-day/custom-validation-property-path
