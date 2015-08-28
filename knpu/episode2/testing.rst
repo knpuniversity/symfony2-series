@@ -185,7 +185,7 @@ Re-run the test to see the result:
 
     To see everything about the crawler, check out `The DomCrawler Component`_.
 
-.. _`Next Significant Release`: https://getcomposer.org/doc/01-basic-usage.md#next-significant-release-tilde-operator-
+.. _`Next Significant Release`: https://getcomposer.org/doc/articles/versions.md#next-significant-release-operators
 .. _`this post`: http://daylerees.com/composer-primer
 .. _`The DomCrawler Component`: http://bit.ly/sf2-crawler
 .. _`packagist.org`: https://packagist.org/
