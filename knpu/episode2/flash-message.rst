@@ -2,7 +2,7 @@ Adding a Flash Message
 ======================
 
 After registration, let's make the new user feel loved by giving them a big
-happy success message! Symfony has a feature called "flash messages", which
+happy success message! Symfony has a feature called `flash messages`_, which
 is perfect for this. A flash is a message that we set to the session, but
 that disappears after we access it exactly one time.
 
@@ -56,3 +56,5 @@ message and it'll show up here!
 
 Let's test it out. We register, the flash message is set, and then it's displayed
 after the redirect. Nice!
+
+.. _`flash messages`: http://symfony.com/doc/current/book/controller.html#flash-messages
