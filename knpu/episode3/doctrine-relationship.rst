@@ -132,7 +132,7 @@ Another common option is ``cascade`` on the actual ``ManyToOne`` part::
 
 This is like ``onDelete``, but in the opposite direction. With this, if we
 delete an Event, it will *cascade* the remove onto the owner. In other words,
-If I delete an Event, it wil also delete the User who is the owner.
+If I delete an Event, it will also delete the User who is the owner.
 
 Run ``doctrine:schema:update`` again:
 
