@@ -17,6 +17,11 @@ a secret, random key:
                 remember_me:
                     key: "Order 1138"
 
+.. tip::
+
+    You can also use a `secret` parameter from `parameters.yml` as a remember me key
+    to centralize secret key management for the entire application.
+
 Next, open the login template and add a field named ``_remember_me``:
 
 .. code-block:: html+jinja
