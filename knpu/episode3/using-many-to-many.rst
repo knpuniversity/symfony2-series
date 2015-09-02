@@ -73,7 +73,6 @@ Finally, redirect when you're finished::
 
         $event->getAttendees()->add($this->getUser());
 
-        $em->persist($event);
         $em->flush();
 
         $url = $this->generateUrl('event_show', array(
