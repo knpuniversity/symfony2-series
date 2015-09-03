@@ -83,7 +83,7 @@ You know what the next step is: give ``attendAction`` a ``$format`` argument::
         // ...
     }
 
-If it's equal to ``json``, we can reutrn a JSON string instead of a redirect::
+If it's equal to ``json``, we can return a JSON string instead of a redirect::
 
     // src/Yoda/EventBundle/Controller/EventController.php
     // ...
