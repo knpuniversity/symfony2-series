@@ -63,7 +63,7 @@ options.
 Digging into the Core
 ~~~~~~~~~~~~~~~~~~~~~
 
-You can also dig into the source code to find out what options are available
+You can also dig into the source code to find out what options are available.
 For the ``repeated`` type, there is a class called, well,
 :symfonyclass:`Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType`.
 The ``setDefaultOptions`` method shows you the options that are special
