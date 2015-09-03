@@ -163,10 +163,9 @@ So let's head to the browser to see how things look so far. When we go to
 ``/register``, we see a nice looking page. Kidding! We see a huge, horrible
 threatening error!
 
->
-AnnotationException: [SemanticalError] The annotation "@Template" in method
-Yoda\UserBundle\Controller\RegisterController::registerAction() was never
-imported. Did you maybe forget to add a "use" statement for this annotation?
+    AnnotationException: [SemanticalError] The annotation "@Template" in method
+    Yoda\\UserBundle\\Controller\\RegisterController::registerAction() was never
+    imported. Did you maybe forget to add a "use" statement for this annotation?
 
 .. tip::
 
