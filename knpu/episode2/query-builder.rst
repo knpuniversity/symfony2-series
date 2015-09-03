@@ -52,7 +52,7 @@ not found.
 
 .. note::
 
-    To learn more about the Query Builder, see `doctrine-project.org: The QueryBuilder`.
+    To learn more about the Query Builder, see `doctrine-project.org: The QueryBuilder`_.
 
 To try this out, let's temporarily reuse the EventController's ``indexAction``.
 Get the ``UserRepository`` by calling ``getRepository`` on the entity manager.
