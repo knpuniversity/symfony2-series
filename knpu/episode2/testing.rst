@@ -48,7 +48,7 @@ The idea is that each controller, like ``RegisterController`` will have its
 own test class, like ``RegisterControllerTest``. Then, each action method,
 like ``registerAction``, will have its own test method, like ``testRegister``.
 There's no technical reason you need to organize things like this. The only
-rule is that you need to start each method with the word test.
+rule is that you need to start each method with the word "test".
 
 Using the Client object
 -----------------------
