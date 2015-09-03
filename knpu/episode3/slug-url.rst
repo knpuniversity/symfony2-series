@@ -1,7 +1,7 @@
 Using the slug in the Event URL
 ===============================
 
-We've got slugs! So let's enjoy them by putting them into our URLS! 
+We've got slugs! So let's enjoy them by putting them into our URLs! 
 
 First, change the ``event_show`` route to use the ``slug`` instead
 of the ``id``:
