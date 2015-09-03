@@ -183,6 +183,12 @@ To redirect, use the ``redirect`` function and pass it the URL::
         return $this->redirect($url);
     }
 
+.. tip::
+
+    If you use Symfony ``2.6`` or newer you have a ``redirectToRoute`` method
+    which allows to return a redirection based on the route name instead of having
+    to generate the URL first.
+
 Remember that a controller always returns a Response object. ``redirect``
 is just a shortcut to create a Response that's all setup to redirect to
 this URL.
