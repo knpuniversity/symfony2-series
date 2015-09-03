@@ -34,8 +34,8 @@ Refresh the page. Woh man, another error!
 
 
     An exception has been thrown during the rendering of a template ("Catchable Fatal
-    Error: Argument 1 passed to Symfony\Component\Form\FormRenderer::searchAndRenderBlock()
-    must be an instance of Symfony\Component\Form\FormView, instance of Symfony\Component\Form\Form
+    Error: Argument 1 passed to Symfony\\Component\\Form\\FormRenderer::searchAndRenderBlock()
+    must be an instance of Symfony\\Component\\Form\\FormView, instance of Symfony\\Component\\Form\\Form
     given, called in ...")
 
 This one is more difficult to track down, but it *does* have one important
