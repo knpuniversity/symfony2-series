@@ -122,5 +122,5 @@ JSON!
 
     The JSON is pretty in my browser because of the `JSONView`_ Chrome extension.
 
-.. _`REST Series`: knpuniversity.com/screencast/rest
+.. _`REST Series`: https://knpuniversity.com/screencast/symfony-rest
 .. _`JSONView`: https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc
