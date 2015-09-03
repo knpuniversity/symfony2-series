@@ -74,7 +74,6 @@ the ``removeElement`` method::
             $event->getAttendees()->removeElement($this->getUser());
         }
 
-        $em->persist($event);
         $em->flush();
 
         $url = $this->generateUrl('event_show', array(
