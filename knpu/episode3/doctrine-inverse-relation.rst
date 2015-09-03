@@ -131,7 +131,7 @@ Complete things by adding the getter and setter for the the ``events`` property:
         return $this->events;
     }
 
-    public function setEvents($events)
+    public function setEvents(ArrayCollection $events)
     {
         $this->events = $events;
     }
