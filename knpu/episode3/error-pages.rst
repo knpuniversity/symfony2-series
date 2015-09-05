@@ -156,7 +156,7 @@ We won't cover event listeners in this screencast, but there's a cookbook
 called `How to Create an Event Listener`_ that covers it.
 
 Normally, when there's an exception, Symfony calls an internal controller
-that renders the error template. This class lives in Twigbundle and is called
+that renders the error template. This class lives in TwigBundle and is called
 ``ExceptionController``. Let's open it up!
 
     The class lives at:
