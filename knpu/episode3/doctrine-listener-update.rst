@@ -53,7 +53,7 @@ Testing the Update
 ------------------
 
 We can't test this easily because we don't have a way to update users yet.
-No worries. Just open up the play script from episode 1. We already have
+No worries. Just open up the play script from `episode 1`_. We already have
 a user here - just change his plain password and save::
 
     // play.php
@@ -121,3 +121,5 @@ different points during the request-handling process.
 
 Fortunately, Symfony's event system is *very* similar to Doctrine's. Don't
 you love it when good ideas are shared?
+
+.. _`episode 1`: https://knpuniversity.com/screencast/symfony2-ep1/doctrine#creating-the-play-script
