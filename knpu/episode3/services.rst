@@ -43,7 +43,7 @@ from our controller that creates the CSV text::
         }
     }
 
-To use it in ``ReportController``, creat a new instance of ``EventReportManager``
+To use it in ``ReportController``, create a new instance of ``EventReportManager``
 and call ``getRecentlyUpdatedReport`` on it::
 
     // src/Yoda/EventBundle/Controller/ReportController.php
