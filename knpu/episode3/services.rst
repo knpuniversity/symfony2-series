@@ -13,7 +13,7 @@ class inside of it::
 
 Like any other class, give it the right namespace. 
 
-But, unlike entiies, forms and controllers, this class is special because
+But, unlike entities, forms and controllers, this class is special because
 it has *absolutely* nothing to do with Symfony. It's just a "plain-old-PHP-object"
 that we'll use to help organize our own code.
 
