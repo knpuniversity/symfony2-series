@@ -39,7 +39,7 @@ Overriding the Error Template Content
 
 To find out, let's just search the project! In PHPStorm, I can navigate
 to ``vendor/symfony/symfony``, right click, then select "Find in Path". Let's
-look for the "An Error Occurred text".
+look for the "An Error Occurred" text.
 
 Ah hah! It points us straight to a file in the core Twig bundle called ``error.html.twig``.
 Let's open that up!
