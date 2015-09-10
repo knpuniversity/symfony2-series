@@ -20,7 +20,7 @@ Create a ``Tests/Controller`` directory in ``UserBundle``, copy one of the
 test files and rename it to ``RegisterControllerTest``::
 
     // src/Yoda/UserBundle/Tests/Controller/RegisterControllerTest.php
-    namespace Yoda\EventBundle\Tests\Controller;
+    namespace Yoda\UserBundle\Tests\Controller;
 
     use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
