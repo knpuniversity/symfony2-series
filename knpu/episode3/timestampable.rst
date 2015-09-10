@@ -1,5 +1,5 @@
-Adding createdAt and updatdAt Timestampable Fields
-==================================================
+Adding createdAt and updatedAt Timestampable Fields
+===================================================
 
 Let's do more magic! I always like to have ``createdAt`` and ``updatedAt``
 fields on my database tables. A lot of times, this helps me debug any weird
