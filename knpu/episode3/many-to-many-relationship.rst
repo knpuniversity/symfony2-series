@@ -1,4 +1,4 @@
-AJAX and JSON Responses
+ManyToMany Relationship
 =======================
 
 I want you to attend my event! So, you are going to need to be able to RSVP.

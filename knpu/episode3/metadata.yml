@@ -64,7 +64,6 @@ chapters:
         title:      Custom Repository Query
         video_key:  1blaogkk23
     "many-to-many-relationship":
-        title:      ManyToMany Relationship
         video_key:  gndrc13e6q
     "using-many-to-many":
         title:      Using ManyToMany
