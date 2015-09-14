@@ -124,7 +124,7 @@ functionality:
             {% for attendee in entity.attendees %}
                 <li>{{ attendee }}</li>
             {% else %}
-                <li>We're cool! RSVP!</li>
+                <li>nobody yet!</li>
             {% endfor %}
         </ul>
     </dd>
@@ -140,9 +140,9 @@ Now help me add a link to the new ``event_attend`` route if the user is logged i
     <dd>
         {# ... #}
 
-            <a href="{{ path('event_attend', {'id': entity.id}) }}" class="btn btn-success btn-xs">
-                I totally want to go!
-            </a>
+        <a href="{{ path('event_attend', {'id': entity.id}) }}" class="btn btn-success btn-xs">
+            I totally want to go!
+        </a>
     </dd>
 
 Testing out the Relationship
@@ -207,7 +207,7 @@ method to the ``User`` class::
 
 Refresh now. Sweet, no errors!
 
-Let's also take a second and fill in the # of attendees on the index page:
+Let's also take a second and fill in the # of attendees on the *index* page:
 
 .. code-block:: html+jinja
 
