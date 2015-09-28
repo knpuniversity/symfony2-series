@@ -30,40 +30,40 @@ tuts_hero:
 
 chapters:
     intro:
-        video_key:  ccj53wwcs4
+        video_key:  140195211
         is_free:    true
     installation:
-        video_key:  8uk5any8c2
+        video_key:  140195215
         is_free:    true
     bundles:
-        video_key:  nrhdx9vaws
+        video_key:  https://vimeo.com/album/3577890/video/140195216
         is_free:    true
     routing:
-        video_key:  6tedpj4u8o
+        video_key:  140195214
         is_free:    true
     controller:
-        video_key:  dpsi2jleoh
+        video_key:  140195212
     twig:
-        video_key:  9o8zxj9ett
+        video_key:  140195213
     doctrine:
-        video_key:  trlwjr8zyp
+        video_key:  140195219
     doctrine2:
-        video_key:  fak9kc1ecy
+        video_key:  140195221
     vhost:
-        video_key:  d8claetw96
+        video_key:  140195218
     generators:
-        video_key:  d2pi00cc4b
+        video_key:  140195222
     assets:
-        video_key:  lk5txx0xse
+        video_key:  140195220
     links-dates:
-        video_key:  6z88o5vl0p
+        video_key:  140195223
     composer:
-        video_key:  007s4mpj1e
+        video_key:  140195226
     fixtures:
-        video_key:  akiu5wp63f
+        video_key:  140195225
     autoloading:
-        video_key:  h64novs654
+        video_key:  140195227
     controller-shortcuts:
-        video_key:  uwobpcfl5r
+        video_key:  140195228
     "mind-tricks":
-        video_key:  gu9itou34n
+        video_key:  140195230
