@@ -149,7 +149,6 @@ in ``attendAction`` and ``unattendAction`` and return its value.
 We can use this function to easily generate the JSON response for both controllers::
 
     // src/Yoda/EventBundle/Controller/EventController.php
-    use Symfony\Component\HttpFoundation\Request;
     // ...
 
     public function attendAction($id, $format)
