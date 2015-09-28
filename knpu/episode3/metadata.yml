@@ -31,88 +31,88 @@ chapters:
     intro:
         title:      Introduction
         is_free:    true
-        video_key:  n7h5k6yrs1
+        video_key:  140207115
     "doctrine-relationship":
         title:      "Doctrine Relationship"
         is_free:    true
-        video_key:  d1cz6fikw5
+        video_key:  140207117
     "sharing-data-fixtures":
         title:      Sharing Data Fixtures
-        video_key:  1i4b63le45
+        video_key:  140207119
     "event-edit-security":
         title:      "Event Edit Security"
-        video_key:  keog1o9ird
+        video_key:  140207116
     "base-controller":
         title:      Base Controller
-        video_key:  yma94j696r
+        video_key:  140207120
     "phpdoc-autocomplete":
         title:      "PHPDoc Autocomplete."
-        video_key:  z2n5q0v4p8
+        video_key:  140207118
     "doctrine-inverse-relation":
         title:      Doctrine Inverse Relation
-        video_key:  qlwnk98y7f
+        video_key:  140207127
     "doctrine-extensions":
         title:      Doctrine Extensions
-        video_key:  95acyhsc1y
+        video_key:  140207123
     "slug-url":
         title:      Slug URL
-        video_key:  qiot3h145y
+        video_key:  140207125
     "timestampable":
         title:      Timestampable
-        video_key:  w7z3jvoct8
+        video_key:  140207124
     "custom-repository-query":
         title:      Custom Repository Query
-        video_key:  1blaogkk23
+        video_key:  140207128
     "many-to-many-relationship":
-        video_key:  gndrc13e6q
+        video_key:  140207126
     "using-many-to-many":
         title:      Using ManyToMany
-        video_key:  2cfxtphrl2
+        video_key:  140207133
     "using-many-to-many2":
         title:      Round 2: Using ManyToMany
-        video_key:  nq3lm8k1ro
+        video_key:  140207132
     "json-response":
         title:      JSON Response
-        video_key:  ojk6mr86l8
+        video_key:  140207130
     "content-type-jsonresponse":
         title:      Content Type JSON Response
-        video_key:  8svxlg9kui
+        video_key:  140207131
     "attend-event-ajax":
         title:      Attend Event AJAX
-        video_key:  6j4eukpwqt
+        video_key:  140207135
     "error-pages":
         title:      Error Pages
-        video_key:  z5nj0tgffi
+        video_key:  140207134
     "render-controller":
         title:      Render Controller
-        video_key:  tcu2xcmkxa
+        video_key:  140207136
     "csv-download":
         title:      CSV Download
-        video_key:  ik6vmsrwmq
+        video_key:  140207138
     "services":
         title:      Services
-        video_key:  05pm1nilik
+        video_key:  140207137
     "service-container":
         title:      Service Container
-        video_key:  otnelibkg7
+        video_key:  140207140
     "config-imports-type-hinting":
         title:      Config Imports Type Hinting
-        video_key:  3sgtsjxwqs
+        video_key:  140207141
     "more-dependency-injection":
         title:      Moar Dependency Injection
-        video_key:  9blu5mxdtp
+        video_key:  140207142
     "twig-extension-listener":
         title:      Twig Extension Listener
-        video_key:  jnrojispp0
+        video_key:  140207144
     "doctrine-lifecycle-callback":
         title:      doctrine-lifecycle-callback
-        video_key:  kkppl0lben
+        video_key:  140207143
     "doctrine-listener":
         title:      Doctrine Listener
-        video_key:  tt6or8ehe0
+        video_key:  140207145
     "doctrine-listener-update":
         title:      Doctrine Listener Update
-        video_key:  pisnjj30o8
+        video_key:  140207146
     "outro":
         title:      3 down and 1 to go!
-        video_key:  280fnfr34n
+        video_key:  140207148
