@@ -3,8 +3,6 @@ length: 1:34:40
 summary: |
     Welcome back for part 3 of our Starting in Symfony2 series! In part 3 of this series, we're going to discover even more about Symfony and begin to learn more about how Symfony really works under the hood. Over the next hour or so, we're going to learn what a service is, find out more about the core Symfony services, and create a few of our own. In Doctrine, we'll create some Doctrine associations, including ManyToOne and ManyToMany relationships. We'll also talk about lifecycle callbacks and event listeners. Plus a ton more!
 
-    Own the original third episode? Login and get this upgrade for $4!
-
     Highlights:
 
     * Doctrine relations, metadata, and the JoinColumn
@@ -21,7 +19,6 @@ summary: |
     * Doctrine lifecycle callbacks and how to create and leverage your own doctrine event listener service
 
 illustration: sf2-ep3.png
-videoDownloadExtension: mov
 
 tuts_hero:
     start_step:  remember-me-setting-it-all-up
