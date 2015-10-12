@@ -5,8 +5,6 @@ summary: |
     tools, best practices and tips. If you're serious about getting into
     Symfony2, this course is for you!
 
-    Own the 2.0 episode 1? Login and get this upgrade for $4!
-
     In this screencast, we start building a real events application from
     the ground-up, touching on and discussing the most fundamental parts
     of the application. Specifically, we'll cover:
@@ -24,7 +22,6 @@ summary: |
     * And other tips and tricks
 
 illustration: sf2-ep1.png
-videoDownloadExtension: mov
 tuts_hero:
     finish_step: "MindTrick: Twig whitespace control"
 
