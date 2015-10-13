@@ -108,7 +108,7 @@ property and setting the encoded password on the user::
         $encoder = $this->container->get('security.encoder_factory')
             ->getEncoder($user);
         
-        $password = $encoder->encodePassword($plainPassword(), $user->getSalt());
+        $password = $encoder->encodePassword($plainPassword, $user->getSalt());
         $user->setPassword($password);
     }
 
