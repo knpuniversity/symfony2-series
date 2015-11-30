@@ -4,8 +4,6 @@ summary: |
 
     Over the next hour, we're going to take you through some of the most difficult areas of Symfony learning all about security, forms, and parts of Doctrine. We'll also see testing and learn more about how Symfony's service container works. When you get to the end, you'll be well on your way to mastering Symfony.
 
-    Own the original second episode? Login and get this upgrade for $4!
-
     One of the things we'll be creating is a security system that stores users in the database. This is functionality similar to what's offered by the very popular FOSUserBundle. That bundle is really great, but until you understand how the security system works, you're going to run into limitations. Once you do, you'll feel at home using FOSUserBundle or configuring the security system all on your own.
 
     Highlights:
@@ -22,84 +20,83 @@ summary: |
     ... and of course, tips, tricks, best practices and other little features along the way!
 
 illustration: sf2-ep2.png
-videoDownloadExtension: mov
 tuts_hero:
     start_step:  "MindTrick: Twig whitespace control"
     finish_step: "Remember Me: Setting it all up"
 
 chapters:
     intro:
-        video_key:  xo1tp2mawh
+        video_key:  140200505
         is_free:    true
     "basic-security":
-        video_key:  ai03qta6rp
+        video_key:  140200506
         is_free:    true
     "authorization-access-control":
-        video_key:  q3qcy5v1yu
+        video_key:  140200507
         is_free:    true
     "login-form":
-        video_key:  05mjpiduu9
+        video_key:  140200510
     "login-form2":
-        video_key:  fnntchp1rf
+        video_key:  140200508
     "logout":
-        video_key:  7c11n9r243
+        video_key:  140200509
     "twig-security-is-authenticated":
-        video_key:  bx8ayzixqj
+        video_key:  140200515
     "deny-access-controller":
-        video_key:  t71z23obgu
+        video_key:  140200513
     "entity-security":
-        video_key:  x8fo22bwcr
+        video_key:  140200512
     "saving-users":
-        video_key:  rhamzr4t9i
+        video_key:  140200516
     "roles-disabling-user":
-        video_key:  0qkxqeigfu
+        video_key:  140200517
     "repository":
-        video_key:  nu4tdjfskm
+        video_key:  140200514
     "query-builder":
-        video_key:  4s7eiiiz54
+        video_key:  140200518
     "user-provider":
-        video_key:  f0wt1ig4vg
+        video_key:  140200519
     "user-serialization":
-        video_key:  n1qs1fk455
+        video_key:  140200520
     "registration-form":
-        video_key:  u04v4ygnt5
+        video_key:  140200522
     "form-rendering":
-        video_key:  nuiogfdd9h
+        video_key:  140200521
     "repeated-compound-fields":
-        video_key:  4kp04fqq7u
+        video_key:  140200524
     "form-submit":
-        video_key:  bk92l2afci
+        video_key:  140200526
     "form-data":
-        video_key:  53vkd2jhje
+        video_key:  140200525
     "plain-password":
-        video_key:  uilbrzy2oh
+        video_key:  140200528
     "form-type-class":
-        video_key:  0lb5prjmqb
+        video_key:  140200527
     "field-options-html5":
-        video_key:  prc1itzavu
+        video_key:  140200530
     "registration-validation":
-        video_key:  cwlscbd6bq
+        video_key:  140200532
     "flash-message":
-        video_key:  d9rnh7iax1
+        video_key:  140200534
     "auto-login":
-        video_key:  shzhpwb3uc
+        video_key:  140200533
     "testing":
-        video_key:  7u3soik5a6
+        video_key:  140200535
     "testing-forms":
-        video_key:  t77z3o96vz
+        video_key:  140200536
     "testing-data":
-        video_key:  5nlnnco5lt
+        video_key:  140200537
     "container-doctrine":
-        video_key:  nflct61ysv
+        video_key:  140200539
     "after-dinner-mint":
-        video_key:  y7edkfcsup
+        video_key:  140200541
     "role-hierarchies":
-        video_key:  j5zy6f63ko
+        video_key:  140200540
     "impersonation":
-        video_key:  yi50s08q12
+        video_key:  140200543
     "secure-every-page":
-        video_key:  aqk70qtphe
+        video_key:  140200544
     "accessing-security-user":
-        video_key:  6y4htox38p
+        video_key:  140200545
     "remember-me":
-        video_key:  i8u0nkwv87
+        video_key:  140200546

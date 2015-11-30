@@ -26,7 +26,7 @@ Replace this with a new function called ``prePersist`` that sets the value::
     public function prePersist()
     {
         if (!$this->getCreatedAt()) {
-            $this->setCreatedAt(new \DateTime());
+            $this->createdAt = new \DateTime();
         }
     }
 
@@ -64,7 +64,7 @@ Now just put a ``PrePersist`` annotation above our function::
     public function prePersist()
     {
         if (!$this->getCreated()) {
-            $this->setCreatedAt(new \DateTime());
+            $this->createdAt = new \DateTime();
         }
     }
 

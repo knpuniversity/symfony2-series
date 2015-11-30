@@ -36,41 +36,41 @@ chapters:
     intro:
         title:      Introduction
         is_free:    true
-        video_key:  y6z0ppyyp0
+        video_key:  140210042
     assets:
         title:      Assets and Cache Busting
         is_free:    true
-        video_key:  60a5op3lcy
+        video_key:  140210039
     bust-browser-cache-and-cdns:
         title:      Busting Browser Cache and Using a CDN
-        video_key:  o6ad6tczsj
+        video_key:  140210037
     assetic:
         title:      "Assetic: Filters, Combination and Minification"
-        video_key:  8v49rrru0d
+        video_key:  140210038
     assetic-combination:
         title:      Combining and Minifying CSS & JS
-        video_key:  9357dftujs
+        video_key:  140210040
     minify-css-uglify:
         title:      Applying a Minification Filter
-        video_key:  kn0idd4rj1
+        video_key:  140210041
     "form-customizations":
         title:      Form Template Customizations
-        video_key:  11k0c7y152
+        video_key:  140210043
     bootstrap-form-errors:
         title:      Error Formatting for Twitter Bootstrap
-        video_key:  u7sg81aqmi
+        video_key:  140210049
     form-input-label-customizations:
         title:      Adding form-control to the input
-        video_key:  6kmqbwlgqb
+        video_key:  140210050
     "more-form-customizations":
         title:      More Form Customizations (Form Theming)
-        video_key:  pihrg1adhd
+        video_key:  140210044
     service-parameters:
         title:      An Aside: Dependency Injection Parameters
-        video_key:  1t37kvlbc6
+        video_key:  140210045
     deployment:
         title:      Deployment
-        video_key:  o0bl8zvbew
+        video_key:  140210047
     goodbye:
         title:      Goodbye Friend!
-        video_key:  sek8sia4hy
+        video_key:  140210052
