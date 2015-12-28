@@ -1,6 +1,10 @@
 Routing: The URLs of the World
 ==============================
 
+.. seealso::
+
+    This tutorial has been upgraded! Check out the `Symfony 3 Routing`_
+
 Let's face it, every page needs a URL. When you need a new page, we always
 start by creating a route: a chunk of config that gives that page a URL.
 In Symfony, all routes are configured in just one file: ``app/config/routing.yml``.
@@ -257,3 +261,5 @@ This shows a full list of every route in your app. Right now, that means
 the one we've been playing with plus a few other internal Symfony debugging
 routes. Remember this command: it's your Swiss army knife for finding your
 way through a project.
+
+.. _`Symfony 3 Routing`: http://knpuniversity.com/screencast/symfony/first-page

@@ -1,6 +1,10 @@
 Welcome to Symfony!
 ===================
 
+.. seealso::
+
+    This tutorial has been upgraded! Check out the `Symfony 3 Tutorial`_
+
 PHP has been on a wild ride over the past few years, with new things like
 namespaces, our package manager called Composer, and whole lot more sharing
 and friendship between projects. And in a lot of ways, Symfony has been in
@@ -65,3 +69,4 @@ In this course, we've got some big goals:
 Ready? Let's go!
 
 .. _`use parts of Symfony`: http://symfony.com/projects
+.. _`Symfony 3 Tutorial`: http://knpuniversity.com/screencast/symfony/start-project

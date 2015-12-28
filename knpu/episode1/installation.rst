@@ -1,6 +1,10 @@
 Downloading & Configuration
 ===========================
 
+.. seealso::
+
+    This tutorial has been upgraded! Check out the `Symfony 3 Installation`_
+
 Ok, let's get Symfony downloaded and setup. Head over to [symfony.com](http://symfony.com/) and
 click "Download Now". If the site looks a little different for you, that's
 because the Internet loves to change things after we record screencasts!
@@ -397,3 +401,4 @@ Do some jumping high fives, grab a pint, and make a Chewbacca cry.
 .. _`installation chapter`: http://symfony.com/doc/current/book/installation.html#configuration-and-setup
 .. _`The Wonderful World of Composer`: http://knpuniversity.com/screencast/composer
 .. _`homework`: https://getcomposer.org/doc/articles/vendor-binaries.md#what-happens-when-composer-is-run-on-a-composer-json-that-has-dependencies-with-vendor-binaries-listed-
+.. _`Symfony 3 Installation`: http://knpuniversity.com/screencast/symfony/start-project

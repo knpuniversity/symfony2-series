@@ -1,6 +1,10 @@
 Controllers: Get to work!
 =========================
 
+.. seealso::
+
+    This tutorial has been upgraded! Check out the `Symfony 3 Controllers`_
+
 3 steps. That's all that's behind rendering a page:
 
 #. The URL is compared against the routes until one matches;
@@ -318,3 +322,4 @@ Ok, onto the curly world of Twig!
 .. _`free screencast on the topic`: http://knpuniversity.com/screencast/php-namespaces-in-120-seconds
 .. _`JsonResponse`: http://symfony.com/doc/current/components/http_foundation/introduction.html#creating-a-json-response
 .. _`Open up the base class`: https://github.com/symfony/symfony/blob/master/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php
+.. _`Symfony 3 Controllers`: http://knpuniversity.com/screencast/symfony/first-page

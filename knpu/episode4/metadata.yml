@@ -1,8 +1,6 @@
 title:  Starting in Symfony2: Episode 4 (2.4+)
 length: 40:25
 summary: |
-    **Looking for tutorials for Symfony3?** See https://knpuniversity.com/screencast/symfony.
-
     Welcome back for part 4 of our Starting in Symfony2 series! We've got
     some really important topics planned and we're going to start with mastering
     assets and the Assetic library. We'll bust cache, minimize our CSS & JS
