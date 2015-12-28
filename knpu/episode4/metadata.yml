@@ -1,5 +1,4 @@
 title:  Starting in Symfony2: Episode 4 (2.4+)
-length: 40:25
 summary: |
     Welcome back for part 4 of our Starting in Symfony2 series! We've got
     some really important topics planned and we're going to start with mastering
@@ -32,43 +31,30 @@ tuts_hero:
 
 chapters:
     intro:
-        title:      Introduction
         is_free:    true
         video_key:  140210042
     assets:
-        title:      Assets and Cache Busting
         is_free:    true
         video_key:  140210039
     bust-browser-cache-and-cdns:
-        title:      Busting Browser Cache and Using a CDN
         video_key:  140210037
     assetic:
-        title:      "Assetic: Filters, Combination and Minification"
         video_key:  140210038
     assetic-combination:
-        title:      Combining and Minifying CSS & JS
         video_key:  140210040
     minify-css-uglify:
-        title:      Applying a Minification Filter
         video_key:  140210041
     "form-customizations":
-        title:      Form Template Customizations
         video_key:  140210043
     bootstrap-form-errors:
-        title:      Error Formatting for Twitter Bootstrap
         video_key:  140210049
     form-input-label-customizations:
-        title:      Adding form-control to the input
         video_key:  140210050
     "more-form-customizations":
-        title:      More Form Customizations (Form Theming)
         video_key:  140210044
     service-parameters:
-        title:      An Aside: Dependency Injection Parameters
         video_key:  140210045
     deployment:
-        title:      Deployment
         video_key:  140210047
     goodbye:
-        title:      Goodbye Friend!
         video_key:  140210052
