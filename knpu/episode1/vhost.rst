@@ -124,7 +124,7 @@ The means we're clearing the cache for the ``prod`` environment.
 
 Refresh the page to see your functional page in the ``prod`` environment:
 
-    http://events.l/app.php/hello/skywalker/5
+    http://events.l/hello/skywalker/5
 
 Awesome! But I thought we had put ``app.php`` in the URL. Where did it go?
 Our project came with a ``web/.htaccess`` file that have 2 pieces of goodness
