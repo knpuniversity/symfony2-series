@@ -53,7 +53,7 @@ a little bit of extra markup:
         <article>
 
             {% if error %}
-                <div class="error">{{ error.message }}</div>
+                <div>{{ error.message }}</div>
             {% endif %}
 
             <form action="{{ path('login_check') }}" method="post">
