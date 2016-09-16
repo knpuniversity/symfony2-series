@@ -201,19 +201,6 @@ the dummy ``findAll`` method::
      */
     class Event
 
-.. code-block:: php
-
-    // src/Yoda/EventBundle/Entity/EventRepository.php
-    // ...
-
-    class EventRepository extends EntityRepository
-    {
-        public function findAll()
-        {
-            die('NOOOOOOOOO!!!!!!!!!!');
-        }
-    }
-
 So every entity has its own repository with helpful methods like ``findAll``
 for returning objects of that type. And when those shortcut methods won't
 work, we'll add our own methods. All of our query logic *should* live inside
