@@ -19,7 +19,7 @@ authentication happens automatically, but we can also trigger it manually::
 
 This code might look strange, and I don't want you to worry about it too
 much. The basic idea is that we create a token, which holds details about
-the user, and then pass this into Symrony's security system.
+the user, and then pass this into Symfony's security system.
 
 Call this method right after registration::
 
