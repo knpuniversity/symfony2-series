@@ -126,8 +126,8 @@ public function showAction($id)
     }
 
     // ...
-    return $this->render('EventBundle:Event:index.html.twig', array(
-        'event' => $event,
+    return $this->render('EventBundle:Event:show.html.twig', array(
+        'entity' => $entity,
         'delete_form' => $deleteForm->createView(),
     ));
 }
