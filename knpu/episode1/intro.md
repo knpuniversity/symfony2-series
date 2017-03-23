@@ -1,9 +1,8 @@
-Welcome to Symfony!
-===================
+# Welcome to Symfony!
 
-.. seealso::
-
-    This tutorial has been upgraded! Check out the `Symfony 3 Tutorial`_
+***SEEALSO
+This tutorial has been upgraded! Check out the [Symfony 3 Tutorial][Symfony 3 Tutorial]
+***
 
 PHP has been on a wild ride over the past few years, with new things like
 namespaces, our package manager called Composer, and whole lot more sharing
@@ -17,7 +16,7 @@ Let's look at some facts:
 
 This means that you can use any part of it in *any* PHP project, even that
 ugly legacy app they make you work. We could use Symfony's Router component
-to give it flexible URLs. Oh, and a lot of other projects `use parts of Symfony`_,
+to give it flexible URLs. Oh, and a lot of other projects [use parts of Symfony][use parts of Symfony],
 like Drupal, Laravel
 
 **Symfony is also a "framework"**
@@ -45,8 +44,7 @@ bit of configuration.
 
 Clearly, you won't be lonely! There's a lot of us out there working with it.
 
-Build Something
----------------
+## Build Something
 
 In this course, we're going to kick off your Symfony journey by building
 an events application. To sweeten the deal, you'll also be mastering the
@@ -68,5 +66,5 @@ In this course, we've got some big goals:
 
 Ready? Let's go!
 
-.. _`use parts of Symfony`: http://symfony.com/projects
-.. _`Symfony 3 Tutorial`: http://knpuniversity.com/screencast/symfony/start-project
+[use parts of Symfony]: http://symfony.com/projects
+[Symfony 3 Tutorial]: http://knpuniversity.com/screencast/symfony/start-project
