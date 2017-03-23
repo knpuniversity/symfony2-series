@@ -151,7 +151,6 @@ our terminal user *is* our PHP web server user, so we don't have any issues.
 If you're using Apache or *are* having issues, check out the sidebar on this
 page with some tips.
 
-.. _ep1-install-permissions:
 
 .. sidebar:
 
@@ -391,7 +390,7 @@ Do some jumping high fives, grab a pint, and make a Chewbacca cry.
 
 [Composer]: https://getcomposer.org/
 [Installer for you]: https://getcomposer.org/doc/00-intro.md#installation-windows
-.. _Packagist.org: https://packagist.org/
+[Packagist.org]: https://packagist.org/
 [installation chapter]: http://symfony.com/doc/current/book/installation.html#configuration-and-setup
 [The Wonderful World of Composer]: http://knpuniversity.com/screencast/composer
 [homework]: https://getcomposer.org/doc/articles/vendor-binaries.md#what-happens-when-composer-is-run-on-a-composer-json-that-has-dependencies-with-vendor-binaries-listed-

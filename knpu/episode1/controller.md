@@ -126,6 +126,7 @@ Instead, Symfony offers you an optional tool that renders template files.
 Before that, we should take on another buzzword: services. These are even
 trendier than bundles!
 
+
 ### Symfony Services
 
 Symfony is basically a wrapper around a big bag of objects that do helpful

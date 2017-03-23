@@ -264,7 +264,7 @@ is the Timeline. It visually tells us *exactly* what's going on during a
 request and how much time everything is taking. A lot of what you see here
 are background Symfony events.
 
-.. _Twig: http://twig.sensiolabs.org/doc/tags/index.html#tags
+[Twig]: http://twig.sensiolabs.org/doc/tags/index.html#tags
 [Twig's Documentation page]: http://twig.sensiolabs.org/documentation
 [Documentation page]: http://twig.sensiolabs.org/documentation
 [Twig Screencast]: http://knpuniversity.com/screencast/twig
