@@ -47,7 +47,7 @@ For more information, or to see Nginx configuration, see `Configuring a Web Serv
 Now, restart Apache. Yep, this command *also* varies across systems:
 
 ```terminal
-$ sudo /opt/local/apache2/bin/apachectl restart
+sudo /opt/local/apache2/bin/apachectl restart
 ```
 
 ***TIP
@@ -97,7 +97,7 @@ What!? 404 page! Outrageous!
 We can't see the error, but we *can* tail the `prod` log file:
 
 ```terminal
-$ tail app/logs/prod.log
+tail app/logs/prod.log
 ```
 
 Hmm, no route found. Ah, of course! Symfony compiles all of its configuration
@@ -109,7 +109,7 @@ To do this, find our friend console and run the `cache:clear` command with
 a `--env=prod` option.
 
 ```terminal
-$ php app/console cache:clear --env=prod --no-debug
+php app/console cache:clear --env=prod --no-debug
 ```
 
 The means we're clearing the cache for the `prod` environment.

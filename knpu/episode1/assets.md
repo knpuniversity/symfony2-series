@@ -39,7 +39,7 @@ Ok, so Symfony has a dead-simple trick here. Actually, it's console again,
 with its `assets:install` command. Get some help info about it first:
 
 ```terminal
-$ php app/console assets:install --help
+php app/console assets:install --help
 ```
 
 As it says, the command copies the `Resources/public` directory from each
@@ -50,7 +50,7 @@ And unless you're on windows, run this with the `--symlink` option: it
 creates a symbolic link instead of copying the directory:
 
 ```terminal
-$ php app/console assets:install --symlink
+php app/console assets:install --symlink
 ```
 
 Now, our bundle's `Resources/public` directory shows up as `web/bundles/event`.

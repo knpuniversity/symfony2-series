@@ -17,7 +17,7 @@ To see if it's working, try getting help information on a new `doctrine:fixtures
 console task that comes from the bundle:
 
 ```terminal
-$ php app/console doctrine:fixtures:load --help
+php app/console doctrine:fixtures:load --help
 ```
 
 We see the help information, so we're ready to write some fixtures.
@@ -88,7 +88,7 @@ Ok, let's load some fixtures. Go back to the console and try the new `doctrine:f
 command:
 
 ```terminal
-$ php app/console doctrine:fixtures:load
+php app/console doctrine:fixtures:load
 ```
 
 When we look at the site, we've got fresh dummy data to play with. Re-run

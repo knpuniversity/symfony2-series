@@ -26,7 +26,7 @@ In fact, let's create the `Event` class we were talking about. The console
 can even make this for us with the `doctrine:generate:entity` command:
 
 ```terminal
-$ php app/console doctrine:generate:entity
+php app/console doctrine:generate:entity
 ```
 
 Like other commands, this one is self-aware and will start asking you questions.
@@ -137,7 +137,7 @@ First, copy the `web/app_dev.php` file to the root of the project and
 rename it to `play.php`:
 
 ```terminal
-$ cp web/app_dev.php play.php
+cp web/app_dev.php play.php
 ```
 
 Open it up and remove the IP protection stuff at the top and update the require
@@ -221,7 +221,7 @@ echo $templating->render(
 Execute the play script from the command line.
 
 ```terminal
-$ php play.php
+php play.php
 ```
 
 When I run it, the template is rendered and printed out. How cool is that?

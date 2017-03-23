@@ -81,7 +81,7 @@ the console to create the database for us with the `doctrine:database:create`
 command:
 
 ```terminal
-$ php app/console doctrine:database:create
+php app/console doctrine:database:create
 ```
 
 There's also a command to drop the database. That's great, until you realize
@@ -97,20 +97,20 @@ This finds all your entities, reads their annotation mapping config, and
 creates all the tables:
 
 ```terminal
-$ php app/console doctrine:schema:create
+php app/console doctrine:schema:create
 ```
 
 Time to try out the play script again:
 
 ```terminal
-$ php play.php
+php play.php
 ```
 
 What? No errors! Did it work? Use the `doctrine:query:sql` command to run
 a raw query against the database:
 
 ```terminal
-$ php app/console doctrine:query:sql "SELECT * FROM yoda_event"
+php app/console doctrine:query:sql "SELECT * FROM yoda_event"
 ```
 
 And voila! There's our event.
@@ -156,7 +156,7 @@ be modified to reflect the change. Hey, console to the rescue! Run the
 `doctrine:schema:update` command:
 
 ```terminal
-$ php app/console doctrine:schema:update
+php app/console doctrine:schema:update
 ```
 
 This is pretty sweet: it looks at your annotations mapping config, compares
@@ -167,7 +167,7 @@ But the command didn't do anything yet. Pass `--dump-sql` to see the queries
 it wants to run and `--force` to actually run them:
 
 ```terminal
-$ php app/console doctrine:schema:update --force
+php app/console doctrine:schema:update --force
 ```
 
 Run the play script again. Alright, no errors means that the new event is

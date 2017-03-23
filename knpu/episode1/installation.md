@@ -31,7 +31,7 @@ If you're using Windows, someone made an `Installer for you`_ :).
 Open up your terminal and start typing wildly:
 
 ```terminal
-$ sdfSFFOOLOOBOO
+sdfSFFOOLOOBOO
 ```
 
 Hmm, ok, that didn't work. So let's try pasting the command instead. If you
@@ -40,7 +40,7 @@ If you don't, get with it! PHP 5.3 is ancient. But anyways, make sure you
 have Apache setup and run the command at the server's document root:
 
 ```terminal
-$ curl -s https://getcomposer.org/installer | php
+curl -s https://getcomposer.org/installer | php
 ```
 
 This downloads an executable PHP file called `composer.phar`. If Composer
@@ -55,7 +55,7 @@ the last part to say `@stable`. This is the version number and `@stable`
 is a neat way of making sure we get the latest and greatest.
 
 ```terminal
-$ php composer.phar create-project symfony/framework-standard-edition starwarsevent @stable
+php composer.phar create-project symfony/framework-standard-edition starwarsevent @stable
 ```
 
 This tells Composer to download the `symfony/framework-standard-edition`
@@ -69,8 +69,8 @@ we can open a new terminal and move into the new directory. It contains a
 relatively small number of files and directories:
 
 ```terminal
-$ cd starwarsevent
-$ ls -l
+cd starwarsevent
+ls -l
 ```
 
 Second, our project depends on a bunch of 3rd-party libraries and Composer
@@ -104,8 +104,8 @@ This is just a shortcut for:
 ***
 
 ```terminal
-    $ cd web/
-    $ php -S localhost:8000
+    cd web/
+    php -S localhost:8000
 ```
 
 We now have a web server running at `http://localhost:8000`, which uses
@@ -182,7 +182,7 @@ Once you're done, set the permissions on the two cache and logs directories:
 ```
 
 ```terminal
-    $ chmod -R 777 app/cache/* app/logs/*
+    chmod -R 777 app/cache/* app/logs/*
 
 You shouldn't have any more issues, but if you do, just set the permissions
 again.
@@ -295,7 +295,7 @@ It's time to get serious, so let's get all of that demo code out of the way.
 First, take your wrecking ball to the `src/Acme` directory:
 
 ```terminal
-$ rm -rf src/Acme
+rm -rf src/Acme
 ```
 
 Next, take out the reference to the bundle in your `AppKernel` so Symfony

@@ -17,7 +17,7 @@ do it for me. Meet `console`: a magic executable file in the `app/`.
 Run it to see all of the tricks it knows:
 
 ```terminal
-$ php app/console
+php app/console
 ```
 
 Woh! All those green words are different console commands, including a lot
@@ -29,7 +29,7 @@ as any programmer geek, so we'll use a lot of these over time.
 For now run the `generate:bundle` command:
 
 ```terminal
-$ php app/console generate:bundle
+php app/console generate:bundle
 ```
 
 For the bundle namespace, type `Yoda/EventBundle`. A bundle namespace always

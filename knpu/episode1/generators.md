@@ -10,7 +10,7 @@ Want to use Doctrine to generate a CRUD? Yea, there's a console command for
 that `doctrine:generate:crud`:
 
 ```terminal
-$ php app/console doctrine:generate:crud
+php app/console doctrine:generate:crud
 ```
 
 This inquisitive command first wants to know which entity we need a CRUD for.
@@ -56,7 +56,7 @@ event_show:
 Let's run the `router:debug` command to make sure these are being loaded:
 
 ```terminal
-$ php app/console router:debug
+php app/console router:debug
 ```
 
 ```text
@@ -144,7 +144,7 @@ You can find these in the `resources` directory of the code download for this
 screencast. I already moved that directory from the code download into my project.
 
 ```terminal
-$ cp resources/Event/* src/Yoda/EventBundle/Resources/views/Event/
+cp resources/Event/* src/Yoda/EventBundle/Resources/views/Event/
 ```
 
 ### The 3-template Inheritance System

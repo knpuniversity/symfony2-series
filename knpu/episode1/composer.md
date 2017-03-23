@@ -64,7 +64,7 @@ Ok, let's download this library! We'll need the `composer.phar` file from
 earlier - just move it into the project:
 
 ```terminal
-$ cp ../composer.phar .
+cp ../composer.phar .
 ```
 
 And remember, this is just a normal file, so you can download as many of
@@ -73,7 +73,7 @@ these as you want at `GetComposer.org`_.
 Now, run `php composer.phar update` and pass it the name of the library:
 
 ```terminal
-$ php composer.phar update doctrine/doctrine-fixtures-bundle
+php composer.phar update doctrine/doctrine-fixtures-bundle
 ```
 
 This may work for a little while as Composer things really hard about dependencies.
