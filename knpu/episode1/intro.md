@@ -58,10 +58,8 @@ You've been warned!
 In this course, we've got some big goals:
 
 #. Start a new project using Symfony2;
-#. Explore the core areas, like routing, controllers, requests, responses
-   and templating;
-#. Get comfortable with a few extra tools, like Doctrine for dealing with
-   the database and code generation tools;
+#. Explore the core areas, like routing, controllers, requests, responses and templating;
+#. Get comfortable with a few extra tools, like Doctrine for dealing with the database and code generation tools;
 #. And the real reason you are here, to learn enough best practices and tips to impress your friends at a party.
 
 Ready? Let's go!
