@@ -1,30 +1,3 @@
-title:  Starting in Symfony2: Course 1 (2.4+)
-summary: |
-    Get your first Symfony2 project off on the right foot, with the right
-    tools, best practices and tips. If you're serious about getting into
-    Symfony2, this course is for you!
-
-    In this screencast, we start building a real events application from
-    the ground-up, touching on and discussing the most fundamental parts
-    of the application. Specifically, we'll cover:
-
-    * Installation, Git and Setup
-    * Composer
-    * Routing
-    * Controllers
-    * Introduction to the service container
-    * Twig
-    * Doctrine
-    * Server setup
-    * Code generation
-    * Fixtures & external libraries
-    * And other tips and tricks
-
-illustration: sf2-ep1.png
-tuts_hero:
-    start_step: "start"
-    finish_step: "MindTrick: Twig whitespace control"
-
 chapters:
     intro:
         video_key:  140195211
@@ -60,7 +33,7 @@ chapters:
         video_key:  140195225
     autoloading:
         video_key:  140195227
-    controller-shortcuts:
+    "controller-shortcuts":
         video_key:  140195228
     "mind-tricks":
         video_key:  140195230
