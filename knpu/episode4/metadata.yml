@@ -1,60 +1,29 @@
-title:  Starting in Symfony2: Course 4 (2.4+)
-summary: |
-    Welcome back for part 4 of our Starting in Symfony2 series! We've got
-    some really important topics planned and we're going to start with mastering
-    assets and the Assetic library. We'll bust cache, minimize our CSS & JS
-    files and get you ready to do just about anything with your static assets.
-    We'll also dive much deeper into form rendering - customizing our forms
-    to work with Twitter Bootstrap and learning a lot more about the powerful
-    and advanced mechanisms behind form theming. Finally, we'll cover deployment:
-    what steps are always necessary and some options for automating the process.
-    Let's do this!
-
-    Highlights:
-
-    * The Twig asset function
-    * More about Dependency Injection Parameters and the purpose of parameters.yml
-    * Cache busting with assets_version and assets_version_format
-    * Introduction to Assetic
-    * Assetic filters, including cssrewrite, cssmin and the apply_to option
-    * Dumping assets in the prod and dev environments and the secret of turning use_controllers to false
-    * The basics of form customization and theming
-    * FormView "variables" - what they are and how you can use them to do just about anything while customizing how a form renders
-    * Using the finishView to control FormView "variables"
-    * The steps and best practices for deployment with tips on automating the process
-
-illustration: sf2-ep4.png
-videoDownloadExtension: mov
-tuts_hero:
-    start_step:  "DoctrineListener: Adding recomputeSingleEntityChangeSet"
-    finish_step: "Paramters: Adding a new one"
-
 chapters:
-    intro:
+    "intro":
         is_free:    true
         video_key:  140210042
-    assets:
+    "assets":
         is_free:    true
         video_key:  140210039
-    bust-browser-cache-and-cdns:
+    "bust-browser-cache-and-cdns":
         video_key:  140210037
-    assetic:
+    "assetic":
         video_key:  140210038
-    assetic-combination:
+    "assetic-combination":
         video_key:  140210040
-    minify-css-uglify:
+    "minify-css-uglify":
         video_key:  140210041
     "form-customizations":
         video_key:  140210043
-    bootstrap-form-errors:
+    "bootstrap-form-errors":
         video_key:  140210049
-    form-input-label-customizations:
+    "form-input-label-customizations":
         video_key:  140210050
     "more-form-customizations":
         video_key:  140210044
-    service-parameters:
+    "service-parameters":
         video_key:  140210045
-    deployment:
+    "deployment":
         video_key:  140210047
-    goodbye:
+    "goodbye":
         video_key:  140210052
