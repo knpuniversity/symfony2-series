@@ -41,7 +41,7 @@ so that *only* files inside it are accessible via your browser. Oh, and the
 in the `web/` directory.
 
 ***TIP
-For more information, or to see Nginx configuration, see `Configuring a Web Server`_.
+For more information, or to see Nginx configuration, see [Configuring a Web Server][Configuring a Web Server].
 ***
 
 Now, restart Apache. Yep, this command *also* varies across systems:

@@ -6,8 +6,8 @@ This tutorial has been upgraded! Check out the [Symfony 3 Controllers][Symfony 3
 
 3 steps. That's all that's behind rendering a page:
 
-#. The URL is compared against the routes until one matches;
-#. Symfony reads the `_controller` key and executes that function;
+#. The URL is compared against the routes until one matches.
+#. Symfony reads the `_controller` key and executes that function.
 #. We build the page inside the function.
 
 The controller is all about us, it's where we shine. Whether the page is
@@ -85,7 +85,7 @@ public function indexAction($count, $firstName)
 Now our browser displays the JSON string.
 
 ***TIP
-There is also a `JsonResponse`_ object that makes this even easier.
+There is also a [JsonResponse][JsonResponse] object that makes this even easier.
 ***
 
 Wait. There *is* one problem. By using my browser's developer tools, I can
@@ -125,8 +125,6 @@ Instead, Symfony offers you an optional tool that renders template files.
 
 Before that, we should take on another buzzword: services. These are even
 trendier than bundles!
-
-.. _symfony-ep1-what-is-a-service:
 
 ### Symfony Services
 
@@ -207,9 +205,11 @@ three parts:
 EventBundle:Default:index.html.twig
 
 src/Yoda/EventBundle/Resources/views/Default/index.html.twig
-```
+``[
 
-This looks like the `_controller` syntax we saw in routes, but don't mix
+This looks like the ][
+
+This looks like the ]controller` syntax we saw in routes, but don't mix
 them up. Seriously, one points to a controller class & method. This one points
 to a template file.
 
@@ -280,7 +280,7 @@ class DefaultController extends Controller
 Better. Now let's do less. Our controller class extends Symfony's own base
 controller. That's optional, but it gives us shortcuts.
 
-`Open up the base class`_, I'm using a "go to file" shortcut in my editor to
+[Open up the base class][Open up the base class], I'm using a "go to file" shortcut in my editor to
 search for the `Controller.php` file.
 
 One of its shortcut is the `render` method. Wait, this does exactly what

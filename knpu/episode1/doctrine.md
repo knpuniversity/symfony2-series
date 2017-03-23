@@ -7,7 +7,7 @@ raw SQL queries, that's great! When we create services in [Episode 3][Episode 3]
 learn some life-saving strategies to organize something like this.
 
 But most people that use Symfony use a third-party library called Doctrine.
-It has its own [website and documentation][website and documentation], though `Symfony's Doctrine documentation`_
+It has its own [website and documentation][website and documentation], though [Symfony's Doctrine documentation][Symfony's Doctrine documentation]
 is a lot friendlier.
 
 In a nutshell, Doctrine maps rows and columns in your database to objects
@@ -49,7 +49,7 @@ again. Nothing happens until it finishes.
 
 ***TIP
 All of the Doctrine data types are explained in their documentation:
-`Doctrine Mapping Types`_.
+[Doctrine Mapping Types][Doctrine Mapping Types].
 ***
 
 Say "yes" for the repository class and confirm generation. A repository is

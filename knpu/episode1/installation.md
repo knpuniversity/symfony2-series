@@ -16,7 +16,7 @@ Not familiar with Composer? Get spun up by going through the free
 [The Wonderful World of Composer][The Wonderful World of Composer] tutorial.
 ***
 
-We're going to use a tool called `Composer`_ to get the project started.
+We're going to use a tool called [Composer][Composer] to get the project started.
 Composer is PHP's package manager. That's a way of saying that it downloads
 external libraries into our project. Oh yea, and it's also the most important
 PHP innovation in years.
@@ -25,7 +25,7 @@ To get it, go to - you guessed it - GetComposer.org and click Download. Dependin
 on whether you have `curl` installed, copy one of the two install lines.
 
 ***TIP
-If you're using Windows, someone made an `Installer for you`_ :).
+If you're using Windows, someone made an [Installer for you][Installer for you] :).
 ***
 
 Open up your terminal and start typing wildly:
@@ -188,7 +188,7 @@ You shouldn't have any more issues, but if you do, just set the permissions
 again.
 
 This method *can* be a security issue if you're deploying to a shared
-server. Check out Symfony's `installation chapter`_ for details on other
+server. Check out Symfony's [installation chapter][installation chapter] for details on other
 ways to setup your permissions.
 ```
 
@@ -260,7 +260,7 @@ we'll ever need at this point.
 
 ***TIP
 Curious about the secrets behind Composer and this `bin/` directory.
-Then do some `homework`_!
+Then do some [homework][homework]!
 ***
 
 ### src

@@ -286,8 +286,8 @@ not easy. In the next 2 episodes, we'll create custom queries and use cool
 things like events that let you "hook" into Doctrine as entities are inserted,
 updated or removed from the database.
 
-Oh, and don't forget `Doctrine has its own documentation`_, though the most
-helpful pages are the [Annotations Reference][Annotations Reference] and `Doctrine Mapping Types`_
+Oh, and don't forget [Doctrine has its own documentation][Doctrine has its own documentation], though the most
+helpful pages are the [Annotations Reference][Annotations Reference] and [Doctrine Mapping Types][Doctrine Mapping Types]
 reference pages. And by the way, when you see annotations in the Doctrine
 docs, prefix them with `@ORM\` before putting them in Symfony. That's
 because of this `use` statement above our entity:

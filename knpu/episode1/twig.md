@@ -97,7 +97,7 @@ Hello <strong>{{ name|upper }}</strong> # {{ i }}!<br/>
 ```
 
 If you're used to piping things together in a UNIX terminal, this works the
-same way. Back on the `Documentation page`_, you'll find a big list of filters,
+same way. Back on the [Documentation page][Documentation page], you'll find a big list of filters,
 You can even use filters on top of filters.
 
 Twig also has functions and a cool thing called tests, which lets you write
@@ -105,7 +105,7 @@ things like `{% if i is odd %}`. But that's all just extra fun stuff.
 
 ***TIP
 If you want to get deeper with these types of tricks or want to help
-your frontend designer get started, check out our `Twig Screencast`_.
+your frontend designer get started, check out our [Twig Screencast][Twig Screencast].
 ***
 
 ## Extending a Base Layout
@@ -210,7 +210,7 @@ change their names or add some more to have an even more flexible layout.
 
 ***TIP
 Yes, you can also append to a block instead of replacing it. This is
-done with `parent()`_ and we chat about it in `Episode 2`_.
+done with `parent()`_ and we chat about it in [Episode 2][Episode 2].
 ***
 
 ## ::base.html.twig Naming

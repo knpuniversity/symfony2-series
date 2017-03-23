@@ -34,7 +34,7 @@ from the documentation and paste it at the end of your `require` key:
 ```
 
 Each library has two parts: its name and the version you want. The name comes
-from a site called `Packagist.org`_. You can find almost any PHP library
+from a site called [Packagist.org][Packagist.org]. You can find almost any PHP library
 here and the versions available.
 
 ### Finding the right Version
@@ -42,7 +42,7 @@ here and the versions available.
 But using `dev-master` stinks. This tells Composer to grab the latest commit
 to the master branch, whatever craziness that may be.
 
-Go back to the `library's page on Packagist`_: anything without the `dev`
+Go back to the [library's page on Packagist][library's page on Packagist]: anything without the `dev`
 at the end is a stable version. For me, the latest is `2.2.0`. Let's use
 that, but add a `~` to the front of it:
 
@@ -56,7 +56,7 @@ that, but add a `~` to the front of it:
 ```
 
 With the tilde, this really means `2.2.*`. Composer explains the different
-version formats really well on their site (`Package Versions`_).
+version formats really well on their site ([Package Versions][Package Versions]).
 
 ## Installing with Composer
 
@@ -68,7 +68,7 @@ cp ../composer.phar .
 ```
 
 And remember, this is just a normal file, so you can download as many of
-these as you want at `GetComposer.org`_.
+these as you want at [GetComposer.org][GetComposer.org].
 
 Now, run `php composer.phar update` and pass it the name of the library:
 

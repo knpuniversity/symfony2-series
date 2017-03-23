@@ -69,7 +69,7 @@ is removed. The end result is a title tag, with no whitespace at all:
 ```
 
 Wow! Congrats on finishing the first episode! You're well on your way with
-Symfony, so keep going with `Episode 2`_ and start practicing on a project.
+Symfony, so keep going with [Episode 2][Episode 2] and start practicing on a project.
 
 Seeya next time!
 

@@ -123,7 +123,7 @@ files:
 
 When we refresh, everything still looks the same. BUT, we've laid the foundation
 for being able to do things like use SASS and combining everything into 1
-file for speed. We talk about Assetic more in `Episode 4`_.
+file for speed. We talk about Assetic more in [Episode 4][Episode 4].
 
 [Twig asset function]: http://symfony.com/doc/current/reference/twig_reference.html#functions
 [Episode 2]: http://knpuniversity.com/screencast/symfony2-ep2/basic-security#adding-css-to-a-single-page

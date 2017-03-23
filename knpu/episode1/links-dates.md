@@ -70,7 +70,7 @@ when we created an event. To actually render that as a string, we use Twig's
 ```
 
 It transforms dates into another format and the string we pass to it is from
-PHP's good ol' fashioned `date function formats`_.
+PHP's good ol' fashioned [date function formats][date function formats].
 
 [PHP DateTime object]: http://www.php.net/manual/en/class.datetime.php
 [date filter]: http://twig.sensiolabs.org/doc/filters/date.html
