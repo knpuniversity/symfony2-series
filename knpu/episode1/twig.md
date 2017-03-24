@@ -232,7 +232,7 @@ the second part is missing too, it means it lives directly there, and not
 in a subdirectory.
 
 ***TIP
-##    Template name and path examples
+##Template name and path examples
 
 * `EventBundle:Default:index.html.twig`
 

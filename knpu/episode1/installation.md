@@ -153,7 +153,7 @@ page with some tips.
 
 
 ***TIP
-##    Fixing Permissions Issues
+##Fixing Permissions Issues
 
 The easiest permissions fix is to add a little `umask` function to
 the top of 2 files. Pop open your project in your favorite editor, we
@@ -176,7 +176,8 @@ umask(0000);
 Once you're done, set the permissions on the two cache and logs directories:
 
 ```terminal
-    chmod -R 777 app/cache/* app/logs/*
+chmod -R 777 app/cache/* app/logs/*
+```
 
 You shouldn't have any more issues, but if you do, just set the permissions
 again.
@@ -184,7 +185,6 @@ again.
 This method *can* be a security issue if you're deploying to a shared
 server. Check out Symfony's [installation chapter][installation chapter] for details on other
 ways to setup your permissions.
-```
 
 ***
 
