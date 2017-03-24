@@ -231,9 +231,9 @@ the template lives in the `*app*/Resources/views` directory. And since
 the second part is missing too, it means it lives directly there, and not
 in a subdirectory.
 
-.. sidebar:
+***TIP
+###Template name and path examples
 
-```phpTemplate name and path examples
 * `EventBundle:Default:index.html.twig`
 
     src/Yoda/EventBundle/Resources/views/Default/index.html.twig
@@ -245,7 +245,8 @@ in a subdirectory.
 * `::base.html.twig`
 
         app/Resources/views/index.html.twig
-```
+
+***
 
 ## Web Debug Toolbar
 

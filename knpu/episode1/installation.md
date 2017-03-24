@@ -152,36 +152,38 @@ If you're using Apache or *are* having issues, check out the sidebar on this
 page with some tips.
 
 
-.. sidebar:
+***TIP
+###Fixing Permissions Issues
 
-```phpFixing Permissions Issues
 The easiest permissions fix is to add a little `umask` function to
 the top of 2 files. Pop open your project in your favorite editor, we
 *love* PhpStorm.
 
 Open up `app/console` and `web/app_dev.php`. You'll see a little
 `umask` line there - uncomment this:
-```
 
 ```php
-    #!/usr/bin/env php
-    <?php
+#!/usr/bin/env php
+<?php
 
-    umask(0000);
-    // ...
+umask(0000);
+// ...
+```
 
 .. note:
-```
 
 ```php
-    What the heck? The `umask` function makes it so that cache and logs
-    files are created as 777 (world writable).
-
-Once you're done, set the permissions on the two cache and logs directories:
+What the heck? The `umask` function makes it so that cache and logs
+files are created as 777 (world writable).
 ```
 
-```terminal
-    chmod -R 777 app/cache/* app/logs/*
+Once you're done, set the permissions on the two cache and logs directories:
+
+.. code-block:
+
+```phpbash
+$ chmod -R 777 app/cache/* app/logs/*
+```
 
 You shouldn't have any more issues, but if you do, just set the permissions
 again.
@@ -189,7 +191,8 @@ again.
 This method *can* be a security issue if you're deploying to a shared
 server. Check out Symfony's [installation chapter][installation chapter] for details on other
 ways to setup your permissions.
-```
+
+***
 
 ## Loading up the First Page
 
