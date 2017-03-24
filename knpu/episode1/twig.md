@@ -244,7 +244,7 @@ in a subdirectory.
 
 * `::base.html.twig`
 
-        app/Resources/views/index.html.twig
+    app/Resources/views/index.html.twig
 
 ***
 
