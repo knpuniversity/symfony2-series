@@ -38,7 +38,7 @@ new Event();
 
 If we run `play.php` now, it fails big:
 
-    Class 'Yoda\EventBundle\Entity\Event' not found
+> Class `Yoda\EventBundle\Entity\Event` not found
 
 The autoloader is looking for an `Entity` directory. Rename the directory
 back to `Entity` to fix things.

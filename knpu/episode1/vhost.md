@@ -52,18 +52,20 @@ sudo /opt/local/apache2/bin/apachectl restart
 
 ***TIP
 In Ubuntu, the command is:
-***
 
 ```terminal
-    sudo service apache2 restart
+sudo service apache2 restart
 ```
+***
 
 Finally, we need to add a hosts entry to `/etc/hosts`:
 
-    # /etc/hosts
-    # ...
+```text
+# /etc/hosts
+# ...
 
-    127.0.0.1   events.l
+127.0.0.1   events.l
+```
 
 This points `events.l` right back at our local computer. And this file
 is always at the same location... except for windows.
@@ -76,7 +78,7 @@ chapter for details on how to fix this.
 The 404 error is fine, because we don't have a homepage yet. Add the path to
 the page we've been working on after `app_dev.php` to see it:
 
-    http://events.l/app_dev.php/hello/skywalker/5
+> http://events.l/app_dev.php/hello/skywalker/5
 
 ## The dev and prod Environments
 
@@ -90,7 +92,7 @@ The other environment is `prod` and it kicks butt by being fast and by
 turning off debugging tools. To run the app in the `prod` environment,
 switch the URL from `app_dev.php` to `app.php`:
 
-    http://events.l/app.php/hello/skywalker/5
+> http://events.l/app.php/hello/skywalker/5
 
 What!? 404 page! Outrageous!
 
@@ -121,7 +123,7 @@ If you haven't properly `fixed your permissions <ep1-install-permissions>` yet, 
 
 Refresh the page to see your functional page in the `prod` environment:
 
-    http://events.l/hello/skywalker/5
+> http://events.l/hello/skywalker/5
 
 Awesome! But I thought we had put `app.php` in the URL. Where did it go?
 Our project came with a `web/.htaccess` file that have 2 pieces of goodness
@@ -160,6 +162,7 @@ RewriteRule ^app\.php(/(.*)|$) %{ENV:BASE}/$2 [R=301,L]
 
 The `prod` environment is only useful after you deploy. So let's get back to the `dev`
 environment so we can see errors.
+
 
 [page]: http://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
 [Configuring a Web Server]: http://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html

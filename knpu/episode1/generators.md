@@ -164,9 +164,11 @@ Let's create this template. The middle piece of the 3-part template syntax
 is missing, which tells us that this will live directly in the `Resources/views`
 directory of our bundle, and not in a sub-directory:
 
-    {# src/Yoda/EventBundle/Resources/views/layout.html.twig #}
+```jinja
+{# src/Yoda/EventBundle/Resources/views/layout.html.twig #}
 
-    create this file... but nothing here yet...
+Create this file... but nothing here yet...
+```
 
 Inside the new template, simply extend `::base.html.twig`:
 

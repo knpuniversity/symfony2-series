@@ -51,7 +51,7 @@ into as few queries as possible.
 
 Now, when we execute our play script, it blows up!
 
-  PDOException: SQLSTATE[42000] [1049] Unknown database 'symfony'
+> PDOException: SQLSTATE\[42000\]\[1049\] Unknown database 'symfony'
 
 Scroll up to see the error message: "Unknown database symfony". Duh! We skipped
 one important step: setting up the database config.
@@ -129,7 +129,7 @@ $event->setTime(new \DateTime('tomorrow noon'));
 When we run the script, another explosion! Scrolling up, the error straight
 from MySQL saying that the `details` column can't be null.
 
-  SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'details' cannot be null
+> SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'details' cannot be null
 
 So Doctrine assumes by default that all of your columns should be set to `NOT NULL`
 when creating the table. To change this, add a `nullable` option to the `details`
@@ -220,12 +220,14 @@ syntax we used when we generated the entity - it's like the entity's nickname.
 ***TIP
 If you like typing, you can use the full class name anywhere the entity
 "alias" is used:
+
+```php
+$em->getRepository('Yoda\EventBundle\Entity\Event');
+```
 ***
 
-        $em->getRepository('Yoda\EventBundle\Entity\Event');
-
-Use the repository's `findOneBy` method to get an `Event` object by name.
-There are other shortcut methods too, like `findAll`, `findBy`, and `find`:
+Use the repository's `findOneBy()` method to get an `Event` object by name.
+There are other shortcut methods too, like `findAll()`, `findBy()`, and `find()`:
 
 ```php
 // src/Yoda/EventBundle/Controller/DefaultController.php
@@ -262,7 +264,7 @@ custom queries.
 
 Ok - let's pass the Event object into the template as a variable. We can
 use Twig's render syntax to print out the name and location properties. Internally,
-Twig is smart enough to call `getName` and `getLocation`, since the properties
+Twig is smart enough to call `getName()` and `getLocation()`, since the properties
 are private:
 
 ```html+jinja
@@ -286,11 +288,11 @@ not easy. In the next 2 episodes, we'll create custom queries and use cool
 things like events that let you "hook" into Doctrine as entities are inserted,
 updated or removed from the database.
 
-Oh, and don't forget [Doctrine has its own documentation][Doctrine has its own documentation], though the most
-helpful pages are the [Annotations Reference][Annotations Reference] and [Doctrine Mapping Types][Doctrine Mapping Types]
-reference pages. And by the way, when you see annotations in the Doctrine
-docs, prefix them with `@ORM\` before putting them in Symfony. That's
-because of this `use` statement above our entity:
+Oh, and don't forget [Doctrine has its own documentation][Doctrine has its own documentation],
+though the most helpful pages are the [Annotations Reference][Annotations Reference]
+and [Doctrine Mapping Types][Doctrine Mapping Types] reference pages. And by the way,
+when you see annotations in the Doctrine docs, prefix them with `@ORM\` before putting
+them in Symfony. That's because of this `use` statement above our entity:
 
 ```php
 // src/Yoda/EventBundle/Entity/Event.php
@@ -300,6 +302,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 If that's in your class and you have `@ORM\` at the start of all of your
 Doctrine annotations, you're killing it.
+
 
 [Doctrine has its own documentation]: http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/index.html
 [Annotations Reference]: http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/annotations-reference.html

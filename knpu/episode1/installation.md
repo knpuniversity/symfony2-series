@@ -1,7 +1,7 @@
 # Downloading & Configuration
 
 ***SEEALSO
-This tutorial has been upgraded! Check out the [Symfony 3 Installation][Symfony 3 Installation]
+This tutorial has been upgraded! Check out the [Symfony 3 Installation][Symfony 3 Installation].
 ***
 
 Ok, let's get Symfony downloaded and setup. Head over to [symfony.com](http://symfony.com/) and
@@ -92,8 +92,8 @@ We need to navigate to this script in our browser. So if you have PHP 5.4
 or higher, just use the built-in PHP web server. Run this command from the
 root of our project:
 
-```text
-$ php app/console server:run
+```terminal
+php app/console server:run
 ```
 
 If you get an error or are using Apache, we have a note on this chapter's
@@ -101,26 +101,30 @@ page about all that.
 
 ***TIP
 This is just a shortcut for:
-***
 
 ```terminal
-    cd web/
-    php -S localhost:8000
+cd web/
+php -S localhost:8000
 ```
+***
 
 We now have a web server running at `http://localhost:8000`, which uses
 the `web/` directory as its doc root. We can just surf directly to the
 `config.php` file:
 
-    http://localhost:8000/config.php
+```text
+http://localhost:8000/config.php
+```
 
 ***TIP
 If you're using Apache instead and downloaded the project to your Apache
 document root, then you can go to "localhost" and find your way to the
 `config.php` script:
-***
 
-        http://localhost/starwarsevents/web/config.php
+```text
+http://localhost/starwarsevents/web/config.php
+```
+***
 
 We'll talk more about a proper web server setup later.
 
@@ -153,9 +157,9 @@ page with some tips.
 
 
 ***TIP
-##Fixing Permissions Issues
+## Fixing Permissions Issues
 
-The easiest permissions fix is to add a little `umask` function to
+The easiest permissions fix is to add a little `umask()` function to
 the top of 2 files. Pop open your project in your favorite editor, we
 *love* PhpStorm.
 
@@ -183,8 +187,8 @@ You shouldn't have any more issues, but if you do, just set the permissions
 again.
 
 This method *can* be a security issue if you're deploying to a shared
-server. Check out Symfony's [installation chapter][installation chapter] for details on other
-ways to setup your permissions.
+server. Check out Symfony's [installation chapter][installation chapter]
+for details on other ways to setup your permissions.
 
 ***
 
@@ -326,7 +330,7 @@ Refresh your browser. Yes, an error! No, I'm serious, this is good - it's
 telling us that the page can't be found. The demo page that was here a second
 ago is gone. Congratulations on your completely fresh Symfony project.
 
-## Setting up git
+## Setting up Git
 
 Let's make our first commit! We're going to use git but not much is different
 if you use something else. If you don't use version control, shame!
@@ -335,13 +339,13 @@ If you already have a `.git` directory, get rid of it! Otherwise, you'll
 inherit the history from Symfony's standard distribution, which is about
 1000 commits.
 
-```text
+```terminal
 $ rm -rf .git
 ```
 
 Create a new repository with `git init`:
 
-```text
+```terminal
 $ git init
 ```
 
@@ -371,7 +375,7 @@ and **bam**, their `vendor/` directory looks just like yours.
 Everything is being ignored nicely so let's go crazy and add everything to
 git and commit:
 
-```text
+```terminal
 git add .
 git commit -m "It's a celebration!!!!!!!"
 ```
@@ -384,6 +388,7 @@ files, don't run try to avoid running `git add .`, or at least run
 
 Find some friends! It's time to celebrate the first to your awesome project.
 Do some jumping high fives, grab a pint, and make a Chewbacca cry.
+
 
 [Composer]: https://getcomposer.org/
 [Installer for you]: https://getcomposer.org/doc/00-intro.md#installation-windows

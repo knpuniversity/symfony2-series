@@ -1,7 +1,7 @@
 # Routing: The URLs of the World
 
 ***SEEALSO
-This tutorial has been upgraded! Check out the [Symfony 3 Routing][Symfony 3 Routing]
+This tutorial has been upgraded! Check out the [Symfony 3 Routing][Symfony 3 Routing].
 ***
 
 Let's face it, every page needs a URL. When you need a new page, we always
@@ -10,7 +10,7 @@ In Symfony, all routes are configured in just one file: `app/config/routing.yml`
 
 Head back to your browser and put `/hello/skywalker` after `app_dev.php`:
 
-  http://localhost:8000/app_dev.php/hello/skywalker
+> http://localhost:8000/app_dev.php/hello/skywalker
 
 The code behind this impressive page was generated automatically in the new
 bundle. You can change the last part of the URL to anything you want and
@@ -79,7 +79,7 @@ event_homepage:
 Update the URL in your browser to see the moved page (and then be cool and
 change the `pattern` back to `/hello/{name}`):
 
-  http://localhost:8000/app_dev.php/there-is-another/skywalker
+> http://localhost:8000/app_dev.php/there-is-another/skywalker
 
 ### path versus pattern: no difference
 
@@ -123,7 +123,7 @@ In reality, it's a top-secret syntax with three different parts:
 
 Symfony maps this to a controller class and method:
 
-```text
+```yaml
 _controller: **EventBundle**:**Default**:**index**
 
 src/Yoda/**EventBundle**/Controller/**Default**Controller::**index** Action()
@@ -136,7 +136,7 @@ Notice that Symfony adds the word `Controller` to the end of the class,
 and `Action` to the end of the method name. You'll probably hear the method
 name referred to as an "action".
 
-Open up the controller class and find the `indexAction` method:
+Open up the controller class and find the `indexAction()` method:
 
 ```php
 // src/Yoda/EventBundle/Controller/DefaultController.php
@@ -210,7 +210,7 @@ When we refresh, we get a "No route found" error. We need to put *something*
 for the `count` wildcard, other wise it won't match our route. Add `/5`
 to the end to see the page:
 
-  http://localhost:8000/app_dev.php/hello/skywalker/5
+> http://localhost:8000/app_dev.php/hello/skywalker/5
 
 Now that we have a `count` wildcard in the route, we can of course add
 a `$count` argument to the action:
@@ -254,7 +254,7 @@ Routing is full of lots of cool tricks and we'll discover them along the way.
 Wondering what other URLs your app might have? Our friend console can help
 you with that with the `router:debug` command:
 
-```text
+```terminal
 $ php app/console router:debug
 ```
 
@@ -262,5 +262,6 @@ This shows a full list of every route in your app. Right now, that means
 the one we've been playing with plus a few other internal Symfony debugging
 routes. Remember this command: it's your Swiss army knife for finding your
 way through a project.
+
 
 [Symfony 3 Routing]: http://knpuniversity.com/screencast/symfony/first-page

@@ -68,9 +68,11 @@ This works too! Now we're talking.
 If we don't pass a template name, it guesses it from the controller and action
 name:
 
-    Controller: EventBundle:Event:index
+```text
+Controller: EventBundle:Event:index
 
-    Template: EventBundle:Event:index.html.twig
+Template: EventBundle:Event:index.html.twig
+```
 
 ### Annotation use Statements
 
@@ -78,8 +80,8 @@ Let's talk about the `use` statement we pasted in. Whenever you use an
 annotation, you *must* have a `use` statement for it. If you don't, you'll
 see a nice exception:
 
-    [SemanticalError] The annotation "@Template" in method .. was never imported.
-    Did you maybe forget to add a "use" statement for this annotation?
+> [SemanticalError] The annotation "@Template" in method .. was never imported.
+> Did you maybe forget to add a "use" statement for this annotation?
 
 We actually saw this already in our `Event` entity. It was generated for
 us, but it has a `use` statement for its `ORM` annotation.
@@ -88,7 +90,7 @@ us, but it has a `use` statement for its `ORM` annotation.
 
 What else can we do with annotations? How about routing?
 
-On the docs, go back and click the `@Route and @Method`_ link. Copy the `use`
+On the docs, go back and click the `@Route and @Method` link. Copy the `use`
 statement into the controller and put an `@Route` annotation above `indexAction`:
 
 ```php
@@ -138,19 +140,23 @@ BUT, things are not as they seem. Check out the web debug toolbar. It says
 that the `event` route is being matched. Now, run the `router:debug`
 console task. Uh oh, we have *two* routes with identical paths:
 
-    event                    ANY         ANY    ANY  /
-    ...
-    yoda_event_event_index   ANY         ANY    ANY  /
+```text
+event                    ANY         ANY    ANY  /
+...
+yoda_event_event_index   ANY         ANY    ANY  /
+```
 
 The first route is from `event.yml` and the second is from our annotations
 where Symfony generates a name automatically by default. When two routes
 have the same path, the *first* route matches. So let's remove the first
 one in `event.yml`:
 
-    # src/Yoda/EventBundle/Resources/config/routing/event.yml
-    # event:
-    #     pattern:  /
-    #     defaults: { _controller: "EventBundle:Event:index" }
+```yaml
+# src/Yoda/EventBundle/Resources/config/routing/event.yml
+# event:
+#     pattern:  /
+#     defaults: { _controller: "EventBundle:Event:index" }
+```
 
 *Now* when we refresh, it works *and* our route is matched.
 
@@ -176,6 +182,7 @@ public function indexAction()
 
 And just like that, life is good. For homework, read through these docs and
 see what other cool things you can do.
+
 
 [SensioFrameworkExtraBundle]: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
 [@Route and @Method]: http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/routing.html

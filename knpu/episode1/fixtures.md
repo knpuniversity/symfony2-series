@@ -29,10 +29,10 @@ A fixture is just a PHP class that puts some stuff into the database.
 Create a new file in the `DataFixtures\ORM` directory of your bundle. Let's
 call it `LoadEvents.php`, though the name doesn't matter.
 
-    Create a src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php file.
+Create an `src/Yoda/EventBundle/DataFixtures/ORM/LoadEvents.php` file.
 
-To breathe life into this, copy and paste [the example from the docs][the example from the docs]. Change
-the namespace above the class to match our project. Notice that the namespace
+To breathe life into this, copy and paste [the example from the docs][the example from the docs].
+Change the namespace above the class to match our project. Notice that the namespace
 always follows the directory structure of the file:
 
 ```php
@@ -98,5 +98,6 @@ inserts the fixtures in a fresh state.
 ***TIP
 If you'd rather add to the existing data, just pass the `--append` option.
 ***
+
 
 [the example from the docs]: http://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html#writing-simple-fixtures

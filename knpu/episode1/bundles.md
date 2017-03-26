@@ -72,4 +72,5 @@ this is totally *not* needed, it just adds some shortcuts.
 Once it's installed, you need to activate it. We're now super-charged with
 a ton of Symfony-specific help. You'll see this along the way.
 
+
 [Symfony plugin]: http://plugins.jetbrains.com/plugin/7219?pr=phpStorm

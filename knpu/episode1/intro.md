@@ -1,7 +1,7 @@
 # Welcome to Symfony!
 
 ***SEEALSO
-This tutorial has been upgraded! Check out the [Symfony 3 Tutorial][Symfony 3 Tutorial]
+This tutorial has been upgraded! Check out the [Symfony 3 Tutorial][symfony3].
 ***
 
 PHP has been on a wild ride over the past few years, with new things like
@@ -12,14 +12,14 @@ on a path to building great applications.
 
 Let's look at some facts:
 
-**Symfony is a component library**
+### Symfony is a component library
 
 This means that you can use any part of it in *any* PHP project, even that
 ugly legacy app they make you work. We could use Symfony's Router component
-to give it flexible URLs. Oh, and a lot of other projects [use parts of Symfony][use parts of Symfony],
+to give it flexible URLs. Oh, and a lot of other projects [use parts of Symfony][symfony_projects],
 like Drupal, Laravel
 
-**Symfony is also a "framework"**
+### Symfony is also a "framework"
 
 And because we don't have time to worry about putting a bunch of libraries
 together, we have the Symfony framework. This is a "suggestion" of how
@@ -33,14 +33,14 @@ I know what you're wondering: should I use the Symfony framework or this
 Silex guy? Use them both. Because they both use the same pieces, when you're
 done with this course, you'll be a certifiable Silex expert.
 
-**Symfony plays nice with others**
+### Symfony plays nice with others
 
 Yep, Symfony tries to be as boring as possible by following widely-used standards.
 This makes it effortless to include and use other libraries in your project.
 Want to use a component of Zend Framework? We can do that with just a little
 bit of configuration.
 
-**Symfony is one of the top 3 most watched PHP projects on GitHub**
+### Symfony is one of the top 3 most watched PHP projects on GitHub
 
 Clearly, you won't be lonely! There's a lot of us out there working with it.
 
@@ -57,12 +57,16 @@ You've been warned!
 
 In this course, we've got some big goals:
 
-#. Start a new project using Symfony2.
-#. Explore the core areas, like routing, controllers, requests, responses and templating.
-#. Get comfortable with a few extra tools, like Doctrine for dealing with the database and code generation tools.
-#. And the real reason you are here, to learn enough best practices and tips to impress your friends at a party.
+1. Start a new project using Symfony2.
+2. Explore the core areas, like routing, controllers, requests, responses and
+   templating.
+3. Get comfortable with a few extra tools, like Doctrine for dealing with
+   the database and code generation tools.
+4. And the real reason you are here, to learn enough best practices and tips
+   to impress your friends at a party.
 
 Ready? Let's go!
 
-[use parts of Symfony]: http://symfony.com/projects
-[Symfony 3 Tutorial]: http://knpuniversity.com/screencast/symfony/start-project
+
+[symfony_projects]: http://symfony.com/projects
+[symfony3]: http://knpuniversity.com/screencast/symfony/start-project

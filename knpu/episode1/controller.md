@@ -1,14 +1,14 @@
 # Controllers: Get to work!
 
 ***SEEALSO
-This tutorial has been upgraded! Check out the [Symfony 3 Controllers][Symfony 3 Controllers]
+This tutorial has been upgraded! Check out the [Symfony 3 Controllers][Symfony 3 Controllers].
 ***
 
 3 steps. That's all that's behind rendering a page:
 
-#. The URL is compared against the routes until one matches.
-#. Symfony reads the `_controller` key and executes that function.
-#. We build the page inside the function.
+1. The URL is compared against the routes until one matches.
+2. Symfony reads the `_controller` key and executes that function.
+3. We build the page inside the function.
 
 The controller is all about us, it's where we shine. Whether the page is
 HTML, JSON or a redirect, we make that happen in this function. We might
@@ -326,7 +326,7 @@ in your app.
 Oh right, I haven't told you what services there are! For this, go back to
 our friend console and run the `container:debug` command:
 
-```text
+```terminal
 $ php app/console container:debug
 ```
 
@@ -334,6 +334,7 @@ It lists every single service available, as well as what type of object it
 returns. Color you dangerous.
 
 Ok, onto the curly world of Twig!
+
 
 [free screencast on the topic]: http://knpuniversity.com/screencast/php-namespaces-in-120-seconds
 [JsonResponse]: http://symfony.com/doc/current/components/http_foundation/introduction.html#creating-a-json-response

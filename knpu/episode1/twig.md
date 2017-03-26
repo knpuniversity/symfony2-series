@@ -203,26 +203,28 @@ now, just add a `title` block to `index.html.twig`.
 
 And to be even lazier, there's a shorter syntax for simple blocks like this:
 
-    {% block title 'Some Twiggy Goodness' %}
+```html+jinja
+{% block title 'Some Twiggy Goodness' %}
+```
 
 The blocks ones in `base.html.twig` are just suggestions, feel free to
 change their names or add some more to have an even more flexible layout.
 
 ***TIP
 Yes, you can also append to a block instead of replacing it. This is
-done with `parent()`_ and we chat about it in [Episode 2][Episode 2].
+done with `parent()` and we chat about it in [Episode 2][Episode 2].
 ***
 
-## ::base.html.twig Naming
+## "::base.html.twig" Naming
 
 The `::base.html.twig` filename looks weird. But it's actualy the exact
 same syntax we're using in our controller, just in disguise!
 
 Remember that a template name always has three parts:
 
-* the bundle name
-* a subdirectory
-* and the template filename
+* The bundle name
+* A subdirectory
+* And the template filename
 
 In this case, the bundle name and subdirectory are just missing. When a template
 name *has* the bundle part, it means the template lives in the `Resources/views`
@@ -264,6 +266,7 @@ Click anywhere on it to multiply the amount of information it gives you by
 is the Timeline. It visually tells us *exactly* what's going on during a
 request and how much time everything is taking. A lot of what you see here
 are background Symfony events.
+
 
 [Twig]: http://twig.sensiolabs.org/doc/tags/index.html#tags
 [Twig's Documentation page]: http://twig.sensiolabs.org/documentation
