@@ -327,7 +327,7 @@ Oh right, I haven't told you what services there are! For this, go back to
 our friend console and run the `container:debug` command:
 
 ```terminal
-$ php app/console container:debug
+php app/console container:debug
 ```
 
 It lists every single service available, as well as what type of object it

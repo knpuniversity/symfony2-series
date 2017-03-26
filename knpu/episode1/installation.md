@@ -340,13 +340,13 @@ inherit the history from Symfony's standard distribution, which is about
 1000 commits.
 
 ```terminal
-$ rm -rf .git
+rm -rf .git
 ```
 
 Create a new repository with `git init`:
 
 ```terminal
-$ git init
+git init
 ```
 
 Now don't go crazy with adding files: there are some things that we don't

@@ -255,7 +255,7 @@ Wondering what other URLs your app might have? Our friend console can help
 you with that with the `router:debug` command:
 
 ```terminal
-$ php app/console router:debug
+php app/console router:debug
 ```
 
 This shows a full list of every route in your app. Right now, that means
