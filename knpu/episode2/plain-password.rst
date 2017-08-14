@@ -37,7 +37,7 @@ field::
 
     public function eraseCredentials()
     {
-        $this->setPlainPassword(null);
+        $this->plainPassword = null;
     }
 
 This method isn't really important, but it's called during the authentication
