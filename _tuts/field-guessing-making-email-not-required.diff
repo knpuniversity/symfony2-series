@@ -1,5 +1,5 @@
 diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
-index e329ccc..0ce50d8 100644
+index c12f5a4..2cc04e1 100644
 --- a/src/Yoda/UserBundle/Entity/User.php
 +++ b/src/Yoda/UserBundle/Entity/User.php
 @@ -45,8 +45,7 @@ class User implements AdvancedUserInterface, Serializable

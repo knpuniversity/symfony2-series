@@ -15,7 +15,7 @@ index 3a3bfd0..0b5988d 100644
       */
      protected $owner;
 diff --git a/src/Yoda/UserBundle/Entity/User.php b/src/Yoda/UserBundle/Entity/User.php
-index e329ccc..2046225 100644
+index c12f5a4..ebbb6f1 100644
 --- a/src/Yoda/UserBundle/Entity/User.php
 +++ b/src/Yoda/UserBundle/Entity/User.php
 @@ -8,6 +8,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
