@@ -1,6 +1,6 @@
 # Autoloading: Where did require/include go?
 
-Autoading: it's like plumbing. You forget it's there, but when it's gone,
+Autoloading: it's like plumbing. You forget it's there, but when it's gone,
 well, let's just say you have to go outside a bit more often.
 
 Autoloading is the magic that lets us use classes without needing to `require`
